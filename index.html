@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -69,23 +68,61 @@
           💡
         </div>
         <div>
-          <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900 block" data-i18n="app_title">Lluvia de Ideas IA</span>
           <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
         </div>
       </div>
       
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
-        <a href="#capturas" class="hover:text-brand-600 transition">Capturas</a>
-        <a href="#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
-        <a href="#funciones" class="hover:text-brand-600 transition">Características</a>
-        <a href="#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
-        <a href="#articulos" class="hover:text-brand-600 transition">Blog</a>
+      <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+        <a href="#capturas" class="hover:text-brand-600 transition" data-i18n="nav_screens">Capturas</a>
+        <a href="#que-es" class="hover:text-brand-600 transition" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
+        <a href="#funciones" class="hover:text-brand-600 transition" data-i18n="nav_features">Características</a>
+        <a href="#casos-uso" class="hover:text-brand-600 transition" data-i18n="nav_use_cases">Casos de Uso</a>
+        <a href="#articulos" class="hover:text-brand-600 transition" data-i18n="nav_blog">Blog</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="#descarga-gratis" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-          <span>Comienza a usarla Gratis</span>
+        <!-- Selector Multilenguaje Completo (Europa, Asia, Global) -->
+        <div class="relative inline-flex items-center">
+          <label for="lang-selector" class="sr-only">Seleccionar Idioma</label>
+          <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-white border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+            <optgroup label="Europa">
+              <option value="es" selected>🇪🇸 Español</option>
+              <option value="en">🇬🇧 English</option>
+              <option value="de">🇩🇪 Deutsch</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="it">🇮🇹 Italiano</option>
+              <option value="pt">🇵🇹 Português</option>
+              <option value="nl">🇳🇱 Nederlands</option>
+              <option value="pl">🇵🇱 Polski</option>
+              <option value="sv">🇸🇪 Svenska</option>
+              <option value="da">🇩🇰 Dansk</option>
+              <option value="fi">🇫🇮 Suomi</option>
+              <option value="no">🇳🇴 Norsk</option>
+              <option value="el">🇬🇷 Ελληνικά</option>
+              <option value="cs">🇨🇿 Čeština</option>
+              <option value="ro">🇷🇴 Română</option>
+              <option value="hu">🇭🇺 Magyar</option>
+              <option value="bg">🇧🇬 Български</option>
+              <option value="uk">🇺🇦 Українська</option>
+            </optgroup>
+            <optgroup label="Asia & Global">
+              <option value="ja">🇯🇵 日本語</option>
+              <option value="zh">🇨🇳 简体中文</option>
+              <option value="ko">🇰🇷 한국어</option>
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="hi">🇮🇳 हिन्दी</option>
+              <option value="vi">🇻🇳 Tiếng Việt</option>
+              <option value="th">🇹🇭 ไทย</option>
+              <option value="id">🇮🇩 Bahasa Indonesia</option>
+              <option value="ar">🇸🇦 العربية</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <a href="#descarga-gratis" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <span data-i18n="cta_header">Comienza a usarla Gratis</span>
         </a>
       </div>
     </div>
@@ -101,14 +138,14 @@
           
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6 shadow-sm">
             <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Descarga 100% Gratuita • Prueba completa de 21 días[cite: 1]</span>
+            <span data-i18n="hero_pill">Descarga 100% Gratuita • Prueba completa de 21 días</span>
           </div>
 
           <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-            Multiplica tu Creatividad con <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent">IA Híbrida y RAG Local</span>[cite: 1]
+            <span data-i18n="hero_title_1">Multiplica tu Creatividad con</span> <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent" data-i18n="hero_title_2">IA Híbrida y RAG Local</span>[cite: 1]
           </h1>
 
-          <p class="mt-6 text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          <p class="mt-6 text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
             Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android[cite: 1]. <strong>Sin costes iniciales ni suscripciones mensuales.</strong>
           </p>
 
@@ -122,22 +159,22 @@
                 <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z"/>
               </svg>
               <div class="text-left">
-                <div class="text-[10px] uppercase tracking-wider text-slate-300 font-semibold leading-none">Disponible Gratis en</div>
+                <div class="text-[10px] uppercase tracking-wider text-slate-300 font-semibold leading-none" data-i18n="gp_label">Disponible Gratis en</div>
                 <div class="text-base font-bold leading-tight">Google Play</div>
               </div>
             </a>
             
             <a href="#capturas" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold hover:bg-slate-50 transition shadow-sm">
-              <span>Explorar Capturas</span>
+              <span data-i18n="hero_explore">Explorar Capturas</span>
               <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </a>
           </div>
 
           <!-- Sellos de Confianza -->
           <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-500">
-            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> 0 € durante 21 días</span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> Datos 100% en tu dispositivo[cite: 1]</span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> Licencia definitiva por 3,99 €</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_trial">0 € durante 21 días</span></span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_local">Datos 100% en tu dispositivo</span>[cite: 1]</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_lifetime">Licencia definitiva por 3,99 €</span></span>
           </div>
 
         </div>
@@ -148,25 +185,19 @@
             <div class="relative z-10 bg-slate-900 p-3 rounded-[44px] phone-mockup-shadow border-4 border-slate-800">
               <div class="overflow-hidden rounded-[36px] bg-slate-950 border border-slate-800">
                 <svg class="w-full h-auto block" viewBox="0 0 360 740" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Barra Superior Android -->
                   <rect width="360" height="740" fill="#F8FAFC"/>
                   <rect width="360" height="32" fill="#FFFFFF"/>
                   <text x="20" y="21" fill="#0F172A" font-size="12" font-weight="bold" font-family="sans-serif">8:22</text>
                   <circle cx="320" cy="18" r="4" fill="#0F172A"/>
                   <rect x="330" y="14" width="14" height="8" rx="2" fill="#0F172A"/>
                   
-                  <!-- Header App -->
                   <rect y="32" width="360" height="56" fill="#FFFFFF"/>
                   <circle cx="36" cy="60" r="12" fill="#EEF2FF"/>
                   <text x="31" y="65" font-size="14">💡</text>
                   <text x="60" y="65" fill="#0F172A" font-size="17" font-weight="bold" font-family="sans-serif">Lluvia de Ideas Forzada</text>
                   <circle cx="300" cy="60" r="6" stroke="#0F172A" stroke-width="2"/>
                   <line x1="304" y1="64" x2="310" y2="70" stroke="#0F172A" stroke-width="2"/>
-                  <circle cx="335" cy="54" r="2" fill="#0F172A"/>
-                  <circle cx="335" cy="60" r="2" fill="#0F172A"/>
-                  <circle cx="335" cy="66" r="2" fill="#0F172A"/>
 
-                  <!-- Banner Superior Estudio Creativo -->
                   <rect x="16" y="100" width="328" height="120" rx="20" fill="url(#hero-banner-grad)"/>
                   <rect x="28" y="112" width="130" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
                   <text x="36" y="127" fill="#FFFFFF" font-size="9" font-weight="bold" font-family="sans-serif">⚡ ESTUDIO CREATIVO IA</text>
@@ -179,24 +210,20 @@
                   <text x="28" y="180" fill="#E0E7FF" font-size="11" font-family="sans-serif">Formula un reto y desata propuestas</text>
                   <text x="28" y="196" fill="#E0E7FF" font-size="11" font-family="sans-serif">disruptivas con Gemini y tu contexto RAG.</text>
 
-                  <!-- Card de Formulario -->
                   <rect x="16" y="234" width="328" height="420" rx="20" fill="#FFFFFF" stroke="#E2E8F0"/>
                   <text x="32" y="262" fill="#4F46E5" font-size="13" font-weight="bold" font-family="sans-serif">⚡ Iniciar Sesión de Ideación</text>
                   <text x="236" y="262" fill="#64748B" font-size="10" font-family="sans-serif">📁 Proyecto General</text>
 
-                  <!-- Input 1 -->
                   <text x="32" y="295" fill="#334155" font-size="11" font-weight="bold" font-family="sans-serif">1. Tema o Pregunta Central *</text>
                   <rect x="32" y="306" width="296" height="46" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
                   <text x="44" y="334" fill="#94A3B8" font-size="11" font-family="sans-serif">Ej: ¿Cómo rediseñar el onboarding?</text>
 
-                  <!-- Input 2 -->
                   <text x="32" y="376" fill="#334155" font-size="11" font-weight="bold" font-family="sans-serif">2. Objetivo a Conseguir *</text>
                   <rect x="220" y="362" width="108" height="20" rx="6" fill="#FEF3C7"/>
                   <text x="228" y="376" fill="#D97706" font-size="9" font-weight="bold" font-family="sans-serif">✨ Sugerir con IA</text>
                   <rect x="32" y="388" width="296" height="46" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
                   <text x="44" y="416" fill="#94A3B8" font-size="11" font-family="sans-serif">Ej: Reducir activación a &lt; 60s</text>
 
-                  <!-- Modos Divergente / Convergente -->
                   <text x="32" y="458" fill="#334155" font-size="11" font-weight="bold" font-family="sans-serif">3. Modo de Pensamiento:</text>
                   <rect x="32" y="468" width="142" height="46" rx="12" fill="#FEF9C3" stroke="#FACC15" stroke-width="1.5"/>
                   <text x="44" y="488" fill="#854D0E" font-size="11" font-weight="bold" font-family="sans-serif">⚡ Divergente</text>
@@ -206,7 +233,6 @@
                   <text x="198" y="488" fill="#475569" font-size="11" font-weight="bold" font-family="sans-serif">🎯 Convergente</text>
                   <text x="198" y="502" fill="#94A3B8" font-size="9" font-family="sans-serif">Foco y refinamiento</text>
 
-                  <!-- Técnicas de Disrupción -->
                   <text x="32" y="538" fill="#334155" font-size="11" font-weight="bold" font-family="sans-serif">4. Técnica de Disrupción:</text>
                   <rect x="32" y="548" width="88" height="28" rx="8" fill="#4F46E5"/>
                   <text x="42" y="566" fill="#FFFFFF" font-size="10" font-weight="bold" font-family="sans-serif">🗂️ SCAMPER</text>
@@ -217,11 +243,9 @@
                   <rect x="226" y="548" width="102" height="28" rx="8" fill="#F1F5F9" stroke="#E2E8F0"/>
                   <text x="234" y="566" fill="#475569" font-size="10" font-family="sans-serif">🧬 Analogías</text>
 
-                  <!-- Botón Lanzador Sesión -->
                   <rect x="32" y="594" width="296" height="44" rx="12" fill="url(#hero-btn-grad)"/>
                   <text x="96" y="621" fill="#FFFFFF" font-size="13" font-weight="bold" font-family="sans-serif">🚀 Lanzar 6 Ideas Forzadas</text>
 
-                  <!-- Barra Navegación Inferior -->
                   <rect y="670" width="360" height="70" fill="#FFFFFF" stroke="#E2E8F0"/>
                   <text x="38" y="698" font-size="16">⚡</text>
                   <text x="28" y="718" fill="#4F46E5" font-size="10" font-weight="bold" font-family="sans-serif">Ideación</text>
@@ -254,15 +278,15 @@
               <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">⚡</div>
               <div>
                 <div class="text-xs font-bold text-slate-900">SCAMPER & 10x[cite: 1]</div>
-                <div class="text-[10px] text-slate-500">Disrupción cognitiva activa[cite: 1]</div>
+                <div class="text-[10px] text-slate-500" data-i18n="badge_disruption">Disrupción cognitiva activa</div>
               </div>
             </div>
             <!-- Badge Flotante 2 -->
             <div class="absolute -right-6 bottom-16 z-20 glass-card p-3 rounded-2xl shadow-xl flex items-center gap-3 border border-emerald-100" data-aos="fade-left" data-aos-delay="600">
               <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl font-bold">🌱</div>
               <div>
-                <div class="text-xs font-bold text-slate-900">Banco de Ideas[cite: 1]</div>
-                <div class="text-[10px] text-emerald-600 font-semibold">Madurez Botánica[cite: 1]</div>
+                <div class="text-xs font-bold text-slate-900" data-i18n="badge_bank">Banco de Ideas</div>
+                <div class="text-[10px] text-emerald-600 font-semibold" data-i18n="badge_maturity">Madurez Botánica</div>
               </div>
             </div>
           </div>
@@ -277,9 +301,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Interfaz Nativa Android</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Diseñada para una Productividad Fluida y Potente</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo[cite: 1].</p>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="screens_tag">Interfaz Nativa Android</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="screens_title">Diseñada para una Productividad Fluida y Potente</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="screens_desc">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo[cite: 1].</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -290,16 +314,14 @@
             <div class="overflow-hidden rounded-[28px] bg-slate-950">
               <svg class="w-full h-auto block" viewBox="0 0 320 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="320" height="600" fill="#F8FAFC"/>
-                <!-- Header -->
                 <rect width="320" height="50" fill="#FFFFFF"/>
                 <circle cx="28" cy="25" r="10" fill="#EEF2FF"/>
                 <text x="24" y="29" font-size="12">💡</text>
                 <text x="46" y="30" fill="#0F172A" font-size="14" font-weight="bold" font-family="sans-serif">Lluvia de Ideas Forzada</text>
-                <!-- Banner -->
                 <rect x="14" y="60" width="292" height="90" rx="16" fill="#4F46E5"/>
                 <text x="24" y="86" fill="#FFFFFF" font-size="14" font-weight="bold" font-family="sans-serif">Lanza una Lluvia de Ideas</text>
                 <text x="24" y="104" fill="#C7D2FE" font-size="10" font-family="sans-serif">Retos disruptivos con RAG Local</text>
-                <!-- Form Inputs -->
+                
                 <rect x="14" y="162" width="292" height="340" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="26" y="188" fill="#334155" font-size="10" font-weight="bold" font-family="sans-serif">1. Tema o Pregunta Central</text>
                 <rect x="26" y="198" width="268" height="36" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
@@ -309,17 +331,14 @@
                 <rect x="26" y="264" width="268" height="36" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
                 <text x="36" y="286" fill="#94A3B8" font-size="10" font-family="sans-serif">Incrementar retención un 30%</text>
 
-                <!-- Toggle Divergente -->
                 <rect x="26" y="316" width="130" height="36" rx="8" fill="#FEF9C3" stroke="#FACC15"/>
                 <text x="34" y="338" fill="#854D0E" font-size="10" font-weight="bold" font-family="sans-serif">⚡ Divergente</text>
 
                 <rect x="164" y="316" width="130" height="36" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
                 <text x="174" y="338" fill="#64748B" font-size="10" font-family="sans-serif">🎯 Convergente</text>
 
-                <!-- Botón Generar -->
                 <rect x="26" y="430" width="268" height="42" rx="10" fill="#4F46E5"/>
                 <text x="82" y="456" fill="#FFFFFF" font-size="12" font-weight="bold" font-family="sans-serif">🚀 Iniciar Ideación</text>
-                <!-- Bottom Bar -->
                 <rect y="540" width="320" height="60" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="36" y="575" font-size="18">⚡</text>
                 <text x="110" y="575" font-size="18">📁</text>
@@ -328,8 +347,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mt-5">Estudio de Ideación[cite: 1]</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4">Pensamiento divergente y convergente con técnicas forzadas[cite: 1].</p>
+          <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen1_title">Estudio de Ideación</h3>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen1_desc">Pensamiento divergente y convergente con técnicas forzadas[cite: 1].</p>
         </div>
 
         <!-- Screenshot 2: Proyectos & RAG -->
@@ -338,15 +357,14 @@
             <div class="overflow-hidden rounded-[28px] bg-slate-950">
               <svg class="w-full h-auto block" viewBox="0 0 320 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="320" height="600" fill="#F8FAFC"/>
-                <!-- Header -->
                 <rect width="320" height="50" fill="#FFFFFF"/>
                 <text x="24" y="30" font-size="12">💡</text>
                 <text x="46" y="30" fill="#0F172A" font-size="14" font-weight="bold" font-family="sans-serif">Proyectos & Contexto RAG</text>
-                <!-- Banner Proyectos -->
+                
                 <rect x="14" y="60" width="292" height="80" rx="16" fill="#4F46E5"/>
                 <text x="24" y="86" fill="#FFFFFF" font-size="13" font-weight="bold" font-family="sans-serif">Gestión de Espacios Estratégicos</text>
                 <text x="24" y="104" fill="#C7D2FE" font-size="10" font-family="sans-serif">Persistencia local con SQLite y Room</text>
-                <!-- Estado Vacío -->
+                
                 <rect x="14" y="152" width="292" height="370" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <circle cx="160" cy="240" r="32" fill="#F1F5F9"/>
                 <text x="148" y="248" font-size="24">📁</text>
@@ -356,7 +374,7 @@
                 
                 <rect x="60" y="370" width="200" height="42" rx="10" fill="#4F46E5"/>
                 <text x="96" y="396" fill="#FFFFFF" font-size="12" font-weight="bold" font-family="sans-serif">+ Crear Proyecto RAG</text>
-                <!-- Bottom Bar -->
+                
                 <rect y="540" width="320" height="60" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="36" y="575" font-size="18">⚡</text>
                 <text x="110" y="575" font-size="18">📁</text>
@@ -365,8 +383,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mt-5">Proyectos y RAG Local[cite: 1]</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4">Carga PDFs y notas de contexto con persistencia Room SQLite[cite: 1].</p>
+          <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen2_title">Proyectos y RAG Local</h3>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen2_desc">Carga PDFs y notas de contexto con persistencia Room SQLite[cite: 1].</p>
         </div>
 
         <!-- Screenshot 3: Banco de Ideas -->
@@ -375,16 +393,15 @@
             <div class="overflow-hidden rounded-[28px] bg-slate-950">
               <svg class="w-full h-auto block" viewBox="0 0 320 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="320" height="600" fill="#F8FAFC"/>
-                <!-- Header -->
                 <rect width="320" height="50" fill="#FFFFFF"/>
                 <text x="24" y="30" font-size="12">💡</text>
                 <text x="46" y="30" fill="#0F172A" font-size="14" font-weight="bold" font-family="sans-serif">Banco de Ideas Germinadas</text>
-                <!-- Banner Banco -->
+                
                 <rect x="14" y="60" width="292" height="70" rx="16" fill="#4F46E5"/>
                 <text x="24" y="90" fill="#FFFFFF" font-size="13" font-weight="bold" font-family="sans-serif">🌱 Ideas Listas para Ejecutar</text>
                 <rect x="210" y="74" width="80" height="24" rx="8" fill="#FFFFFF"/>
                 <text x="220" y="90" fill="#4F46E5" font-size="9" font-weight="bold" font-family="sans-serif">🔗 Exportar</text>
-                <!-- Pestañas Botánicas -->
+                
                 <rect x="14" y="140" width="68" height="28" rx="8" fill="#4F46E5"/>
                 <text x="22" y="158" fill="#FFFFFF" font-size="9" font-weight="bold" font-family="sans-serif">✨ Todas</text>
                 
@@ -397,7 +414,6 @@
                 <rect x="232" y="140" width="72" height="28" rx="8" fill="#ECFDF5" stroke="#A7F3D0"/>
                 <text x="240" y="158" fill="#065F46" font-size="9" font-family="sans-serif">🌳 Árboles</text>
 
-                <!-- Tarjeta Idea 1 -->
                 <rect x="14" y="180" width="292" height="110" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <rect x="24" y="190" width="60" height="18" rx="4" fill="#ECFDF5"/>
                 <text x="28" y="202" fill="#065F46" font-size="8" font-weight="bold" font-family="sans-serif">🌱 SEMILLA</text>
@@ -406,7 +422,6 @@
                 <rect x="24" y="256" width="100" height="20" rx="6" fill="#F1F5F9"/>
                 <text x="30" y="270" fill="#475569" font-size="8" font-family="sans-serif">⏱️ Ejecución: &lt;48h</text>
 
-                <!-- Tarjeta Idea 2 -->
                 <rect x="14" y="300" width="292" height="110" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <rect x="24" y="310" width="60" height="18" rx="4" fill="#EFF6FF"/>
                 <text x="28" y="322" fill="#1E40AF" font-size="8" font-weight="bold" font-family="sans-serif">🌿 BROTE</text>
@@ -414,7 +429,7 @@
                 <text x="24" y="360" fill="#64748B" font-size="9" font-family="sans-serif">Indexar PDFs locales mediante SQLite BLOB.</text>
                 <rect x="24" y="376" width="110" height="20" rx="6" fill="#F1F5F9"/>
                 <text x="30" y="390" fill="#475569" font-size="8" font-family="sans-serif">⏱️ Validación: 1-2 sem</text>
-                <!-- Bottom Bar -->
+                
                 <rect y="540" width="320" height="60" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="36" y="575" font-size="18">⚡</text>
                 <text x="110" y="575" font-size="18">📁</text>
@@ -423,8 +438,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mt-5">Banco de Ideas Germinadas[cite: 1]</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳[cite: 1].</p>
+          <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen3_title">Banco de Ideas Germinadas</h3>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen3_desc">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳[cite: 1].</p>
         </div>
 
         <!-- Screenshot 4: Métricas & Evolución -->
@@ -433,15 +448,14 @@
             <div class="overflow-hidden rounded-[28px] bg-slate-950">
               <svg class="w-full h-auto block" viewBox="0 0 320 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="320" height="600" fill="#F8FAFC"/>
-                <!-- Header -->
                 <rect width="320" height="50" fill="#FFFFFF"/>
                 <text x="24" y="30" font-size="12">💡</text>
                 <text x="46" y="30" fill="#0F172A" font-size="14" font-weight="bold" font-family="sans-serif">Métricas & Evolución</text>
-                <!-- Banner Métricas -->
+                
                 <rect x="14" y="60" width="292" height="80" rx="16" fill="#4F46E5"/>
                 <text x="24" y="86" fill="#FFFFFF" font-size="13" font-weight="bold" font-family="sans-serif">Rendimiento y Ritmo Creativo</text>
                 <text x="24" y="104" fill="#C7D2FE" font-size="10" font-family="sans-serif">Seguimiento global de proyectos y temas</text>
-                <!-- KPIs Grid -->
+                
                 <rect x="14" y="152" width="90" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="48" y="180" fill="#0F172A" font-size="16" font-weight="bold" font-family="sans-serif" text-anchor="middle">12</text>
                 <text x="48" y="200" fill="#64748B" font-size="9" font-family="sans-serif" text-anchor="middle">Proyectos</text>
@@ -454,20 +468,18 @@
                 <text x="261" y="180" fill="#10B981" font-size="16" font-weight="bold" font-family="sans-serif" text-anchor="middle">142</text>
                 <text x="261" y="200" fill="#64748B" font-size="9" font-family="sans-serif" text-anchor="middle">Aceptadas</text>
 
-                <!-- Gráfico Simulado -->
                 <rect x="14" y="234" width="292" height="170" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="26" y="258" fill="#0F172A" font-size="11" font-weight="bold" font-family="sans-serif">Evolución de Ideas Germinadas</text>
                 <polyline points="30,360 80,330 130,340 180,290 230,300 280,270" fill="none" stroke="#4F46E5" stroke-width="3"/>
                 <circle cx="280" cy="270" r="5" fill="#4F46E5"/>
 
-                <!-- Distribución Pensamiento -->
                 <rect x="14" y="416" width="292" height="100" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="26" y="438" fill="#0F172A" font-size="11" font-weight="bold" font-family="sans-serif">Balance Divergente / Convergente</text>
                 <rect x="26" y="452" width="160" height="14" rx="7" fill="#FACC15"/>
                 <rect x="190" y="452" width="100" height="14" rx="7" fill="#3B82F6"/>
                 <text x="26" y="482" fill="#854D0E" font-size="9" font-family="sans-serif">⚡ Divergente (62%)</text>
                 <text x="190" y="482" fill="#1E40AF" font-size="9" font-family="sans-serif">🎯 Convergente (38%)</text>
-                <!-- Bottom Bar -->
+                
                 <rect y="540" width="320" height="60" fill="#FFFFFF" stroke="#E2E8F0"/>
                 <text x="36" y="575" font-size="18">⚡</text>
                 <text x="110" y="575" font-size="18">📁</text>
@@ -476,8 +488,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mt-5">Métricas de Rendimiento[cite: 1]</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4">Monitoreo de ritmo creativo, balance cognitivo y uso[cite: 1].</p>
+          <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen4_title">Métricas de Rendimiento</h3>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen4_desc">Monitoreo de ritmo creativo, balance cognitivo y uso[cite: 1].</p>
         </div>
 
       </div>
@@ -492,23 +504,23 @@
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
         <div class="lg:col-span-6" data-aos="fade-right">
-          <span class="text-xs uppercase font-bold tracking-widest text-brand-amber bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Metodología de Innovación</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 leading-tight">¿Qué es una Lluvia de Ideas y para qué sirve realmente?</h2>
-          <p class="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+          <span class="text-xs uppercase font-bold tracking-widest text-brand-amber bg-amber-50 px-3 py-1 rounded-full border border-amber-200" data-i18n="edu_tag">Metodología de Innovación</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 leading-tight" data-i18n="edu_title">¿Qué es una Lluvia de Ideas y para qué sirve realmente?</h2>
+          <p class="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base" data-i18n="edu_p1">
             El <strong>brainstorming</strong> es una técnica de trabajo diseñada para producir un elevado número de propuestas ante un problema o meta concreta, separando la fase de generación de la fase de evaluación.
           </p>
-          <p class="mt-3 text-slate-600 leading-relaxed text-sm sm:text-base">
+          <p class="mt-3 text-slate-600 leading-relaxed text-sm sm:text-base" data-i18n="edu_p2">
             Su propósito principal es <strong>romper la inercia del pensamiento lógico habitual</strong> mediante la lateralidad mental, permitiendo encontrar ángulos que no surgen en el análisis convencional.
           </p>
           
           <div class="mt-6 space-y-3">
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-              <p class="text-sm text-slate-700 font-medium"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step1"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques[cite: 1].</p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-              <p class="text-sm text-slate-700 font-medium"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step2"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables[cite: 1].</p>
             </div>
           </div>
         </div>
@@ -516,18 +528,18 @@
         <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-left">
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌱</div>
-            <h3 class="text-base font-bold text-slate-900">Semilla (Seed)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="seed_title">Semilla (Seed)[cite: 1]</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="seed_desc">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo[cite: 1].</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌿</div>
-            <h3 class="text-base font-bold text-slate-900">Brote (Sprout)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="sprout_title">Brote (Sprout)[cite: 1]</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="sprout_desc">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos[cite: 1].</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition sm:col-span-2">
             <div class="text-3xl mb-2">🌳</div>
-            <h3 class="text-base font-bold text-slate-900">Árbol (Tree)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="tree_title">Árbol (Tree)[cite: 1]</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="tree_desc">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico[cite: 1].</p>
           </div>
         </div>
 
@@ -541,9 +553,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Arquitectura Local-First</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Privacidad Absoluta con Inteligencia Híbrida</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini[cite: 1].</p>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="feat_tag">Arquitectura Local-First</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="feat_title">Privacidad Absoluta con Inteligencia Híbrida</h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="feat_sub">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini[cite: 1].</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
@@ -553,12 +565,12 @@
             <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xl mb-6 border border-brand-100">
               📂
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">RAG Local Determinista[cite: 1]</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f1_title">RAG Local Determinista[cite: 1]</h3>
+            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f1_desc">
               Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico[cite: 1]. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono[cite: 1].
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-brand-600">
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-brand-600" data-i18n="f1_sub">
             Búsqueda por similitud coseno jerárquica[cite: 1]
           </div>
         </div>
@@ -568,12 +580,12 @@
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xl mb-6 border border-emerald-100">
               🛡️
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Modelos On-Device & Gemini Nano[cite: 1]</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f2_title">Modelos On-Device & Gemini Nano[cite: 1]</h3>
+            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f2_desc">
               Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android[cite: 1].
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-emerald-600">
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-emerald-600" data-i18n="f2_sub">
             Máxima confidencialidad de datos corporativos
           </div>
         </div>
@@ -583,12 +595,12 @@
             <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xl mb-6 border border-indigo-100">
               🔄
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Ecosistema .lluvia y Exportación[cite: 1]</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f3_title">Ecosistema .lluvia y Exportación[cite: 1]</h3>
+            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f3_desc">
               Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp[cite: 1].
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-indigo-600">
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-indigo-600" data-i18n="f3_sub">
             Importación y fusión sin duplicados[cite: 1]
           </div>
         </div>
@@ -603,40 +615,40 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Casos Prácticos</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">¿Para Quién es Lluvia de Ideas IA?</h2>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="cases_tag">Casos Prácticos</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="cases_title">¿Para Quién es Lluvia de Ideas IA?</h2>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
           <div class="text-3xl mb-3">🚀</div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Fundadores y Emprendedores</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c1_title">Fundadores y Emprendedores</h3>
+          <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c1_desc">
             Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC)[cite: 1].
           </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
           <div class="text-3xl mb-3">📈</div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Especialistas en Marketing</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c2_title">Especialistas en Marketing</h3>
+          <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c2_desc">
             Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker)[cite: 1].
           </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="300">
           <div class="text-3xl mb-3">🎨</div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Diseñadores de Producto</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c3_title">Diseñadores de Producto</h3>
+          <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c3_desc">
             Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX)[cite: 1].
           </p>
         </div>
 
         <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="400">
           <div class="text-3xl mb-3">💻</div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Desarrolladores e Ingenieros</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c4_title">Desarrolladores e Ingenieros</h3>
+          <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c4_desc">
             Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech[cite: 1].
           </p>
         </div>
@@ -652,45 +664,45 @@
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16" data-aos="fade-up">
         <div>
-          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-amber bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Recursos y Metodología</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Artículos para Potenciar tu Creatividad</h2>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-amber bg-amber-50 px-3 py-1 rounded-full border border-amber-200" data-i18n="blog_tag">Recursos y Metodología</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="blog_title">Artículos para Potenciar tu Creatividad</h2>
         </div>
-        <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md">Estrategias y marcos de trabajo prácticos aplicables en cualquier sesión de ideación.</p>
+        <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md" data-i18n="blog_sub">Estrategias y marcos de trabajo prácticos aplicables en cualquier sesión de ideación.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         
         <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
           <div>
-            <span class="text-xs font-bold text-brand-600">Técnicas de Pensamiento</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3">Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            <span class="text-xs font-bold text-brand-600" data-i18n="b1_tag">Técnicas de Pensamiento</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b1_title">Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b1_desc">
               Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold">Lectura de 4 min</div>
+          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b1_time">Lectura de 4 min</div>
         </article>
 
         <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
           <div>
-            <span class="text-xs font-bold text-emerald-600">Inteligencia Artificial Local</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3">RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            <span class="text-xs font-bold text-emerald-600" data-i18n="b2_tag">Inteligencia Artificial Local</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b2_title">RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b2_desc">
               Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold">Lectura de 6 min</div>
+          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b2_time">Lectura de 6 min</div>
         </article>
 
         <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
           <div>
-            <span class="text-xs font-bold text-amber-600">Gestión de Innovación</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3">La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            <span class="text-xs font-bold text-amber-600" data-i18n="b3_tag">Gestión de Innovación</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b3_title">La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b3_desc">
               Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles[cite: 1].
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold">Lectura de 5 min</div>
+          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b3_time">Lectura de 5 min</div>
         </article>
 
       </div>
@@ -703,42 +715,42 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Experiencias Reales</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Lo que dicen los profesionales</h2>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="rev_tag">Experiencias Reales</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="rev_title">Lo que dicen los profesionales</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
-          <p class="text-sm text-slate-600 italic mb-6">
+          <p class="text-sm text-slate-600 italic mb-6" data-i18n="r1_text">
             "La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil."[cite: 1]
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Marcos T.</div>
-            <div class="text-xs text-slate-500">Product Lead en Startup Fintech</div>
+            <div class="text-xs text-slate-500" data-i18n="r1_author">Product Lead en Startup Fintech</div>
           </div>
         </div>
 
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
-          <p class="text-sm text-slate-600 italic mb-6">
+          <p class="text-sm text-slate-600 italic mb-6" data-i18n="r2_text">
             "Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto."[cite: 1]
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Elena V.</div>
-            <div class="text-xs text-slate-500">Diseñadora de Estrategia UX</div>
+            <div class="text-xs text-slate-500" data-i18n="r2_author">Diseñadora de Estrategia UX</div>
           </div>
         </div>
 
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="300">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
-          <p class="text-sm text-slate-600 italic mb-6">
+          <p class="text-sm text-slate-600 italic mb-6" data-i18n="r3_text">
             "La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo."[cite: 1]
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Sergio B.</div>
-            <div class="text-xs text-slate-500">Consultor de Innovación Digital</div>
+            <div class="text-xs text-slate-500" data-i18n="r3_author">Consultor de Innovación Digital</div>
           </div>
         </div>
 
@@ -754,13 +766,13 @@
       <div class="p-10 sm:p-14 rounded-[36px] bg-gradient-to-tr from-brand-600 to-indigo-700 text-white shadow-2xl shadow-indigo-500/20 relative overflow-hidden">
         
         <div class="relative z-10">
-          <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-bold text-xs mb-6">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-bold text-xs mb-6" data-i18n="final_pill">
             Descarga Inmediata y Segura
           </span>
 
-          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Comienza a usarla Gratis</h2>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight" data-i18n="final_title">Comienza a usarla Gratis</h2>
           
-          <p class="mt-4 text-indigo-100 text-base max-w-xl mx-auto">
+          <p class="mt-4 text-indigo-100 text-base max-w-xl mx-auto" data-i18n="final_desc">
             Disfruta de todas las funcionalidades durante 21 días sin limitaciones[cite: 1]. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.
           </p>
 
@@ -773,13 +785,13 @@
                 <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z"/>
               </svg>
               <div class="text-left">
-                <div class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold leading-none">Disponible Gratis en</div>
+                <div class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold leading-none" data-i18n="gp_label">Disponible Gratis en</div>
                 <div class="text-base font-bold leading-tight text-slate-900">Google Play</div>
               </div>
             </a>
           </div>
 
-          <div class="mt-6 text-xs text-indigo-200 font-medium">
+          <div class="mt-6 text-xs text-indigo-200 font-medium" data-i18n="final_sub">
             Compatible con Android 10 en adelante • Sin anuncios de terceros
           </div>
         </div>
@@ -794,24 +806,936 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
       <div>
-        <div class="text-white font-bold text-sm">Lluvia de Ideas IA[cite: 1]</div>
+        <div class="text-white font-bold text-sm" data-i18n="app_title">Lluvia de Ideas IA[cite: 1]</div>
         <p class="mt-1 text-slate-400">
-          Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.
+          <span data-i18n="footer_by">Desarrollado y mantenido por</span> <strong>Raúl Navas Montero (NoaR)</strong>.
         </p>
       </div>
 
       <div class="flex items-center space-x-6">
-        <a href="privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
-        <a href="terms.html" class="hover:text-white transition">Términos del Servicio</a>
-        <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+        <a href="privacy-policy.html" class="hover:text-white transition" data-i18n="f_privacy">Política de Privacidad</a>
+        <a href="terms.html" class="hover:text-white transition" data-i18n="f_terms">Términos del Servicio</a>
+        <a href="mailto:soporte@noar.dev" class="hover:text-white transition" data-i18n="f_contact">Contacto y Soporte</a>
       </div>
 
-      <p class="text-slate-500">
+      <p class="text-slate-500" data-i18n="f_rights">
         &copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.
       </p>
 
     </div>
   </footer>
+
+  <!-- ==================== DICCIONARIO DE IDIOMAS & MOTOR I18N ==================== -->
+  <script>
+    const translations = {
+      es: {
+        app_title: "Lluvia de Ideas IA",
+        nav_screens: "Capturas",
+        nav_what_is: "¿Qué es Brainstorming?",
+        nav_features: "Características",
+        nav_use_cases: "Casos de Uso",
+        nav_blog: "Blog",
+        cta_header: "Comienza a usarla Gratis",
+        hero_pill: "Descarga 100% Gratuita • Prueba completa de 21 días",
+        hero_title_1: "Multiplica tu Creatividad con",
+        hero_title_2: "IA Híbrida y RAG Local",
+        hero_desc: "Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android. Sin costes iniciales ni suscripciones mensuales.",
+        gp_label: "Disponible Gratis en",
+        hero_explore: "Explorar Capturas",
+        badge_trial: "0 € durante 21 días",
+        badge_local: "Datos 100% en tu dispositivo",
+        badge_lifetime: "Licencia definitiva por 3,99 €",
+        badge_disruption: "Disrupción cognitiva activa",
+        badge_bank: "Banco de Ideas",
+        badge_maturity: "Madurez Botánica",
+        screens_tag: "Interfaz Nativa Android",
+        screens_title: "Diseñada para una Productividad Fluida y Potente",
+        screens_desc: "Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo.",
+        screen1_title: "Estudio de Ideación",
+        screen1_desc: "Pensamiento divergente y convergente con técnicas forzadas.",
+        screen2_title: "Proyectos y RAG Local",
+        screen2_desc: "Carga PDFs y notas de contexto con persistencia Room SQLite.",
+        screen3_title: "Banco de Ideas Germinadas",
+        screen3_desc: "Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳.",
+        screen4_title: "Métricas de Rendimiento",
+        screen4_desc: "Monitoreo de ritmo creativo, balance cognitivo y uso.",
+        edu_tag: "Metodología de Innovación",
+        edu_title: "¿Qué es una Lluvia de Ideas y para qué sirve realmente?",
+        edu_p1: "El <strong>brainstorming</strong> es una técnica de trabajo diseñada para producir un elevado número de propuestas ante un problema o meta concreta, separando la fase de generación de la fase de evaluación.",
+        edu_p2: "Su propósito principal es <strong>romper la inercia del pensamiento lógico habitual</strong> mediante la lateralidad mental, permitiendo encontrar ángulos que no surgen en el análisis convencional.",
+        edu_step1: "<strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques.",
+        edu_step2: "<strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables.",
+        seed_title: "Semilla (Seed)",
+        seed_desc: "Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo.",
+        sprout_title: "Brote (Sprout)",
+        sprout_desc: "Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos.",
+        tree_title: "Árbol (Tree)",
+        tree_desc: "Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico.",
+        feat_tag: "Arquitectura Local-First",
+        feat_title: "Privacidad Absoluta con Inteligencia Híbrida",
+        feat_sub: "Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini.",
+        f1_title: "RAG Local Determinista",
+        f1_desc: "Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono.",
+        f1_sub: "Búsqueda por similitud coseno jerárquica",
+        f2_title: "Modelos On-Device & Gemini Nano",
+        f2_desc: "Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android.",
+        f2_sub: "Máxima confidencialidad de datos corporativos",
+        f3_title: "Ecosistema .lluvia y Exportación",
+        f3_desc: "Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp.",
+        f3_sub: "Importación y fusión sin duplicados",
+        cases_tag: "Casos Prácticos",
+        cases_title: "¿Para Quién es Lluvia de Ideas IA?",
+        c1_title: "Fundadores y Emprendedores",
+        c1_desc: "Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC).",
+        c2_title: "Especialistas en Marketing",
+        c2_desc: "Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker).",
+        c3_title: "Diseñadores de Producto",
+        c3_desc: "Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX).",
+        c4_title: "Desarrolladores e Ingenieros",
+        c4_desc: "Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech.",
+        blog_tag: "Recursos y Metodología",
+        blog_title: "Artículos para Potenciar tu Creatividad",
+        blog_sub: "Estrategias y marcos de trabajo prácticos aplicables en cualquier sesión de ideación.",
+        b1_tag: "Técnicas de Pensamiento",
+        b1_title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
+        b1_desc: "Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.",
+        b1_time: "Lectura de 4 min",
+        b2_tag: "Inteligencia Artificial Local",
+        b2_title: "RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio",
+        b2_desc: "Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.",
+        b2_time: "Lectura de 6 min",
+        b3_tag: "Gestión de Innovación",
+        b3_title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
+        b3_desc: "Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.",
+        b3_time: "Lectura de 5 min",
+        rev_tag: "Experiencias Reales",
+        rev_title: "Lo que dicen los profesionales",
+        r1_text: "\"La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil.\"",
+        r1_author: "Product Lead en Startup Fintech",
+        r2_text: "\"Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto.\"",
+        r2_author: "Diseñadora de Estrategia UX",
+        r3_text: "\"La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo.\"",
+        r3_author: "Consultor de Innovación Digital",
+        final_pill: "Descarga Inmediata y Segura",
+        final_title: "Comienza a usarla Gratis",
+        final_desc: "Disfruta de todas las funcionalidades durante 21 días sin limitaciones. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.",
+        final_sub: "Compatible con Android 10 en adelante • Sin anuncios de terceros",
+        footer_by: "Desarrollado y mantenido por",
+        f_privacy: "Política de Privacidad",
+        f_terms: "Términos del Servicio",
+        f_contact: "Contacto y Soporte",
+        f_rights: "© 2026 Lluvia de Ideas IA. Todos los derechos reservados."
+      },
+      en: {
+        app_title: "AI Brainstorming Studio",
+        nav_screens: "Screenshots",
+        nav_what_is: "What is Brainstorming?",
+        nav_features: "Features",
+        nav_use_cases: "Use Cases",
+        nav_blog: "Blog",
+        cta_header: "Start Using It Free",
+        hero_pill: "100% Free Download • Full 21-Day Trial",
+        hero_title_1: "Supercharge Your Creativity with",
+        hero_title_2: "Hybrid AI & Local RAG",
+        hero_desc: "Structure projects, connect documents (PDF, notes, text), and unleash disruptive ideas with on-device cognitive acceleration on Android. No upfront fees or subscriptions.",
+        gp_label: "Get It Free on",
+        hero_explore: "Explore Screens",
+        badge_trial: "0 € for 21 days",
+        badge_local: "100% On-Device Privacy",
+        badge_lifetime: "Lifetime License for €3.99",
+        badge_disruption: "Active Cognitive Disruption",
+        badge_bank: "Idea Repository",
+        badge_maturity: "Botanical Maturity",
+        screens_tag: "Native Android Interface",
+        screens_title: "Engineered for Fluid, Powerful Productivity",
+        screens_desc: "Discover the interface built to ignite and structure your innovation from day one.",
+        screen1_title: "Ideation Studio",
+        screen1_desc: "Divergent and convergent thinking with forced creative techniques.",
+        screen2_title: "Projects & Local RAG",
+        screen2_desc: "Load PDFs and context notes with Room SQLite local persistence.",
+        screen3_title: "Germinated Ideas Bank",
+        screen3_desc: "Filtered by Seeds 🌱, Sprouts 🌿, and Trees 🌳.",
+        screen4_title: "Performance Analytics",
+        screen4_desc: "Track cognitive tempo, ideation balance, and token metrics.",
+        edu_tag: "Innovation Methodology",
+        edu_title: "What is Brainstorming and Why Does It Matter?",
+        edu_p1: "<strong>Brainstorming</strong> is a structured technique designed to generate high volumes of unconventional ideas by separating creation from critical judgment.",
+        edu_p2: "Its core mission is to <strong>break cognitive inertia</strong> through lateral thinking, uncovering strategic angles that standard linear logic misses.",
+        edu_step1: "<strong>Divergent Phase:</strong> Unconstrained exploration focused on quantity, novelty, and broad horizons.",
+        edu_step2: "<strong>Convergent Phase:</strong> Rigorous evaluation, synthesis, and actionable execution plans.",
+        seed_title: "Seed",
+        seed_desc: "Rapid execution in <48h, ultra-low cost, and minimum operational risk.",
+        sprout_title: "Sprout",
+        sprout_desc: "Modular innovation and 1-2 week prototyping with clear system synergies.",
+        tree_title: "Tree",
+        tree_desc: "10x structural transformation and comprehensive business model reinvention.",
+        feat_tag: "Local-First Architecture",
+        feat_title: "Absolute Privacy via Hybrid Intelligence",
+        feat_sub: "Seamlessly switch between offline on-device models and Google Gemini Cloud.",
+        f1_title: "Deterministic Local RAG",
+        f1_desc: "Attach <strong>PDFs, TXT files, or pasted notes</strong>. Embed 384-dimensional dense vectors inside your local SQLite without sending data to external servers.",
+        f1_sub: "Hierarchical Cosine Similarity Search",
+        f2_title: "On-Device LLMs & Gemini Nano",
+        f2_desc: "100% offline inference powered by Vulkan/MediaPipe with models from 0.2 GB to 32 GB, or native Gemini Nano acceleration.",
+        f2_sub: "Zero corporate data leakage",
+        f3_title: ".lluvia Ecosystem & Export",
+        f3_desc: "Share workspaces via `.lluvia` JSON bundles, publication-ready PDF reports, or instant Markdown summaries for Notion and Slack.",
+        f3_sub: "Smart merge without duplicate records",
+        cases_tag: "Practical Applications",
+        cases_title: "Who is AI Brainstorming Built For?",
+        c1_title: "Founders & Entrepreneurs",
+        c1_desc: "Stress-test business models, pivot value propositions, and simulate VC scrutiny with Victoria.",
+        c2_title: "Growth Marketers",
+        c2_desc: "Discover viral loops, high-converting copy angles, and AARRR funnel tactics with Elena.",
+        c3_title: "Product & UX Designers",
+        c3_desc: "Eliminate user friction and design empathetic interfaces with Alex.",
+        c4_title: "Developers & Engineers",
+        c4_desc: "Architect complex software systems and automate workflows with Dr. Tech.",
+        blog_tag: "Resources & Guides",
+        blog_title: "Articles to Fuel Your Creative Strategy",
+        blog_sub: "Actionable frameworks applicable to both manual and AI-assisted brainstorming sessions.",
+        b1_tag: "Mental Models",
+        b1_title: "How to Solve Complex Engineering Problems in 15 Minutes with SCAMPER",
+        b1_desc: "Substitute, combine, adapt, and modify constraints to unlock non-obvious solutions.",
+        b1_time: "4 min read",
+        b2_tag: "On-Device AI",
+        b2_title: "Why Local Vector Databases and Edge RAG Protect Your IP",
+        b2_desc: "Learn how processing confidential roadmaps in memory eliminates third-party cloud vulnerabilities.",
+        b2_time: "6 min read",
+        b3_tag: "Innovation Management",
+        b3_title: "Botanical Idea Maturity: Balancing Quick Wins Against 10x Visions",
+        b3_desc: "Prevent short-term tactical fixes from drowning out foundational company transformation.",
+        b3_time: "5 min read",
+        rev_tag: "Verified Feedback",
+        rev_title: "Trusted by Modern Innovators",
+        r1_text: "\"Feeding competitive PDF decks into local RAG on my phone and getting immediate growth angles without cloud exposure is unbeatable.\"",
+        r1_author: "Fintech Startup Product Lead",
+        r2_text: "\"The forced disruption prompts broke a week-long creative block in five minutes. The 21-day trial proved total value.\"",
+        r2_author: "UX Strategy Consultant",
+        r3_text: "\"Clean PDF exports organized by Seeds and Sprouts save our engineering leads hours during sprint reviews.\"",
+        r3_author: "Digital Innovation Advisor",
+        final_pill: "Instant & Secure Download",
+        final_title: "Start Using It Free Today",
+        final_desc: "Enjoy complete, unrestricted access for 21 days. If you love it, unlock the permanent lifetime license for just <strong>€3.99</strong>.",
+        final_sub: "Compatible with Android 10+ • Zero third-party advertisements",
+        footer_by: "Built and maintained by",
+        f_privacy: "Privacy Policy",
+        f_terms: "Terms of Service",
+        f_contact: "Contact & Support",
+        f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
+      },
+      de: {
+        app_title: "KI Brainstorming Studio",
+        nav_screens: "Screenshots",
+        nav_what_is: "Was ist Brainstorming?",
+        nav_features: "Funktionen",
+        nav_use_cases: "Anwendungsfälle",
+        nav_blog: "Blog",
+        cta_header: "Kostenlos starten",
+        hero_pill: "100% Kostenloser Download • 21 Tage Testphase",
+        hero_title_1: "Steigern Sie Ihre Kreativität mit",
+        hero_title_2: "Hybrider KI & Lokalem RAG",
+        hero_desc: "Strukturieren Sie Projekte, laden Sie Dokumente (PDF, Notizen) und generieren Sie bahnbrechende Ideen auf Android. Ohne Abos.",
+        gp_label: "Kostenlos bei",
+        hero_explore: "Screenshots ansehen",
+        badge_trial: "0 € für 21 Tage",
+        badge_local: "100% Datenschutz auf dem Gerät",
+        badge_lifetime: "Dauerhafte Lizenz für 3,99 €",
+        badge_disruption: "Aktive kognitive Disruption",
+        badge_bank: "Ideen-Datenbank",
+        badge_maturity: "Botanische Reife",
+        screens_tag: "Native Android-Oberfläche",
+        screens_title: "Entwickelt für maximale Produktivität",
+        screens_desc: "Erleben Sie die intuitive Benutzeroberfläche zur schnellen Strukturierung von Innovationen.",
+        screen1_title: "Ideen-Studio",
+        screen1_desc: "Divergentes und konvergentes Denken mit kreativen Techniken.",
+        screen2_title: "Projekte & Lokales RAG",
+        screen2_desc: "Laden Sie PDFs mit lokaler SQLite-Persistenz.",
+        screen3_title: "Ideen-Archiv",
+        screen3_desc: "Gefiltert nach Samen 🌱, Sprossen 🌿 und Bäumen 🌳.",
+        screen4_title: "Leistungsmetriken",
+        screen4_desc: "Kreativitätsrhythmus und Token-Verbrauch im Blick.",
+        edu_tag: "Innovationsmethodik",
+        edu_title: "Was ist Brainstorming und wozu dient es?",
+        edu_p1: "<strong>Brainstorming</strong> ist eine strukturierte Methode zur Ideengenerierung, bei der kreatives Entfalten strikt von kritischer Bewertung getrennt wird.",
+        edu_p2: "Ziel ist es, <strong>Denkblockaden zu durchbrechen</strong> und unkonventionelle Lösungsansätze zu finden.",
+        edu_step1: "<strong>Divergierende Phase:</strong> Ungehemmte Ideensammlung mit Fokus auf Vielfalt.",
+        edu_step2: "<strong>Konvergierende Phase:</strong> Analytische Auswahl und Definition von Umsetzungsplänen.",
+        seed_title: "Samen (Seed)",
+        seed_desc: "Schnelle Umsetzung in <48h, minimale Kosten und Risiken.",
+        sprout_title: "Spross (Sprout)",
+        sprout_desc: "Modulare Innovation und Prototyping in 1 bis 2 Wochen.",
+        tree_title: "Baum (Tree)",
+        tree_desc: "Strukturelle 10x-Transformation und Neugestaltung des Geschäftsmodells.",
+        feat_tag: "Local-First Architektur",
+        feat_title: "Absolute Privatsphäre dank Hybrider KI",
+        feat_sub: "Wählen Sie zwischen lokalen On-Device Modellen und Google Gemini Cloud.",
+        f1_title: "Deterministisches Lokales RAG",
+        f1_desc: "Hängen Sie <strong>PDFs und Notizen</strong> an. Erstellen Sie 384-dimensionale Vektoren lokal in SQLite ohne Cloud-Zwang.",
+        f1_sub: "Hierarchische Kosinus-Ähnlichkeitssuche",
+        f2_title: "On-Device LLMs & Gemini Nano",
+        f2_desc: "100% Offline-Inferenz mit Vulkan/MediaPipe oder nativer Gemini Nano Beschleunigung.",
+        f2_sub: "Kein Verlust vertraulicher Daten",
+        f3_title: ".lluvia Format & Export",
+        f3_desc: "Teilen Sie Workspaces als `.lluvia` JSON, PDF-Berichte oder Markdown für Notion und Slack.",
+        f3_sub: "Intelligenter Datenabgleich ohne Duplikate",
+        cases_tag: "Praxisbeispiele",
+        cases_title: "Für wen ist diese App gedacht?",
+        c1_title: "Gründer & Startups",
+        c1_desc: "Geschäftsmodelle validieren und Investoren-Pitches vorbereiten.",
+        c2_title: "Marketing-Teams",
+        c2_desc: "Virale Kampagnen und AARRR-Funnel-Strategien entwickeln.",
+        c3_title: "UX-Designer",
+        c3_desc: "Nutzerprobleme lösen und intuitive Schnittstellen entwerfen.",
+        c4_title: "Entwickler & Ingenieure",
+        c4_desc: "Softwarearchitekturen optimieren und Prozesse automatisieren.",
+        blog_tag: "Wissen & Methoden",
+        blog_title: "Artikel für Ihre Kreativität",
+        blog_sub: "Praktische Frameworks für manuelle und KI-gestützte Brainstorming-Sessions.",
+        b1_tag: "Denkmethoden",
+        b1_title: "Komplexe Probleme mit SCAMPER in 15 Minuten lösen",
+        b1_desc: "Elemente ersetzen, kombinieren und anpassen, um neue Blickwinkel zu finden.",
+        b1_time: "4 Min. Lesezeit",
+        b2_tag: "Lokale KI",
+        b2_title: "Warum lokale Vektordatenbanken Ihr geistiges Eigentum schützen",
+        b2_desc: "Erfahren Sie, wie On-Device RAG Datenlecks bei sensiblen Dokumenten verhindert.",
+        b2_time: "6 Min. Lesezeit",
+        b3_tag: "Innovationsmanagement",
+        b3_title: "Botanische Reife: Schnelle Erfolge vs. 10x-Visionen",
+        b3_desc: "Klassifizieren Sie Ideen gezielt nach Umsetzungsdauer und strategischem Wert.",
+        b3_time: "5 Min. Lesezeit",
+        rev_tag: "Nutzerbewertungen",
+        rev_title: "Das sagen Innovationsexperten",
+        r1_text: "\"Konkurrenzanalysen als PDF lokal mit RAG auf dem Handy zu nutzen, ist revolutionär.\"",
+        r1_author: "Product Lead Fintech",
+        r2_text: "\"Die Disruptionstechniken haben meine Blockade sofort gelöst. Tolle 21-Tage-Testphase!\"",
+        r2_author: "UX-Strategin",
+        r3_text: "\"Die PDF-Exporte nach Reifegrad sparen uns wertvolle Zeit bei Meetings.\"",
+        r3_author: "Innovationsberater",
+        final_pill: "Sicherer Download",
+        final_title: "Jetzt kostenlos ausprobieren",
+        final_desc: "Nutzen Sie 21 Tage lang alle Funktionen gratis. Dauerhafte Vollversion für nur <strong>3,99 €</strong>.",
+        final_sub: "Kompatibel ab Android 10 • Keine Werbung von Drittanbietern",
+        footer_by: "Entwickelt und gepflegt von",
+        f_privacy: "Datenschutzerklärung",
+        f_terms: "Nutzungsbedingungen",
+        f_contact: "Kontakt & Support",
+        f_rights: "© 2026 Lluvia de Ideas IA. Alle Rechte vorbehalten."
+      },
+      fr: {
+        app_title: "Studio de Brainstorming IA",
+        nav_screens: "Captures",
+        nav_what_is: "Qu'est-ce que le Brainstorming ?",
+        nav_features: "Fonctionnalités",
+        nav_use_cases: "Cas d'usage",
+        nav_blog: "Blog",
+        cta_header: "Essayer Gratuitement",
+        hero_pill: "Téléchargement 100% Gratuit • Essai de 21 jours",
+        hero_title_1: "Multipliez votre créativité avec",
+        hero_title_2: "l'IA Hybride et le RAG Local",
+        hero_desc: "Structurez vos projets, connectez vos documents (PDF, notes) et générez des idées disruptives sur Android. Sans abonnement.",
+        gp_label: "Disponible sur",
+        hero_explore: "Voir les Captures",
+        badge_trial: "0 € pendant 21 jours",
+        badge_local: "Données 100% sur l'appareil",
+        badge_lifetime: "Licence à vie pour 3,99 €",
+        badge_disruption: "Disruption cognitive active",
+        badge_bank: "Banque d'idées",
+        badge_maturity: "Maturité Botanique",
+        screens_tag: "Interface Native Android",
+        screens_title: "Conçue pour une Productivité Fluide et Puissante",
+        screens_desc: "Découvrez l'interface pensée pour accélérer vos projets d'innovation dès la première seconde.",
+        screen1_title: "Studio d'Idéation",
+        screen1_desc: "Pensée divergente et convergente avec techniques forcées.",
+        screen2_title: "Projets & RAG Local",
+        screen2_desc: "Chargez vos PDFs avec persistance locale SQLite Room.",
+        screen3_title: "Banque d'Idées Germées",
+        screen3_desc: "Filtrage par Graines 🌱, Pousses 🌿 et Arbres 🌳.",
+        screen4_title: "Métriques de Performance",
+        screen4_desc: "Suivez votre rythme créatif et la consommation de tokens.",
+        edu_tag: "Méthodologie d'Innovation",
+        edu_title: "Qu'est-ce que le Brainstorming et à quoi sert-il ?",
+        edu_p1: "Le <strong>brainstorming</strong> est une méthode structurée visant à générer un volume élevé d'idées neuves en dissociant création et jugement critique.",
+        edu_p2: "Son but est de <strong>briser l'inertie mentale</strong> par la pensée latérale pour révéler des opportunités invisibles en logique linéaire.",
+        edu_step1: "<strong>Phase Divergente :</strong> Exploration libre axée sur le volume et l'originalité.",
+        edu_step2: "<strong>Phase Convergente :</strong> Sélection rigoureuse et élaboration de plans d'action.",
+        seed_title: "Graine (Seed)",
+        seed_desc: "Exécution rapide en <48h, coût minime et risque limité.",
+        sprout_title: "Pousse (Sprout)",
+        sprout_desc: "Innovation modulaire et prototypage en 1 à 2 semaines.",
+        tree_title: "Arbre (Tree)",
+        tree_desc: "Transformation stratégique 10x et réinvention du modèle économique.",
+        feat_tag: "Architecture Local-First",
+        feat_title: "Confidentialité Totale avec l'IA Hybride",
+        feat_sub: "Basculez entre modèles On-Device hors ligne et Google Gemini Cloud.",
+        f1_title: "RAG Local Déterministe",
+        f1_desc: "Attachez <strong>PDFs et notes</strong>. Générez des vecteurs de 384 dimensions directement dans SQLite sans passer par le cloud.",
+        f1_sub: "Recherche hiérarchique par similarité cosinus",
+        f2_title: "Modèles On-Device & Gemini Nano",
+        f2_desc: "Inférence 100% hors ligne avec accélération Vulkan/MediaPipe ou processeur Gemini Nano natif.",
+        f2_sub: "Zéro fuite de données d'entreprise",
+        f3_title: "Écosystème .lluvia et Export",
+        f3_desc: "Partagez vos projets en `.lluvia` JSON, rapports PDF formatés ou résumés Markdown pour Notion.",
+        f3_sub: "Fusion intelligente sans doublons",
+        cases_tag: "Cas Pratiques",
+        cases_title: "À qui s'adresse cette application ?",
+        c1_title: "Fondateurs & Startups",
+        c1_desc: "Tester des modèles d'affaires et préparer des argumentaires investisseurs.",
+        c2_title: "Spécialistes Marketing",
+        c2_desc: "Concevoir des boucles virales et des stratégies de conversion AARRR.",
+        c3_title: "Designers UX/UI",
+        c3_desc: "Résoudre les points de friction et concevoir des parcours intuitifs.",
+        c4_title: "Développeurs & Ingénieurs",
+        c4_desc: "Structurer des architectures logicielles et automatiser les flux.",
+        blog_tag: "Ressources & Guides",
+        blog_title: "Articles pour Développer votre Créativité",
+        blog_sub: "Cadres méthodologiques applicables à vos sessions d'idéation.",
+        b1_tag: "Techniques Créatives",
+        b1_title: "Comment résoudre un problème complexe en 15 minutes avec SCAMPER",
+        b1_desc: "Substituer, combiner et adapter des variables pour révéler des solutions latérales.",
+        b1_time: "Lecture 4 min",
+        b2_tag: "IA Locale",
+        b2_title: "RAG On-Device : pourquoi les bases vectorielles locales protègent vos brevets",
+        b2_desc: "Découvrez l'intérêt de traiter les documents confidentiels directement en mémoire mobile.",
+        b2_time: "Lecture 6 min",
+        b3_tag: "Gestion d'Innovation",
+        b3_title: "Maturité Botanique : concilier gains rapides et visions à long terme",
+        b3_desc: "Classez efficacement vos idées pour ne pas négliger la transformation de fond.",
+        b3_time: "Lecture 5 min",
+        rev_tag: "Avis Utilisateurs",
+        rev_title: "Le retour des professionnels",
+        r1_text: "\"Analyser mes PDFs concurrents en local avec le RAG sans connexion cloud est un vrai plus.\"",
+        r1_author: "Lead Product en Fintech",
+        r2_text: "\"Les techniques de disruption ont débloqué notre équipe en quelques minutes. Superbe outil.\"",
+        r2_author: "Consultante en Stratégie UX",
+        r3_text: "\"Les exports PDF classés par niveau de maturité sont clairs pour nos réunions de sprint.\"",
+        r3_author: "Conseiller en Innovation",
+        final_pill: "Téléchargement Immédiat",
+        final_title: "Commencez Gratuitement Dès Aujourd'hui",
+        final_desc: "Accédez à toutes les fonctionnalités pendant 21 jours. Licence définitive à vie pour seulement <strong>3,99 €</strong>.",
+        final_sub: "Compatible Android 10+ • Aucune publicité tierce",
+        footer_by: "Développé et maintenu par",
+        f_privacy: "Politique de Confidentialité",
+        f_terms: "Conditions d'Utilisation",
+        f_contact: "Contact & Support",
+        f_rights: "© 2026 Lluvia de Ideas IA. Tous droits réservés."
+      },
+      ja: {
+        app_title: "AIブレインストーミングスタジオ",
+        nav_screens: "スクリーンショット",
+        nav_what_is: "ブレインストーミングとは？",
+        nav_features: "機能と特長",
+        nav_use_cases: "活用事例",
+        nav_blog: "ブログ",
+        cta_header: "無料で始める",
+        hero_pill: "完全無料ダウンロード • 21日間の全機能トライアル",
+        hero_title_1: "創造性を無限に高める",
+        hero_title_2: "ハイブリッドAIとローカルRAG",
+        hero_desc: "プロジェクトを構築し、PDFやメモをローカルRAGで連携。Android端末内の完全ローカル推論で革新的なアイデアを創出します。サブスクリプション不要。",
+        gp_label: "Google Playで無料入手",
+        hero_explore: "画面を見る",
+        badge_trial: "21日間完全無料 (0円)",
+        badge_local: "100%オンデバイス・プライバシー保護",
+        badge_lifetime: "永久買い切りライセンス 3.99€",
+        badge_disruption: "能動的認知ディスラプション",
+        badge_bank: "アイデアバンク",
+        badge_maturity: "植物的成熟度分類",
+        screens_tag: "AndroidネイティブUI",
+        screens_title: "直感的かつ圧倒的な生産性を追求した設計",
+        screens_desc: "ひらめきを瞬時に実行可能なタスクへと落とし込む画面デザイン。",
+        screen1_title: "発想スタジオ",
+        screen1_desc: "拡散思考と収束思考を強制的な創造手法で加速。",
+        screen2_title: "プロジェクトとローカルRAG",
+        screen2_desc: "PDFやメモを端末内SQLiteデータベースに安全に保存。",
+        screen3_title: "アイデアバンク",
+        screen3_desc: "種 🌱、新芽 🌿、大樹 🌳 の成長段階で分類。",
+        screen4_title: "パフォーマンス分析",
+        screen4_desc: "思考バランス、アイデア創出ペース、トークン数を可視化。",
+        edu_tag: "イノベーション手法",
+        edu_title: "ブレインストーミングの本質とは？",
+        edu_p1: "<strong>ブレインストーミング</strong>とは、アイデアの「生成」と「評価」を明確に分離し、膨大な量の革新的な提案を生み出す思考手法です。",
+        edu_p2: "日常的な論理的思考の惰性を<strong>水平思考によって打破</strong>し、通常の検討では見落とされがちな戦略的アプローチを導きます。",
+        edu_step1: "<strong>拡散フェーズ：</strong> 制限なく大量のアイデアと多様な視点を追求。",
+        edu_step2: "<strong>収束フェーズ：</strong> 実現可能性を厳密に評価し、具体的な実行計画へ凝縮。",
+        seed_title: "種 (Seed)",
+        seed_desc: "48時間以内に実行可能、極小コストと低リスク。",
+        sprout_title: "新芽 (Sprout)",
+        sprout_desc: "モジュール型イノベーション。1〜2週間でのプロトタイプ検証。",
+        tree_title: "大樹 (Tree)",
+        tree_desc: "10倍の事業変革をもたらす長期的かつ構造的なイノベーション。",
+        feat_tag: "Local-Firstアーキテクチャ",
+        feat_title: "ハイブリッドAIによる完全な機密保護",
+        feat_sub: "完全オフラインの端末内モデルとGoogle Gemini Cloudを柔軟に切り替え可能。",
+        f1_title: "高精度ローカルRAG",
+        f1_desc: "<strong>PDFやテキスト文書</strong>を添付。端末内SQLiteで384次元ベクトルを即座に生成し、外部送信なしで検索します。",
+        f1_sub: "階層型コサイン類似度検索エンジン",
+        f2_title: "オンデバイスLLM & Gemini Nano",
+        f2_desc: "Vulkan/MediaPipeによる0.2GB〜32GBの端末内推論、またはGemini Nanoハードウェア連携に対応。",
+        f2_sub: "企業機密データの外部流出リスクゼロ",
+        f3_title: ".lluvia エコシステムと出力",
+        f3_desc: "`.lluvia` JSONパッケージ、印刷用PDFレポート、Notion向けMarkdownとして瞬時に書き出し可能。",
+        f3_sub: "重複のないスマートなインポート・統合",
+        cases_tag: "主な活用分野",
+        cases_title: "どのような方に最適か？",
+        c1_title: "起業家・スタートアップ",
+        c1_desc: "ビジネスモデルの仮説検証や投資家向け戦略のシミュレーション。",
+        c2_title: "マーケティング担当者",
+        c2_desc: "バイラル設計やAARRRファネル最適化施策の創出。",
+        c3_title: "プロダクト・UXデザイナー",
+        c3_desc: "ユーザー体験の摩擦解消と共感に基づく導線設計。",
+        c4_title: "エンジニア・開発者",
+        c4_desc: "システムアーキテクチャの課題解決と高度な自動化設計。",
+        blog_tag: "ナレッジ＆ガイド",
+        blog_title: "発想力を引き出すフレームワーク",
+        blog_sub: "個人でもチームでも即実践できるアイデア発想法。",
+        b1_tag: "思考フレームワーク",
+        b1_title: "SCAMPER法を用いて15分で複雑な技術課題を突破する",
+        b1_desc: "代用、結合、適応などの切り口で固定観念を打破する手法を解説。",
+        b1_time: "読了時間：4分",
+        b2_tag: "ローカルAI",
+        b2_title: "端末内ベクトル検索（Edge RAG）が知的財産を守る理由",
+        b2_desc: "機密ロードマップや特許情報を外部クラウドに送信せず活用する方法。",
+        b2_time: "読了時間：6分",
+        b3_tag: "イノベーション管理",
+        b3_title: "植物的成熟度モデル：即効性のある施策と長期的ビジョンの両立",
+        b3_desc: "目先の改善と根本的な事業変革を適切に共存させるアイデア管理法。",
+        b3_time: "読了時間：5分",
+        rev_tag: "ユーザーの声",
+        rev_title: "プロフェッショナルからの評価",
+        r1_text: "「競合分析PDFをスマホのローカルRAGに読み込ませて、オフラインで施策を出せるのは画期的です。」",
+        r1_author: "Fintechスタートアップ プロダクトリード",
+        r2_text: "\"強制発想プロンプトのおかげで、何日も悩んでいた課題の突破口が数分で見つかりました。\"",
+        r2_author: "UXストラテジスト",
+        r3_text: "「成熟度別に整理されたPDFレポート出力により、開発会議への共有が非常にスムーズです。」",
+        r3_author: "イノベーションコンサルタント",
+        final_pill: "今すぐ安全にダウンロード",
+        final_title: "まずは21日間無料でお試しください",
+        final_desc: "全機能を21日間制限なくご利用いただけます。継続利用をご希望の場合は、わずか<strong>3.99€</strong>の永久ライセンスで解除できます。",
+        final_sub: "Android 10以上対応 • 広告なし",
+        footer_by: "開発および運営：",
+        f_privacy: "プライバシーポリシー",
+        f_terms: "利用規約",
+        f_contact: "お問い合わせ・サポート",
+        f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
+      },
+      zh: {
+        app_title: "AI 头脑风暴工作台",
+        nav_screens: "界面截图",
+        nav_what_is: "什么是头脑风暴？",
+        nav_features: "核心功能",
+        nav_use_cases: "应用场景",
+        nav_blog: "博客文章",
+        cta_header: "免费开始使用",
+        hero_pill: "100% 免费下载 • 21 天全功能试用",
+        hero_title_1: "激发无限创造力",
+        hero_title_2: "混合 AI 与端侧本地 RAG",
+        hero_desc: "在 Android 手机上构建项目、连接本地文档（PDF、笔记）并生成颠覆性构想。纯端侧离线运行，无需订阅费用。",
+        gp_label: "前往 Google Play 免费下载",
+        hero_explore: "查看界面",
+        badge_trial: "21 天完全免费试用 (0 €)",
+        badge_local: "100% 本地端侧隐私安全",
+        badge_lifetime: "永久买断版仅需 3.99 €",
+        badge_disruption: "主动思维颠覆技术",
+        badge_bank: "构想种子库",
+        badge_maturity: "植物成熟度模型",
+        screens_tag: "Android 原生界面",
+        screens_title: "专为高效、流畅的创新工作流打造",
+        screens_desc: "从第一秒起加速构想落地，直观呈现从灵感到可执行任务的全流程。",
+        screen1_title: "创意工坊",
+        screen1_desc: "通过发散与收敛思维结合强制创意技术快速破局。",
+        screen2_title: "项目与本地 RAG",
+        screen2_desc: "结合 Room SQLite 本地数据库索引 PDF 与上下文笔记。",
+        screen3_title: "构想种子库",
+        screen3_desc: "按 种子 🌱、幼芽 🌿、大树 🌳 阶段精准分类。",
+        screen4_title: "效能数据大盘",
+        screen4_desc: "实时监控思维平衡、创新节奏与 Token 消耗。",
+        edu_tag: "创新方法论",
+        edu_title: "什么是头脑风暴？其核心价值是什么？",
+        edu_p1: "<strong>头脑风暴（Brainstorming）</strong>是一种将「产生想法」与「批判评估」严格分离的结构化思考方法，旨在针对特定难题快速产生海量非常规方案。",
+        edu_p2: "其核心在于<strong>通过水平发散思维打破认知惯性</strong>，发掘常规线性逻辑难以察觉的战略切入点。",
+        edu_step1: "<strong>发散阶段：</strong> 无拘无束地探索，追求构想的数量与多元视角。",
+        edu_step2: "<strong>收敛阶段：</strong> 严谨分析、提炼并制定明确的可落地行动方案。",
+        seed_title: "种子 (Seed)",
+        seed_desc: "48小时内极速落地，极低成本与操作风险。",
+        sprout_title: "幼芽 (Sprout)",
+        sprout_desc: "模块化创新，1至2周内完成原型验证与业务协同。",
+        tree_title: "大树 (Tree)",
+        tree_desc: "10倍级颠覆性变革与商业模式深度重塑。",
+        feat_tag: "Local-First 本地优先架构",
+        feat_title: "混合 AI 赋能，守护绝对隐私",
+        feat_sub: "可自由切换端侧离线大模型或云端 Google Gemini API。",
+        f1_title: "确定性本地 RAG 引擎",
+        f1_desc: "支持关联 <strong>PDF、TXT 或粘贴笔记</strong>。直接在本地 SQLite 数据库中生成 384 维向量，无需上传至外部服务器。",
+        f1_sub: "层级余弦相似度精准检索",
+        f2_title: "端侧大模型与 Gemini Nano",
+        f2_desc: "支持 Vulkan/MediaPipe 0.2GB-32GB 模型端侧离线推理，或调用系统原生 Gemini Nano 芯片级加速。",
+        f2_sub: "零企业商业机密外泄风险",
+        f3_title: ".lluvia 数据生态与导出",
+        f3_desc: "支持导出为 `.lluvia` JSON 格式包、高清排版 PDF 报告或适用于 Notion/Slack 的 Markdown 摘要。",
+        f3_sub: "智能无重复合并导入",
+        cases_tag: "实用场景",
+        cases_title: "这款应用适合哪些人群？",
+        c1_title: "创业者与团队主管",
+        c1_desc: "验证商业模式可行性，推演价值主张与投资人关注要点。",
+        c2_title: "增长与营销专家",
+        c2_desc: "构建病毒式传播飞轮，设计 AARRR 漏斗优化策略。",
+        c3_title: "产品与体验设计师",
+        c3_desc: "发现并消除用户体验卡点，构建同理心交互流程。",
+        c4_title: "软件开发与工程师",
+        c4_desc: "突破系统架构设计瓶颈，设计高价值技术自动化方案。",
+        blog_tag: "知识库与指南",
+        blog_title: "助力创新思维的实用文章",
+        blog_sub: "适用于个人思考与团队共创的高效方法论。",
+        b1_tag: "思维工具",
+        b1_title: "如何利用 SCAMPER 模型在 15 分钟内攻克复杂技术难题",
+        b1_desc: "通过替代、结合、调整等维度打破惯性思维，发现潜在方案。",
+        b1_time: "阅读时间 4 分钟",
+        b2_tag: "端侧 AI 技术",
+        b2_title: "为什么端侧向量检索（Edge RAG）能够全面保护企业资产",
+        b2_desc: "详解在设备本地内存中处理机密产品路线图与专利文档的技术优势。",
+        b2_time: "阅读时间 6 分钟",
+        b3_tag: "创新管理",
+        b3_title: "植物成熟度模型：如何平衡短期快速见效与长期战略愿景",
+        b3_desc: "合理分类构想生命周期，避免短期微调挤占底层变革资源。",
+        b3_time: "阅读时间 5 分钟",
+        rev_tag: "用户评价",
+        rev_title: "来自行业专家的真实反馈",
+        r1_text: "“能够在手机上直接挂载竞品 PDF 并通过本地 RAG 生成增长方案，完全不担心数据泄露，太实用了。”",
+        r1_author: "Fintech 创业公司产品负责人",
+        r2_text: "“强制颠覆构想功能在几分钟内帮我打破了持续一周的灵感瓶颈，21天免费试用体现了十足的诚意。”",
+        r2_author: "UX 体验策略咨询师",
+        r3_text: "“按成熟度导出的 PDF 报告在与研发团队开会时极为高效，节省了大量整理时间。”",
+        r3_author: "数字化创新顾问",
+        final_pill: "即刻安全下载",
+        final_title: "立即开启 21 天免费试用",
+        final_desc: "畅享全部专业功能 21 天。如需长期使用，仅需一次性支付 <strong>3.99 €</strong> 即可永久解锁买断版。",
+        final_sub: "支持 Android 10 及以上系统 • 无第三方广告干扰",
+        footer_by: "开发者与维护者：",
+        f_privacy: "隐私政策",
+        f_terms: "服务条款",
+        f_contact: "联系与支持",
+        f_rights: "© 2026 Lluvia de Ideas IA. 保留所有权利。"
+      },
+      ko: {
+        app_title: "AI 브레인스토밍 스튜디오",
+        nav_screens: "스크린샷",
+        nav_what_is: "브레인스토밍이란?",
+        nav_features: "주요기능",
+        nav_use_cases: "활용사례",
+        nav_blog: "블로그",
+        cta_header: "무료로 시작하기",
+        hero_pill: "100% 무료 다운로드 • 21일간 전 기능 체험",
+        hero_title_1: "창의성을 극대화하는",
+        hero_title_2: "하이브리드 AI와 로컬 RAG",
+        hero_desc: "Android 스마트폰에서 프로젝트를 구조화하고 PDF 및 노트를 로컬 RAG로 연결하여 혁신적인 아이디어를 도출하세요. 구독료 없음.",
+        gp_label: "Google Play에서 무료 다운로드",
+        hero_explore: "화면 둘러보기",
+        badge_trial: "21일간 완전 무료 (0 €)",
+        badge_local: "100% 온디바이스 보안",
+        badge_lifetime: "평생 라이선스 단 3.99 €",
+        badge_disruption: "능동적 인지 전환 기법",
+        badge_bank: "아이디어 저장소",
+        badge_maturity: "식물 성숙도 분류",
+        screens_tag: "Android 네이티브 UI",
+        screens_title: "매끄럽고 강력한 생산성을 위한 설계",
+        screens_desc: "영감을 즉각 실행 가능한 과제로 전환하는 인터페이스를 확인해보세요.",
+        screen1_title: "발상 스튜디오",
+        screen1_desc: "확산적 및 수렴적 사고와 강제 창의 기법 적용.",
+        screen2_title: "프로젝트 & 로컬 RAG",
+        screen2_desc: "Room SQLite 로컬 DB로 PDF 문서 완벽 연동.",
+        screen3_title: "발아 아이디어 보관함",
+        screen3_desc: "씨앗 🌱, 새싹 🌿, 나무 🌳 단계별 필터링.",
+        screen4_title: "성과 분석 대시보드",
+        screen4_desc: "사고 균형, 발상 속도 및 토큰 사용량 실시간 확인.",
+        edu_tag: "혁신 방법론",
+        edu_title: "브레인스토밍이란 무엇이며 왜 중요한가?",
+        edu_p1: "<strong>브레인스토밍</strong>은 아이디어의 생성과 비판적 평가를 분리하여 대량의 파괴적인 제안을 도출하는 체계적인 사고 기법입니다.",
+        edu_p2: "핵심은 <strong>수평적 사고를 통해 인지적 타성을 깨뜨리고</strong> 일반적인 선형 논리에서 놓치기 쉬운 전략적 각도를 발견하는 것입니다.",
+        edu_step1: "<strong>확산 단계:</strong> 제약 없이 다양한 관점과 대량의 아이디어를 탐색.",
+        edu_step2: "<strong>수렴 단계:</strong> 엄격한 평가 및 정제를 통해 실행 가능한 과제로 구체화.",
+        seed_title: "씨앗 (Seed)",
+        seed_desc: "48시간 이내 신속 실행 가능, 최소 비용과 낮은 위험도.",
+        sprout_title: "새싹 (Sprout)",
+        sprout_desc: "모듈형 혁신 및 1~2주 내 프로토타입 검증.",
+        tree_title: "나무 (Tree)",
+        tree_desc: "10배의 비즈니스 모델 혁신을 이끄는 장기적 전략 프로젝트.",
+        feat_tag: "Local-First 아키텍처",
+        feat_title: "하이브리드 AI 기반의 완벽한 프라이버시",
+        feat_sub: "오프라인 온디바이스 모델과 Google Gemini Cloud를 자유롭게 선택 가능.",
+        f1_title: "결정론적 로컬 RAG",
+        f1_desc: "<strong>PDF 또는 텍스트 메모</strong>를 첨부하세요. 외부 서버 전송 없이 로컬 SQLite에서 384차원 벡터를 직접 생성합니다.",
+        f1_sub: "계층적 코사인 유사도 검색",
+        f2_title: "온디바이스 LLM & Gemini Nano",
+        f2_desc: "Vulkan/MediaPipe 기반 0.2GB~32GB 오프라인 추론 및 시스템 네이티브 Gemini Nano 가속 지원.",
+        f2_sub: "기업 기밀 데이터 유출 위험 차단",
+        f3_title: ".lluvia 데이터 포맷 & 내보내기",
+        f3_desc: "`.lluvia` JSON 패키지, PDF 보고서, Notion용 Markdown으로 즉시 공유 가능.",
+        f3_sub: "중복 없는 스마트 병합 가져오기",
+        cases_tag: "실제 적용 분야",
+        cases_title: "누구에게 가장 필요한가요?",
+        c1_title: "창업가 및 스타트업",
+        c1_desc: "비즈니스 모델 타당성 검증 및 투자자 관점 시뮬레이션.",
+        c2_title: "그로스 마케터",
+        c2_desc: "바이럴 루프 발굴 및 AARRR 퍼널 개선 전략 수립.",
+        c3_title: "UX/UI 디자이너",
+        c3_desc: "사용자 이탈 요인 해결 및 공감 중심 경험 설계.",
+        c4_title: "개발자 및 엔지니어",
+        c4_desc: "소프트웨어 아키텍처 난제 해결 및 고부가가치 자동화 설계.",
+        blog_tag: "가이드 & 리소스",
+        blog_title: "창의적 사고를 돕는 아티클",
+        blog_sub: "개인 업무와 팀 프로젝트에 바로 적용할 수 있는 프레임워크.",
+        b1_tag: "사고 프레임워크",
+        b1_title: "SCAMPER 기법으로 15분 만에 기술적 난제 해결하기",
+        b1_desc: "대체, 결합, 변형 등의 질문을 통해 틀에 박힌 사고를 벗어나는 방법.",
+        b1_time: "4분 읽기",
+        b2_tag: "온디바이스 AI",
+        b2_title: "로컬 벡터 DB(Edge RAG)가 기업 자산을 보호하는 이유",
+        b2_desc: "기밀 로드맵을 클라우드 전송 없이 메모리 내에서 안전하게 분석하는 원리.",
+        b2_time: "6분 읽기",
+        b3_tag: "혁신 관리",
+        b3_title: "식물 성숙도 모델: 단기 실행안과 10배 장기 비전의 균형",
+        b3_desc: "신속한 단기 성과와 구조적 혁신 과제를 효과적으로 조율하는 전략.",
+        b3_time: "5분 읽기",
+        rev_tag: "실제 사용자 후기",
+        rev_title: "전문가들의 평가",
+        r1_text: "“경쟁사 분석 PDF를 스마트폰 로컬 RAG에 넣고 즉시 마케팅 아이디어를 뽑아낼 수 있어 매우 만족스럽습니다.”",
+        r1_author: "핀테크 스타트업 프로덕트 리드",
+        r2_text: "“강제 발상 기법 덕분에 며칠 동안 막혀 있던 기획의 돌파구를 단 몇 분 만에 찾았습니다.”",
+        r2_author: "UX 전략 컨설턴트",
+        r3_text: "“성숙도별로 정리되는 PDF 내보내기 기능 덕분에 회의 준비 시간이 획기적으로 줄었습니다.”",
+        r3_author: "디지털 혁신 어드바이저",
+        final_pill: "즉시 안전하게 다운로드",
+        final_title: "지금 21일간 무료로 체험해보세요",
+        final_desc: "모든 기능을 21일 동안 제한 없이 이용할 수 있습니다. 평생 이용 시 <strong>3.99 €</strong> 일회성 결제로 영구 잠금 해제됩니다.",
+        final_sub: "Android 10 이상 지원 • 광고 없음",
+        footer_by: "개발 및 운영:",
+        f_privacy: "개인정보처리방침",
+        f_terms: "서비스 이용약관",
+        f_contact: "문의 및 고객지원",
+        f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
+      },
+      ru: {
+        app_title: "Студия Мозгового Штурма с ИИ",
+        nav_screens: "Скриншоты",
+        nav_what_is: "Что такое брейншторминг?",
+        nav_features: "Возможности",
+        nav_use_cases: "Применение",
+        nav_blog: "Блог",
+        cta_header: "Начать бесплатно",
+        hero_pill: "100% Бесплатно • Полный пробный период 21 день",
+        hero_title_1: "Раскройте свой творческий потенциал с",
+        hero_title_2: "Гибридным ИИ и локальным RAG",
+        hero_desc: "Структурируйте проекты, подключайте PDF и заметки через локальный RAG на Android. Без подписок и скрытых платежей.",
+        gp_label: "Бесплатно в",
+        hero_explore: "Смотреть экраны",
+        badge_trial: "0 € на 21 день",
+        badge_local: "100% данных остаются на устройстве",
+        badge_lifetime: "Пожизненная лицензия всего за 3,99 €",
+        badge_disruption: "Активная когнитивная стимуляция",
+        badge_bank: "Банк идей",
+        badge_maturity: "Ботаническая зрелость",
+        screens_tag: "Нативный интерфейс Android",
+        screens_title: "Создано для быстрой и продуктивной работы",
+        screens_desc: "Оцените продуманный интерфейс, ускоряющий генерацию идей с первых секунд.",
+        screen1_title: "Студия генерации",
+        screen1_desc: "Дивергентное и конвергентное мышление с техниками латерального поиска.",
+        screen2_title: "Проекты и локальный RAG",
+        screen2_desc: "Индексация PDF и заметок в локальной базе Room SQLite.",
+        screen3_title: "Банк идей",
+        screen3_desc: "Сортировка по Семенам 🌱, Росткам 🌿 и Деревьям 🌳.",
+        screen4_title: "Аналитика эффективности",
+        screen4_desc: "Контроль ритма генерации и баланса мышления.",
+        edu_tag: "Методология инноваций",
+        edu_title: "Что такое мозговой штурм и зачем он нужен?",
+        edu_p1: "<strong>Мозговой штурм</strong> — это методология, разделяющая генерацию идей и их критическую оценку для создания максимального числа нестандартных решений.",
+        edu_p2: "Его задача — <strong>преодолеть когнитивную инерцию</strong> с помощью латерального мышления, находя нетривиальные точки роста.",
+        edu_step1: "<strong>Дивергентный этап:</strong> Свободный поиск максимального количества гипотез.",
+        edu_step2: "<strong>Конвергентный этап:</strong> Строгий отбор и формирование плана действий.",
+        seed_title: "Семя (Seed)",
+        seed_desc: "Быстрое внедрение менее чем за 48 часов с минимальным риском.",
+        sprout_title: "Росток (Sprout)",
+        sprout_desc: "Модульная инновация и тестирование прототипа за 1–2 недели.",
+        tree_title: "Дерево (Tree)",
+        tree_desc: "Масштабная трансформация 10x и переосмысление бизнес-модели.",
+        feat_tag: "Архитектура Local-First",
+        feat_title: "Абсолютная конфиденциальность с гибридным ИИ",
+        feat_sub: "Переключайтесь между офлайн-моделями на устройстве и Google Gemini Cloud.",
+        f1_title: "Детерминированный локальный RAG",
+        f1_desc: "Прикрепляйте <strong>PDF и текстовые заметки</strong>. Векторы 384 измерений создаются прямо в SQLite без отправки в облако.",
+        f1_sub: "Иерархический поиск по косинусному сходству",
+        f2_title: "Офлайн-модели и Gemini Nano",
+        f2_desc: "Работа через Vulkan/MediaPipe (0.2–32 ГБ) или аппаратный чип Gemini Nano.",
+        f2_sub: "Полная защита коммерческой тайны",
+        f3_title: "Формат .lluvia и экспорт",
+        f3_desc: "Экспорт в `.lluvia` JSON, готовые PDF-отчеты или Markdown для Notion.",
+        f3_sub: "Умное объединение без дубликатов",
+        cases_tag: "Сценарии применения",
+        cases_title: "Кому подходит приложение?",
+        c1_title: "Основатели стартапов",
+        c1_desc: "Проверка бизнес-моделей и подготовка питчей для инвесторов.",
+        c2_title: "Маркетологи",
+        c2_desc: "Поиск виральных механик и оптимизация воронки AARRR.",
+        c3_title: "UX/UI дизайнеры",
+        c3_desc: "Устранение барьеров и проектирование удобных интерфейсов.",
+        c4_title: "Разработчики и инженеры",
+        c4_desc: "Проектирование сложных архитектур и автоматизация процессов.",
+        blog_tag: "База знаний",
+        blog_title: "Статьи о креативности и методологиях",
+        blog_sub: "Практические инструменты для эффективных сессий генерации идей.",
+        b1_tag: "Техники мышления",
+        b1_title: "Как решить сложную инженерную задачу за 15 минут по технике SCAMPER",
+        b1_desc: "Методика замены, комбинирования и адаптации условий для поиска решений.",
+        b1_time: "Чтение: 4 мин",
+        b2_tag: "Локальный ИИ",
+        b2_title: "Edge RAG: почему локальные базы векторов защищают ваши патенты",
+        b2_desc: "Преимущества обработки конфиденциальных документов в оперативной памяти смартфона.",
+        b2_time: "Чтение: 6 мин",
+        b3_tag: "Управление инновациями",
+        b3_title: "Ботаническая зрелость: баланс быстрых решений и долгосрочных целей",
+        b3_desc: "Как правильно распределять ресурсы между тактикой и стратегией.",
+        b3_time: "Чтение: 5 мин",
+        rev_tag: "Отзывы",
+        rev_title: "Мнения экспертов",
+        r1_text: "«Анализировать PDF конкурентов через локальный RAG прямо на телефоне без риска утечки — это топ.»",
+        r1_author: "Product Lead в Fintech",
+        r2_text: "«Техники стимуляции помогли выйти из творческого тупика за пять минут. Отличный триал на 21 день!»",
+        r2_author: "UX-стратег",
+        r3_text: "«Структурированные PDF-отчеты экономят часы при согласовании задач с разработчиками.»",
+        r3_author: "Консультант по инновациям",
+        final_pill: "Быстрая загрузка",
+        final_title: "Попробуйте бесплатно прямо сейчас",
+        final_desc: "Пользуйтесь всеми возможностями 21 день бесплатно. Бессрочный доступ навсегда всего за <strong>3,99 €</strong>.",
+        final_sub: "Android 10+ • Без сторонней рекламы",
+        footer_by: "Разработка и поддержка:",
+        f_privacy: "Политика конфиденциальности",
+        f_terms: "Условия использования",
+        f_contact: "Контакты и поддержка",
+        f_rights: "© 2026 Lluvia de Ideas IA. Все права защищены."
+      },
+      hi: {
+        app_title: "एआई विचार मंथन स्टूडियो",
+        nav_screens: "स्क्रीनशॉट",
+        nav_what_is: "ब्रेनस्टॉर्मिंग क्या है?",
+        nav_features: "विशेषताएं",
+        nav_use_cases: "उपयोग",
+        nav_blog: "ब्लॉग",
+        cta_header: "मुफ़्त में शुरू करें",
+        hero_pill: "100% मुफ़्त डाउनलोड • 21 दिन का पूर्ण परीक्षण",
+        hero_title_1: "अपनी रचनात्मकता को बढ़ाएं",
+        hero_title_2: "हाइब्रिड एआई और स्थानीय RAG के साथ",
+        hero_desc: "प्रोजेक्ट बनाएं, पीडीएफ और नोट्स जोड़ें और एंड्रॉइड पर नए और बेहतरीन विचार उत्पन्न करें। कोई मासिक शुल्क नहीं।",
+        gp_label: "Google Play पर मुफ़्त उपलब्ध",
+        hero_explore: "स्क्रीन देखें",
+        badge_trial: "21 दिनों के लिए 0 €",
+        badge_local: "100% सुरक्षित स्थानीय डेटा",
+        badge_lifetime: "लाइफटाइम लाइसेंस मात्र 3.99 € में",
+        badge_disruption: "सक्रिय रचनात्मक तकनीक",
+        badge_bank: "आइडिया बैंक",
+        badge_maturity: "वानस्पतिक परिपक्वता",
+        screens_tag: "एंड्रॉइड नेटिव इंटरफ़ेस",
+        screens_title: "सहज और शक्तिशाली उत्पादकता के लिए डिज़ाइन किया गया",
+        screens_desc: "शुरुआत से ही आपके नवाचार को गति देने के लिए बनाया गया इंटरफ़ेस।",
+        screen1_title: "विचार स्टूडियो",
+        screen1_desc: "रचनात्मक तकनीकों के साथ विचारों का विस्तार और चयन।",
+        screen2_title: "प्रोजेक्ट्स और स्थानीय RAG",
+        screen2_desc: "स्थानीय SQLite डेटाबेस के साथ सुरक्षित पीडीएफ संदर्भ।",
+        screen3_title: "स्वीकृत आइडिया बैंक",
+        screen3_desc: "बीज 🌱, अंकुर 🌿 और वृक्ष 🌳 स्तर पर वर्गीकरण।",
+        screen4_title: "प्रदर्शन विश्लेषण",
+        screen4_desc: "रचनात्मक गति और उपयोग का रीयल-टाइम डेटा।",
+        edu_tag: "नवाचार पद्धति",
+        edu_title: "ब्रेनस्टॉर्मिंग क्या है और यह क्यों आवश्यक है?",
+        edu_p1: "<strong>ब्रेनस्टॉर्मिंग</strong> एक ऐसी तकनीक है जो नए विचारों को उत्पन्न करने और उनके मूल्यांकन को अलग रखकर बेहतरीन समाधान खोजने में मदद करती है।",
+        edu_p2: "इसका मुख्य उद्देश्य <strong>पारंपरिक सोच के अवरोधों को तोड़ना</strong> और नए दृष्टिकोण खोजना है।",
+        edu_step1: "<strong>डाइवर्जेंट चरण:</strong> बिना किसी रोक-टोक के बड़ी संख्या में नए विचार बनाना।",
+        edu_step2: "<strong>कन्वर्जेंट चरण:</strong> सबसे व्यावहारिक विचारों का चयन और कार्य योजना तैयार करना।",
+        seed_title: "बीज (Seed)",
+        seed_desc: "48 घंटों से कम समय में त्वरित कार्यान्वयन, न्यूनतम लागत।",
+        sprout_title: "अंकुर (Sprout)",
+        sprout_desc: "1 से 2 सप्ताह में प्रोटोटाइप सत्यापन और मध्यम नवाचार।",
+        tree_title: "वृक्ष (Tree)",
+        tree_desc: "10x व्यावसायिक परिवर्तन और दीर्घकालिक रणनीतिक विकास।",
+        feat_tag: "लोकल-फर्स्ट आर्किटेक्चर",
+        feat_title: "हाइब्रिड एआई के साथ पूर्ण गोपनीयता",
+        feat_sub: "ऑफ़लाइन मॉडल और Google Gemini Cloud के बीच आसानी से स्विच करें।",
+        f1_title: "सटीक स्थानीय RAG",
+        f1_desc: "<strong>PDF और नोट्स</strong> जोड़ें। बाहरी सर्वर के बिना स्थानीय रूप से 384-आयामी वैक्टर बनाएं।",
+        f1_sub: "पदानुक्रमित कोसाइन समानता खोज",
+        f2_title: "ऑन-डिवाइस मॉडल और Gemini Nano",
+        f2_desc: "Vulkan/MediaPipe के साथ 100% ऑफ़लाइन कार्य और तेज़ गति।",
+        f2_sub: "गोपनीय डेटा पूरी तरह सुरक्षित",
+        f3_title: ".lluvia प्रारूप और निर्यात",
+        f3_desc: "प्रोजेक्ट्स को `.lluvia` JSON, सुंदर PDF रिपोर्ट या Markdown में साझा करें।",
+        f3_sub: "बिना डुप्लिकेट के स्मार्ट आयात",
+        cases_tag: "व्यावहारिक उपयोग",
+        cases_title: "यह ऐप किसके लिए उपयोगी है?",
+        c1_title: "संस्थापक और उद्यमी",
+        c1_desc: "व्यावसायिक रणनीतियों की पुष्टि और निवेशकों के लिए तैयारी।",
+        c2_title: "मार्केटिंग विशेषज्ञ",
+        c2_desc: "वायरल रणनीतियां और विज्ञापन योजनाएं तैयार करना।",
+        c3_title: "उत्पाद और UX डिज़ाइनर",
+        c3_desc: "उपयोगकर्ता अनुभव को बेहतर बनाना और बाधाओं को हटाना।",
+        c4_title: "डेवलपर्स और इंजीनियर्स",
+        c4_desc: "सॉफ्टवेयर आर्किटेक्चर का अनुकूलन और स्वचालन।",
+        blog_tag: "संसाधन और गाइड",
+        blog_title: "रचनात्मकता बढ़ाने वाले लेख",
+        blog_sub: "विचार मंथन सत्रों के लिए उपयोगी मार्गदर्शिकाएं।",
+        b1_tag: "सोचने की तकनीक",
+        b1_title: "SCAMPER मॉडल से 15 मिनट में जटिल समस्याओं को कैसे हल करें",
+        b1_desc: "नए दृष्टिकोण खोजने के लिए तत्वों को बदलने और संयोजित करने की विधि।",
+        b1_time: "4 मिनट पढ़ें",
+        b2_tag: "स्थानीय एआई",
+        b2_title: "Edge RAG आपके व्यावसायिक डेटा को कैसे सुरक्षित रखता है",
+        b2_desc: "क्लाउड पर भेजे बिना डिवाइस मेमोरी में गोपनीय फाइलों को प्रोसेस करने के फायदे।",
+        b2_time: "6 मिनट पढ़ें",
+        b3_tag: "नवाचार प्रबंधन",
+        b3_title: "वानस्पतिक परिपक्वता: त्वरित परिणामों और दीर्घकालिक विज़न का संतुलन",
+        b3_desc: "रणनीतिक परिवर्तन के लिए विचारों का सही प्राथमिकता निर्धारण।",
+        b3_time: "5 मिनट पढ़ें",
+        rev_tag: "समीक्षाएं",
+        rev_title: "विशेषज्ञों की राय",
+        r1_text: "“फ़ोन पर ऑफ़लाइन RAG के साथ प्रतिस्पर्धी पीडीएफ का विश्लेषण करना बेहद सुविधाजनक है।”",
+        r1_author: "फ़िनटेक स्टार्टअप प्रोडक्ट लीड",
+        r2_text: "“रचनात्मक तकनीकों ने मेरी सोच के अवरोध को मिनटों में दूर कर दिया। बेहतरीन 21-दिन का परीक्षण।”",
+        r2_author: "UX रणनीतिकार",
+        r3_text: "“परिपक्वता के आधार पर पीडीएफ रिपोर्ट तैयार होने से टीम मीटिंग में बहुत समय बचता है।”",
+        r3_author: "डिजिटल इनोवेशन सलाहकार",
+        final_pill: "सुरक्षित डाउनलोड",
+        final_title: "आज ही 21 दिनों के लिए मुफ़्त शुरू करें",
+        final_desc: "21 दिनों तक सभी सुविधाओं का मुफ़्त आनंद लें। केवल <strong>3.99 €</strong> में आजीवन लाइसेंस अनलॉक करें।",
+        final_sub: "Android 10+ समर्थित • कोई तृतीय-पक्ष विज्ञापन नहीं",
+        footer_by: "विकास और रखरखाव:",
+        f_privacy: "गोपनीयता नीति",
+        f_terms: "सेवा की शर्तें",
+        f_contact: "संपर्क और सहायता",
+        f_rights: "© 2026 Lluvia de Ideas IA. सर्वाधिकार सुरक्षित।"
+      }
+    };
+
+    function changeLanguage(lang) {
+      const selected = translations[lang] || translations['es'];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (selected[key]) {
+          el.innerHTML = selected[key];
+        }
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('pref_lang', lang);
+    }
+
+    // Cargar idioma guardado o por defecto del navegador
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('pref_lang') || navigator.language.slice(0, 2);
+      const selector = document.getElementById('lang-selector');
+      if (translations[savedLang]) {
+        selector.value = savedLang;
+        changeLanguage(savedLang);
+      } else {
+        changeLanguage('es');
+      }
+    });
+  </script>
 
   <!-- AOS (Animate On Scroll) JS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
