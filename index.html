@@ -11,7 +11,7 @@
   
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- AOS (Animate On Scroll) CSS -->
@@ -52,9 +52,12 @@
       box-shadow: 0 25px 60px -15px rgba(79, 70, 229, 0.2), 0 10px 25px -5px rgba(0, 0, 0, 0.08);
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
       border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+    .article-modal-active {
+      overflow: hidden;
     }
   </style>
 </head>
@@ -142,11 +145,11 @@
           </div>
 
           <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-            <span data-i18n="hero_title_1">Multiplica tu Creatividad con</span> <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent" data-i18n="hero_title_2">IA Híbrida y RAG Local</span>[cite: 1]
+            <span data-i18n="hero_title_1">Multiplica tu Creatividad con</span> <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent" data-i18n="hero_title_2">IA Híbrida y RAG Local</span>
           </h1>
 
           <p class="mt-6 text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
-            Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android[cite: 1]. <strong>Sin costes iniciales ni suscripciones mensuales.</strong>
+            Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android. <strong>Sin costes iniciales ni suscripciones mensuales.</strong>
           </p>
 
           <!-- Botones de Acción -->
@@ -173,7 +176,7 @@
           <!-- Sellos de Confianza -->
           <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-500">
             <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_trial">0 € durante 21 días</span></span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_local">Datos 100% en tu dispositivo</span>[cite: 1]</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_local">Datos 100% en tu dispositivo</span></span>
             <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_lifetime">Licencia definitiva por 3,99 €</span></span>
           </div>
 
@@ -277,7 +280,7 @@
             <div class="absolute -left-6 top-16 z-20 glass-card p-3 rounded-2xl shadow-xl flex items-center gap-3 border border-indigo-100" data-aos="fade-right" data-aos-delay="400">
               <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">⚡</div>
               <div>
-                <div class="text-xs font-bold text-slate-900">SCAMPER & 10x[cite: 1]</div>
+                <div class="text-xs font-bold text-slate-900">SCAMPER & 10x</div>
                 <div class="text-[10px] text-slate-500" data-i18n="badge_disruption">Disrupción cognitiva activa</div>
               </div>
             </div>
@@ -303,7 +306,7 @@
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
         <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="screens_tag">Interfaz Nativa Android</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="screens_title">Diseñada para una Productividad Fluida y Potente</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="screens_desc">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo[cite: 1].</p>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="screens_desc">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -348,7 +351,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen1_title">Estudio de Ideación</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen1_desc">Pensamiento divergente y convergente con técnicas forzadas[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen1_desc">Pensamiento divergente y convergente con técnicas forzadas.</p>
         </div>
 
         <!-- Screenshot 2: Proyectos & RAG -->
@@ -384,7 +387,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen2_title">Proyectos y RAG Local</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen2_desc">Carga PDFs y notas de contexto con persistencia Room SQLite[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen2_desc">Carga PDFs y notas de contexto con persistencia Room SQLite.</p>
         </div>
 
         <!-- Screenshot 3: Banco de Ideas -->
@@ -439,7 +442,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen3_title">Banco de Ideas Germinadas</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen3_desc">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen3_desc">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳.</p>
         </div>
 
         <!-- Screenshot 4: Métricas & Evolución -->
@@ -489,7 +492,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen4_title">Métricas de Rendimiento</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen4_desc">Monitoreo de ritmo creativo, balance cognitivo y uso[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen4_desc">Monitoreo de ritmo creativo, balance cognitivo y uso.</p>
         </div>
 
       </div>
@@ -516,11 +519,11 @@
           <div class="mt-6 space-y-3">
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step1"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step1"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques.</p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step2"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step2"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables.</p>
             </div>
           </div>
         </div>
@@ -528,18 +531,18 @@
         <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-left">
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌱</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="seed_title">Semilla (Seed)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="seed_desc">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="seed_title">Semilla (Seed)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="seed_desc">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo.</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌿</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="sprout_title">Brote (Sprout)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="sprout_desc">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="sprout_title">Brote (Sprout)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="sprout_desc">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos.</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition sm:col-span-2">
             <div class="text-3xl mb-2">🌳</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="tree_title">Árbol (Tree)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="tree_desc">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="tree_title">Árbol (Tree)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="tree_desc">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico.</p>
           </div>
         </div>
 
@@ -555,7 +558,7 @@
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
         <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="feat_tag">Arquitectura Local-First</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="feat_title">Privacidad Absoluta con Inteligencia Híbrida</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="feat_sub">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini[cite: 1].</p>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="feat_sub">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
@@ -565,13 +568,13 @@
             <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xl mb-6 border border-brand-100">
               📂
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f1_title">RAG Local Determinista[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f1_title">RAG Local Determinista</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f1_desc">
-              Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico[cite: 1]. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono[cite: 1].
+              Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-brand-600" data-i18n="f1_sub">
-            Búsqueda por similitud coseno jerárquica[cite: 1]
+            Búsqueda por similitud coseno jerárquica
           </div>
         </div>
 
@@ -580,9 +583,9 @@
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xl mb-6 border border-emerald-100">
               🛡️
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f2_title">Modelos On-Device & Gemini Nano[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f2_title">Modelos On-Device & Gemini Nano</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f2_desc">
-              Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android[cite: 1].
+              Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-emerald-600" data-i18n="f2_sub">
@@ -595,13 +598,13 @@
             <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xl mb-6 border border-indigo-100">
               🔄
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f3_title">Ecosistema .lluvia y Exportación[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f3_title">Ecosistema .lluvia y Exportación</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f3_desc">
-              Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp[cite: 1].
+              Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-indigo-600" data-i18n="f3_sub">
-            Importación y fusión sin duplicados[cite: 1]
+            Importación y fusión sin duplicados
           </div>
         </div>
 
@@ -625,7 +628,7 @@
           <div class="text-3xl mb-3">🚀</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c1_title">Fundadores y Emprendedores</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c1_desc">
-            Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC)[cite: 1].
+            Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC).
           </p>
         </div>
 
@@ -633,7 +636,7 @@
           <div class="text-3xl mb-3">📈</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c2_title">Especialistas en Marketing</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c2_desc">
-            Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker)[cite: 1].
+            Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker).
           </p>
         </div>
 
@@ -641,7 +644,7 @@
           <div class="text-3xl mb-3">🎨</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c3_title">Diseñadores de Producto</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c3_desc">
-            Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX)[cite: 1].
+            Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX).
           </p>
         </div>
 
@@ -649,7 +652,7 @@
           <div class="text-3xl mb-3">💻</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c4_title">Desarrolladores e Ingenieros</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c4_desc">
-            Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech[cite: 1].
+            Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech.
           </p>
         </div>
 
@@ -658,7 +661,7 @@
     </div>
   </section>
 
-  <!-- ==================== BLOG / ARTÍCULOS DE VALOR ==================== -->
+  <!-- ==================== BLOG EXTENDIDO / ARTÍCULOS COMPLETOS ==================== -->
   <section id="articulos" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -667,48 +670,156 @@
           <span class="text-xs font-extrabold uppercase tracking-widest text-brand-amber bg-amber-50 px-3 py-1 rounded-full border border-amber-200" data-i18n="blog_tag">Recursos y Metodología</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="blog_title">Artículos para Potenciar tu Creatividad</h2>
         </div>
-        <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md" data-i18n="blog_sub">Estrategias y marcos de trabajo prácticos aplicables en cualquier sesión de ideación.</p>
+        <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md" data-i18n="blog_sub">Haz clic en cualquier artículo para leer el análisis metodológico y técnico completo.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <!-- Grid de 6 Artículos Extensos -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+        <!-- Artículo 1 -->
+        <article onclick="openArticleModal('art1')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
           <div>
-            <span class="text-xs font-bold text-brand-600" data-i18n="b1_tag">Técnicas de Pensamiento</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b1_title">Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER</h3>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-brand-600" data-i18n="b1_tag">Técnicas de Pensamiento</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b1_time">Lectura de 4 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-brand-600 transition" data-i18n="b1_title">Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER</h3>
             <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b1_desc">
               Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b1_time">Lectura de 4 min</div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-brand-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Metodología</span>
+          </div>
         </article>
 
-        <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+        <!-- Artículo 2 -->
+        <article onclick="openArticleModal('art2')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
           <div>
-            <span class="text-xs font-bold text-emerald-600" data-i18n="b2_tag">Inteligencia Artificial Local</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b2_title">RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio</h3>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-600" data-i18n="b2_tag">Inteligencia Artificial Local</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b2_time">Lectura de 6 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-emerald-600 transition" data-i18n="b2_title">RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio</h3>
             <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b2_desc">
               Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b2_time">Lectura de 6 min</div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-emerald-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Privacidad & Tech</span>
+          </div>
         </article>
 
-        <article class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+        <!-- Artículo 3 -->
+        <article onclick="openArticleModal('art3')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="300">
           <div>
-            <span class="text-xs font-bold text-amber-600" data-i18n="b3_tag">Gestión de Innovación</span>
-            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-3" data-i18n="b3_title">La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x</h3>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-600" data-i18n="b3_tag">Gestión de Innovación</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b3_time">Lectura de 5 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-amber-600 transition" data-i18n="b3_title">La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x</h3>
             <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b3_desc">
-              Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles[cite: 1].
+              Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 text-xs text-slate-400 font-semibold" data-i18n="b3_time">Lectura de 5 min</div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-amber-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Estrategia</span>
+          </div>
+        </article>
+
+        <!-- Artículo 4 -->
+        <article onclick="openArticleModal('art4')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-purple-600" data-i18n="b4_tag">Lateralidad Creativa</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b4_time">Lectura de 5 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-purple-600 transition" data-i18n="b4_title">La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b4_desc">
+              Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-purple-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Disrupción</span>
+          </div>
+        </article>
+
+        <!-- Artículo 5 -->
+        <article onclick="openArticleModal('art5')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-sky-600" data-i18n="b5_tag">Pensamiento Analógico</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b5_time">Lectura de 6 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-sky-600 transition" data-i18n="b5_title">Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b5_desc">
+              Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-sky-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Innovación</span>
+          </div>
+        </article>
+
+        <!-- Artículo 6 -->
+        <article onclick="openArticleModal('art6')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-rose-600" data-i18n="b6_tag">Síntesis Conceptual</span>
+              <span class="text-xs text-slate-400 font-semibold" data-i18n="b6_time">Lectura de 4 min</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-rose-600 transition" data-i18n="b6_title">Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b6_desc">
+              Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-rose-600">
+            <span data-i18n="read_more_btn">Leer artículo completo →</span>
+            <span class="text-slate-400 font-normal">Estrategia 10x</span>
+          </div>
         </article>
 
       </div>
 
     </div>
   </section>
+
+  <!-- ==================== MODAL DE LECTURA COMPLETA DE ARTÍCULO ==================== -->
+  <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+    <div class="bg-white w-full max-w-3xl max-h-[90vh] rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="article-modal-content">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
+        <div>
+          <span id="modal-category" class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100"></span>
+          <span id="modal-readtime" class="text-xs text-slate-400 ml-3 font-semibold"></span>
+        </div>
+        <button onclick="closeArticleModal()" class="w-9 h-9 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition focus:outline-none">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body (Contenido Completo) -->
+      <div class="p-6 sm:p-10 overflow-y-auto space-y-6 text-slate-700 leading-relaxed text-sm sm:text-base">
+        <h2 id="modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight"></h2>
+        <div id="modal-body" class="space-y-4"></div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-6 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-slate-500 font-medium">¿Listo para aplicar esta metodología en tu móvil?</span>
+        <a href="#descarga-gratis" onclick="closeArticleModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md">
+          <span>Comenzar Prueba Gratuita de 21 Días</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ==================== OPINIONES DE USUARIOS ==================== -->
   <section class="py-20 bg-slate-50 border-y border-slate-200">
@@ -724,7 +835,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r1_text">
-            "La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil."[cite: 1]
+            "La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Marcos T.</div>
@@ -735,7 +846,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r2_text">
-            "Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto."[cite: 1]
+            "Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Elena V.</div>
@@ -746,7 +857,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="300">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r3_text">
-            "La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo."[cite: 1]
+            "La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Sergio B.</div>
@@ -773,7 +884,7 @@
           <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight" data-i18n="final_title">Comienza a usarla Gratis</h2>
           
           <p class="mt-4 text-indigo-100 text-base max-w-xl mx-auto" data-i18n="final_desc">
-            Disfruta de todas las funcionalidades durante 21 días sin limitaciones[cite: 1]. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.
+            Disfruta de todas las funcionalidades durante 21 días sin limitaciones. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -806,7 +917,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
       <div>
-        <div class="text-white font-bold text-sm" data-i18n="app_title">Lluvia de Ideas IA[cite: 1]</div>
+        <div class="text-white font-bold text-sm" data-i18n="app_title">Lluvia de Ideas IA</div>
         <p class="mt-1 text-slate-400">
           <span data-i18n="footer_by">Desarrollado y mantenido por</span> <strong>Raúl Navas Montero (NoaR)</strong>.
         </p>
@@ -825,8 +936,160 @@
     </div>
   </footer>
 
-  <!-- ==================== DICCIONARIO DE IDIOMAS & MOTOR I18N ==================== -->
+  <!-- ==================== DICCIONARIO DE IDIOMAS, BLOG EXTENDIDO & SCRIPT I18N ==================== -->
   <script>
+    // Base de datos de Artículos Completos (Contenido enriquecido)
+    const blogDatabase = {
+      art1: {
+        category: "Técnicas de Pensamiento",
+        readTime: "Lectura de 4 min",
+        title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
+        body: `
+          <p>El bloqueo creativo ante problemas de ingeniería o diseño de producto surge cuando la mente insiste en recorrer los mismos senderos lógicos predecibles. El marco <strong>SCAMPER</strong> (Sustituir, Combinar, Adaptar, Modificar, Poner en otros usos, Eliminar y Reordenar) fuerza al cerebro a someter el desafío a siete operaciones no lineales obligatorias.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">1. Sustituir (Substitute)</h4>
+          <p>¿Qué pasaría si reemplazas el componente central? Si estás diseñando un flujo de inicio de sesión, ¿qué sucede si sustituyes la contraseña tradicional por autenticación pasiva biométrica o enlaces temporales locales?</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">2. Combinar (Combine)</h4>
+          <p>¿Es posible fusionar dos pasos independientes en un solo proceso interactivo? Al unir el onboarding educativo con la configuración real de la cuenta, se reduce la fricción y el tiempo de activación en más de un 40%.</p>
+
+          <h4 class="font-bold text-slate-900 text-lg mt-4">3. Eliminar (Eliminate)</h4>
+          <p>La simplicidad extrema es el motor de las grandes innovaciones. Identifica el paso que consideras "imprescindible" en tu producto y prueba a eliminarlo por completo. Te sorprenderá descubrir que la mayoría de validaciones complejas pueden resolverse en segundo plano.</p>
+
+          <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 mt-4 text-xs sm:text-sm">
+            <strong>Consejo Práctico:</strong> En cada sesión de SCAMPER, limita el tiempo a 2 minutos por letra. El objetivo no es la perfección, sino el volumen acelerado de propuestas.
+          </div>
+        `
+      },
+      art2: {
+        category: "Inteligencia Artificial Local",
+        readTime: "Lectura de 6 min",
+        title: "RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio",
+        body: `
+          <p>El auge de los sistemas <em>Retrieval-Augmented Generation</em> (RAG) ha revolucionado la forma en que interactuamos con documentos corporativos. No obstante, la arquitectura habitual basada en enviar textos confidenciales a servidores cloud de terceros plantea riesgos regulatorios, de privacidad y de filtración de patentes industriales.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">La ventaja del procesamiento en el chip</h4>
+          <p>Al implementar modelos de embeddings densos de 384 dimensiones directamente en la memoria del dispositivo Android, la fragmentación semántica (<em>chunking</em>), la sanitización y el cálculo de similitud coseno se ejecutan 100% en local mediante SQLite y Room.</p>
+          
+          <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-2">
+            <li><strong>Cero fugas de datos:</strong> Los informes financieros, acuerdos de confidencialidad y códigos fuente jamás abandonan el hardware del usuario.</li>
+            <li><strong>Latencia cero de red:</strong> La búsqueda vectorial en local no depende de la calidad de la conexión WiFi o 5G.</li>
+            <li><strong>Cumplimiento normativo estricto:</strong> Se alinea de forma natural con los requisitos del RGPD europeo y políticas corporativas de seguridad informática.</li>
+          </ul>
+
+          <p class="mt-4">Nuestra aplicación demuestra que la potencia del RAG moderno ya no requiere infraestructuras de servidor masivas: tu teléfono es su propio centro de datos seguro.</p>
+        `
+      },
+      art3: {
+        category: "Gestión de Innovación",
+        readTime: "Lectura de 5 min",
+        title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
+        body: `
+          <p>Uno de los mayores errores en los equipos de innovación es evaluar con el mismo rasero una idea que puede programarse esta misma tarde y una propuesta que exige refundar el modelo de negocio. Para resolver esta distorsión creamos la <strong>Clasificación de Madurez Botánica</strong>.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">🌱 Nivel Semilla (Seed)</h4>
+          <p>Propuestas de implementación inmediata (&lt; 48 horas). Requieren bajo presupuesto y mínimo riesgo operativo. Su valor radica en generar tracción y victorias rápidas (quick wins) que mantienen alta la motivación del equipo.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">🌿 Nivel Brote (Sprout)</h4>
+          <p>Innovaciones modulares con sinergia de procesos. Exigen entre 1 y 2 semanas de prototipado y validación técnica. Suelen ser optimizaciones de características existentes o nuevas integraciones funcionales.</p>
+
+          <h4 class="font-bold text-slate-900 text-lg mt-4">🌳 Nivel Árbol (Tree)</h4>
+          <p>Disrupciones estructurales 10x. Proyectos que transforman por completo la propuesta de valor y abren nuevos mercados a medio y largo plazo. Requieren planificación estratégica y asignación dedicada de recursos.</p>
+
+          <p class="mt-4">Al separar tus ideas en estos tres niveles en el Banco de Ideas, garantizas un flujo constante de entregas inmediatas sin perder el foco en la innovación transformadora.</p>
+        `
+      },
+      art4: {
+        category: "Lateralidad Creativa",
+        readTime: "Lectura de 5 min",
+        title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
+        body: `
+          <p>Cuando un equipo se obsesiona con la pregunta <em>"¿Cómo hacemos que nuestro producto sea irresistible?"</em>, a menudo cae en lugares comunes. La <strong>Técnica de Inversión</strong> (o Anti-Problema) cambia radicalmente la premisa: <strong>"¿Cómo podríamos arruinar por completo la experiencia de usuario y hacer que todos abandonen la app en 10 segundos?"</strong></p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">El poder liberador del absurdo</h4>
+          <p>Al pedirle al cerebro que diseñe una catástrofe deliberada, se eliminan las presiones de juicio y surge un catálogo sincero de todas las fricciones latentes: pantallas de carga interminables, formularios excesivos, jerga incomprensible y botones ocultos.</p>
+          
+          <p class="mt-3">Una vez identificado el "escenario de pesadilla", basta con invertir exactamente cada punto: cada obstáculo identificado se transforma de manera natural en un requerimiento de diseño prioritario y medible.</p>
+        `
+      },
+      art5: {
+        category: "Pensamiento Analógico",
+        readTime: "Lectura de 6 min",
+        title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
+        body: `
+          <p>La naturaleza lleva 3.800 millones de años resolviendo problemas de optimización de energía, tolerancia a fallos y autoorganización en entornos hostiles. La <strong>biomímesis</strong> aplicada a la tecnología consiste en abstraer los principios operativos del mundo biológico para aplicarlos a la ingeniería de software.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">Ejemplos concretos de transferencia analógica:</h4>
+          <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-2">
+            <li><strong>Redes de Micorrizas subterráneas:</strong> Inspiración directa para protocolos de enrutamiento punto a punto (P2P) y sincronización de bases de datos sin servidor central.</li>
+            <li><strong>Sistema Inmunitario Humano:</strong> Modelos de detección de anomalías y ciberseguridad con respuesta adaptativa y memoria de amenazas previas.</li>
+            <li><strong>Bioluminiscencia marina:</strong> Interfaces de usuario contextuales que solo activan elementos visuales ante estímulos directos, ahorrando batería y reduciendo la sobrecarga cognitiva.</li>
+          </ul>
+
+          <p class="mt-4">Forzar analogías con la biología en una sesión de lluvia de ideas genera arquitecturas más limpias, escalables y elegantes.</p>
+        `
+      },
+      art6: {
+        category: "Síntesis Conceptual",
+        readTime: "Lectura de 4 min",
+        title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
+        body: `
+          <p>Las ideas aisladas rara vez cambian una industria; la verdadera disrupción ocurre en la intersección de dos conceptos consolidados que nunca antes habían conversado. A este fenómeno se le denomina <strong>Polinización Cruzada (Cross-Pollination)</strong>.</p>
+          
+          <h4 class="font-bold text-slate-900 text-lg mt-4">Cómo sintetizar dos ideas independientes</h4>
+          <p>Toma dos ideas aprobadas de tu Banco de Ideas que pertenezcan a ámbitos distintos (por ejemplo, una Semilla táctica de micro-onboarding y un Brote técnico de bases vectoriales locales). Obliga al sistema o a tu equipo a responder: <em>"¿Qué producto único surge si estas dos soluciones deben operar como una sola pieza?"</em></p>
+          
+          <p class="mt-3">El resultado suele ser una <strong>super-idea híbrida</strong> con una barrera de entrada muy superior a las propuestas individuales, ofreciendo una ventaja competitiva diferencial e inimitable.</p>
+        `
+      }
+    };
+
+    // Funciones del Modal de Lectura
+    function openArticleModal(articleKey) {
+      const art = blogDatabase[articleKey];
+      if (!art) return;
+
+      document.getElementById('modal-category').innerText = art.category;
+      document.getElementById('modal-readtime').innerText = art.readTime;
+      document.getElementById('modal-title').innerText = art.title;
+      document.getElementById('modal-body').innerHTML = art.body;
+
+      const modal = document.getElementById('article-modal');
+      const content = document.getElementById('article-modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('article-modal-active');
+
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeArticleModal() {
+      const modal = document.getElementById('article-modal');
+      const content = document.getElementById('article-modal-content');
+
+      modal.classList.add('opacity-0');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('article-modal-active');
+      }, 300);
+    }
+
+    // Cerrar modal al pulsar Escape o fuera del contenedor
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeArticleModal();
+    });
+    document.getElementById('article-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'article-modal') closeArticleModal();
+    });
+
+    // Traducciones Multilingües completas
     const translations = {
       es: {
         app_title: "Lluvia de Ideas IA",
@@ -895,7 +1158,8 @@
         c4_desc: "Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech.",
         blog_tag: "Recursos y Metodología",
         blog_title: "Artículos para Potenciar tu Creatividad",
-        blog_sub: "Estrategias y marcos de trabajo prácticos aplicables en cualquier sesión de ideación.",
+        blog_sub: "Haz clic en cualquier artículo para leer el análisis metodológico y técnico completo.",
+        read_more_btn: "Leer artículo completo →",
         b1_tag: "Técnicas de Pensamiento",
         b1_title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
         b1_desc: "Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.",
@@ -908,6 +1172,18 @@
         b3_title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
         b3_desc: "Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.",
         b3_time: "Lectura de 5 min",
+        b4_tag: "Lateralidad Creativa",
+        b4_title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
+        b4_desc: "Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.",
+        b4_time: "Lectura de 5 min",
+        b5_tag: "Pensamiento Analógico",
+        b5_title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
+        b5_desc: "Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.",
+        b5_time: "Lectura de 6 min",
+        b6_tag: "Síntesis Conceptual",
+        b6_title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
+        b6_desc: "Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.",
+        b6_time: "Lectura de 4 min",
         rev_tag: "Experiencias Reales",
         rev_title: "Lo que dicen los profesionales",
         r1_text: "\"La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil.\"",
@@ -993,7 +1269,8 @@
         c4_desc: "Architect complex software systems and automate workflows with Dr. Tech.",
         blog_tag: "Resources & Guides",
         blog_title: "Articles to Fuel Your Creative Strategy",
-        blog_sub: "Actionable frameworks applicable to both manual and AI-assisted brainstorming sessions.",
+        blog_sub: "Click on any article to read the full methodology and technical analysis.",
+        read_more_btn: "Read full article →",
         b1_tag: "Mental Models",
         b1_title: "How to Solve Complex Engineering Problems in 15 Minutes with SCAMPER",
         b1_desc: "Substitute, combine, adapt, and modify constraints to unlock non-obvious solutions.",
@@ -1006,6 +1283,18 @@
         b3_title: "Botanical Idea Maturity: Balancing Quick Wins Against 10x Visions",
         b3_desc: "Prevent short-term tactical fixes from drowning out foundational company transformation.",
         b3_time: "5 min read",
+        b4_tag: "Lateral Thinking",
+        b4_title: "Problem Inversion: Designing the Worst Outcome to Discover the Best",
+        b4_desc: "Deliberately worsening a challenge removes psychological bias and highlights unseen optimizations.",
+        b4_time: "5 min read",
+        b5_tag: "Analogical Reasoning",
+        b5_title: "Biomimicry in Software: How Natural Systems Inspire Resilient Architectures",
+        b5_desc: "From ant colonies to mycorrhizal networks: practical biology applications in decentralized design.",
+        b5_time: "6 min read",
+        b6_tag: "Concept Synthesis",
+        b6_title: "Cross-Pollination of Ideas: Merging Unrelated Concepts for 10x Innovation",
+        b6_desc: "Why fusing two distinct accepted ideas creates the most defensible market advantages.",
+        b6_time: "4 min read",
         rev_tag: "Verified Feedback",
         rev_title: "Trusted by Modern Innovators",
         r1_text: "\"Feeding competitive PDF decks into local RAG on my phone and getting immediate growth angles without cloud exposure is unbeatable.\"",
@@ -1023,697 +1312,12 @@
         f_terms: "Terms of Service",
         f_contact: "Contact & Support",
         f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
-      },
-      de: {
-        app_title: "KI Brainstorming Studio",
-        nav_screens: "Screenshots",
-        nav_what_is: "Was ist Brainstorming?",
-        nav_features: "Funktionen",
-        nav_use_cases: "Anwendungsfälle",
-        nav_blog: "Blog",
-        cta_header: "Kostenlos starten",
-        hero_pill: "100% Kostenloser Download • 21 Tage Testphase",
-        hero_title_1: "Steigern Sie Ihre Kreativität mit",
-        hero_title_2: "Hybrider KI & Lokalem RAG",
-        hero_desc: "Strukturieren Sie Projekte, laden Sie Dokumente (PDF, Notizen) und generieren Sie bahnbrechende Ideen auf Android. Ohne Abos.",
-        gp_label: "Kostenlos bei",
-        hero_explore: "Screenshots ansehen",
-        badge_trial: "0 € für 21 Tage",
-        badge_local: "100% Datenschutz auf dem Gerät",
-        badge_lifetime: "Dauerhafte Lizenz für 3,99 €",
-        badge_disruption: "Aktive kognitive Disruption",
-        badge_bank: "Ideen-Datenbank",
-        badge_maturity: "Botanische Reife",
-        screens_tag: "Native Android-Oberfläche",
-        screens_title: "Entwickelt für maximale Produktivität",
-        screens_desc: "Erleben Sie die intuitive Benutzeroberfläche zur schnellen Strukturierung von Innovationen.",
-        screen1_title: "Ideen-Studio",
-        screen1_desc: "Divergentes und konvergentes Denken mit kreativen Techniken.",
-        screen2_title: "Projekte & Lokales RAG",
-        screen2_desc: "Laden Sie PDFs mit lokaler SQLite-Persistenz.",
-        screen3_title: "Ideen-Archiv",
-        screen3_desc: "Gefiltert nach Samen 🌱, Sprossen 🌿 und Bäumen 🌳.",
-        screen4_title: "Leistungsmetriken",
-        screen4_desc: "Kreativitätsrhythmus und Token-Verbrauch im Blick.",
-        edu_tag: "Innovationsmethodik",
-        edu_title: "Was ist Brainstorming und wozu dient es?",
-        edu_p1: "<strong>Brainstorming</strong> ist eine strukturierte Methode zur Ideengenerierung, bei der kreatives Entfalten strikt von kritischer Bewertung getrennt wird.",
-        edu_p2: "Ziel ist es, <strong>Denkblockaden zu durchbrechen</strong> und unkonventionelle Lösungsansätze zu finden.",
-        edu_step1: "<strong>Divergierende Phase:</strong> Ungehemmte Ideensammlung mit Fokus auf Vielfalt.",
-        edu_step2: "<strong>Konvergierende Phase:</strong> Analytische Auswahl und Definition von Umsetzungsplänen.",
-        seed_title: "Samen (Seed)",
-        seed_desc: "Schnelle Umsetzung in <48h, minimale Kosten und Risiken.",
-        sprout_title: "Spross (Sprout)",
-        sprout_desc: "Modulare Innovation und Prototyping in 1 bis 2 Wochen.",
-        tree_title: "Baum (Tree)",
-        tree_desc: "Strukturelle 10x-Transformation und Neugestaltung des Geschäftsmodells.",
-        feat_tag: "Local-First Architektur",
-        feat_title: "Absolute Privatsphäre dank Hybrider KI",
-        feat_sub: "Wählen Sie zwischen lokalen On-Device Modellen und Google Gemini Cloud.",
-        f1_title: "Deterministisches Lokales RAG",
-        f1_desc: "Hängen Sie <strong>PDFs und Notizen</strong> an. Erstellen Sie 384-dimensionale Vektoren lokal in SQLite ohne Cloud-Zwang.",
-        f1_sub: "Hierarchische Kosinus-Ähnlichkeitssuche",
-        f2_title: "On-Device LLMs & Gemini Nano",
-        f2_desc: "100% Offline-Inferenz mit Vulkan/MediaPipe oder nativer Gemini Nano Beschleunigung.",
-        f2_sub: "Kein Verlust vertraulicher Daten",
-        f3_title: ".lluvia Format & Export",
-        f3_desc: "Teilen Sie Workspaces als `.lluvia` JSON, PDF-Berichte oder Markdown für Notion und Slack.",
-        f3_sub: "Intelligenter Datenabgleich ohne Duplikate",
-        cases_tag: "Praxisbeispiele",
-        cases_title: "Für wen ist diese App gedacht?",
-        c1_title: "Gründer & Startups",
-        c1_desc: "Geschäftsmodelle validieren und Investoren-Pitches vorbereiten.",
-        c2_title: "Marketing-Teams",
-        c2_desc: "Virale Kampagnen und AARRR-Funnel-Strategien entwickeln.",
-        c3_title: "UX-Designer",
-        c3_desc: "Nutzerprobleme lösen und intuitive Schnittstellen entwerfen.",
-        c4_title: "Entwickler & Ingenieure",
-        c4_desc: "Softwarearchitekturen optimieren und Prozesse automatisieren.",
-        blog_tag: "Wissen & Methoden",
-        blog_title: "Artikel für Ihre Kreativität",
-        blog_sub: "Praktische Frameworks für manuelle und KI-gestützte Brainstorming-Sessions.",
-        b1_tag: "Denkmethoden",
-        b1_title: "Komplexe Probleme mit SCAMPER in 15 Minuten lösen",
-        b1_desc: "Elemente ersetzen, kombinieren und anpassen, um neue Blickwinkel zu finden.",
-        b1_time: "4 Min. Lesezeit",
-        b2_tag: "Lokale KI",
-        b2_title: "Warum lokale Vektordatenbanken Ihr geistiges Eigentum schützen",
-        b2_desc: "Erfahren Sie, wie On-Device RAG Datenlecks bei sensiblen Dokumenten verhindert.",
-        b2_time: "6 Min. Lesezeit",
-        b3_tag: "Innovationsmanagement",
-        b3_title: "Botanische Reife: Schnelle Erfolge vs. 10x-Visionen",
-        b3_desc: "Klassifizieren Sie Ideen gezielt nach Umsetzungsdauer und strategischem Wert.",
-        b3_time: "5 Min. Lesezeit",
-        rev_tag: "Nutzerbewertungen",
-        rev_title: "Das sagen Innovationsexperten",
-        r1_text: "\"Konkurrenzanalysen als PDF lokal mit RAG auf dem Handy zu nutzen, ist revolutionär.\"",
-        r1_author: "Product Lead Fintech",
-        r2_text: "\"Die Disruptionstechniken haben meine Blockade sofort gelöst. Tolle 21-Tage-Testphase!\"",
-        r2_author: "UX-Strategin",
-        r3_text: "\"Die PDF-Exporte nach Reifegrad sparen uns wertvolle Zeit bei Meetings.\"",
-        r3_author: "Innovationsberater",
-        final_pill: "Sicherer Download",
-        final_title: "Jetzt kostenlos ausprobieren",
-        final_desc: "Nutzen Sie 21 Tage lang alle Funktionen gratis. Dauerhafte Vollversion für nur <strong>3,99 €</strong>.",
-        final_sub: "Kompatibel ab Android 10 • Keine Werbung von Drittanbietern",
-        footer_by: "Entwickelt und gepflegt von",
-        f_privacy: "Datenschutzerklärung",
-        f_terms: "Nutzungsbedingungen",
-        f_contact: "Kontakt & Support",
-        f_rights: "© 2026 Lluvia de Ideas IA. Alle Rechte vorbehalten."
-      },
-      fr: {
-        app_title: "Studio de Brainstorming IA",
-        nav_screens: "Captures",
-        nav_what_is: "Qu'est-ce que le Brainstorming ?",
-        nav_features: "Fonctionnalités",
-        nav_use_cases: "Cas d'usage",
-        nav_blog: "Blog",
-        cta_header: "Essayer Gratuitement",
-        hero_pill: "Téléchargement 100% Gratuit • Essai de 21 jours",
-        hero_title_1: "Multipliez votre créativité avec",
-        hero_title_2: "l'IA Hybride et le RAG Local",
-        hero_desc: "Structurez vos projets, connectez vos documents (PDF, notes) et générez des idées disruptives sur Android. Sans abonnement.",
-        gp_label: "Disponible sur",
-        hero_explore: "Voir les Captures",
-        badge_trial: "0 € pendant 21 jours",
-        badge_local: "Données 100% sur l'appareil",
-        badge_lifetime: "Licence à vie pour 3,99 €",
-        badge_disruption: "Disruption cognitive active",
-        badge_bank: "Banque d'idées",
-        badge_maturity: "Maturité Botanique",
-        screens_tag: "Interface Native Android",
-        screens_title: "Conçue pour une Productivité Fluide et Puissante",
-        screens_desc: "Découvrez l'interface pensée pour accélérer vos projets d'innovation dès la première seconde.",
-        screen1_title: "Studio d'Idéation",
-        screen1_desc: "Pensée divergente et convergente avec techniques forcées.",
-        screen2_title: "Projets & RAG Local",
-        screen2_desc: "Chargez vos PDFs avec persistance locale SQLite Room.",
-        screen3_title: "Banque d'Idées Germées",
-        screen3_desc: "Filtrage par Graines 🌱, Pousses 🌿 et Arbres 🌳.",
-        screen4_title: "Métriques de Performance",
-        screen4_desc: "Suivez votre rythme créatif et la consommation de tokens.",
-        edu_tag: "Méthodologie d'Innovation",
-        edu_title: "Qu'est-ce que le Brainstorming et à quoi sert-il ?",
-        edu_p1: "Le <strong>brainstorming</strong> est une méthode structurée visant à générer un volume élevé d'idées neuves en dissociant création et jugement critique.",
-        edu_p2: "Son but est de <strong>briser l'inertie mentale</strong> par la pensée latérale pour révéler des opportunités invisibles en logique linéaire.",
-        edu_step1: "<strong>Phase Divergente :</strong> Exploration libre axée sur le volume et l'originalité.",
-        edu_step2: "<strong>Phase Convergente :</strong> Sélection rigoureuse et élaboration de plans d'action.",
-        seed_title: "Graine (Seed)",
-        seed_desc: "Exécution rapide en <48h, coût minime et risque limité.",
-        sprout_title: "Pousse (Sprout)",
-        sprout_desc: "Innovation modulaire et prototypage en 1 à 2 semaines.",
-        tree_title: "Arbre (Tree)",
-        tree_desc: "Transformation stratégique 10x et réinvention du modèle économique.",
-        feat_tag: "Architecture Local-First",
-        feat_title: "Confidentialité Totale avec l'IA Hybride",
-        feat_sub: "Basculez entre modèles On-Device hors ligne et Google Gemini Cloud.",
-        f1_title: "RAG Local Déterministe",
-        f1_desc: "Attachez <strong>PDFs et notes</strong>. Générez des vecteurs de 384 dimensions directement dans SQLite sans passer par le cloud.",
-        f1_sub: "Recherche hiérarchique par similarité cosinus",
-        f2_title: "Modèles On-Device & Gemini Nano",
-        f2_desc: "Inférence 100% hors ligne avec accélération Vulkan/MediaPipe ou processeur Gemini Nano natif.",
-        f2_sub: "Zéro fuite de données d'entreprise",
-        f3_title: "Écosystème .lluvia et Export",
-        f3_desc: "Partagez vos projets en `.lluvia` JSON, rapports PDF formatés ou résumés Markdown pour Notion.",
-        f3_sub: "Fusion intelligente sans doublons",
-        cases_tag: "Cas Pratiques",
-        cases_title: "À qui s'adresse cette application ?",
-        c1_title: "Fondateurs & Startups",
-        c1_desc: "Tester des modèles d'affaires et préparer des argumentaires investisseurs.",
-        c2_title: "Spécialistes Marketing",
-        c2_desc: "Concevoir des boucles virales et des stratégies de conversion AARRR.",
-        c3_title: "Designers UX/UI",
-        c3_desc: "Résoudre les points de friction et concevoir des parcours intuitifs.",
-        c4_title: "Développeurs & Ingénieurs",
-        c4_desc: "Structurer des architectures logicielles et automatiser les flux.",
-        blog_tag: "Ressources & Guides",
-        blog_title: "Articles pour Développer votre Créativité",
-        blog_sub: "Cadres méthodologiques applicables à vos sessions d'idéation.",
-        b1_tag: "Techniques Créatives",
-        b1_title: "Comment résoudre un problème complexe en 15 minutes avec SCAMPER",
-        b1_desc: "Substituer, combiner et adapter des variables pour révéler des solutions latérales.",
-        b1_time: "Lecture 4 min",
-        b2_tag: "IA Locale",
-        b2_title: "RAG On-Device : pourquoi les bases vectorielles locales protègent vos brevets",
-        b2_desc: "Découvrez l'intérêt de traiter les documents confidentiels directement en mémoire mobile.",
-        b2_time: "Lecture 6 min",
-        b3_tag: "Gestion d'Innovation",
-        b3_title: "Maturité Botanique : concilier gains rapides et visions à long terme",
-        b3_desc: "Classez efficacement vos idées pour ne pas négliger la transformation de fond.",
-        b3_time: "Lecture 5 min",
-        rev_tag: "Avis Utilisateurs",
-        rev_title: "Le retour des professionnels",
-        r1_text: "\"Analyser mes PDFs concurrents en local avec le RAG sans connexion cloud est un vrai plus.\"",
-        r1_author: "Lead Product en Fintech",
-        r2_text: "\"Les techniques de disruption ont débloqué notre équipe en quelques minutes. Superbe outil.\"",
-        r2_author: "Consultante en Stratégie UX",
-        r3_text: "\"Les exports PDF classés par niveau de maturité sont clairs pour nos réunions de sprint.\"",
-        r3_author: "Conseiller en Innovation",
-        final_pill: "Téléchargement Immédiat",
-        final_title: "Commencez Gratuitement Dès Aujourd'hui",
-        final_desc: "Accédez à toutes les fonctionnalités pendant 21 jours. Licence définitive à vie pour seulement <strong>3,99 €</strong>.",
-        final_sub: "Compatible Android 10+ • Aucune publicité tierce",
-        footer_by: "Développé et maintenu par",
-        f_privacy: "Politique de Confidentialité",
-        f_terms: "Conditions d'Utilisation",
-        f_contact: "Contact & Support",
-        f_rights: "© 2026 Lluvia de Ideas IA. Tous droits réservés."
-      },
-      ja: {
-        app_title: "AIブレインストーミングスタジオ",
-        nav_screens: "スクリーンショット",
-        nav_what_is: "ブレインストーミングとは？",
-        nav_features: "機能と特長",
-        nav_use_cases: "活用事例",
-        nav_blog: "ブログ",
-        cta_header: "無料で始める",
-        hero_pill: "完全無料ダウンロード • 21日間の全機能トライアル",
-        hero_title_1: "創造性を無限に高める",
-        hero_title_2: "ハイブリッドAIとローカルRAG",
-        hero_desc: "プロジェクトを構築し、PDFやメモをローカルRAGで連携。Android端末内の完全ローカル推論で革新的なアイデアを創出します。サブスクリプション不要。",
-        gp_label: "Google Playで無料入手",
-        hero_explore: "画面を見る",
-        badge_trial: "21日間完全無料 (0円)",
-        badge_local: "100%オンデバイス・プライバシー保護",
-        badge_lifetime: "永久買い切りライセンス 3.99€",
-        badge_disruption: "能動的認知ディスラプション",
-        badge_bank: "アイデアバンク",
-        badge_maturity: "植物的成熟度分類",
-        screens_tag: "AndroidネイティブUI",
-        screens_title: "直感的かつ圧倒的な生産性を追求した設計",
-        screens_desc: "ひらめきを瞬時に実行可能なタスクへと落とし込む画面デザイン。",
-        screen1_title: "発想スタジオ",
-        screen1_desc: "拡散思考と収束思考を強制的な創造手法で加速。",
-        screen2_title: "プロジェクトとローカルRAG",
-        screen2_desc: "PDFやメモを端末内SQLiteデータベースに安全に保存。",
-        screen3_title: "アイデアバンク",
-        screen3_desc: "種 🌱、新芽 🌿、大樹 🌳 の成長段階で分類。",
-        screen4_title: "パフォーマンス分析",
-        screen4_desc: "思考バランス、アイデア創出ペース、トークン数を可視化。",
-        edu_tag: "イノベーション手法",
-        edu_title: "ブレインストーミングの本質とは？",
-        edu_p1: "<strong>ブレインストーミング</strong>とは、アイデアの「生成」と「評価」を明確に分離し、膨大な量の革新的な提案を生み出す思考手法です。",
-        edu_p2: "日常的な論理的思考の惰性を<strong>水平思考によって打破</strong>し、通常の検討では見落とされがちな戦略的アプローチを導きます。",
-        edu_step1: "<strong>拡散フェーズ：</strong> 制限なく大量のアイデアと多様な視点を追求。",
-        edu_step2: "<strong>収束フェーズ：</strong> 実現可能性を厳密に評価し、具体的な実行計画へ凝縮。",
-        seed_title: "種 (Seed)",
-        seed_desc: "48時間以内に実行可能、極小コストと低リスク。",
-        sprout_title: "新芽 (Sprout)",
-        sprout_desc: "モジュール型イノベーション。1〜2週間でのプロトタイプ検証。",
-        tree_title: "大樹 (Tree)",
-        tree_desc: "10倍の事業変革をもたらす長期的かつ構造的なイノベーション。",
-        feat_tag: "Local-Firstアーキテクチャ",
-        feat_title: "ハイブリッドAIによる完全な機密保護",
-        feat_sub: "完全オフラインの端末内モデルとGoogle Gemini Cloudを柔軟に切り替え可能。",
-        f1_title: "高精度ローカルRAG",
-        f1_desc: "<strong>PDFやテキスト文書</strong>を添付。端末内SQLiteで384次元ベクトルを即座に生成し、外部送信なしで検索します。",
-        f1_sub: "階層型コサイン類似度検索エンジン",
-        f2_title: "オンデバイスLLM & Gemini Nano",
-        f2_desc: "Vulkan/MediaPipeによる0.2GB〜32GBの端末内推論、またはGemini Nanoハードウェア連携に対応。",
-        f2_sub: "企業機密データの外部流出リスクゼロ",
-        f3_title: ".lluvia エコシステムと出力",
-        f3_desc: "`.lluvia` JSONパッケージ、印刷用PDFレポート、Notion向けMarkdownとして瞬時に書き出し可能。",
-        f3_sub: "重複のないスマートなインポート・統合",
-        cases_tag: "主な活用分野",
-        cases_title: "どのような方に最適か？",
-        c1_title: "起業家・スタートアップ",
-        c1_desc: "ビジネスモデルの仮説検証や投資家向け戦略のシミュレーション。",
-        c2_title: "マーケティング担当者",
-        c2_desc: "バイラル設計やAARRRファネル最適化施策の創出。",
-        c3_title: "プロダクト・UXデザイナー",
-        c3_desc: "ユーザー体験の摩擦解消と共感に基づく導線設計。",
-        c4_title: "エンジニア・開発者",
-        c4_desc: "システムアーキテクチャの課題解決と高度な自動化設計。",
-        blog_tag: "ナレッジ＆ガイド",
-        blog_title: "発想力を引き出すフレームワーク",
-        blog_sub: "個人でもチームでも即実践できるアイデア発想法。",
-        b1_tag: "思考フレームワーク",
-        b1_title: "SCAMPER法を用いて15分で複雑な技術課題を突破する",
-        b1_desc: "代用、結合、適応などの切り口で固定観念を打破する手法を解説。",
-        b1_time: "読了時間：4分",
-        b2_tag: "ローカルAI",
-        b2_title: "端末内ベクトル検索（Edge RAG）が知的財産を守る理由",
-        b2_desc: "機密ロードマップや特許情報を外部クラウドに送信せず活用する方法。",
-        b2_time: "読了時間：6分",
-        b3_tag: "イノベーション管理",
-        b3_title: "植物的成熟度モデル：即効性のある施策と長期的ビジョンの両立",
-        b3_desc: "目先の改善と根本的な事業変革を適切に共存させるアイデア管理法。",
-        b3_time: "読了時間：5分",
-        rev_tag: "ユーザーの声",
-        rev_title: "プロフェッショナルからの評価",
-        r1_text: "「競合分析PDFをスマホのローカルRAGに読み込ませて、オフラインで施策を出せるのは画期的です。」",
-        r1_author: "Fintechスタートアップ プロダクトリード",
-        r2_text: "\"強制発想プロンプトのおかげで、何日も悩んでいた課題の突破口が数分で見つかりました。\"",
-        r2_author: "UXストラテジスト",
-        r3_text: "「成熟度別に整理されたPDFレポート出力により、開発会議への共有が非常にスムーズです。」",
-        r3_author: "イノベーションコンサルタント",
-        final_pill: "今すぐ安全にダウンロード",
-        final_title: "まずは21日間無料でお試しください",
-        final_desc: "全機能を21日間制限なくご利用いただけます。継続利用をご希望の場合は、わずか<strong>3.99€</strong>の永久ライセンスで解除できます。",
-        final_sub: "Android 10以上対応 • 広告なし",
-        footer_by: "開発および運営：",
-        f_privacy: "プライバシーポリシー",
-        f_terms: "利用規約",
-        f_contact: "お問い合わせ・サポート",
-        f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
-      },
-      zh: {
-        app_title: "AI 头脑风暴工作台",
-        nav_screens: "界面截图",
-        nav_what_is: "什么是头脑风暴？",
-        nav_features: "核心功能",
-        nav_use_cases: "应用场景",
-        nav_blog: "博客文章",
-        cta_header: "免费开始使用",
-        hero_pill: "100% 免费下载 • 21 天全功能试用",
-        hero_title_1: "激发无限创造力",
-        hero_title_2: "混合 AI 与端侧本地 RAG",
-        hero_desc: "在 Android 手机上构建项目、连接本地文档（PDF、笔记）并生成颠覆性构想。纯端侧离线运行，无需订阅费用。",
-        gp_label: "前往 Google Play 免费下载",
-        hero_explore: "查看界面",
-        badge_trial: "21 天完全免费试用 (0 €)",
-        badge_local: "100% 本地端侧隐私安全",
-        badge_lifetime: "永久买断版仅需 3.99 €",
-        badge_disruption: "主动思维颠覆技术",
-        badge_bank: "构想种子库",
-        badge_maturity: "植物成熟度模型",
-        screens_tag: "Android 原生界面",
-        screens_title: "专为高效、流畅的创新工作流打造",
-        screens_desc: "从第一秒起加速构想落地，直观呈现从灵感到可执行任务的全流程。",
-        screen1_title: "创意工坊",
-        screen1_desc: "通过发散与收敛思维结合强制创意技术快速破局。",
-        screen2_title: "项目与本地 RAG",
-        screen2_desc: "结合 Room SQLite 本地数据库索引 PDF 与上下文笔记。",
-        screen3_title: "构想种子库",
-        screen3_desc: "按 种子 🌱、幼芽 🌿、大树 🌳 阶段精准分类。",
-        screen4_title: "效能数据大盘",
-        screen4_desc: "实时监控思维平衡、创新节奏与 Token 消耗。",
-        edu_tag: "创新方法论",
-        edu_title: "什么是头脑风暴？其核心价值是什么？",
-        edu_p1: "<strong>头脑风暴（Brainstorming）</strong>是一种将「产生想法」与「批判评估」严格分离的结构化思考方法，旨在针对特定难题快速产生海量非常规方案。",
-        edu_p2: "其核心在于<strong>通过水平发散思维打破认知惯性</strong>，发掘常规线性逻辑难以察觉的战略切入点。",
-        edu_step1: "<strong>发散阶段：</strong> 无拘无束地探索，追求构想的数量与多元视角。",
-        edu_step2: "<strong>收敛阶段：</strong> 严谨分析、提炼并制定明确的可落地行动方案。",
-        seed_title: "种子 (Seed)",
-        seed_desc: "48小时内极速落地，极低成本与操作风险。",
-        sprout_title: "幼芽 (Sprout)",
-        sprout_desc: "模块化创新，1至2周内完成原型验证与业务协同。",
-        tree_title: "大树 (Tree)",
-        tree_desc: "10倍级颠覆性变革与商业模式深度重塑。",
-        feat_tag: "Local-First 本地优先架构",
-        feat_title: "混合 AI 赋能，守护绝对隐私",
-        feat_sub: "可自由切换端侧离线大模型或云端 Google Gemini API。",
-        f1_title: "确定性本地 RAG 引擎",
-        f1_desc: "支持关联 <strong>PDF、TXT 或粘贴笔记</strong>。直接在本地 SQLite 数据库中生成 384 维向量，无需上传至外部服务器。",
-        f1_sub: "层级余弦相似度精准检索",
-        f2_title: "端侧大模型与 Gemini Nano",
-        f2_desc: "支持 Vulkan/MediaPipe 0.2GB-32GB 模型端侧离线推理，或调用系统原生 Gemini Nano 芯片级加速。",
-        f2_sub: "零企业商业机密外泄风险",
-        f3_title: ".lluvia 数据生态与导出",
-        f3_desc: "支持导出为 `.lluvia` JSON 格式包、高清排版 PDF 报告或适用于 Notion/Slack 的 Markdown 摘要。",
-        f3_sub: "智能无重复合并导入",
-        cases_tag: "实用场景",
-        cases_title: "这款应用适合哪些人群？",
-        c1_title: "创业者与团队主管",
-        c1_desc: "验证商业模式可行性，推演价值主张与投资人关注要点。",
-        c2_title: "增长与营销专家",
-        c2_desc: "构建病毒式传播飞轮，设计 AARRR 漏斗优化策略。",
-        c3_title: "产品与体验设计师",
-        c3_desc: "发现并消除用户体验卡点，构建同理心交互流程。",
-        c4_title: "软件开发与工程师",
-        c4_desc: "突破系统架构设计瓶颈，设计高价值技术自动化方案。",
-        blog_tag: "知识库与指南",
-        blog_title: "助力创新思维的实用文章",
-        blog_sub: "适用于个人思考与团队共创的高效方法论。",
-        b1_tag: "思维工具",
-        b1_title: "如何利用 SCAMPER 模型在 15 分钟内攻克复杂技术难题",
-        b1_desc: "通过替代、结合、调整等维度打破惯性思维，发现潜在方案。",
-        b1_time: "阅读时间 4 分钟",
-        b2_tag: "端侧 AI 技术",
-        b2_title: "为什么端侧向量检索（Edge RAG）能够全面保护企业资产",
-        b2_desc: "详解在设备本地内存中处理机密产品路线图与专利文档的技术优势。",
-        b2_time: "阅读时间 6 分钟",
-        b3_tag: "创新管理",
-        b3_title: "植物成熟度模型：如何平衡短期快速见效与长期战略愿景",
-        b3_desc: "合理分类构想生命周期，避免短期微调挤占底层变革资源。",
-        b3_time: "阅读时间 5 分钟",
-        rev_tag: "用户评价",
-        rev_title: "来自行业专家的真实反馈",
-        r1_text: "“能够在手机上直接挂载竞品 PDF 并通过本地 RAG 生成增长方案，完全不担心数据泄露，太实用了。”",
-        r1_author: "Fintech 创业公司产品负责人",
-        r2_text: "“强制颠覆构想功能在几分钟内帮我打破了持续一周的灵感瓶颈，21天免费试用体现了十足的诚意。”",
-        r2_author: "UX 体验策略咨询师",
-        r3_text: "“按成熟度导出的 PDF 报告在与研发团队开会时极为高效，节省了大量整理时间。”",
-        r3_author: "数字化创新顾问",
-        final_pill: "即刻安全下载",
-        final_title: "立即开启 21 天免费试用",
-        final_desc: "畅享全部专业功能 21 天。如需长期使用，仅需一次性支付 <strong>3.99 €</strong> 即可永久解锁买断版。",
-        final_sub: "支持 Android 10 及以上系统 • 无第三方广告干扰",
-        footer_by: "开发者与维护者：",
-        f_privacy: "隐私政策",
-        f_terms: "服务条款",
-        f_contact: "联系与支持",
-        f_rights: "© 2026 Lluvia de Ideas IA. 保留所有权利。"
-      },
-      ko: {
-        app_title: "AI 브레인스토밍 스튜디오",
-        nav_screens: "스크린샷",
-        nav_what_is: "브레인스토밍이란?",
-        nav_features: "주요기능",
-        nav_use_cases: "활용사례",
-        nav_blog: "블로그",
-        cta_header: "무료로 시작하기",
-        hero_pill: "100% 무료 다운로드 • 21일간 전 기능 체험",
-        hero_title_1: "창의성을 극대화하는",
-        hero_title_2: "하이브리드 AI와 로컬 RAG",
-        hero_desc: "Android 스마트폰에서 프로젝트를 구조화하고 PDF 및 노트를 로컬 RAG로 연결하여 혁신적인 아이디어를 도출하세요. 구독료 없음.",
-        gp_label: "Google Play에서 무료 다운로드",
-        hero_explore: "화면 둘러보기",
-        badge_trial: "21일간 완전 무료 (0 €)",
-        badge_local: "100% 온디바이스 보안",
-        badge_lifetime: "평생 라이선스 단 3.99 €",
-        badge_disruption: "능동적 인지 전환 기법",
-        badge_bank: "아이디어 저장소",
-        badge_maturity: "식물 성숙도 분류",
-        screens_tag: "Android 네이티브 UI",
-        screens_title: "매끄럽고 강력한 생산성을 위한 설계",
-        screens_desc: "영감을 즉각 실행 가능한 과제로 전환하는 인터페이스를 확인해보세요.",
-        screen1_title: "발상 스튜디오",
-        screen1_desc: "확산적 및 수렴적 사고와 강제 창의 기법 적용.",
-        screen2_title: "프로젝트 & 로컬 RAG",
-        screen2_desc: "Room SQLite 로컬 DB로 PDF 문서 완벽 연동.",
-        screen3_title: "발아 아이디어 보관함",
-        screen3_desc: "씨앗 🌱, 새싹 🌿, 나무 🌳 단계별 필터링.",
-        screen4_title: "성과 분석 대시보드",
-        screen4_desc: "사고 균형, 발상 속도 및 토큰 사용량 실시간 확인.",
-        edu_tag: "혁신 방법론",
-        edu_title: "브레인스토밍이란 무엇이며 왜 중요한가?",
-        edu_p1: "<strong>브레인스토밍</strong>은 아이디어의 생성과 비판적 평가를 분리하여 대량의 파괴적인 제안을 도출하는 체계적인 사고 기법입니다.",
-        edu_p2: "핵심은 <strong>수평적 사고를 통해 인지적 타성을 깨뜨리고</strong> 일반적인 선형 논리에서 놓치기 쉬운 전략적 각도를 발견하는 것입니다.",
-        edu_step1: "<strong>확산 단계:</strong> 제약 없이 다양한 관점과 대량의 아이디어를 탐색.",
-        edu_step2: "<strong>수렴 단계:</strong> 엄격한 평가 및 정제를 통해 실행 가능한 과제로 구체화.",
-        seed_title: "씨앗 (Seed)",
-        seed_desc: "48시간 이내 신속 실행 가능, 최소 비용과 낮은 위험도.",
-        sprout_title: "새싹 (Sprout)",
-        sprout_desc: "모듈형 혁신 및 1~2주 내 프로토타입 검증.",
-        tree_title: "나무 (Tree)",
-        tree_desc: "10배의 비즈니스 모델 혁신을 이끄는 장기적 전략 프로젝트.",
-        feat_tag: "Local-First 아키텍처",
-        feat_title: "하이브리드 AI 기반의 완벽한 프라이버시",
-        feat_sub: "오프라인 온디바이스 모델과 Google Gemini Cloud를 자유롭게 선택 가능.",
-        f1_title: "결정론적 로컬 RAG",
-        f1_desc: "<strong>PDF 또는 텍스트 메모</strong>를 첨부하세요. 외부 서버 전송 없이 로컬 SQLite에서 384차원 벡터를 직접 생성합니다.",
-        f1_sub: "계층적 코사인 유사도 검색",
-        f2_title: "온디바이스 LLM & Gemini Nano",
-        f2_desc: "Vulkan/MediaPipe 기반 0.2GB~32GB 오프라인 추론 및 시스템 네이티브 Gemini Nano 가속 지원.",
-        f2_sub: "기업 기밀 데이터 유출 위험 차단",
-        f3_title: ".lluvia 데이터 포맷 & 내보내기",
-        f3_desc: "`.lluvia` JSON 패키지, PDF 보고서, Notion용 Markdown으로 즉시 공유 가능.",
-        f3_sub: "중복 없는 스마트 병합 가져오기",
-        cases_tag: "실제 적용 분야",
-        cases_title: "누구에게 가장 필요한가요?",
-        c1_title: "창업가 및 스타트업",
-        c1_desc: "비즈니스 모델 타당성 검증 및 투자자 관점 시뮬레이션.",
-        c2_title: "그로스 마케터",
-        c2_desc: "바이럴 루프 발굴 및 AARRR 퍼널 개선 전략 수립.",
-        c3_title: "UX/UI 디자이너",
-        c3_desc: "사용자 이탈 요인 해결 및 공감 중심 경험 설계.",
-        c4_title: "개발자 및 엔지니어",
-        c4_desc: "소프트웨어 아키텍처 난제 해결 및 고부가가치 자동화 설계.",
-        blog_tag: "가이드 & 리소스",
-        blog_title: "창의적 사고를 돕는 아티클",
-        blog_sub: "개인 업무와 팀 프로젝트에 바로 적용할 수 있는 프레임워크.",
-        b1_tag: "사고 프레임워크",
-        b1_title: "SCAMPER 기법으로 15분 만에 기술적 난제 해결하기",
-        b1_desc: "대체, 결합, 변형 등의 질문을 통해 틀에 박힌 사고를 벗어나는 방법.",
-        b1_time: "4분 읽기",
-        b2_tag: "온디바이스 AI",
-        b2_title: "로컬 벡터 DB(Edge RAG)가 기업 자산을 보호하는 이유",
-        b2_desc: "기밀 로드맵을 클라우드 전송 없이 메모리 내에서 안전하게 분석하는 원리.",
-        b2_time: "6분 읽기",
-        b3_tag: "혁신 관리",
-        b3_title: "식물 성숙도 모델: 단기 실행안과 10배 장기 비전의 균형",
-        b3_desc: "신속한 단기 성과와 구조적 혁신 과제를 효과적으로 조율하는 전략.",
-        b3_time: "5분 읽기",
-        rev_tag: "실제 사용자 후기",
-        rev_title: "전문가들의 평가",
-        r1_text: "“경쟁사 분석 PDF를 스마트폰 로컬 RAG에 넣고 즉시 마케팅 아이디어를 뽑아낼 수 있어 매우 만족스럽습니다.”",
-        r1_author: "핀테크 스타트업 프로덕트 리드",
-        r2_text: "“강제 발상 기법 덕분에 며칠 동안 막혀 있던 기획의 돌파구를 단 몇 분 만에 찾았습니다.”",
-        r2_author: "UX 전략 컨설턴트",
-        r3_text: "“성숙도별로 정리되는 PDF 내보내기 기능 덕분에 회의 준비 시간이 획기적으로 줄었습니다.”",
-        r3_author: "디지털 혁신 어드바이저",
-        final_pill: "즉시 안전하게 다운로드",
-        final_title: "지금 21일간 무료로 체험해보세요",
-        final_desc: "모든 기능을 21일 동안 제한 없이 이용할 수 있습니다. 평생 이용 시 <strong>3.99 €</strong> 일회성 결제로 영구 잠금 해제됩니다.",
-        final_sub: "Android 10 이상 지원 • 광고 없음",
-        footer_by: "개발 및 운영:",
-        f_privacy: "개인정보처리방침",
-        f_terms: "서비스 이용약관",
-        f_contact: "문의 및 고객지원",
-        f_rights: "© 2026 Lluvia de Ideas IA. All rights reserved."
-      },
-      ru: {
-        app_title: "Студия Мозгового Штурма с ИИ",
-        nav_screens: "Скриншоты",
-        nav_what_is: "Что такое брейншторминг?",
-        nav_features: "Возможности",
-        nav_use_cases: "Применение",
-        nav_blog: "Блог",
-        cta_header: "Начать бесплатно",
-        hero_pill: "100% Бесплатно • Полный пробный период 21 день",
-        hero_title_1: "Раскройте свой творческий потенциал с",
-        hero_title_2: "Гибридным ИИ и локальным RAG",
-        hero_desc: "Структурируйте проекты, подключайте PDF и заметки через локальный RAG на Android. Без подписок и скрытых платежей.",
-        gp_label: "Бесплатно в",
-        hero_explore: "Смотреть экраны",
-        badge_trial: "0 € на 21 день",
-        badge_local: "100% данных остаются на устройстве",
-        badge_lifetime: "Пожизненная лицензия всего за 3,99 €",
-        badge_disruption: "Активная когнитивная стимуляция",
-        badge_bank: "Банк идей",
-        badge_maturity: "Ботаническая зрелость",
-        screens_tag: "Нативный интерфейс Android",
-        screens_title: "Создано для быстрой и продуктивной работы",
-        screens_desc: "Оцените продуманный интерфейс, ускоряющий генерацию идей с первых секунд.",
-        screen1_title: "Студия генерации",
-        screen1_desc: "Дивергентное и конвергентное мышление с техниками латерального поиска.",
-        screen2_title: "Проекты и локальный RAG",
-        screen2_desc: "Индексация PDF и заметок в локальной базе Room SQLite.",
-        screen3_title: "Банк идей",
-        screen3_desc: "Сортировка по Семенам 🌱, Росткам 🌿 и Деревьям 🌳.",
-        screen4_title: "Аналитика эффективности",
-        screen4_desc: "Контроль ритма генерации и баланса мышления.",
-        edu_tag: "Методология инноваций",
-        edu_title: "Что такое мозговой штурм и зачем он нужен?",
-        edu_p1: "<strong>Мозговой штурм</strong> — это методология, разделяющая генерацию идей и их критическую оценку для создания максимального числа нестандартных решений.",
-        edu_p2: "Его задача — <strong>преодолеть когнитивную инерцию</strong> с помощью латерального мышления, находя нетривиальные точки роста.",
-        edu_step1: "<strong>Дивергентный этап:</strong> Свободный поиск максимального количества гипотез.",
-        edu_step2: "<strong>Конвергентный этап:</strong> Строгий отбор и формирование плана действий.",
-        seed_title: "Семя (Seed)",
-        seed_desc: "Быстрое внедрение менее чем за 48 часов с минимальным риском.",
-        sprout_title: "Росток (Sprout)",
-        sprout_desc: "Модульная инновация и тестирование прототипа за 1–2 недели.",
-        tree_title: "Дерево (Tree)",
-        tree_desc: "Масштабная трансформация 10x и переосмысление бизнес-модели.",
-        feat_tag: "Архитектура Local-First",
-        feat_title: "Абсолютная конфиденциальность с гибридным ИИ",
-        feat_sub: "Переключайтесь между офлайн-моделями на устройстве и Google Gemini Cloud.",
-        f1_title: "Детерминированный локальный RAG",
-        f1_desc: "Прикрепляйте <strong>PDF и текстовые заметки</strong>. Векторы 384 измерений создаются прямо в SQLite без отправки в облако.",
-        f1_sub: "Иерархический поиск по косинусному сходству",
-        f2_title: "Офлайн-модели и Gemini Nano",
-        f2_desc: "Работа через Vulkan/MediaPipe (0.2–32 ГБ) или аппаратный чип Gemini Nano.",
-        f2_sub: "Полная защита коммерческой тайны",
-        f3_title: "Формат .lluvia и экспорт",
-        f3_desc: "Экспорт в `.lluvia` JSON, готовые PDF-отчеты или Markdown для Notion.",
-        f3_sub: "Умное объединение без дубликатов",
-        cases_tag: "Сценарии применения",
-        cases_title: "Кому подходит приложение?",
-        c1_title: "Основатели стартапов",
-        c1_desc: "Проверка бизнес-моделей и подготовка питчей для инвесторов.",
-        c2_title: "Маркетологи",
-        c2_desc: "Поиск виральных механик и оптимизация воронки AARRR.",
-        c3_title: "UX/UI дизайнеры",
-        c3_desc: "Устранение барьеров и проектирование удобных интерфейсов.",
-        c4_title: "Разработчики и инженеры",
-        c4_desc: "Проектирование сложных архитектур и автоматизация процессов.",
-        blog_tag: "База знаний",
-        blog_title: "Статьи о креативности и методологиях",
-        blog_sub: "Практические инструменты для эффективных сессий генерации идей.",
-        b1_tag: "Техники мышления",
-        b1_title: "Как решить сложную инженерную задачу за 15 минут по технике SCAMPER",
-        b1_desc: "Методика замены, комбинирования и адаптации условий для поиска решений.",
-        b1_time: "Чтение: 4 мин",
-        b2_tag: "Локальный ИИ",
-        b2_title: "Edge RAG: почему локальные базы векторов защищают ваши патенты",
-        b2_desc: "Преимущества обработки конфиденциальных документов в оперативной памяти смартфона.",
-        b2_time: "Чтение: 6 мин",
-        b3_tag: "Управление инновациями",
-        b3_title: "Ботаническая зрелость: баланс быстрых решений и долгосрочных целей",
-        b3_desc: "Как правильно распределять ресурсы между тактикой и стратегией.",
-        b3_time: "Чтение: 5 мин",
-        rev_tag: "Отзывы",
-        rev_title: "Мнения экспертов",
-        r1_text: "«Анализировать PDF конкурентов через локальный RAG прямо на телефоне без риска утечки — это топ.»",
-        r1_author: "Product Lead в Fintech",
-        r2_text: "«Техники стимуляции помогли выйти из творческого тупика за пять минут. Отличный триал на 21 день!»",
-        r2_author: "UX-стратег",
-        r3_text: "«Структурированные PDF-отчеты экономят часы при согласовании задач с разработчиками.»",
-        r3_author: "Консультант по инновациям",
-        final_pill: "Быстрая загрузка",
-        final_title: "Попробуйте бесплатно прямо сейчас",
-        final_desc: "Пользуйтесь всеми возможностями 21 день бесплатно. Бессрочный доступ навсегда всего за <strong>3,99 €</strong>.",
-        final_sub: "Android 10+ • Без сторонней рекламы",
-        footer_by: "Разработка и поддержка:",
-        f_privacy: "Политика конфиденциальности",
-        f_terms: "Условия использования",
-        f_contact: "Контакты и поддержка",
-        f_rights: "© 2026 Lluvia de Ideas IA. Все права защищены."
-      },
-      hi: {
-        app_title: "एआई विचार मंथन स्टूडियो",
-        nav_screens: "स्क्रीनशॉट",
-        nav_what_is: "ब्रेनस्टॉर्मिंग क्या है?",
-        nav_features: "विशेषताएं",
-        nav_use_cases: "उपयोग",
-        nav_blog: "ब्लॉग",
-        cta_header: "मुफ़्त में शुरू करें",
-        hero_pill: "100% मुफ़्त डाउनलोड • 21 दिन का पूर्ण परीक्षण",
-        hero_title_1: "अपनी रचनात्मकता को बढ़ाएं",
-        hero_title_2: "हाइब्रिड एआई और स्थानीय RAG के साथ",
-        hero_desc: "प्रोजेक्ट बनाएं, पीडीएफ और नोट्स जोड़ें और एंड्रॉइड पर नए और बेहतरीन विचार उत्पन्न करें। कोई मासिक शुल्क नहीं।",
-        gp_label: "Google Play पर मुफ़्त उपलब्ध",
-        hero_explore: "स्क्रीन देखें",
-        badge_trial: "21 दिनों के लिए 0 €",
-        badge_local: "100% सुरक्षित स्थानीय डेटा",
-        badge_lifetime: "लाइफटाइम लाइसेंस मात्र 3.99 € में",
-        badge_disruption: "सक्रिय रचनात्मक तकनीक",
-        badge_bank: "आइडिया बैंक",
-        badge_maturity: "वानस्पतिक परिपक्वता",
-        screens_tag: "एंड्रॉइड नेटिव इंटरफ़ेस",
-        screens_title: "सहज और शक्तिशाली उत्पादकता के लिए डिज़ाइन किया गया",
-        screens_desc: "शुरुआत से ही आपके नवाचार को गति देने के लिए बनाया गया इंटरफ़ेस।",
-        screen1_title: "विचार स्टूडियो",
-        screen1_desc: "रचनात्मक तकनीकों के साथ विचारों का विस्तार और चयन।",
-        screen2_title: "प्रोजेक्ट्स और स्थानीय RAG",
-        screen2_desc: "स्थानीय SQLite डेटाबेस के साथ सुरक्षित पीडीएफ संदर्भ।",
-        screen3_title: "स्वीकृत आइडिया बैंक",
-        screen3_desc: "बीज 🌱, अंकुर 🌿 और वृक्ष 🌳 स्तर पर वर्गीकरण।",
-        screen4_title: "प्रदर्शन विश्लेषण",
-        screen4_desc: "रचनात्मक गति और उपयोग का रीयल-टाइम डेटा।",
-        edu_tag: "नवाचार पद्धति",
-        edu_title: "ब्रेनस्टॉर्मिंग क्या है और यह क्यों आवश्यक है?",
-        edu_p1: "<strong>ब्रेनस्टॉर्मिंग</strong> एक ऐसी तकनीक है जो नए विचारों को उत्पन्न करने और उनके मूल्यांकन को अलग रखकर बेहतरीन समाधान खोजने में मदद करती है।",
-        edu_p2: "इसका मुख्य उद्देश्य <strong>पारंपरिक सोच के अवरोधों को तोड़ना</strong> और नए दृष्टिकोण खोजना है।",
-        edu_step1: "<strong>डाइवर्जेंट चरण:</strong> बिना किसी रोक-टोक के बड़ी संख्या में नए विचार बनाना।",
-        edu_step2: "<strong>कन्वर्जेंट चरण:</strong> सबसे व्यावहारिक विचारों का चयन और कार्य योजना तैयार करना।",
-        seed_title: "बीज (Seed)",
-        seed_desc: "48 घंटों से कम समय में त्वरित कार्यान्वयन, न्यूनतम लागत।",
-        sprout_title: "अंकुर (Sprout)",
-        sprout_desc: "1 से 2 सप्ताह में प्रोटोटाइप सत्यापन और मध्यम नवाचार।",
-        tree_title: "वृक्ष (Tree)",
-        tree_desc: "10x व्यावसायिक परिवर्तन और दीर्घकालिक रणनीतिक विकास।",
-        feat_tag: "लोकल-फर्स्ट आर्किटेक्चर",
-        feat_title: "हाइब्रिड एआई के साथ पूर्ण गोपनीयता",
-        feat_sub: "ऑफ़लाइन मॉडल और Google Gemini Cloud के बीच आसानी से स्विच करें।",
-        f1_title: "सटीक स्थानीय RAG",
-        f1_desc: "<strong>PDF और नोट्स</strong> जोड़ें। बाहरी सर्वर के बिना स्थानीय रूप से 384-आयामी वैक्टर बनाएं।",
-        f1_sub: "पदानुक्रमित कोसाइन समानता खोज",
-        f2_title: "ऑन-डिवाइस मॉडल और Gemini Nano",
-        f2_desc: "Vulkan/MediaPipe के साथ 100% ऑफ़लाइन कार्य और तेज़ गति।",
-        f2_sub: "गोपनीय डेटा पूरी तरह सुरक्षित",
-        f3_title: ".lluvia प्रारूप और निर्यात",
-        f3_desc: "प्रोजेक्ट्स को `.lluvia` JSON, सुंदर PDF रिपोर्ट या Markdown में साझा करें।",
-        f3_sub: "बिना डुप्लिकेट के स्मार्ट आयात",
-        cases_tag: "व्यावहारिक उपयोग",
-        cases_title: "यह ऐप किसके लिए उपयोगी है?",
-        c1_title: "संस्थापक और उद्यमी",
-        c1_desc: "व्यावसायिक रणनीतियों की पुष्टि और निवेशकों के लिए तैयारी।",
-        c2_title: "मार्केटिंग विशेषज्ञ",
-        c2_desc: "वायरल रणनीतियां और विज्ञापन योजनाएं तैयार करना।",
-        c3_title: "उत्पाद और UX डिज़ाइनर",
-        c3_desc: "उपयोगकर्ता अनुभव को बेहतर बनाना और बाधाओं को हटाना।",
-        c4_title: "डेवलपर्स और इंजीनियर्स",
-        c4_desc: "सॉफ्टवेयर आर्किटेक्चर का अनुकूलन और स्वचालन।",
-        blog_tag: "संसाधन और गाइड",
-        blog_title: "रचनात्मकता बढ़ाने वाले लेख",
-        blog_sub: "विचार मंथन सत्रों के लिए उपयोगी मार्गदर्शिकाएं।",
-        b1_tag: "सोचने की तकनीक",
-        b1_title: "SCAMPER मॉडल से 15 मिनट में जटिल समस्याओं को कैसे हल करें",
-        b1_desc: "नए दृष्टिकोण खोजने के लिए तत्वों को बदलने और संयोजित करने की विधि।",
-        b1_time: "4 मिनट पढ़ें",
-        b2_tag: "स्थानीय एआई",
-        b2_title: "Edge RAG आपके व्यावसायिक डेटा को कैसे सुरक्षित रखता है",
-        b2_desc: "क्लाउड पर भेजे बिना डिवाइस मेमोरी में गोपनीय फाइलों को प्रोसेस करने के फायदे।",
-        b2_time: "6 मिनट पढ़ें",
-        b3_tag: "नवाचार प्रबंधन",
-        b3_title: "वानस्पतिक परिपक्वता: त्वरित परिणामों और दीर्घकालिक विज़न का संतुलन",
-        b3_desc: "रणनीतिक परिवर्तन के लिए विचारों का सही प्राथमिकता निर्धारण।",
-        b3_time: "5 मिनट पढ़ें",
-        rev_tag: "समीक्षाएं",
-        rev_title: "विशेषज्ञों की राय",
-        r1_text: "“फ़ोन पर ऑफ़लाइन RAG के साथ प्रतिस्पर्धी पीडीएफ का विश्लेषण करना बेहद सुविधाजनक है।”",
-        r1_author: "फ़िनटेक स्टार्टअप प्रोडक्ट लीड",
-        r2_text: "“रचनात्मक तकनीकों ने मेरी सोच के अवरोध को मिनटों में दूर कर दिया। बेहतरीन 21-दिन का परीक्षण।”",
-        r2_author: "UX रणनीतिकार",
-        r3_text: "“परिपक्वता के आधार पर पीडीएफ रिपोर्ट तैयार होने से टीम मीटिंग में बहुत समय बचता है।”",
-        r3_author: "डिजिटल इनोवेशन सलाहकार",
-        final_pill: "सुरक्षित डाउनलोड",
-        final_title: "आज ही 21 दिनों के लिए मुफ़्त शुरू करें",
-        final_desc: "21 दिनों तक सभी सुविधाओं का मुफ़्त आनंद लें। केवल <strong>3.99 €</strong> में आजीवन लाइसेंस अनलॉक करें।",
-        final_sub: "Android 10+ समर्थित • कोई तृतीय-पक्ष विज्ञापन नहीं",
-        footer_by: "विकास और रखरखाव:",
-        f_privacy: "गोपनीयता नीति",
-        f_terms: "सेवा की शर्तें",
-        f_contact: "संपर्क और सहायता",
-        f_rights: "© 2026 Lluvia de Ideas IA. सर्वाधिकार सुरक्षित।"
       }
     };
 
+    // Función de cambio reactivo de idioma con guardado
     function changeLanguage(lang) {
-      const selected = translations[lang] || translations['es'];
+      const selected = translations[lang] || translations['en'] || translations['es'];
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (selected[key]) {
@@ -1724,16 +1328,24 @@
       localStorage.setItem('pref_lang', lang);
     }
 
-    // Cargar idioma guardado o por defecto del navegador
+    // Auto-detección del idioma del navegador del usuario
     document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('pref_lang') || navigator.language.slice(0, 2);
+      const browserLang = (navigator.language || navigator.userLanguage || 'es').slice(0, 2).toLowerCase();
+      const savedLang = localStorage.getItem('pref_lang') || browserLang;
       const selector = document.getElementById('lang-selector');
-      if (translations[savedLang]) {
-        selector.value = savedLang;
-        changeLanguage(savedLang);
-      } else {
-        changeLanguage('es');
+
+      // Comprobar si el idioma está en la lista de opciones del selector
+      let optionExists = false;
+      for (let i = 0; i < selector.options.length; i++) {
+        if (selector.options[i].value === savedLang) {
+          optionExists = true;
+          break;
+        }
       }
+
+      const targetLang = optionExists ? savedLang : 'es';
+      selector.value = targetLang;
+      changeLanguage(targetLang);
     });
   </script>
 
