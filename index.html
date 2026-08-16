@@ -618,7 +618,7 @@
     </div>
   </section>
 
-  <!-- BLOG EXTENDIDO CON ARTÍCULOS COMPLETOS -->
+  <!-- BLOG EXTENDIDO (ENRUTAMIENTO SPA VIA URL HASH) -->
   <section id="articulos" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -638,7 +638,7 @@
     </div>
   </section>
 
-  <!-- MODAL DE LECTURA COMPLETA -->
+  <!-- MODAL DE LECTURA COMPLETA DE ARTÍCULO -->
   <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
     <div class="bg-white w-full max-w-3xl max-h-[90vh] rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="article-modal-content">
       
@@ -847,7 +847,7 @@
         art3: {
           category: "Gestión de Innovación",
           badgeColor: "text-amber-600 bg-amber-50 border-amber-100",
-          readTime: "Lectura de 6 min",
+          readTime: "6 min read",
           title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
           desc: "Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.",
           body: `
@@ -870,7 +870,7 @@
         art4: {
           category: "Lateralidad Creativa",
           badgeColor: "text-purple-600 bg-purple-50 border-purple-100",
-          readTime: "Lectura de 6 min",
+          readTime: "6 min read",
           title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
           desc: "Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.",
           body: `
@@ -893,7 +893,7 @@
         art5: {
           category: "Pensamiento Analógico",
           badgeColor: "text-sky-600 bg-sky-50 border-sky-100",
-          readTime: "Lectura de 7 min",
+          readTime: "7 min read",
           title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
           desc: "Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.",
           body: `
@@ -922,7 +922,7 @@
         art6: {
           category: "Síntesis Conceptual",
           badgeColor: "text-rose-600 bg-rose-50 border-rose-100",
-          readTime: "Lectura de 5 min",
+          readTime: "5 min read",
           title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
           desc: "Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.",
           body: `
@@ -1391,7 +1391,6 @@
 
       renderArticlesGrid();
 
-      // Si el modal está abierto, refrescar el contenido del artículo en el nuevo idioma
       if (!document.getElementById('article-modal').classList.contains('hidden')) {
         const hash = window.location.hash;
         if (hash.startsWith('#articulo=')) {
