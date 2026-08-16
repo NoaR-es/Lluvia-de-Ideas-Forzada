@@ -6,15 +6,12 @@
   <title>Lluvia de Ideas IA | Aceleración Cognitiva y RAG Local</title>
   <meta name="description" content="Desbloquea tu potencial creativo con Lluvia de Ideas IA. Pensamiento divergente, modelos On-Device, RAG local y clasificación botánica para Android.">
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- AOS (Animate On Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <script>
@@ -52,34 +49,19 @@
       box-shadow: 0 25px 60px -15px rgba(79, 70, 229, 0.2), 0 10px 25px -5px rgba(0, 0, 0, 0.08);
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(226, 232, 240, 0.9);
     }
     .article-modal-active {
       overflow: hidden;
     }
-    .custom-select-dropdown {
-      max-height: 380px;
-      scrollbar-width: thin;
-      scrollbar-color: #cbd5e1 #f8fafc;
-    }
-    .custom-select-dropdown::-webkit-scrollbar {
-      width: 6px;
-    }
-    .custom-select-dropdown::-webkit-scrollbar-track {
-      background: #f8fafc;
-    }
-    .custom-select-dropdown::-webkit-scrollbar-thumb {
-      background-color: #cbd5e1;
-      border-radius: 6px;
-    }
   </style>
 </head>
 <body class="bg-mesh text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
 
-  <!-- ==================== NAVEGACIÓN ==================== -->
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80 transition-all duration-300">
+  <!-- NAVEGACIÓN -->
+  <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20">
@@ -100,107 +82,21 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <!-- Selector Multilenguaje con Banderas -->
+        <!-- SELECTOR DE IDIOMA (ESPAÑOL / INGLÉS) -->
         <div class="relative inline-block text-left" id="custom-lang-container">
-          <button type="button" onclick="toggleLanguageDropdown()" id="lang-btn" class="inline-flex items-center gap-2.5 bg-white border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3.5 rounded-xl shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+          <button type="button" onclick="toggleLanguageDropdown()" id="lang-btn" class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-xl shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
             <span id="selected-flag" class="text-base leading-none">🇪🇸</span>
             <span id="selected-lang-name" class="tracking-wide">Español</span>
-            <svg class="w-3.5 h-3.5 text-slate-400 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
           </button>
 
-          <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-64 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 overflow-hidden custom-select-dropdown divide-y divide-slate-100">
-            <div class="py-2">
-              <div class="px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400 bg-slate-50/60">Europa</div>
-              <div class="grid grid-cols-1 gap-0.5 px-1.5 pt-1">
-                <button onclick="selectLanguage('es', '🇪🇸', 'Español')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇪🇸</span> <span>Español</span>
-                </button>
-                <button onclick="selectLanguage('en', '🇬🇧', 'English')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇬🇧</span> <span>English</span>
-                </button>
-                <button onclick="selectLanguage('de', '🇩🇪', 'Deutsch')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇩🇪</span> <span>Deutsch</span>
-                </button>
-                <button onclick="selectLanguage('fr', '🇫🇷', 'Français')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇫🇷</span> <span>Français</span>
-                </button>
-                <button onclick="selectLanguage('it', '🇮🇹', 'Italiano')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇮🇹</span> <span>Italiano</span>
-                </button>
-                <button onclick="selectLanguage('pt', '🇵🇹', 'Português')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇵🇹</span> <span>Português</span>
-                </button>
-                <button onclick="selectLanguage('nl', '🇳🇱', 'Nederlands')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇳🇱</span> <span>Nederlands</span>
-                </button>
-                <button onclick="selectLanguage('pl', '🇵🇱', 'Polski')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇵🇱</span> <span>Polski</span>
-                </button>
-                <button onclick="selectLanguage('sv', '🇸🇪', 'Svenska')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇸🇪</span> <span>Svenska</span>
-                </button>
-                <button onclick="selectLanguage('da', '🇩🇰', 'Dansk')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇩🇰</span> <span>Dansk</span>
-                </button>
-                <button onclick="selectLanguage('fi', '🇫🇮', 'Suomi')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇫🇮</span> <span>Suomi</span>
-                </button>
-                <button onclick="selectLanguage('no', '🇳🇴', 'Norsk')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇳🇴</span> <span>Norsk</span>
-                </button>
-                <button onclick="selectLanguage('el', '🇬🇷', 'Ελληνικά')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇬🇷</span> <span>Ελληνικά</span>
-                </button>
-                <button onclick="selectLanguage('cs', '🇨🇿', 'Čeština')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇨🇿</span> <span>Čeština</span>
-                </button>
-                <button onclick="selectLanguage('ro', '🇷🇴', 'Română')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇷🇴</span> <span>Română</span>
-                </button>
-                <button onclick="selectLanguage('hu', '🇭🇺', 'Magyar')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇭🇺</span> <span>Magyar</span>
-                </button>
-                <button onclick="selectLanguage('bg', '🇧🇬', 'Български')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇧🇬</span> <span>Български</span>
-                </button>
-                <button onclick="selectLanguage('uk', '🇺🇦', 'Українська')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇺🇦</span> <span>Українська</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="py-2 bg-slate-50/30">
-              <div class="px-3.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400 bg-slate-50/60">Asia & Global</div>
-              <div class="grid grid-cols-1 gap-0.5 px-1.5 pt-1">
-                <button onclick="selectLanguage('ja', '🇯🇵', '日本語')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇯🇵</span> <span>日本語</span>
-                </button>
-                <button onclick="selectLanguage('zh', '🇨🇳', '简体中文')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇨🇳</span> <span>简体中文</span>
-                </button>
-                <button onclick="selectLanguage('ko', '🇰🇷', '한국어')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇰🇷</span> <span>한국어</span>
-                </button>
-                <button onclick="selectLanguage('ru', '🇷🇺', 'Русский')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇷🇺</span> <span>Русский</span>
-                </button>
-                <button onclick="selectLanguage('hi', '🇮🇳', 'हिन्दी')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇮🇳</span> <span>हिन्दी</span>
-                </button>
-                <button onclick="selectLanguage('vi', '🇻🇳', 'Tiếng Việt')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇻🇳</span> <span>Tiếng Việt</span>
-                </button>
-                <button onclick="selectLanguage('th', '🇹🇭', 'ไทย')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇹🇭</span> <span>ไทย</span>
-                </button>
-                <button onclick="selectLanguage('id', '🇮🇩', 'Bahasa Indonesia')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇮🇩</span> <span>Bahasa Indonesia</span>
-                </button>
-                <button onclick="selectLanguage('ar', '🇸🇦', 'العربية')" class="w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
-                  <span class="text-base">🇸🇦</span> <span>العربية</span>
-                </button>
-              </div>
-            </div>
+          <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 rounded-2xl bg-white border border-slate-200 shadow-2xl z-50 overflow-hidden py-1">
+            <button onclick="selectLanguage('es')" class="w-full flex items-center gap-3 px-3 py-2 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
+              <span class="text-base">🇪🇸</span> <span>Español</span>
+            </button>
+            <button onclick="selectLanguage('en')" class="w-full flex items-center gap-3 px-3 py-2 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-brand-600 transition text-left">
+              <span class="text-base">🇬🇧</span> <span>English</span>
+            </button>
           </div>
         </div>
 
@@ -212,12 +108,11 @@
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION ==================== -->
+  <!-- HERO SECTION -->
   <section class="relative pt-12 pb-20 overflow-hidden" id="descarga-gratis">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Columna de Texto -->
         <div class="lg:col-span-7 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6 shadow-sm">
             <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -225,14 +120,13 @@
           </div>
 
           <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-            <span data-i18n="hero_title_1">Multiplica tu Creatividad con</span> <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent" data-i18n="hero_title_2">IA Híbrida y RAG Local</span>[cite: 1]
+            <span data-i18n="hero_title_1">Multiplica tu Creatividad con</span> <span class="bg-gradient-to-r from-brand-600 to-brand-accent bg-clip-text text-transparent" data-i18n="hero_title_2">IA Híbrida y RAG Local</span>
           </h1>
 
           <p class="mt-6 text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
-            Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android[cite: 1]. <strong>Sin costes iniciales ni suscripciones mensuales.</strong>
+            Estructura proyectos, conecta documentos (PDF, notas, texto) y desata propuestas disruptivas con aceleración cognitiva en tu Android. Sin costes iniciales ni suscripciones mensuales.
           </p>
 
-          <!-- Botones de Acción -->
           <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-extrabold hover:bg-brand-600 transition-all shadow-xl shadow-slate-900/10 transform hover:-translate-y-0.5">
               <svg class="w-7 h-7 shrink-0" viewBox="0 0 512 512">
@@ -253,15 +147,13 @@
             </a>
           </div>
 
-          <!-- Sellos de Confianza -->
           <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-500">
             <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_trial">0 € durante 21 días</span></span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_local">Datos 100% en tu dispositivo</span>[cite: 1]</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_local">Datos 100% en tu dispositivo</span></span>
             <span class="flex items-center gap-1.5"><span class="text-emerald-500 text-base">✓</span> <span data-i18n="badge_lifetime">Licencia definitiva por 3,99 €</span></span>
           </div>
         </div>
 
-        <!-- Columna de Mockup Central -->
         <div class="lg:col-span-5 flex justify-center relative" data-aos="zoom-in" data-aos-duration="1000">
           <div class="relative w-72 sm:w-80">
             <div class="relative z-10 bg-slate-900 p-3 rounded-[44px] phone-mockup-shadow border-4 border-slate-800">
@@ -358,16 +250,16 @@
             <div class="absolute -left-6 top-16 z-20 glass-card p-3 rounded-2xl shadow-xl flex items-center gap-3 border border-indigo-100" data-aos="fade-right" data-aos-delay="400">
               <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">⚡</div>
               <div>
-                <div class="text-xs font-bold text-slate-900">SCAMPER & 10x[cite: 1]</div>
-                <div class="text-[10px] text-slate-500" data-i18n="badge_disruption">Disrupción cognitiva activa[cite: 1]</div>
+                <div class="text-xs font-bold text-slate-900">SCAMPER & 10x</div>
+                <div class="text-[10px] text-slate-500" data-i18n="badge_disruption">Disrupción cognitiva activa</div>
               </div>
             </div>
 
             <div class="absolute -right-6 bottom-16 z-20 glass-card p-3 rounded-2xl shadow-xl flex items-center gap-3 border border-emerald-100" data-aos="fade-left" data-aos-delay="600">
               <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl font-bold">🌱</div>
               <div>
-                <div class="text-xs font-bold text-slate-900" data-i18n="badge_bank">Banco de Ideas[cite: 1]</div>
-                <div class="text-[10px] text-emerald-600 font-semibold" data-i18n="badge_maturity">Madurez Botánica[cite: 1]</div>
+                <div class="text-xs font-bold text-slate-900" data-i18n="badge_bank">Banco de Ideas</div>
+                <div class="text-[10px] text-emerald-600 font-semibold" data-i18n="badge_maturity">Madurez Botánica</div>
               </div>
             </div>
           </div>
@@ -377,18 +269,17 @@
     </div>
   </section>
 
-  <!-- ==================== GALERÍA DE CAPTURAS VECTORIALES NATIVAS ==================== -->
+  <!-- GALERÍA DE CAPTURAS VECTORIALES -->
   <section id="capturas" class="py-20 bg-white border-y border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
         <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="screens_tag">Interfaz Nativa Android</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="screens_title">Diseñada para una Productividad Fluida y Potente</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="screens_desc">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo[cite: 1].</p>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="screens_desc">Recorre la experiencia visual creada para acelerar tus proyectos desde el primer segundo.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        
         <!-- Screenshot 1 -->
         <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
           <div class="bg-slate-900 p-2.5 rounded-[36px] phone-mockup-shadow border-2 border-slate-800 transition duration-300 hover:-translate-y-2 w-64">
@@ -429,7 +320,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen1_title">Estudio de Ideación</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen1_desc">Pensamiento divergente y convergente con técnicas forzadas[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen1_desc">Pensamiento divergente y convergente con técnicas forzadas.</p>
         </div>
 
         <!-- Screenshot 2 -->
@@ -464,7 +355,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen2_title">Proyectos y RAG Local</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen2_desc">Carga PDFs y notas de contexto con persistencia Room SQLite[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen2_desc">Carga PDFs y notas de contexto con persistencia Room SQLite.</p>
         </div>
 
         <!-- Screenshot 3 -->
@@ -519,7 +410,7 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen3_title">Banco de Ideas Germinadas</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen3_desc">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen3_desc">Filtrado por Semillas 🌱, Brotes 🌿 y Árboles 🌳.</p>
         </div>
 
         <!-- Screenshot 4 -->
@@ -569,15 +460,14 @@
             </div>
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-5" data-i18n="screen4_title">Métricas de Rendimiento</h3>
-          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen4_desc">Monitoreo de ritmo creativo, balance cognitivo y uso[cite: 1].</p>
+          <p class="text-xs text-slate-500 text-center mt-1 px-4" data-i18n="screen4_desc">Monitoreo de ritmo creativo, balance cognitivo y uso.</p>
         </div>
 
       </div>
-
     </div>
   </section>
 
-  <!-- ==================== BLOQUE EDUCATIVO ==================== -->
+  <!-- BLOQUE EDUCATIVO -->
   <section id="que-es" class="py-20 bg-slate-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
@@ -595,11 +485,11 @@
           <div class="mt-6 space-y-3">
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step1"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step1"><strong>Fase Divergente:</strong> Exploración sin restricciones donde se busca volumen y variedad de enfoques.</p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-6 h-6 rounded-full bg-indigo-100 text-brand-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step2"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables[cite: 1].</p>
+              <p class="text-sm text-slate-700 font-medium" data-i18n="edu_step2"><strong>Fase Convergente:</strong> Selección rigurosa, refinamiento y definición de tareas ejecutables.</p>
             </div>
           </div>
         </div>
@@ -607,18 +497,18 @@
         <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-left">
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌱</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="seed_title">Semilla (Seed)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="seed_desc">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="seed_title">Semilla (Seed)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="seed_desc">Implementación rápida en menos de 48h, bajo coste y mínimo riesgo operativo.</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
             <div class="text-3xl mb-2">🌿</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="sprout_title">Brote (Sprout)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="sprout_desc">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="sprout_title">Brote (Sprout)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="sprout_desc">Innovación modular y prototipado de 1 a 2 semanas con sinergia de procesos.</p>
           </div>
           <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition sm:col-span-2">
             <div class="text-3xl mb-2">🌳</div>
-            <h3 class="text-base font-bold text-slate-900" data-i18n="tree_title">Árbol (Tree)[cite: 1]</h3>
-            <p class="text-xs text-slate-500 mt-1" data-i18n="tree_desc">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico[cite: 1].</p>
+            <h3 class="text-base font-bold text-slate-900" data-i18n="tree_title">Árbol (Tree)</h3>
+            <p class="text-xs text-slate-500 mt-1" data-i18n="tree_desc">Transformación estructural 10x y reinvención total del modelo de negocio con alto impacto estratégico.</p>
           </div>
         </div>
 
@@ -626,13 +516,13 @@
     </div>
   </section>
 
-  <!-- ==================== CARACTERÍSTICAS ==================== -->
+  <!-- CARACTERÍSTICAS TÉCNICAS -->
   <section id="funciones" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
         <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full" data-i18n="feat_tag">Arquitectura Local-First</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="feat_title">Privacidad Absoluta con Inteligencia Híbrida</h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="feat_sub">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini[cite: 1].</p>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base" data-i18n="feat_sub">Elige entre modelos locales en el chip o conexión con la API oficial de Google Gemini.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
@@ -641,13 +531,13 @@
             <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xl mb-6 border border-brand-100">
               📂
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f1_title">RAG Local Determinista[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f1_title">RAG Local Determinista</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f1_desc">
-              Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico[cite: 1]. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono[cite: 1].
+              Adjunta documentos en <strong>PDF, TXT o texto pegado</strong> tanto a nivel de proyecto como de tema específico. Genera vectores de 384 dimensiones en tu base de datos SQLite sin salir de tu teléfono.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-brand-600" data-i18n="f1_sub">
-            Búsqueda por similitud coseno jerárquica[cite: 1]
+            Búsqueda por similitud coseno jerárquica
           </div>
         </div>
 
@@ -656,9 +546,9 @@
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xl mb-6 border border-emerald-100">
               🛡️
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f2_title">Modelos On-Device & Gemini Nano[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f2_title">Modelos On-Device & Gemini Nano</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f2_desc">
-              Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android[cite: 1].
+              Inferencia 100% offline mediante aceleración Vulkan/MediaPipe con modelos adaptados de 0.2 GB a 32 GB, o ejecución nativa con Gemini Nano en el hardware Android.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-emerald-600" data-i18n="f2_sub">
@@ -671,20 +561,20 @@
             <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xl mb-6 border border-indigo-100">
               🔄
             </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f3_title">Ecosistema .lluvia y Exportación[cite: 1]</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="f3_title">Ecosistema .lluvia y Exportación</h3>
             <p class="text-sm text-slate-600 leading-relaxed" data-i18n="f3_desc">
-              Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp[cite: 1].
+              Comparte proyectos y desafíos mediante paquetes nativos `.lluvia` (JSON), informes ejecutivos vectoriales en PDF A4 o resúmenes directos para Notion y WhatsApp.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-indigo-600" data-i18n="f3_sub">
-            Importación y fusión sin duplicados[cite: 1]
+            Importación y fusión sin duplicados
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== CASOS DE USO ==================== -->
+  <!-- CASOS DE USO -->
   <section id="casos-uso" class="py-20 bg-slate-50 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
@@ -697,7 +587,7 @@
           <div class="text-3xl mb-3">🚀</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c1_title">Fundadores y Emprendedores</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c1_desc">
-            Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC)[cite: 1].
+            Explora modelos de negocio viables, pivota propuestas de valor y simula el criterio de un inversor con el agente Victoria (VC).
           </p>
         </div>
 
@@ -705,7 +595,7 @@
           <div class="text-3xl mb-3">📈</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c2_title">Especialistas en Marketing</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c2_desc">
-            Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker)[cite: 1].
+            Encuentra bucles virales, ángulos de comunicación y tácticas de embudo AARRR con Elena (Growth Hacker).
           </p>
         </div>
 
@@ -713,7 +603,7 @@
           <div class="text-3xl mb-3">🎨</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c3_title">Diseñadores de Producto</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c3_desc">
-            Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX)[cite: 1].
+            Elimina puntos de fricción en la experiencia de usuario y formula flujos centrados en la empatía con Alex (UX).
           </p>
         </div>
 
@@ -721,14 +611,14 @@
           <div class="text-3xl mb-3">💻</div>
           <h3 class="text-base font-bold text-slate-900 mb-2" data-i18n="c4_title">Desarrolladores e Ingenieros</h3>
           <p class="text-xs text-slate-600 leading-relaxed" data-i18n="c4_desc">
-            Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech[cite: 1].
+            Resuelve desafíos de arquitectura de software y automatización técnica de alto impacto con Dr. Tech.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== BLOG EXTENDIDO (ENRUTAMIENTO SPA VIA URL HASH) ==================== -->
+  <!-- BLOG EXTENDIDO CON ARTÍCULOS COMPLETOS -->
   <section id="articulos" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -740,127 +630,18 @@
         <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md" data-i18n="blog_sub">Haz clic en cualquier artículo para leer el análisis metodológico y técnico completo.</p>
       </div>
 
-      <!-- Grid de Artículos Extensos -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Artículo 1: SCAMPER -->
-        <article onclick="openArticleModal('art1')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-brand-600" data-i18n="b1_tag">Técnicas de Pensamiento</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b1_time">Lectura de 6 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-brand-600 transition" data-i18n="b1_title">Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b1_desc">
-              Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-brand-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Metodología</span>
-          </div>
-        </article>
-
-        <!-- Artículo 2: RAG Local -->
-        <article onclick="openArticleModal('art2')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-emerald-600" data-i18n="b2_tag">Inteligencia Artificial Local</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b2_time">Lectura de 8 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-emerald-600 transition" data-i18n="b2_title">RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b2_desc">
-              Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-emerald-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Privacidad & Tech</span>
-          </div>
-        </article>
-
-        <!-- Artículo 3: Madurez Botánica -->
-        <article onclick="openArticleModal('art3')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="300">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-amber-600" data-i18n="b3_tag">Gestión de Innovación</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b3_time">Lectura de 6 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-amber-600 transition" data-i18n="b3_title">La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b3_desc">
-              Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles[cite: 1].
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-amber-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Estrategia</span>
-          </div>
-        </article>
-
-        <!-- Artículo 4: Inversión -->
-        <article onclick="openArticleModal('art4')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-purple-600" data-i18n="b4_tag">Lateralidad Creativa</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b4_time">Lectura de 6 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-purple-600 transition" data-i18n="b4_title">La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b4_desc">
-              Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-purple-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Disrupción</span>
-          </div>
-        </article>
-
-        <!-- Artículo 5: Biomímesis -->
-        <article onclick="openArticleModal('art5')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-sky-600" data-i18n="b5_tag">Pensamiento Analógico</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b5_time">Lectura de 7 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-sky-600 transition" data-i18n="b5_title">Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b5_desc">
-              Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-sky-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Innovación</span>
-          </div>
-        </article>
-
-        <!-- Artículo 6: Polinización Cruzada -->
-        <article onclick="openArticleModal('art6')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="300">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-rose-600" data-i18n="b6_tag">Síntesis Conceptual</span>
-              <span class="text-xs text-slate-400 font-semibold" data-i18n="b6_time">Lectura de 5 min</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mt-3 mb-3 group-hover:text-rose-600 transition" data-i18n="b6_title">Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas</h3>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="b6_desc">
-              Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-rose-600">
-            <span data-i18n="read_more_btn">Leer artículo completo →</span>
-            <span class="text-slate-400 font-normal">Estrategia 10x</span>
-          </div>
-        </article>
-
+      <!-- GRID DE ARTÍCULOS -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-container">
+        <!-- Renderizado dinámico e instantáneo desde JavaScript -->
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== MODAL DE LECTURA COMPLETA DE ARTÍCULO ==================== -->
+  <!-- MODAL DE LECTURA COMPLETA -->
   <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
     <div class="bg-white w-full max-w-3xl max-h-[90vh] rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="article-modal-content">
       
-      <!-- Modal Header -->
       <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
         <div>
           <span id="modal-category" class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100"></span>
@@ -871,24 +652,22 @@
         </button>
       </div>
 
-      <!-- Modal Body (Contenido Completo Enriquecido) -->
       <div class="p-6 sm:p-10 overflow-y-auto space-y-6 text-slate-700 leading-relaxed text-sm sm:text-base">
         <h2 id="modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight"></h2>
         <div id="modal-body" class="space-y-4"></div>
       </div>
 
-      <!-- Modal Footer -->
       <div class="p-6 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span class="text-xs text-slate-500 font-medium">¿Listo para aplicar esta metodología en tu móvil?</span>
+        <span class="text-xs text-slate-500 font-medium" data-i18n="modal_footer_note">¿Listo para aplicar esta metodología en tu móvil?</span>
         <a href="#descarga-gratis" onclick="closeArticleModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md">
-          <span>Comenzar Prueba Gratuita de 21 Días</span>
+          <span data-i18n="modal_footer_btn">Comenzar Prueba Gratuita de 21 Días</span>
         </a>
       </div>
 
     </div>
   </div>
 
-  <!-- ==================== OPINIONES DE USUARIOS ==================== -->
+  <!-- OPINIONES DE USUARIOS -->
   <section class="py-20 bg-slate-50 border-y border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
@@ -900,7 +679,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r1_text">
-            "La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil."[cite: 1]
+            "La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Marcos T.</div>
@@ -911,7 +690,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r2_text">
-            "Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto."[cite: 1]
+            "Excelente interfaz. La técnica de disrupción forzada me sacó en cinco minutos de un bloqueo que llevaba arrastrando varios días. Poder probarla gratis 21 días demuestra la confianza en el producto."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Elena V.</div>
@@ -922,7 +701,7 @@
         <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="300">
           <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
           <p class="text-sm text-slate-600 italic mb-6" data-i18n="r3_text">
-            "La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo."[cite: 1]
+            "La exportación en PDF con la clasificación de Semillas y Brotes nos ahorra horas al presentar las conclusiones de la sesión al equipo de desarrollo."
           </p>
           <div>
             <div class="font-bold text-slate-900 text-sm">Sergio B.</div>
@@ -933,7 +712,7 @@
     </div>
   </section>
 
-  <!-- ==================== BANNER FINAL ==================== -->
+  <!-- BANNER FINAL -->
   <section class="py-20 bg-white">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
       <div class="p-10 sm:p-14 rounded-[36px] bg-gradient-to-tr from-brand-600 to-indigo-700 text-white shadow-2xl shadow-indigo-500/20 relative overflow-hidden">
@@ -945,7 +724,7 @@
           <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight" data-i18n="final_title">Comienza a usarla Gratis</h2>
           
           <p class="mt-4 text-indigo-100 text-base max-w-xl mx-auto" data-i18n="final_desc">
-            Disfruta de todas las funcionalidades durante 21 días sin limitaciones[cite: 1]. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.
+            Disfruta de todas las funcionalidades durante 21 días sin limitaciones. Si decides conservarla de forma indefinida, desbloquea la licencia de por vida por solo <strong>3,99 €</strong>.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -971,11 +750,11 @@
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <div class="text-white font-bold text-sm" data-i18n="app_title">Lluvia de Ideas IA[cite: 1]</div>
+        <div class="text-white font-bold text-sm" data-i18n="app_title">Lluvia de Ideas IA</div>
         <p class="mt-1 text-slate-400">
           <span data-i18n="footer_by">Desarrollado y mantenido por</span> <strong>Raúl Navas Montero (NoaR)</strong>.
         </p>
@@ -993,259 +772,332 @@
     </div>
   </footer>
 
-  <!-- ==================== DICCIONARIO I18N, BLOG EXTENDIDO & ENRUTAMIENTO SPA ==================== -->
+  <!-- SCRIPT COMPLETO: MOTOR DE ARTÍCULOS, I18N Y DEEP-LINKING HASH -->
   <script>
+    let currentLanguage = 'es';
+
     const languageMetadata = {
       es: { flag: '🇪🇸', name: 'Español' },
-      en: { flag: '🇬🇧', name: 'English' },
-      de: { flag: '🇩🇪', name: 'Deutsch' },
-      fr: { flag: '🇫🇷', name: 'Français' },
-      it: { flag: '🇮🇹', name: 'Italiano' },
-      pt: { flag: '🇵🇹', name: 'Português' },
-      nl: { flag: '🇳🇱', name: 'Nederlands' },
-      pl: { flag: '🇵🇱', name: 'Polski' },
-      sv: { flag: '🇸🇪', name: 'Svenska' },
-      da: { flag: '🇩🇰', name: 'Dansk' },
-      fi: { flag: '🇫🇮', name: 'Suomi' },
-      no: { flag: '🇳🇴', name: 'Norsk' },
-      el: { flag: '🇬🇷', name: 'Ελληνικά' },
-      cs: { flag: '🇨🇿', name: 'Čeština' },
-      ro: { flag: '🇷🇴', name: 'Română' },
-      hu: { flag: '🇭🇺', name: 'Magyar' },
-      bg: { flag: '🇧🇬', name: 'Български' },
-      uk: { flag: '🇺🇦', name: 'Українська' },
-      ja: { flag: '🇯🇵', name: '日本語' },
-      zh: { flag: '🇨🇳', name: '简体中文' },
-      ko: { flag: '🇰🇷', name: '한국어' },
-      ru: { flag: '🇷🇺', name: 'Русский' },
-      hi: { flag: '🇮🇳', name: 'हिन्दी' },
-      vi: { flag: '🇻🇳', name: 'Tiếng Việt' },
-      th: { flag: '🇹🇭', name: 'ไทย' },
-      id: { flag: '🇮🇩', name: 'Bahasa Indonesia' },
-      ar: { flag: '🇸🇦', name: 'العربية' }
+      en: { flag: '🇬🇧', name: 'English' }
     };
 
-    // Base de datos de Artículos Completos Extensos con alto valor metodológico
+    // BASE DE DATOS DE ARTÍCULOS (ESPAÑOL E INGLÉS)
     const blogDatabase = {
-      art1: {
-        category: "Técnicas de Pensamiento",
-        readTime: "Lectura de 6 min",
-        title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">Cuando un equipo de ingeniería o un creador se enfrenta a un callejón sin salida técnico, la inercia cognitiva tiende a sugerir variaciones mínimas de la misma solución fallida. El marco <strong>SCAMPER</strong> es un protocolo de disrupción activa diseñado para dinamitar el sesgo de confirmación obligando a evaluar el problema a través de 7 vectores no negociables.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">1. Sustituir (Substitute)</h4>
-          <p>¿Qué componente, flujo o premisa puede reemplazarse por completo? Si estás optimizando la latencia de una app, no intentes hacer más rápida una llamada cloud: sustituye el endpoint por inferencia en memoria en el chip del usuario.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">2. Combinar (Combine)</h4>
-          <p>¿Qué procesos independientes pueden fusionarse para crear una sinergia operativa? Al unir la ingesta de documentos PDF con la generación automática de prompts contextuales en un solo paso, eliminas pantallas intermedias y fricción de usuario.</p>
+      es: {
+        art1: {
+          category: "Técnicas de Pensamiento",
+          badgeColor: "text-brand-600 bg-brand-50 border-brand-100",
+          readTime: "Lectura de 6 min",
+          title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
+          desc: "Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Cuando un equipo de ingeniería o un creador se enfrenta a un callejón sin salida técnico, la inercia cognitiva tiende a sugerir variaciones mínimas de la misma solución fallida. El marco <strong>SCAMPER</strong> es un protocolo de disrupción activa diseñado para dinamitar el sesgo de confirmación obligando a evaluar el problema a través de 7 vectores no negociables.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">1. Sustituir (Substitute)</h4>
+            <p>¿Qué componente, flujo o premisa puede reemplazarse por completo? Si estás optimizando la latencia de una app, no intentes hacer más rápida una llamada cloud: sustituye el endpoint por inferencia en memoria en el chip del usuario.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">2. Combinar (Combine)</h4>
+            <p>¿Qué procesos independientes pueden fusionarse para crear una sinergia operativa? Al unir la ingesta de documentos PDF con la generación automática de prompts contextuales en un solo paso, eliminas pantallas intermedias y fricción de usuario.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">3. Adaptar (Adapt)</h4>
-          <p>¿Cómo han resuelto este mismo reto industrias no relacionadas? Si necesitas gestionar colas de tareas con recursos limitados, adapta los modelos de gestión logística de almacenamiento o las dinámicas de sincronización biológica de las neuronas.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">3. Adaptar (Adapt)</h4>
+            <p>¿Cómo han resuelto este mismo reto industrias no relacionadas? Si necesitas gestionar colas de tareas con recursos limitados, adapta los modelos de gestión logística de almacenamiento o las dinámicas de sincronización biológica de las neuronas.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">4. Modificar / Magnificar (Modify)</h4>
-          <p>¿Qué ocurre si multiplicas por 100 el volumen de datos o reduces a cero el tiempo de respuesta? Forzar los límites al extremo deja al descubierto los cuellos de botella estructurales de cualquier arquitectura.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">4. Modificar / Magnificar (Modify)</h4>
+            <p>¿Qué ocurre si multiplicas por 100 el volumen de datos o reduces a cero el tiempo de respuesta? Forzar los límites al extremo deja al descubierto los cuellos de botella estructurales de cualquier arquitectura.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">5. Proponer para otros usos (Put to another use)</h4>
-          <p>Un modelo diseñado para clasificar texto puede reutilizarse para evaluar la madurez de un plan de negocio o detectar inconsistencias lógicas en una propuesta comercial.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">5. Proponer para otros usos (Put to another use)</h4>
+            <p>Un modelo diseñado para clasificar texto puede reutilizarse para evaluar la madurez de un plan de negocio o detectar inconsistencias lógicas en una propuesta comercial.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">6. Eliminar (Eliminate)</h4>
-          <p>La sofisticación real consiste en restar. Identifica el paso que consideras "crítico" en tu flujo de trabajo y prueba a suprimirlo. Comprobarás que la mayoría de validaciones pueden automatizarse en segundo plano.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">6. Eliminar (Eliminate)</h4>
+            <p>La sofisticación real consiste en restar. Identifica el paso que consideras "crítico" en tu flujo de trabajo y prueba a suprimirlo. Comprobarás que la mayoría de validaciones pueden automatizarse en segundo plano.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">7. Reordenar / Invertir (Reverse)</h4>
-          <p>Cambia el orden secuencial. En lugar de formular la idea y luego buscar datos que la respalden, alimenta primero el contexto documental y deja que la IA extraiga los vacíos de oportunidad.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">7. Reordenar / Invertir (Reverse)</h4>
+            <p>Cambia el orden secuencial. En lugar de formular la idea y luego buscar datos que la respalden, alimenta primero el contexto documental y deja que la IA extraiga los vacíos de oportunidad.</p>
 
-          <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-200/80 text-indigo-950 mt-6 text-sm">
-            <strong>Aplicación en Sesión:</strong> Dedica exactamente 2 minutos a cada una de las 7 fases. No juzgues la viabilidad durante el ejercicio: anota un mínimo de 3 respuestas por letra para garantizar volumen divergente.
-          </div>
-        `
-      },
-      art2: {
-        category: "Inteligencia Artificial Local",
-        readTime: "Lectura de 8 min",
-        title: "RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">La arquitectura predominante de la IA generativa basada en la nube plantea un dilema insostenible para empresas, investigadores y profesionales independientes: <em>para obtener respuestas contextualizadas con tus propios documentos, debes entregar tus datos más sensibles a infraestructuras de terceros</em>.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El peligro de las fugas documentales en la nube</h4>
-          <p>Cuando subes un PDF de balance financiero, un roadmap de producto o un borrador de patente a un endpoint de RAG en la nube, esos datos atraviesan redes públicas, se almacenan en bases vectoriales remotas y quedan expuestos a vulnerabilidades de intermediación y cambios en las políticas de retención del proveedor.</p>
+            <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-200/80 text-indigo-950 mt-6 text-sm">
+              <strong>Aplicación en Sesión:</strong> Dedica exactamente 2 minutos a cada una de las 7 fases. No juzgues la viabilidad durante el ejercicio: anota un mínimo de 3 respuestas por letra para garantizar volumen divergente.
+            </div>
+          `
+        },
+        art2: {
+          category: "Inteligencia Artificial Local",
+          badgeColor: "text-emerald-600 bg-emerald-50 border-emerald-100",
+          readTime: "Lectura de 8 min",
+          title: "RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio",
+          desc: "Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">La arquitectura predominante de la IA generativa basada en la nube plantea un dilema insostenible para empresas, investigadores y profesionales independientes: <em>para obtener respuestas contextualizadas con tus propios documentos, debes entregar tus datos más sensibles a infraestructuras de terceros</em>.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El peligro de las fugas documentales en la nube</h4>
+            <p>Cuando subes un PDF de balance financiero, un roadmap de producto o un borrador de patente a un endpoint de RAG en la nube, esos datos atraviesan redes públicas, se almacenan en bases vectoriales remotas y quedan expuestos a vulnerabilidades de intermediación y cambios en las políticas de retención del proveedor.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">La Solución: RAG Determinista On-Device</h4>
-          <p>Nuestra arquitectura traslada todo el ciclo de vida del RAG a la memoria RAM de tu dispositivo Android mediante tres capas aisladas:</p>
-          
-          <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
-            <li><strong>Chunking Semántico Local:</strong> Sanitización y corte por fronteras naturales de oraciones sin enviar un solo byte a la red.</li>
-            <li><strong>Embeddings Vectoriales en el Chip:</strong> Generación de vectores densos deterministas de 384 dimensiones directamente en SQLite mediante BLOBs comprimidos.</li>
-            <li><strong>Recuperación Jerárquica:</strong> Búsqueda simultánea de los mejores fragmentos a nivel de Tema y Proyecto por similitud coseno pura.</li>
-          </ul>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">La Solución: RAG Determinista On-Device</h4>
+            <p>Nuestra arquitectura traslada todo el ciclo de vida del RAG a la memoria RAM de tu dispositivo Android mediante tres capas aisladas:</p>
+            
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
+              <li><strong>Chunking Semántico Local:</strong> Sanitización y corte por fronteras naturales de oraciones sin enviar un solo byte a la red.</li>
+              <li><strong>Embeddings Vectoriales en el Chip:</strong> Generación de vectores densos deterministas de 384 dimensiones directamente en SQLite mediante BLOBs comprimidos.</li>
+              <li><strong>Recuperación Jerárquica:</strong> Búsqueda simultánea de los mejores fragmentos a nivel de Tema y Proyecto por similitud coseno pura.</li>
+            </ul>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Ventajas Estratégicas Inmediatas</h4>
-          <p>Además de la garantía total frente al RGPD y la privacidad corporativa, el RAG local ofrece <strong>latencia cero de red</strong> y funcionamiento ininterrumpido en aviones, zonas sin cobertura o entornos de máxima seguridad física.</p>
-        `
-      },
-      art3: {
-        category: "Gestión de Innovación",
-        readTime: "Lectura de 6 min",
-        title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">La mayoría de lluvias de ideas mueren en un documento desordenado porque tratan por igual una optimización que puede lanzarse en dos horas y un proyecto que requiere reconstruir toda la infraestructura de la empresa. La <strong>Clasificación de Madurez Botánica</strong> resuelve este problema asignando una escala temporal y de riesgo clara a cada propuesta.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌱 Nivel Semilla (Seed) — Acción Táctica Inmediata</h4>
-          <p>Son propuestas listas para ejecutar en <strong>menos de 48 horas</strong>. Requieren coste nulo, mínimo riesgo y validación instantánea. Su propósito es generar victorias rápidas (<em>quick wins</em>) que inyecten tracción y mantengan el pulso del proyecto.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Ventajas Estratégicas Inmediatas</h4>
+            <p>Además de la garantía total frente al RGPD y la privacidad corporativa, el RAG local ofrece <strong>latencia cero de red</strong> y funcionamiento ininterrumpido en aviones, zonas sin cobertura o entornos de máxima seguridad física.</p>
+          `
+        },
+        art3: {
+          category: "Gestión de Innovación",
+          badgeColor: "text-amber-600 bg-amber-50 border-amber-100",
+          readTime: "Lectura de 6 min",
+          title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
+          desc: "Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">La mayoría de lluvias de ideas mueren en un documento desordenado porque tratan por igual una optimización que puede lanzarse en dos horas y un proyecto que requiere reconstruir toda la infraestructura de la empresa. La <strong>Clasificación de Madurez Botánica</strong> resuelve este problema asignando una escala temporal y de riesgo clara a cada propuesta.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌱 Nivel Semilla (Seed) — Acción Táctica Inmediata</h4>
+            <p>Son propuestas listas para ejecutar en <strong>menos de 48 horas</strong>. Requieren coste nulo, mínimo riesgo y validación instantánea. Su propósito es generar victorias rápidas (<em>quick wins</em>) que inyecten tracción y mantengan el pulso del proyecto.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌿 Nivel Brote (Sprout) — Innovación Modular</h4>
-          <p>Iniciativas que combinan tecnologías existentes o rediseñan procesos internos. Requieren entre <strong>1 y 2 semanas de prototipado</strong> y medición de métricas. Representan el motor de mejora continua y optimización sostenible.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌿 Nivel Brote (Sprout) — Innovación Modular</h4>
+            <p>Iniciativas que combinan tecnologías existentes o rediseñan procesos internos. Requieren entre <strong>1 y 2 semanas de prototipado</strong> y medición de métricas. Representan el motor de mejora continua y optimización sostenible.</p>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌳 Nivel Árbol (Tree) — Transformación 10x</h4>
-          <p>Propuestas de impacto sistémico que redefinen por completo el modelo de negocio, abren nuevos mercados o sustituyen la base tecnológica. Su ciclo de maduración es de medio a largo plazo y requieren asignación formal de recursos.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌳 Nivel Árbol (Tree) — Transformación 10x</h4>
+            <p>Propuestas de impacto sistémico que redefinen por completo el modelo de negocio, abren nuevos mercados o sustituyen la base tecnológica. Su ciclo de maduración es de medio a largo plazo y requieren asignación formal de recursos.</p>
 
-          <div class="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 text-amber-950 mt-6 text-sm">
-            <strong>Regla del Balance Creativo:</strong> En una sesión saludable de 6 ideas, la distribución óptima es <strong>2 Semillas, 2 Brotes y 2 Árboles</strong>. Así aseguras avance hoy sin renunciar a la visión del futuro.
-          </div>
-        `
-      },
-      art4: {
-        category: "Lateralidad Creativa",
-        readTime: "Lectura de 6 min",
-        title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">Cuando un equipo intenta responder a la pregunta clásica <em>"¿Cómo aumentamos la satisfacción de nuestros clientes?"</em>, suele obtener respuestas obvias y edulcoradas. La <strong>Técnica de Inversión</strong> (o Anti-Problema) desbloquea la mente formulando la pregunta opuesta: <strong>"¿Qué tendríamos que hacer para que el 100% de los usuarios desinstale la aplicación en los primeros 30 segundos?"</strong></p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El Mecanismo Psicológico de la Inversión</h4>
-          <p>Diseñar un desastre libera a los participantes del miedo al ridículo y de la presión de acertar. Al pensar en cómo empeorar deliberadamente el producto, surgen con brutal honestidad los puntos de fricción reales que la complacencia habitual intenta ocultar:</p>
+            <div class="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 text-amber-950 mt-6 text-sm">
+              <strong>Regla del Balance Creativo:</strong> En una sesión saludable de 6 ideas, la distribución óptima es <strong>2 Semillas, 2 Brotes y 2 Árboles</strong>. Así aseguras avance hoy sin renunciar a la visión del futuro.
+            </div>
+          `
+        },
+        art4: {
+          category: "Lateralidad Creativa",
+          badgeColor: "text-purple-600 bg-purple-50 border-purple-100",
+          readTime: "Lectura de 6 min",
+          title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
+          desc: "Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Cuando un equipo intenta responder a la pregunta clásica <em>"¿Cómo aumentamos la satisfacción de nuestros clientes?"</em>, suele obtener respuestas obvias y edulcoradas. La <strong>Técnica de Inversión</strong> (o Anti-Problema) desbloquea la mente formulando la pregunta opuesta: <strong>"¿Qué tendríamos que hacer para que el 100% de los usuarios desinstale la aplicación en los primeros 30 segundos?"</strong></p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El Mecanismo Psicológico de la Inversión</h4>
+            <p>Diseñar un desastre libera a los participantes del miedo al ridículo y de la presión de acertar. Al pensar en cómo empeorar deliberadamente el producto, surgen con brutal honestidad los puntos de fricción reales que la complacencia habitual intenta ocultar:</p>
 
-          <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
-            <li>Exigir registro con 10 campos antes de ver una sola pantalla de valor.</li>
-            <li>Ocultar los botones de exportación y bloquear los datos del usuario.</li>
-            <li>Insertar pantallas de carga eternas sin feedback visual.</li>
-            <li>Utilizar vocabulario técnico incomprensible en los menús.</li>
-          </ul>
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
+              <li>Exigir registro con 10 campos antes de ver una sola pantalla de valor.</li>
+              <li>Ocultar los botones de exportación y bloquear los datos del usuario.</li>
+              <li>Insertar pantallas de carga eternas sin feedback visual.</li>
+              <li>Utilizar vocabulario técnico incomprensible en los menús.</li>
+            </ul>
 
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">De la Pesadilla a la Hoja de Ruta</h4>
-          <p>Una vez listados los 10 puntos de fallo garantizado, la tarea consiste simplemente en <strong>invertir cada enunciado con rigor matemático</strong>. Cada anti-idea se convierte automáticamente en una especificación funcional prioritaria, contrastable y de alto valor.</p>
-        `
-      },
-      art5: {
-        category: "Pensamiento Analógico",
-        readTime: "Lectura de 7 min",
-        title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">La evolución biológica lleva miles de millones de años depurando algoritmos de supervivencia, eficiencia energética y tolerancia a fallos en entornos de recursos escasos. El <strong>pensamiento analógico bioinspirado</strong> consiste en extraer esos principios de diseño para construir sistemas de información más robustos.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Patrones Biológicos Aplicados a la Ingeniería</h4>
-          
-          <div class="space-y-4 mt-4">
-            <div>
-              <h5 class="font-bold text-slate-900 text-sm">🍄 Redes Micorrízicas (Sincronización P2P)</h5>
-              <p class="text-xs text-slate-600 mt-1">Los hongos transfieren nutrientes entre árboles a través de redes descentralizadas sin nodo central. Este modelo inspira protocolos de bases de datos distribuidas y replicación de paquetes `.lluvia` sin depender de servidores maestros.</p>
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">De la Pesadilla a la Hoja de Ruta</h4>
+            <p>Una vez listados los 10 puntos de fallo garantizado, la tarea consiste simplemente en <strong>invertir cada enunciado con rigor matemático</strong>. Cada anti-idea se convierte automáticamente en una especificación funcional prioritaria, contrastable y de alto valor.</p>
+          `
+        },
+        art5: {
+          category: "Pensamiento Analógico",
+          badgeColor: "text-sky-600 bg-sky-50 border-sky-100",
+          readTime: "Lectura de 7 min",
+          title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
+          desc: "Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">La evolución biológica lleva miles de millones de años depurando algoritmos de supervivencia, eficiencia energética y tolerancia a fallos en entornos de recursos escasos. El <strong>pensamiento analógico bioinspirado</strong> consiste en extraer esos principios de diseño para construir sistemas de información más robustos.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Patrones Biológicos Aplicados a la Ingeniería</h4>
+            
+            <div class="space-y-4 mt-4">
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🍄 Redes Micorrízicas (Sincronización P2P)</h5>
+                <p class="text-xs text-slate-600 mt-1">Los hongos transfieren nutrientes entre árboles a través de redes descentralizadas sin nodo central. Este modelo inspira protocolos de bases de datos distribuidas y replicación de paquetes sin depender de servidores maestros.</p>
+              </div>
+
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🐜 Algoritmos de Feromonas (Optimización de Rutas)</h5>
+                <p class="text-xs text-slate-600 mt-1">Las colonias de hormigas descubren el camino más corto mediante refuerzo probabilístico. En desarrollo de software, este principio permite optimizar cachés dinámicas y flujos de navegación basados en el uso real.</p>
+              </div>
+
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🦎 Autotomía Defensiva (Degradación Elegante)</h5>
+                <p class="text-xs text-slate-600 mt-1">Ante un ataque, el reptil desprende su cola para salvar el organismo. En una app con IA local, si la memoria RAM es insuficiente para un modelo de 8B, el sistema degrada limpiamente a un modelo de 0.5B sin detener la ejecución de la app.</p>
+              </div>
+            </div>
+          `
+        },
+        art6: {
+          category: "Síntesis Conceptual",
+          badgeColor: "text-rose-600 bg-rose-50 border-rose-100",
+          readTime: "Lectura de 5 min",
+          title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
+          desc: "Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Las ideas completamente originales son una rareza estadística; casi todas las innovaciones que transforman mercados nacen de la <strong>Polinización Cruzada (Cross-Pollination)</strong>: la colisión deliberada de dos conceptos preexistentes procedentes de dominios que nunca antes se habían cruzado.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El Algoritmo de la Síntesis Cruzada</h4>
+            <p>Para ejecutar esta técnica en la aplicación, toma dos ideas aprobadas en tu Banco que pertenezcan a proyectos o naturalezas distintas (ejemplo: <em>"Búsqueda vectorial determinista"</em> + <em>"Metáfora de maduración botánica"</em>) y fuerza a la IA a responder:</p>
+            
+            <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 my-4 text-xs italic font-medium">
+              "¿Cuál es el producto o característica resultante si la idea A debe actuar como la infraestructura invisible y la idea B como la interfaz emocional de usuario?"
             </div>
 
-            <div>
-              <h5 class="font-bold text-slate-900 text-sm">🐜 Algoritmos de Feromonas (Optimización de Rutas)</h5>
-              <p class="text-xs text-slate-600 mt-1">Las colonias de hormigas descubren el camino más corto mediante refuerzo probabilístico. En desarrollo de software, este principio permite optimizar cachés dinámicas y flujos de navegación basados en el uso real.</p>
-            </div>
-
-            <div>
-              <h5 class="font-bold text-slate-900 text-sm">🦎 Autotomía Defensiva (Degradación Elegante)</h5>
-              <p class="text-xs text-slate-600 mt-1">Ante un ataque, el reptil desprende su cola para salvar el organismo. En una app con IA local, si la memoria RAM es insuficiente para un modelo de 8B, el sistema degrada limpiamente a un modelo de 0.5B sin detener la ejecución de la app.</p>
-            </div>
-          </div>
-        `
+            <p>Al forzar la convergencia de dos conceptos aislados, se genera una propuesta híbrida con una barrera defensiva muy superior a cualquier solución genérica, creando un producto diferenciado y difícilmente imitable.</p>
+          `
+        }
       },
-      art6: {
-        category: "Síntesis Conceptual",
-        readTime: "Lectura de 5 min",
-        title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
-        body: `
-          <p class="text-base text-slate-700 leading-relaxed font-medium">Las ideas completamente originales son una rareza estadística; casi todas las innovaciones que transforman mercados nacen de la <strong>Polinización Cruzada (Cross-Pollination)</strong>: la colisión deliberada de dos conceptos preexistentes procedentes de dominios que nunca antes se habían cruzado.</p>
-          
-          <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">El Algoritmo de la Síntesis Cruzada</h4>
-          <p>Para ejecutar esta técnica en la aplicación, toma dos ideas aprobadas en tu Banco que pertenezcan a proyectos o naturalezas distintas (ejemplo: <em>"Búsqueda vectorial determinista"</em> + <em>"Metáfora de maduración botánica"</em>) y fuerza a la IA a responder:</p>
-          
-          <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 my-4 text-xs italic font-medium">
-            "¿Cuál es el producto o característica resultante si la idea A debe actuar como la infraestructura invisible y la idea B como la interfaz emocional de usuario?"
-          </div>
+      en: {
+        art1: {
+          category: "Thinking Frameworks",
+          badgeColor: "text-brand-600 bg-brand-50 border-brand-100",
+          readTime: "6 min read",
+          title: "How to Unblock Complex Engineering Problems in 15 Minutes with SCAMPER",
+          desc: "Learn how to deconstruct challenges by substituting, combining, or adapting constraints to unlock non-obvious engineering solutions.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">When an engineering team or creator hits a dead end, cognitive inertia pushes them to try minor variations of the same failed approach. The <strong>SCAMPER</strong> protocol forces your brain through 7 non-negotiable lateral vectors to obliterate confirmation bias.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">1. Substitute</h4>
+            <p>What core component or premise can be replaced entirely? If you are optimizing app latency, stop tuning remote API endpoints—substitute them with on-device in-memory inference.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">2. Combine</h4>
+            <p>What independent steps can be fused? By merging PDF document parsing directly with context prompt generation, you eliminate intermediary screens and user friction.</p>
 
-          <p>Al forzar la convergencia de dos conceptos aislados, se genera una propuesta híbrida con una barrera defensiva muy superior a cualquier solución genérica, creando un producto diferenciado y difícilmente imitable.</p>
-        `
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">3. Adapt</h4>
+            <p>How have unrelated industries solved this? If task queues are stalling on low-end hardware, adapt logistics warehouse balancing or biological neuron firing synchronization.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">4. Modify / Magnify</h4>
+            <p>What happens if data volume is multiplied by 100x or execution time is reduced to zero? Pushing constraints to the extreme exposes hidden architectural bottlenecks.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">5. Put to Another Use</h4>
+            <p>A model built to classify text chunks can be repurposed to audit business plan maturity or detect logical fallacies in financial proposals.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">6. Eliminate</h4>
+            <p>True elegance is subtraction. Identify the "mandatory" step in your system and remove it. You will find that most complex validations can be handled asynchronously.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">7. Reverse</h4>
+            <p>Invert the workflow. Instead of generating an idea and searching for supporting evidence, feed raw context documents first and let the AI identify opportunity voids.</p>
+
+            <div class="p-5 rounded-2xl bg-indigo-50/70 border border-indigo-200/80 text-indigo-950 mt-6 text-sm">
+              <strong>Session Rule:</strong> Spend exactly 2 minutes per letter. Do not evaluate feasibility during the sprint: write down at least 3 distinct answers per prompt.
+            </div>
+          `
+        },
+        art2: {
+          category: "On-Device AI",
+          badgeColor: "text-emerald-600 bg-emerald-50 border-emerald-100",
+          readTime: "8 min read",
+          title: "Edge RAG: Why Keeping Local Vector Databases Protects Your Intellectual Property",
+          desc: "Discover why processing confidential roadmaps, patents, and contracts in local memory eliminates third-party cloud vulnerabilities.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Cloud-based generative AI poses a critical dilemma for modern organizations: <em>to obtain contextualized answers from your own files, you must upload sensitive proprietary data to third-party server farms</em>.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">The Hidden Cost of Cloud RAG Leaks</h4>
+            <p>When you upload financial decks, product roadmaps, or draft patents to a cloud endpoint, that data traverses public networks and resides in remote vector stores vulnerable to data retention policy changes.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">The Solution: Deterministic On-Device RAG</h4>
+            <p>Our mobile architecture moves the entire RAG pipeline into the device RAM across three sandboxed layers:</p>
+            
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
+              <li><strong>Local Semantic Chunking:</strong> Text normalization and natural sentence boundary splitting without sending a single byte over the wire.</li>
+              <li><strong>In-Chip Vector Embeddings:</strong> Deterministic 384-dimensional dense vectors generated locally and stored as compressed SQLite BLOBs.</li>
+              <li><strong>Hierarchical Retrieval:</strong> Dual cosine similarity search across both Topic and Project contexts simultaneously.</li>
+            </ul>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Uncompromised Security & Zero Network Latency</h4>
+            <p>Beyond full GDPR compliance, on-device vector search offers instant retrieval speeds and uninterrupted workflow during flights or offline secure facilities.</p>
+          `
+        },
+        art3: {
+          category: "Innovation Management",
+          badgeColor: "text-amber-600 bg-amber-50 border-amber-100",
+          readTime: "6 min read",
+          title: "Botanical Idea Maturity: How to Prioritize Actionable Wins Against 10x Moonshots",
+          desc: "Prevent short-term tactical fixes from drowning out foundational company transformation by organizing concepts into Seeds, Sprouts, and Trees.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Most brainstorming sessions end in a cluttered document because teams evaluate a 2-hour bug fix and a company-redefining initiative with the exact same criteria. The <strong>Botanical Maturity Framework</strong> establishes clear execution timelines and risk profiles for every output.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌱 Seed Tier — Immediate Tactical Execution</h4>
+            <p>Actionable proposals ready to ship in <strong>under 48 hours</strong>. They require near-zero budget and minimal operational risk, delivering quick wins that build momentum.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌿 Sprout Tier — Modular System Innovation</h4>
+            <p>Initiatives combining existing technologies or restructuring internal processes. They require <strong>1 to 2 weeks of prototyping</strong> and provide steady measurable growth.</p>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">🌳 Tree Tier — 10x Structural Disruption</h4>
+            <p>Transformative projects that reshape business models, capture new markets, or replace underlying tech stacks. They require dedicated resource planning and strategic commitment.</p>
+
+            <div class="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 text-amber-950 mt-6 text-sm">
+              <strong>The 2-2-2 Balance Rule:</strong> A healthy ideation batch produces <strong>2 Seeds, 2 Sprouts, and 2 Trees</strong>, balancing rapid execution with ambitious future vision.
+            </div>
+          `
+        },
+        art4: {
+          category: "Lateral Thinking",
+          badgeColor: "text-purple-600 bg-purple-50 border-purple-100",
+          readTime: "6 min read",
+          title: "Problem Inversion: Designing the Absolute Worst Product to Uncover the Best",
+          desc: "Deliberately worsening a challenge eliminates psychological bias and highlights unseen optimizations that standard analysis ignores.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">When product teams ask <em>"How do we make our app irresistible?"</em>, they usually receive polite, generic suggestions. <strong>Problem Inversion</strong> unlocks radical candor by flipping the question: <strong>"How could we guarantee that 100% of users uninstall this app within 30 seconds?"</strong></p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">The Psychological Mechanism of Inversion</h4>
+            <p>Designing a total disaster removes the fear of judgment. Brainstorming how to ruin the user experience uncovers real friction points with brutal honesty:</p>
+
+            <ul class="list-disc pl-5 space-y-2 text-slate-600 mt-3">
+              <li>Demanding a 10-field registration before displaying any value.</li>
+              <li>Hiding export buttons and locking user data in proprietary formats.</li>
+              <li>Introducing endless spinner screens without progress feedback.</li>
+              <li>Using convoluted internal jargon across user interfaces.</li>
+            </ul>
+
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">From Worst Nightmare to Product Roadmap</h4>
+            <p>Once you list 10 guaranteed failure points, invert every single statement. Each anti-idea transforms mathematically into an indispensable, high-priority functional requirement.</p>
+          `
+        },
+        art5: {
+          category: "Analogical Reasoning",
+          badgeColor: "text-sky-600 bg-sky-50 border-sky-100",
+          readTime: "7 min read",
+          title: "Biomimicry in Software: How Natural Systems Inspire Resilient Architectures",
+          desc: "From ant colonies to underground fungal networks: practical biology applications in decentralized design and fail-safe mobile engineering.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Biological evolution has spent billions of years optimizing energy efficiency, self-healing networks, and fault tolerance in resource-constrained environments. <strong>Bio-inspired analogical thinking</strong> abstracts these survival algorithms for software engineering.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">Biological Patterns Applied to Tech</h4>
+            
+            <div class="space-y-4 mt-4">
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🍄 Mycorrhizal Networks (P2P Data Sync)</h5>
+                <p class="text-xs text-slate-600 mt-1">Fungi distribute nutrients across forest ecosystems without central nodes. This pattern inspires peer-to-peer workspace sharing and packet synchronization without master server dependencies.</p>
+              </div>
+
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🐜 Ant Colony Pheromone Trails (Cache Routing)</h5>
+                <p class="text-xs text-slate-600 mt-1">Ant colonies identify the shortest path through probabilistic reinforcement, inspiring dynamic cache invalidation algorithms driven by real usage frequency.</p>
+              </div>
+
+              <div>
+                <h5 class="font-bold text-slate-900 text-sm">🦎 Defensive Autotomy (Graceful Degradation)</h5>
+                <p class="text-xs text-slate-600 mt-1">When under attack, lizards shed their tails to protect their vital organs. In our app, if device RAM is insufficient for an 8B model, inference seamlessly degrades to a 0.5B model without crashing.</p>
+              </div>
+            </div>
+          `
+        },
+        art6: {
+          category: "Concept Synthesis",
+          badgeColor: "text-rose-600 bg-rose-50 border-rose-100",
+          readTime: "5 min read",
+          title: "Cross-Pollination of Ideas: Merging Unrelated Concepts for Defensible 10x Innovation",
+          desc: "Why fusing two distinct accepted ideas creates the most defensible market advantages that competitors cannot easily copy.",
+          body: `
+            <p class="text-base text-slate-700 leading-relaxed font-medium">Completely novel ideas are a statistical anomaly. The most defensible market breakthroughs stem from <strong>Cross-Pollination</strong>: the deliberate fusion of two proven concepts from completely unrelated industries.</p>
+            
+            <h4 class="font-bold text-slate-900 text-lg mt-6 border-b border-slate-100 pb-2">The Cross-Synthesis Algorithm</h4>
+            <p>Select two approved ideas from distinct project workspaces (e.g., <em>"Deterministic Vector RAG"</em> + <em>"Botanical Maturity Tiers"</em>) and prompt the engine:</p>
+            
+            <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 my-4 text-xs italic font-medium">
+              "What unique product emerges if Concept A serves as the invisible technical engine and Concept B serves as the emotional user interface?"
+            </div>
+
+            <p>Merging two unrelated domains produces a defensible, highly tailored product that generic market competitors cannot easily replicate.</p>
+          `
+        }
       }
     };
 
-    // Funciones del Modal y Enrutamiento URL SPA (Hash Router)
-    function openArticleModal(articleKey, updateHistory = true) {
-      const art = blogDatabase[articleKey];
-      if (!art) return;
-
-      document.getElementById('modal-category').innerText = art.category;
-      document.getElementById('modal-readtime').innerText = art.readTime;
-      document.getElementById('modal-title').innerText = art.title;
-      document.getElementById('modal-body').innerHTML = art.body;
-
-      const modal = document.getElementById('article-modal');
-      const content = document.getElementById('article-modal-content');
-
-      modal.classList.remove('hidden');
-      document.body.classList.add('article-modal-active');
-
-      if (updateHistory) {
-        window.location.hash = `articulo=${articleKey}`;
-      }
-
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        content.classList.remove('scale-95');
-        content.classList.add('scale-100');
-      }, 10);
-    }
-
-    function closeArticleModal(updateHistory = true) {
-      const modal = document.getElementById('article-modal');
-      const content = document.getElementById('article-modal-content');
-
-      modal.classList.add('opacity-0');
-      content.classList.remove('scale-100');
-      content.classList.add('scale-95');
-
-      if (updateHistory && window.location.hash.includes('articulo=')) {
-        history.pushState("", document.title, window.location.pathname + window.location.search);
-      }
-
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.classList.remove('article-modal-active');
-      }, 300);
-    }
-
-    // Comprobación de Hash al cargar y al cambiar de URL (Deep Linking a artículos)
-    function checkUrlForArticle() {
-      const hash = window.location.hash;
-      if (hash.startsWith('#articulo=')) {
-        const articleKey = hash.replace('#articulo=', '');
-        if (blogDatabase[articleKey]) {
-          openArticleModal(articleKey, false);
-        }
-      }
-    }
-
-    window.addEventListener('hashchange', () => {
-      if (window.location.hash.startsWith('#articulo=')) {
-        checkUrlForArticle();
-      } else {
-        const modal = document.getElementById('article-modal');
-        if (!modal.classList.contains('hidden')) {
-          closeArticleModal(false);
-        }
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeArticleModal();
-    });
-    document.getElementById('article-modal').addEventListener('click', (e) => {
-      if (e.target.id === 'article-modal') closeArticleModal();
-    });
-
-    // Traducciones Multilingües
+    // DICCIONARIO I18N GENERAL (ES / EN)
     const translations = {
       es: {
         app_title: "Lluvia de Ideas IA",
@@ -1316,30 +1168,8 @@
         blog_title: "Artículos para Potenciar tu Creatividad",
         blog_sub: "Haz clic en cualquier artículo para leer el análisis metodológico y técnico completo.",
         read_more_btn: "Leer artículo completo →",
-        b1_tag: "Técnicas de Pensamiento",
-        b1_title: "Cómo desbloquear un problema técnico complejo en 15 minutos con SCAMPER",
-        b1_desc: "Aprende a descomponer cualquier reto sustituyendo, combinando o adaptando elementos para encontrar soluciones que el pensamiento lógico lineal descarta.",
-        b1_time: "Lectura de 6 min",
-        b2_tag: "Inteligencia Artificial Local",
-        b2_title: "RAG On-Device: por qué mantener tus bases vectoriales en local protege tu negocio",
-        b2_desc: "Descubre las ventajas de procesar patentes, hojas de ruta y documentos confidenciales en la memoria del dispositivo sin depender de APIs cloud de terceros.",
-        b2_time: "Lectura de 8 min",
-        b3_tag: "Gestión de Innovación",
-        b3_title: "La metáfora de madurez botánica: cómo priorizar ideas ejecutables frente a visiones 10x",
-        b3_desc: "Evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación de largo plazo mediante la clasificación en Semillas, Brotes y Árboles.",
-        b3_time: "Lectura de 6 min",
-        b4_tag: "Lateralidad Creativa",
-        b4_title: "La Técnica de Inversión del Problema: diseñando la peor solución para hallar la mejor",
-        b4_desc: "Descubre cómo empeorar deliberadamente una situación elimina los sesgos cognitivos y revela rutas de optimización invisibles en el análisis tradicional.",
-        b4_time: "Lectura de 6 min",
-        b5_tag: "Pensamiento Analógico",
-        b5_title: "Biomímesis en Software: cómo los sistemas naturales inspiran arquitecturas resilientes",
-        b5_desc: "Desde las colonias de hormigas hasta las micorrizas subterráneas: aplicaciones prácticas de la biología en el diseño de microservicios y protocolos descentralizados.",
-        b5_time: "Lectura de 7 min",
-        b6_tag: "Síntesis Conceptual",
-        b6_title: "Polinización Cruzada de Ideas: combinando conceptos opuestos para crear superpropuestas",
-        b6_desc: "Por qué la fusión deliberada de dos soluciones aceptadas pero no relacionadas genera las ventajas competitivas más difíciles de replicar por el mercado.",
-        b6_time: "Lectura de 5 min",
+        modal_footer_note: "¿Listo para aplicar esta metodología en tu móvil?",
+        modal_footer_btn: "Comenzar Prueba Gratuita de 21 Días",
         rev_tag: "Experiencias Reales",
         rev_title: "Lo que dicen los profesionales",
         r1_text: "\"La posibilidad de cargar un PDF con el análisis de mi competencia y pedirle al agente de Growth que genere ideas con contexto RAG localmente es algo que no había visto en ninguna otra app móvil.\"",
@@ -1427,30 +1257,8 @@
         blog_title: "Articles to Fuel Your Creative Strategy",
         blog_sub: "Click on any article to read the full methodology and technical analysis.",
         read_more_btn: "Read full article →",
-        b1_tag: "Mental Models",
-        b1_title: "How to Solve Complex Engineering Problems in 15 Minutes with SCAMPER",
-        b1_desc: "Substitute, combine, adapt, and modify constraints to unlock non-obvious solutions.",
-        b1_time: "6 min read",
-        b2_tag: "On-Device AI",
-        b2_title: "Why Local Vector Databases and Edge RAG Protect Your IP",
-        b2_desc: "Learn how processing confidential roadmaps in memory eliminates third-party cloud vulnerabilities.",
-        b2_time: "8 min read",
-        b3_tag: "Innovation Management",
-        b3_title: "Botanical Idea Maturity: Balancing Quick Wins Against 10x Visions",
-        b3_desc: "Prevent short-term tactical fixes from drowning out foundational company transformation.",
-        b3_time: "6 min read",
-        b4_tag: "Lateral Thinking",
-        b4_title: "Problem Inversion: Designing the Worst Outcome to Discover the Best",
-        b4_desc: "Deliberately worsening a challenge removes psychological bias and highlights unseen optimizations.",
-        b4_time: "6 min read",
-        b5_tag: "Analogical Reasoning",
-        b5_title: "Biomimicry in Software: How Natural Systems Inspire Resilient Architectures",
-        b5_desc: "From ant colonies to mycorrhizal networks: practical biology applications in decentralized design.",
-        b5_time: "7 min read",
-        b6_tag: "Concept Synthesis",
-        b6_title: "Cross-Pollination of Ideas: Merging Unrelated Concepts for 10x Innovation",
-        b6_desc: "Why fusing two distinct accepted ideas creates the most defensible market advantages.",
-        b6_time: "5 min read",
+        modal_footer_note: "Ready to apply this methodology on your device?",
+        modal_footer_btn: "Start 21-Day Free Trial",
         rev_tag: "Verified Feedback",
         rev_title: "Trusted by Modern Innovators",
         r1_text: "\"Feeding competitive PDF decks into local RAG on my phone and getting immediate growth angles without cloud exposure is unbeatable.\"",
@@ -1471,29 +1279,147 @@
       }
     };
 
+    // RENDERIZADO DINÁMICO DE LOS ARTÍCULOS EN LA GRID
+    function renderArticlesGrid() {
+      const container = document.getElementById('articles-container');
+      const articles = blogDatabase[currentLanguage] || blogDatabase['es'];
+      const readMoreText = translations[currentLanguage].read_more_btn;
+
+      let html = '';
+      for (const [key, item] of Object.entries(articles)) {
+        html += `
+          <article onclick="openArticleModal('${key}')" class="p-7 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/50 hover:-translate-y-1 transition duration-300 cursor-pointer group" data-aos="fade-up">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold ${item.badgeColor} px-2.5 py-1 rounded-full border">${item.category}</span>
+                <span class="text-xs text-slate-400 font-semibold">${item.readTime}</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mt-4 mb-3 group-hover:text-brand-600 transition">${item.title}</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">${item.desc}</p>
+            </div>
+            <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>${readMoreText}</span>
+              <span class="text-slate-400 font-normal">NoaR Studio</span>
+            </div>
+          </article>
+        `;
+      }
+      container.innerHTML = html;
+    }
+
+    // MODAL & URL HASH ROUTER
+    function openArticleModal(articleKey, updateHistory = true) {
+      const articles = blogDatabase[currentLanguage] || blogDatabase['es'];
+      const art = articles[articleKey];
+      if (!art) return;
+
+      document.getElementById('modal-category').innerText = art.category;
+      document.getElementById('modal-readtime').innerText = art.readTime;
+      document.getElementById('modal-title').innerText = art.title;
+      document.getElementById('modal-body').innerHTML = art.body;
+
+      const modal = document.getElementById('article-modal');
+      const content = document.getElementById('article-modal-content');
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('article-modal-active');
+
+      if (updateHistory) {
+        window.location.hash = `articulo=${articleKey}`;
+      }
+
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeArticleModal(updateHistory = true) {
+      const modal = document.getElementById('article-modal');
+      const content = document.getElementById('article-modal-content');
+
+      modal.classList.add('opacity-0');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+
+      if (updateHistory && window.location.hash.includes('articulo=')) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+      }
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('article-modal-active');
+      }, 300);
+    }
+
+    function checkUrlForArticle() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#articulo=')) {
+        const articleKey = hash.replace('#articulo=', '');
+        const articles = blogDatabase[currentLanguage] || blogDatabase['es'];
+        if (articles[articleKey]) {
+          openArticleModal(articleKey, false);
+        }
+      }
+    }
+
+    // GESTIÓN DEL SELECTOR DE IDIOMA
     function toggleLanguageDropdown() {
       const dropdown = document.getElementById('lang-dropdown');
       dropdown.classList.toggle('hidden');
     }
 
-    function selectLanguage(code, flag, name) {
-      document.getElementById('selected-flag').innerText = flag;
-      document.getElementById('selected-lang-name').innerText = name;
-      document.getElementById('lang-dropdown').classList.add('hidden');
-      changeLanguage(code);
-    }
+    function selectLanguage(code) {
+      currentLanguage = code === 'en' ? 'en' : 'es';
+      const meta = languageMetadata[currentLanguage];
 
-    function changeLanguage(lang) {
-      const selected = translations[lang] || translations['en'] || translations['es'];
+      document.getElementById('selected-flag').innerText = meta.flag;
+      document.getElementById('selected-lang-name').innerText = meta.name;
+      document.getElementById('lang-dropdown').classList.add('hidden');
+
+      const selectedTexts = translations[currentLanguage];
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (selected[key]) {
-          el.innerHTML = selected[key];
+        if (selectedTexts[key]) {
+          el.innerHTML = selectedTexts[key];
         }
       });
-      document.documentElement.lang = lang;
-      localStorage.setItem('pref_lang', lang);
+
+      document.documentElement.lang = currentLanguage;
+      localStorage.setItem('pref_lang', currentLanguage);
+
+      renderArticlesGrid();
+
+      // Si el modal está abierto, refrescar el contenido del artículo en el nuevo idioma
+      if (!document.getElementById('article-modal').classList.contains('hidden')) {
+        const hash = window.location.hash;
+        if (hash.startsWith('#articulo=')) {
+          const articleKey = hash.replace('#articulo=', '');
+          openArticleModal(articleKey, false);
+        }
+      }
     }
+
+    // EVENT LISTENERS GLOBALES
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash.startsWith('#articulo=')) {
+        checkUrlForArticle();
+      } else {
+        const modal = document.getElementById('article-modal');
+        if (!modal.classList.contains('hidden')) {
+          closeArticleModal(false);
+        }
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeArticleModal();
+    });
+
+    document.getElementById('article-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'article-modal') closeArticleModal();
+    });
 
     document.addEventListener('click', (e) => {
       const container = document.getElementById('custom-lang-container');
@@ -1502,19 +1428,17 @@
       }
     });
 
+    // INICIALIZACIÓN AL CARGAR LA PÁGINA
     document.addEventListener('DOMContentLoaded', () => {
       const browserLang = (navigator.language || navigator.userLanguage || 'es').slice(0, 2).toLowerCase();
       const savedLang = localStorage.getItem('pref_lang') || browserLang;
-      const meta = languageMetadata[savedLang] || languageMetadata['es'];
-      
-      selectLanguage(savedLang in languageMetadata ? savedLang : 'es', meta.flag, meta.name);
-      
-      // Comprobar si la URL trae un hash de artículo para abrirlo automáticamente
+      const initialLang = savedLang === 'en' ? 'en' : 'es';
+
+      selectLanguage(initialLang);
       checkUrlForArticle();
     });
   </script>
 
-  <!-- AOS (Animate On Scroll) JS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
