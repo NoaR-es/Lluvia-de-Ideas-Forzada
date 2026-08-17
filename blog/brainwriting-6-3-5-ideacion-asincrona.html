@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Brainwriting 6-3-5: 108 Ideas en 30 Minutos sin Sesgos | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Domina el método Brainwriting 6-3-5 de Bernd Rohrbach: protocolo paso a paso, neurociencia del silencio, plantillas, variantes asíncronas y clasificación botánica.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Técnicas de Pensamiento</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🧠 Técnicas de Pensamiento</span>
+                <span class="blog-readtime">Lectura de 20 min · 4.900+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Guía Completa Brainwriting 6-3-5: Cómo Generar 108 Ideas en 30 Minutos sin Sesgos ni Interrupciones
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                El método científico de ideación silenciosa de Bernd Rohrbach: protocolo paso a paso, neurociencia del silencio, plantillas operativas, variantes asíncronas y cómo estructurar los resultados con IA on-device.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">11 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#que-es-brainwriting" class="toc-sidebar-link" onclick="handleTocClick()">¿Qué es Brainwriting 6-3-5?</a></li>
+                <li class="toc-sidebar-item"><a href="#neurociencia-silencio" class="toc-sidebar-link" onclick="handleTocClick()">Neurociencia del silencio</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-paso-a-paso" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo de 6 Rondas cronometradas</a></li>
+                <li class="toc-sidebar-item"><a href="#anatomia-plantilla" class="toc-sidebar-link" onclick="handleTocClick()">Anatomía de la Hoja 6-3-5</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 Errores fatales a evitar</a></li>
+                <li class="toc-sidebar-item"><a href="#variantes-avanzadas" class="toc-sidebar-link" onclick="handleTocClick()">Variantes: 4-2-4 y Asíncrono</a></li>
+                <li class="toc-sidebar-item"><a href="#comparativa-metodos" class="toc-sidebar-link" onclick="handleTocClick()">Comparativa: 6-3-5 vs Tradicional</a></li>
+                <li class="toc-sidebar-item"><a href="#filtrado-botanico" class="toc-sidebar-link" onclick="handleTocClick()">De 108 ideas a Semillas y Brotes</a></li>
+                <li class="toc-sidebar-item"><a href="#brainwriting-ia" class="toc-sidebar-link" onclick="handleTocClick()">Brainwriting potenciado con IA</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-brainwriting" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">💡</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                El Brainwriting 6-3-5 es la técnica de generación de ideas más eficiente y democrática conocida en la literatura de diseño e innovación. Diseñada por Bernd Rohrbach en 1968, involucra a <strong>6 participantes</strong> que escriben <strong>3 ideas</strong> cada uno en <strong>5 minutos</strong> por ronda, rotando la hoja 6 veces hasta generar exactamente <strong>108 ideas en 30 minutos cronometrados</strong>. Al ser un proceso 100% silencioso y por escrito, erradica por completo la tiranía del líder extrovertido, el sesgo de anclaje verbal y el miedo al juicio social. Cada participante no solo genera ideas vírgenes, sino que está obligado a evolucionar y construir sobre las propuestas de sus compañeros (el principio teatral de <em>"Sí, y además..."</em>). Esta guía cubre la base neurocientífica, el protocolo exacto de facilitación, las hojas de trabajo operativas, cómo procesar el volumen masivo de 108 ideas mediante la clasificación botánica Semilla-Brote-Árbol y cómo simular sesiones completas con agentes sintéticos de IA en Android.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="que-es-brainwriting">1. ¿Qué es Brainwriting 6-3-5? Origen, Historia y Principio Rector</h2>
+
+        <p>
+            El brainstorming tradicional verbal, popularizado por Alex Osborn en la década de 1950, prometía un flujo infinito de creatividad colectiva. Sin embargo, décadas de investigación empírica en psicología organizacional (incluyendo los célebres estudios de Diehl y Stroebe en 1987) demostraron que los grupos que interactúan verbalmente producen <strong>menos ideas y de menor calidad</strong> que los mismos individuos trabajando por separado.
+        </p>
+
+        <p>
+            ¿Por qué fracasa el brainstorming oral? Por tres patologías estructurales inevitables:
+        </p>
+
+        <ul>
+            <li><strong>Bloqueo de producción (Production Blocking):</strong> Solo una persona puede hablar a la vez. Mientras escuchas a otro, olvidas tus propias ideas o dejas de formular nuevos conceptos.</li>
+            <li><strong>Aprehensión por evaluación (Evaluation Apprehension):</strong> El miedo visceral a sonar ingenuo ante jefes o compañeros frena las ideas verdaderamente disruptivas.</li>
+            <li><strong>Holgazanería social y efecto polizón (Free Riding):</strong> En grupos de 6-8 personas, 2 o 3 participantes dominan el 80% del tiempo de palabra mientras el resto se desconecta pasivamente.</li>
+        </ul>
+
+        <p>
+            Para resolver de raíz estas tres fallas, el especialista en marketing e innovación alemán <strong>Bernd Rohrbach</strong> publicó en 1968 en la revista de ventas <em>Absatzwirtschaft</em> un protocolo radicalmente estructurado: el <strong>Método 6-3-5</strong> (<em>Method 635 Brainwriting</em>).
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>📐 La Fórmula Matemática del 6-3-5:</strong><br>
+            6 participantes $\times$ 3 ideas por ronda $\times$ 6 rondas $=$ <strong>108 propuestas documentadas</strong> en exactamente 30 minutos de tiempo real. Ni un solo minuto se desperdicia en debates estériles ni discursos de ego.
+        </div>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="neurociencia-silencio">2. La Neurociencia del Silencio: Por Qué la Escritura Supera a la Voz</h2>
+
+        <p>
+            Cuando hablamos en voz alta en una sala de reuniones, nuestro cerebro activa fuertemente la <strong>corteza prefrontal dorsolateral</strong> y la <strong>amígdala</strong> para monitorear el estatus social, modular el tono de voz y calibrar las micro-expresiones faciales de la audiencia. Esta sobrecarga cognitiva consume la mayor parte del ancho de banda de la memoria de trabajo ($working\ memory$), dejando muy poca energía neuronal para el pensamiento lateral.
+        </p>
+
+        <p>
+            Al imponer el <strong>silencio absoluto</strong> durante el Brainwriting, ocurren tres fenómenos neurológicos clave:
+        </p>
+
+        <ol>
+            <li><strong>Activación de la Red Neuronal por Defecto (DMN):</strong> La ausencia de estímulos auditivos competitivos permite que el cerebro conecte memorias lejanas y analogías no obvias.</li>
+            <li><strong>Fijación Externa Guiada:</strong> Al recibir la hoja de tu compañero con 3 ideas ya escritas, tus ojos escanean nuevos conceptos que actúan como <em>cebadores semánticos (semantic priming)</em>, forzando a tu red neuronal a ramificar desde ángulos que tú jamás habrías concebido de forma aislada.</li>
+            <li><strong>Igualdad Cortical:</strong> El trazo de un bolígrafo en una hoja estándar mide lo mismo provenga del Director General (CEO) o del becario recién contratado. Se destruye el efecto halo jerárquico.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="protocolo-paso-a-paso">3. Protocolo de 6 Rondas Cronometradas: Guía de Facilitación Paso a Paso</h2>
+
+        <p>
+            Para que una sesión de Brainwriting 6-3-5 sea exitosa, la facilitación debe ser quirúrgica y cronometrada. A continuación se describe el protocolo estándar utilizado en las mejores consultoras de innovación y diseño:
+        </p>
+
+        <h3>Fase 0: Preparación y Enunciado del Desafío (10 minutos)</h3>
+        <p>
+            El facilitador reúne a 6 participantes alrededor de una mesa redonda o cuadrangular. El desafío debe formularse mediante la estructura <strong>"¿Cómo podríamos...?" (How Might We - HMW)</strong>, asegurando que sea lo suficientemente específico para orientar el pensamiento y lo bastante amplio para permitir soluciones diversas.
+        </p>
+        <p><em>Ejemplo de desafío técnico:</em> "¿Cómo podríamos reducir la latencia de carga inicial de nuestra app en dispositivos de gama baja sin comprometer la seguridad de los datos?"</p>
+
+        <h3>Fase 1 a 6: Las 6 Rondas de Ejecución (30 minutos en total)</h3>
+
+        <ul>
+            <li><strong>Ronda 1 (Minuto 0 a 5):</strong> Cada participante recibe su hoja de trabajo 6-3-5. En la primera fila (Fila 1), escribe en silencio 3 ideas originales, una en cada columna ($Idea\ 1$, $Idea\ 2$, $Idea\ 3$). Al sonar el timbre a los 5:00, pasa su hoja a la persona situada a su derecha.</li>
+            <li><strong>Ronda 2 (Minuto 5 a 10):</strong> Cada persona lee las 3 ideas que escribió su compañero en la Fila 1. En la Fila 2, debe escribir 3 nuevas ideas. Puede:
+                <br>a) <em>Evolucionar / enriquecer</em> las ideas de la Fila 1 ("Sí, y además le añadimos cache local").
+                <br>b) <em>Corregir una debilidad</em> detectada en la fila anterior.
+                <br>c) Proponer ideas completamente <em>nuevas y divergentes</em>.
+            </li>
+            <li><strong>Ronda 3 (Minuto 10 a 15):</strong> Se rota la hoja a la derecha. Ahora se leen las Filas 1 y 2, y se generan 3 ideas en la Fila 3. El estímulo asociativo se duplica.</li>
+            <li><strong>Ronda 4 (Minuto 15 a 20):</strong> Se rota la hoja. Se escribe en la Fila 4. La presión creativa aumenta al haberse agotado las respuestas obvias.</li>
+            <li><strong>Ronda 5 (Minuto 20 a 25):</strong> Se rota la hoja. Fila 5. Surgen combinaciones heterodoxas y soluciones laterales de alto valor.</li>
+            <li><strong>Ronda 6 (Minuto 25 a 30):</strong> Última rotación. Fila 6. Se completa la cuadrícula de 18 celdas por hoja. Se cierra la sesión de generación.</li>
+        </ul>
+
+        <div class="callout-box callout-emerald">
+            <strong>✅ Regla de Oro Inquebrantable:</strong> Está terminantemente prohibido hablar, hacer comentarios sarcásticos, gestos de aprobación o debatir durante los 30 minutos de rotación. Toda la comunicación es exclusivamente a través de la tinta.
+        </div>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="anatomia-plantilla">4. Anatomía de la Hoja de Trabajo 6-3-5</h2>
+
+        <p>
+            La plantilla estándar de Brainwriting 6-3-5 se organiza como una matriz tabular de 6 filas horizontales por 3 columnas verticales:
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-900 border-b border-slate-200">
+                        <th class="p-3 font-extrabold">Ronda / Participante</th>
+                        <th class="p-3 font-extrabold">Idea 1 (Vector Técnico)</th>
+                        <th class="p-3 font-extrabold">Idea 2 (Vector UX/Producto)</th>
+                        <th class="p-3 font-extrabold">Idea 3 (Vector Modelo/Negocio)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Ronda 1 (Autor Original)</td>
+                        <td class="p-3">Generar chunking semántico local en memoria RAM</td>
+                        <td class="p-3">Mostrar feedback visual instantáneo de progreso</td>
+                        <td class="p-3">Licencia permanente de 3,99 € sin cobros recurrentes</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Ronda 2 (+ Participante B)</td>
+                        <td class="p-3"><em>(Variación)</em> Usar SQLite BLOB comprimido con compresión zstd</td>
+                        <td class="p-3"><em>(Variación)</em> Skeleton screens con micro-animaciones SVG</td>
+                        <td class="p-3"><em>(Variación)</em> Garantizar actualizaciones offline sin expiración</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Ronda 3 (+ Participante C)</td>
+                        <td class="p-3"><em>(Variación)</em> Añadir similitud coseno vectorizada en C++/JNI</td>
+                        <td class="p-3"><em>(Variación)</em> Vibración háptica suave al completar el RAG</td>
+                        <td class="p-3"><em>(Variación)</em> Exportación zip con paquete nativo .lluvia</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Rondas 4, 5 y 6</td>
+                        <td class="p-3 text-slate-400 italic">Evolución acumulativa hasta completar 18 ideas por hoja...</td>
+                        <td class="p-3 text-slate-400 italic">Evolución acumulativa...</td>
+                        <td class="p-3 text-slate-400 italic">Evolución acumulativa...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="errores-fatales">5. 7 Errores Fatales que Arruinan una Sesión de Brainwriting</h2>
+
+        <ol>
+            <li><strong>Permitir que la gente hable o murmure:</strong> Una sola carcajada o comentario socarrón ("¡Vaya locura has puesto!") reactiva de inmediato los filtros de defensa del equipo. Silencio estricto.</li>
+            <li><strong>Ideas demasiado abstractas o monosilábicas:</strong> Escribir simplemente "IA" o "Mejorar diseño" no le da agarre al siguiente compañero. Las ideas deben redactarse como frases de acción concisas (1-2 líneas).</li>
+            <li><strong>Descalificar o tachar ideas anteriores:</strong> El protocolo prohíbe escribir "Esto no funcionará". Si una idea parece inviable, el participante debe transformarla en viable mediante un modificador o pivotarla hacia un ángulo seguro.</li>
+            <li><strong>Tiempos laxos sin cronómetro visible:</strong> Dejar 8 o 10 minutos por ronda destruye el sentido de urgencia. La mente necesita los 5 minutos exactos para entrar en estado de flujo de alta presión.</li>
+            <li><strong>Falta de preparación del desafío:</strong> Si el enunciado inicial es ambiguo, las primeras 3 ideas serán genéricas y todo el árbol posterior heredará la vaguedad.</li>
+            <li><strong>No clasificar las 108 ideas inmediatamente:</strong> Salir de la sala con 6 hojas llenas y dejarlas en un cajón garantiza la muerte del proyecto. La fase de filtrado debe ocurrir justo al terminar o en las 24 horas siguientes.</li>
+            <li><strong>Hacer la sesión con más de 7 o menos de 4 personas:</strong> Con 3 personas se pierde masa crítica asociativa. Con más de 8 la sesión se alarga en exceso y el cansancio mental degrada las últimas filas.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="variantes-avanzadas">6. Variantes Avanzadas: Brainwriting 4-2-4 y Modalidad Asíncrona</h2>
+
+        <h3>Brainwriting 4-2-4 (Para Startups y Células Ágiles)</h3>
+        <p>
+            Cuando no dispones de 6 personas en el equipo, la variante <strong>4-2-4</strong> adapta el marco a equipos nucleares: **4 participantes**, **2 ideas** por ronda, **4 minutos** por rotación. Produce **32 ideas hiper-enfocadas en solo 16 minutos**, ideal para sprints diarios o retrospectivas técnicas.
+        </p>
+
+        <h3>Brainwriting Asíncrono / Remoto con Paquetes de Datos</h3>
+        <p>
+            En equipos distribuidos con diferentes zonas horarias, el Brainwriting se ejecuta mediante cadenas digitales asíncronas. En lugar de documentos colaborativos en vivo (donde ves el cursor del otro y se pierde el anonimato), cada miembro recibe un archivo de intercambio encriptado (como el formato nativo `.lluvia`), rellena su turno en su móvil o portátil y lo despacha al siguiente integrante de la cadena.
+        </p>
+
+        <!-- CTA INTERNO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Ideación Asíncrona en Android</div>
+                <p>Estructura tus desafíos, genera ideas forzadas con agentes de IA locales y exporta proyectos completos en paquetes portables `.lluvia` sin depender de conexión a internet.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="comparativa-metodos">7. Comparativa Metodológica: 6-3-5 vs. Brainstorming Oral vs. SCAMPER</h2>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-900 border-b border-slate-200">
+                        <th class="p-3 font-extrabold">Parámetro</th>
+                        <th class="p-3 font-extrabold text-brand-600">Brainwriting 6-3-5</th>
+                        <th class="p-3 font-extrabold">Brainstorming Verbal Tradicional</th>
+                        <th class="p-3 font-extrabold">SCAMPER</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Volumen en 30 min</td>
+                        <td class="p-3 font-bold text-brand-600">108 ideas garantizadas</td>
+                        <td class="p-3">20 - 35 ideas (con interrupciones)</td>
+                        <td class="p-3">21 - 35 ideas estructuradas</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Riesgo de Sesgo Jerárquico</td>
+                        <td class="p-3 font-bold text-emerald-600">Cero (100% anónimo y silencioso)</td>
+                        <td class="p-3 text-red-600">Muy alto (el jefe ancla la discusión)</td>
+                        <td class="p-3">Bajo a medio</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Construcción Colectiva</td>
+                        <td class="p-3 font-bold text-brand-600">Obligatoria en cada rotación</td>
+                        <td class="p-3">Caótica / opcional</td>
+                        <td class="p-3">Secuencial por operador</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Mejor Caso de Uso</td>
+                        <td class="p-3">Equipos multidisciplinares y problemas complejos</td>
+                        <td class="p-3">Calentamiento lúdico y team building</td>
+                        <td class="p-3">Desbloqueo técnico de productos existentes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="filtrado-botanico">8. De 108 Ideas al Backlog: Filtrado con Madurez Botánica (2-2-2)</h2>
+
+        <p>
+            Generar 108 ideas en 30 minutos es un logro asombroso, pero si no se clasifican con rigor se convierten en ruido tóxico. Para procesar este volumen sin agotamiento cognitivo, aplicamos la <strong>Clasificación de Madurez Botánica</strong>:
+        </p>
+
+        <ol>
+            <li><strong>Fase 1: Agrupación por Afinidad (10 min):</strong> Se recortan o leen las ideas y se consolidan duplicados en 6-8 familias temáticas.</li>
+            <li><strong>Fase 2: Asignación de Madurez:</strong>
+                <ul>
+                    <li><strong>🌱 Semillas:</strong> Acciones tácticas ejecutables en menos de 48 horas (ej: corregir un copy, ajustar un índice en base de datos).</li>
+                    <li><strong>🌿 Brotes:</strong> Mejoras modulares que requieren 1-2 semanas de prototipado y validación.</li>
+                    <li><strong>🌳 Árboles:</strong> Transformaciones estructurales y apuestas 10x de largo plazo.</li>
+                </ul>
+            </li>
+            <li><strong>Fase 3: La Regla del Balance 2-2-2:</strong> De las 108 ideas, se seleccionan únicamente **2 Semillas prioritarias**, **2 Brotes** y **2 Árboles** para el roadmap del sprint. El resto se archiva en el banco de ideas sin saturar el backlog.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="brainwriting-ia">9. Brainwriting Potenciado con IA On-Device y Agentes Sintéticos</h2>
+
+        <p>
+            ¿Qué ocurre si eres un creador en solitario o tu equipo técnico solo tiene 2 personas? En la era de la inteligencia artificial, puedes ejecutar una sesión 6-3-5 simulando a los compañeros de mesa mediante <strong>agentes sintéticos especializados</strong> ejecutados localmente en tu dispositivo.
+        </p>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, configuras tu desafío técnico y el motor despacha las rondas de forma rotativa a través de diferentes personalidades cognitivas:
+        </p>
+
+        <ul>
+            <li><strong>Ronda 1:</strong> Tú propones 3 ideas semilla.</li>
+            <li><strong>Ronda 2:</strong> El agente <em>Elena (Growth Hacker)</em> evoluciona tus ideas hacia tracción y embudos.</li>
+            <li><strong>Ronda 3:</strong> El agente <em>Dr. Tech (Arquitecto de Software)</em> analiza la viabilidad y latencia técnica.</li>
+            <li><strong>Ronda 4:</strong> El agente <em>Victoria (VC & ROI)</em> somete las ideas a rentabilidad y defensibilidad de mercado.</li>
+            <li><strong>Ronda 5:</strong> El agente <em>Alex (Diseñador UX)</em> optimiza la empatía y reduce la fricción del usuario.</li>
+            <li><strong>Ronda 6:</strong> El agente <em>Catalizador</em> fusiona las mejores piezas en un informe consolidado en PDF y Markdown.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="faq-brainwriting">10. Preguntas Frecuentes sobre Brainwriting 6-3-5</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Qué pasa si a alguien se le agotan las ideas en la ronda 4 o 5?</h4>
+                <p class="text-sm text-slate-600">Es natural sentir fricción a partir de la ronda 4. La consigna es no quedarse en blanco: si no surge una idea virgen, el participante debe mirar las filas superiores y combinar dos ideas previas o aplicar un operador SCAMPER (ej: "¿Qué pasa si elimino el servidor central de esta propuesta?").</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Es obligatorio que sean exactamente 6 personas?</h4>
+                <p class="text-sm text-slate-600">No. 6 personas es el estándar óptimo de Rohrbach, pero con 4 personas (4-2-4) o 5 personas el método funciona con idéntica eficacia. Lo crucial es respetar el tiempo cronometrado y el silencio.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Por qué es mejor que escribir en un documento compartido en la nube?</h4>
+                <p class="text-sm text-slate-600">En un Google Doc o Notion en vivo, los usuarios ven lo que los demás escriben en tiempo real, lo que reintroduce el sesgo de anclaje y la distracción. El pase por rondas discretas garantiza que cada turno tenga 5 minutos de concentración ininterrumpida.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 11 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones">11. Conclusiones y Checklist para tu Próxima Sesión</h2>
+
+        <p>
+            El Brainwriting 6-3-5 demuestra que la creatividad de alto rendimiento no es un don místico ni un evento caótico, sino un **proceso de ingeniería cognitiva riguroso**. Al cambiar la voz por la escritura estructurada y la jerarquía por la rotación obligatoria, cualquier equipo de desarrollo o producto puede generar soluciones extraordinarias en 30 minutos.
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>📋 Checklist de Ejecución Rápida:</strong>
+            <ul class="mt-2 space-y-1 text-xs">
+                <li>[ ] Desafío formulado en formato "¿Cómo podríamos...?"</li>
+                <li>[ ] 6 hojas impresas con la cuadrícula de 6x3 casillas.</li>
+                <li>[ ] Cronómetro de 5 minutos visible para todos los asistentes.</li>
+                <li>[ ] Silencio absoluto acordado antes de dar la salida.</li>
+                <li>[ ] Rotación estricta hacia la derecha al sonar cada alarma.</li>
+                <li>[ ] Clasificación inmediata de las 108 ideas en Semillas, Brotes y Árboles (Regla 2-2-2).</li>
+            </ul>
+        </div>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="scamper-desbloqueo-tecnico.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Guía Completa SCAMPER</h4>
+                    <p class="text-xs text-slate-500 mt-1">Desbloquea problemas técnicos con 7 operadores de disrupción.</p>
+                </a>
+                <a href="madurez-botanica-priorizar-ideas.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Gestión de Innovación</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Madurez Botánica: Semillas, Brotes y Árboles</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo priorizar ideas ejecutables frente a visiones 10x.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Genera y clasifica ideas con IA local en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] brainwriting-6-3-5-ideacion-asincrona.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

@@ -144,7 +144,7 @@
             <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
                 <a href="../index.html">Inicio</a>
                 <span class="separator">›</span>
-                <a href="../index.html#articulos">Blog</a>
+                <a href="index.html">Blog Hub</a>
                 <span class="separator">›</span>
                 <span>Técnicas de Pensamiento</span>
             </div>
@@ -162,8 +162,45 @@
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         BLOG CONTENT
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
          ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">11 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#que-es-scamper" class="toc-sidebar-link" onclick="handleTocClick()">¿Qué es SCAMPER?</a></li>
+                <li class="toc-sidebar-item"><a href="#neurociencia" class="toc-sidebar-link" onclick="handleTocClick()">Neurociencia del bloqueo</a></li>
+                <li class="toc-sidebar-item"><a href="#los-7-operadores" class="toc-sidebar-link" onclick="handleTocClick()">Los 7 operadores SCAMPER</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-completo" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo cronometrado</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 errores fatales</a></li>
+                <li class="toc-sidebar-item"><a href="#variaciones-avanzadas" class="toc-sidebar-link" onclick="handleTocClick()">Variaciones avanzadas</a></li>
+                <li class="toc-sidebar-item"><a href="#scamper-equipos" class="toc-sidebar-link" onclick="handleTocClick()">SCAMPER para equipos</a></li>
+                <li class="toc-sidebar-item"><a href="#scamper-con-ia" class="toc-sidebar-link" onclick="handleTocClick()">Potenciación con IA y RAG</a></li>
+                <li class="toc-sidebar-item"><a href="#casos-de-exito" class="toc-sidebar-link" onclick="handleTocClick()">Casos de éxito reales</a></li>
+                <li class="toc-sidebar-item"><a href="#faq" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y descarga</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
     <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
     <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
         <div class="widget-icon">💡</div>
@@ -194,24 +231,6 @@
                 de su eficacia, cada operador con múltiples ejemplos reales, un protocolo cronometrado completo, errores fatales documentados, variaciones
                 avanzadas (SCAMPER inverso, competitivo y sistémico) y cómo potenciarlo con IA generativa y contexto RAG local.
             </p>
-        </div>
-
-        <!-- Table of Contents -->
-        <div class="toc-container">
-            <div class="toc-title">📑 Contenido del artículo</div>
-            <ol>
-                <li><a href="#que-es-scamper">¿Qué es SCAMPER? Origen, historia y fundamento</a></li>
-                <li><a href="#neurociencia">La neurociencia del bloqueo creativo: por qué funciona SCAMPER</a></li>
-                <li><a href="#los-7-operadores">Los 7 operadores SCAMPER en profundidad (con ejemplos reales)</a></li>
-                <li><a href="#protocolo-completo">Protocolo completo de ejecución: sesión cronometrada paso a paso</a></li>
-                <li><a href="#errores-fatales">7 errores fatales que destruyen una sesión SCAMPER</a></li>
-                <li><a href="#variaciones-avanzadas">Variaciones avanzadas: SCAMPER inverso, competitivo y sistémico</a></li>
-                <li><a href="#scamper-equipos">SCAMPER para equipos: roles, dinámicas y facilitación</a></li>
-                <li><a href="#scamper-con-ia">SCAMPER potenciado con IA y contexto RAG local</a></li>
-                <li><a href="#casos-de-exito">Casos de éxito documentados</a></li>
-                <li><a href="#faq">Preguntas frecuentes sobre SCAMPER</a></li>
-                <li><a href="#conclusiones">Conclusiones y siguiente paso concreto</a></li>
-            </ol>
         </div>
 
         <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
@@ -889,6 +908,49 @@
 
         window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
         console.log('[DEBUG][BlogArticle] Scroll listener para sticky CTA bar registrado');
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        // Active section tracking in ToC
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
 
         console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
     </script>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso Real: Auditoría Zero-Trust con RAG Local On-Device | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Estudio de caso de ciberseguridad: cómo una HealthTech superó su auditoría HIPAA e ISO 27001 usando RAG Local on-device y Pre-Mortem sin subir un solo byte a la nube.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Casos de Estudio</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🔒 Casos de Estudio</span>
+                <span class="blog-readtime">Lectura de 23 min · 5.200+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Caso Real: Auditoría de Seguridad Zero-Trust con RAG Local On-Device y Privacidad Absoluta
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                Cómo una plataforma de historiales clínicos (HealthTech) descubrió 12 vulnerabilidades críticas antes de su certificación HIPAA ejecutando modelos de IA y bases vectoriales 100% offline en Android.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#el-dilema-hipaa" class="toc-sidebar-link" onclick="handleTocClick()">1. El Dilema HIPAA y la IA en la Nube</a></li>
+                <li class="toc-sidebar-item"><a href="#la-solucion-rag-local" class="toc-sidebar-link" onclick="handleTocClick()">2. Arquitectura RAG Local On-Device</a></li>
+                <li class="toc-sidebar-item"><a href="#auditoria-pre-mortem" class="toc-sidebar-link" onclick="handleTocClick()">3. La Sesión Pre-Mortem de Amenazas</a></li>
+                <li class="toc-sidebar-item"><a href="#las-12-vulnerabilidades" class="toc-sidebar-link" onclick="handleTocClick()">4. Los 12 Vectores Críticos Detectados</a></li>
+                <li class="toc-sidebar-item"><a href="#mitigacion-in-situ" class="toc-sidebar-link" onclick="handleTocClick()">5. Mitigación In-Situ sin Fuga de Datos</a></li>
+                <li class="toc-sidebar-item"><a href="#certificacion-iso-hipaa" class="toc-sidebar-link" onclick="handleTocClick()">6. Certificación HIPAA e ISO 27001</a></li>
+                <li class="toc-sidebar-item"><a href="#lecciones-privacidad" class="toc-sidebar-link" onclick="handleTocClick()">7. 5 Lecciones de Privacidad Zero-Trust</a></li>
+                <li class="toc-sidebar-item"><a href="#rag-ia-local-guia" class="toc-sidebar-link" onclick="handleTocClick()">8. Cómo Auditar Código con Lluvia de Ideas IA</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-ciberseguridad" class="toc-sidebar-link" onclick="handleTocClick()">9. Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-ciberseguridad" class="toc-sidebar-link" onclick="handleTocClick()">10. Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">🔒</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                <strong>MedVault</strong>, una plataforma de historiales clínicos y telemedicina con más de 120.000 pacientes, se enfrentaba a una auditoría estricta de cumplimiento <strong>HIPAA e ISO 27001</strong>. El equipo de ciberseguridad quería utilizar inteligencia artificial para analizar el código fuente y las políticas de acceso en busca de fugas, pero la legislación prohibía terminantemente enviar código confidencial y esquemas de base de datos a servidores de IA en la nube (como OpenAI o Google Cloud). Implementando una solución de <strong>RAG (Retrieval-Augmented Generation) Local On-Device</strong> en un dispositivo Android de auditoría sin conexión a red, el equipo ejecutó una sesión <strong>Pre-Mortem de amenazas</strong>. El sistema local detectó **12 vulnerabilidades críticas de serialización de tokens y logs no ofuscados**, permitiendo mitigarlas a tiempo y obtener la certificación con **cero no-conformidades mayores y 65.000 € de ahorro**.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="el-dilema-hipaa">1. El Dilema HIPAA y el Riesgo de la IA en la Nube</h2>
+
+        <p>
+            Subir código fuente, diagramas de arquitectura interna o esquemas de bases de datos a APIs de IA comerciales de terceros constituye una infracción legal severa bajo normativas de secreto profesional médico (HIPAA) y privacidad europea (GDPR).
+        </p>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="la-solucion-rag-local">2. La Solución Técnica: RAG Local 100% On-Device</h2>
+
+        <p>
+            Para resolver el dilema, el equipo utilizó un dispositivo Android configurado en modo avión absoluto, ejecutando:
+        </p>
+
+        <ul>
+            <li><strong>Embeddings Locales:</strong> Modelo vectorizador cuantizado de 80 MB corriendo en la NPU del terminal.</li>
+            <li><strong>Base Vectorial Embebida:</strong> SQLite-VSS en almacenamiento flash local cifrado.</li>
+            <li><strong>LLM Cuantizado Offline:</strong> Modelo de razonamiento técnico de 4 bits procesando tokens a 28 tokens/segundo.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="auditoria-pre-mortem">3. La Sesión Pre-Mortem de Amenazas: Asumiendo la Brecha</h2>
+
+        <p>
+            El auditor cargó los 180 archivos de configuración y middleware en la memoria local del teléfono y lanzó la consulta inversa:
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>🔒 Consulta Pre-Mortem Local:</strong> "Asume que un atacante ha obtenido acceso de lectura a los logs de staging. Explica paso a paso cómo escalaría privilegios para extraer el historial clínico de un paciente en menos de 3 saltos de red."
+        </div>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="las-12-vulnerabilidades">4. Los 12 Vectores Críticos Detectados</h2>
+
+        <div class="space-y-4 my-6 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-rose-600 block mb-1">Vulnerabilidad #1: Tokens JWT en LocalStorage Inseguro</strong>
+                <p class="text-slate-600">El portal web guardaba tokens de sesión en el almacenamiento local del navegador en lugar de cookies HttpOnly con flag SameSite=Strict.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-rose-600 block mb-1">Vulnerabilidad #2: Logs de Debug con Datos Sensibles</strong>
+                <p class="text-slate-600">Un middleware de telemetría imprimía el payload JSON completo en la consola en caso de error 500, exponiendo identificadores médicos.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-rose-600 block mb-1">Vulnerabilidad #3: Endpoint de Métricas Expuesto</strong>
+                <p class="text-slate-600">El endpoint de Prometheus `/metrics` no requería autenticación mTLS en el clúster interno.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="mitigacion-in-situ">5. Mitigación In-Situ sin Fuga de Datos</h2>
+
+        <p>
+            Todas las propuestas de parches y refactorización de código fueron generadas directamente por el modelo on-device en el móvil y transferidas a la estación de trabajo mediante cable USB blindado sin tocar internet.
+        </p>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Audita tus Proyectos con Privacidad Total</div>
+                <p>Ejecuta RAG local y análisis de seguridad en tu dispositivo Android sin enviar un solo dato a servidores externos.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="certificacion-iso-hipaa">6. Certificación HIPAA e ISO 27001 Superada</h2>
+
+        <ul>
+            <li>No-conformidades mayores en la auditoría externa oficial: **0**.</li>
+            <li>Tiempo de detección y corrección de fallos: reducido de **6 semanas a 4 días**.</li>
+            <li>Ahorro en consultoría de pentesting externa: **65.000 €**.</li>
+            <li>Fugas de información o exposición de secretos: **0 bytes**.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="lecciones-privacidad">7. 5 Lecciones de Privacidad Zero-Trust</h2>
+
+        <ol>
+            <li><strong>La mejor forma de proteger un secreto es no enviarlo:</strong> El cómputo en el dispositivo (on-device) elimina el riesgo de intermediarios.</li>
+            <li><strong>El pensamiento inverso (Pre-Mortem) es superior a las listas de comprobación genéricas:</strong> Preguntar cómo romper el sistema revela fallos de lógica de negocio que los escáneres automáticos no ven.</li>
+            <li><strong>La IA local ya es lo suficientemente potente para auditoría:</strong> Los modelos cuantizados actuales ofrecen una precisión excelente en tareas de inspección de código.</li>
+            <li><strong>La seguridad no debe frenar la velocidad del equipo:</strong> Una herramienta portátil en el móvil permite a los ingenieros auto-auditarse en minutos.</li>
+            <li><strong>Cumplir la ley es una ventaja competitiva:</strong> Demostrar a los clientes corporativos que sus datos nunca tocan la nube genera ventas inmediatas.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="rag-ia-local-guia">8. Cómo Auditar Código con Lluvia de Ideas IA</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, toda la tecnología de RAG y razonamiento opera 100% en tu teléfono Android. Puedes volcar fragmentos de arquitectura, políticas de seguridad y contratos sin temor a fugas de propiedad intelectual.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-ciberseguridad">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Requiere un teléfono de gama alta para ejecutar la IA local?</h4>
+                <p class="text-sm text-slate-600">No. Gracias a la cuantización de modelos y algoritmos vectoriales eficientes en C++/Rust, la aplicación corre de forma fluida en cualquier dispositivo Android moderno.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-ciberseguridad">10. Conclusiones</h2>
+
+        <p>
+            La auditoría de MedVault demuestra que **la verdadera soberanía de datos y la ciberseguridad moderna no requieren renunciar a la inteligencia artificial, sino llevar los modelos de IA directamente al dispositivo donde reside la información confidencial**.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="rag-on-device-proteccion-negocio.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Arquitectura & Privacidad</span>
+                    <h4 class="font-bold text-slate-900 mt-2">RAG On-Device Local</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo proteger secretos industriales con IA local en Android.</p>
+                </a>
+                <a href="inversion-problema-peor-solucion.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">Lateralidad Creativa</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Inversión del Problema</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo diseñar el peor fallo para blindar tus sistemas.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Audita sistemas con IA 100% privada y local en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] caso-uso-auditoria-pre-mortem-ciberseguridad.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

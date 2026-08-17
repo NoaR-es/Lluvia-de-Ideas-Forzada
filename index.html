@@ -838,13 +838,28 @@
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="blog_title">Artículos
                         para Potenciar tu Creatividad</h2>
                 </div>
-                <p class="text-slate-500 text-sm mt-4 md:mt-0 max-w-md" data-i18n="blog_sub">Haz clic en cualquier
-                    artículo para leer el análisis metodológico y técnico completo.</p>
+                <div class="mt-4 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <p class="text-slate-500 text-sm max-w-xs" data-i18n="blog_sub">Haz clic en cualquier artículo para leer el análisis metodológico.</p>
+                    <a href="blog/index.html"
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-50 text-brand-700 hover:bg-brand-100 font-bold text-xs border border-brand-200 transition">
+                        <span>Ver todas las 25 guías en el Blog Hub</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
             </div>
 
             <!-- GRID DE ARTÍCULOS -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-container">
                 <!-- Renderizado dinámico e instantáneo desde JavaScript -->
+            </div>
+
+            <!-- BOTÓN AL HUB COMPLETO -->
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <a href="blog/index.html"
+                    class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-sm shadow-xl shadow-brand-500/20 transition transform hover:-translate-y-0.5">
+                    <span>Explorar la Enciclopedia Completa de Técnicas y Casos (25 Guías)</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
         </div>

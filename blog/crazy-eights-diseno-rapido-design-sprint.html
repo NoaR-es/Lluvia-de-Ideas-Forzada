@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Eights: 8 Bocetos en 8 Minutos en Design Sprint | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Guía exhaustiva de Crazy Eights de Google Ventures: protocolo cronometrado 1x8, superación del perfeccionismo en UX, votación silenciosa y filtrado botánico.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Técnicas de Pensamiento</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">⚡ Técnicas de Pensamiento</span>
+                <span class="blog-readtime">Lectura de 18 min · 4.600+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Crazy Eights: Cómo Bocetar 8 Variaciones de Diseño en 8 Minutos en un Design Sprint
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                El ejercicio nuclear de Google Ventures para superar la parálisis por perfección: cómo doblar una hoja en 8 cuadrantes, forzar 60 segundos por idea y converger hacia interfaces intuitivas de alto rendimiento.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#origen-google-ventures" class="toc-sidebar-link" onclick="handleTocClick()">Origen en Google Ventures</a></li>
+                <li class="toc-sidebar-item"><a href="#neurociencia-60-segundos" class="toc-sidebar-link" onclick="handleTocClick()">Neurociencia de los 60 Segundos</a></li>
+                <li class="toc-sidebar-item"><a href="#mecanica-hoja-doblada" class="toc-sidebar-link" onclick="handleTocClick()">Mecánica de la Hoja Doblada</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-cronometrado" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo 1x8 Minuto a Minuto</a></li>
+                <li class="toc-sidebar-item"><a href="#caso-ui-android" class="toc-sidebar-link" onclick="handleTocClick()">Caso Real: UI de Ideas en Android</a></li>
+                <li class="toc-sidebar-item"><a href="#votacion-silenciosa" class="toc-sidebar-link" onclick="handleTocClick()">Votación Silenciosa (Dot Voting)</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 Errores fatales en Crazy Eights</a></li>
+                <li class="toc-sidebar-item"><a href="#crazy-eights-ia" class="toc-sidebar-link" onclick="handleTocClick()">Crazy Eights con IA On-Device</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-crazy-eights" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-crazy" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">⚡</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                Los diseñadores y desarrolladores suelen enamorarse de su primera idea de interfaz y dedican días enteros a pulir en Figma o código una solución que no ha sido contrastada. <strong>Crazy Eights</strong> es el ejercicio nuclear del método <em>Design Sprint</em> de <strong>Google Ventures</strong> (creado por Jake Knapp): se dobla una hoja de papel A4 en <strong>8 rectángulos</strong> y se obliga a cada participante a dibujar <strong>8 variaciones distintas de una pantalla o solución en exactamente 8 minutos cronometrados (60 segundos por rectángulo)</strong>. La presión implacable del reloj desactiva el afán de perfección estética y fuerza al cerebro a explorar soluciones laterales, asimétricas y minimalistas que jamás habrían surgido en un proceso pausado.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="origen-google-ventures">1. Origen en Google Ventures: Jake Knapp y el Design Sprint</h2>
+
+        <p>
+            En su paso por Google y posteriormente como socio de diseño en Google Ventures, <strong>Jake Knapp</strong> observó que los mejores equipos de Silicon Valley perdían semanas debatiendo sobre maquetas visuales sin haber explorado el abanico completo de alternativas funcionales.
+        </p>
+
+        <p>
+            Para acelerar el ciclo de validación de startups invertidas (como Uber, Slack o Nest), Knapp diseñó el <em>Design Sprint</em> de 5 días. En la fase de divergencia del miércoles, introdujo <strong>Crazy Eights</strong> como el ejercicio de velocidad pura que rompe la inercia mental del equipo.
+        </p>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="neurociencia-60-segundos">2. Neurociencia de los 60 Segundos: Matando al Crítico Interior</h2>
+
+        <p>
+            Cuando dispones de 30 minutos para diseñar una pantalla, tu <strong>corteza prefrontal dorsolateral</strong> activa filtros de juicio estético: te preocupas por el grosor del trazo, la simetría de los iconos y la tipografía.
+        </p>
+
+        <p>
+            Al reducir el tiempo a **60 segundos exactos por cuadrante**, el cerebro entra en modo de supervivencia cognitiva:
+        </p>
+
+        <ul>
+            <li><strong>Muerte del perfeccionismo:</strong> No hay tiempo para borrar ni embellecer; solo para capturar la lógica pura de la interacción.</li>
+            <li><strong>Agotamiento de lo obvio en el minuto 3:</strong> Las casillas 1, 2 y 3 contienen las soluciones estándar. A partir de la casilla 4, la mente entra en pánico constructivo y se ve forzada a inventar mecánicas heterodoxas (gestos hápticos, voz, automatizaciones en segundo plano).</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="mecanica-hoja-doblada">3. La Mecánica de la Hoja Doblada en 8 Cuadrantes</h2>
+
+        <p>
+            No se utilizan herramientas digitales complejas ni software de diseño vectorial: una simple hoja de papel en blanco doblada tres veces por la mitad crea los 8 rectángulos proporcionales a la pantalla de un smartphone moderno.
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6">
+            <h4 class="font-bold text-slate-900 mb-3 text-center">Cuadrícula de los 8 Minutos</h4>
+            <div class="grid grid-cols-4 gap-2 text-center text-xs font-bold">
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">Min 1: Lista Vertical Estándar</div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">Min 2: Carrusel Horizontal Swipe</div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">Min 3: Tarjetas Apilables tipo Tinder</div>
+                <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-700">Min 4: Árbol Botánico Fractal</div>
+                <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-700">Min 5: Canvas Infinito Zoomable</div>
+                <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-700">Min 6: Interfaz 100% por Voz/IA</div>
+                <div class="p-3 bg-brand-50 border border-brand-200 rounded-xl text-brand-700">Min 7: Modo Solo Gestos Hápticos</div>
+                <div class="p-3 bg-brand-50 border border-brand-200 rounded-xl text-brand-700">Min 8: Fusión de las Mejores 2</div>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="protocolo-cronometrado">4. Protocolo 1x8 Minuto a Minuto con Facilitador</h2>
+
+        <ol>
+            <li><strong>Minuto 0:</strong> El facilitador enuncia el reto de UI/UX (ej: *"¿Cómo mostrar 50 ideas clasificadas en la pantalla del móvil sin saturar al usuario?"*).</li>
+            <li><strong>Minuto 1 a 8:</strong> El cronómetro suena cada 60 segundos con un timbre claro. El facilitador grita: *"¡Cambio de casilla!"*. Está prohibido quedarse en la casilla anterior.</li>
+            <li><strong>Minuto 9:</strong> Al sonar el octavo timbre, todos sueltan los rotuladores de inmediato.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="caso-ui-android">5. Caso Real: Visualización de Ideas en Lluvia de Ideas IA</h2>
+
+        <p>
+            Durante el diseño de la aplicación móvil <strong>Lluvia de Ideas IA</strong>, el desafío era cómo representar proyectos que contienen decenas de ideas interconectadas sin que pareciera una hoja de Excel aburrida:
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 space-y-3 text-xs">
+            <p><strong>Boceto 1 (Min 1):</strong> Lista lineal clásica con botones de borrado (demasiado plano).</p>
+            <p><strong>Boceto 4 (Min 4 - Salto Lateral):</strong> Metáfora visual de un jardín: las ideas no son texto, son semillas que crecen a brotes y árboles con hojas desplegables.</p>
+            <p><strong>Boceto 7 (Min 7 - Innovación):</strong> Filtro háptico radial: una rueda deslizante en el pulgar que clasifica la madurez con vibración táctil en 3 intensidades.</p>
+            <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 font-semibold mt-3">
+                🎯 Resultado: La combinación de los bocetos 4 y 7 se convirtió en la interfaz insignia de la app en Android.
+            </div>
+        </div>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Ideación Rápida en tu Bolsillo</div>
+                <p>Estructura desafíos complejos, clasifica ideas con la metáfora botánica y exporta paquetes portables `.lluvia` en Android 100% offline.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="votacion-silenciosa">6. Votación Silenciosa (Dot Voting) y Cosecha</h2>
+
+        <p>
+            Una vez terminados los 8 minutos, las hojas de todos los participantes se pegan en la pared. Cada miembro recibe **3 pegatinas o puntos (gometes)** y, en completo silencio durante 5 minutos, vota los rectángulos específicos que contienen las ideas más prometedoras.
+        </p>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="errores-fatales">7. 7 Errores Fatales al Facilitar Crazy Eights</h2>
+
+        <ol>
+            <li><strong>Permitir que la gente use lápices finos y goma de borrar:</strong> Se debe usar rotulador grueso para que sea imposible borrar ni dibujar detalles microscópicos.</li>
+            <li><strong>Pausar el cronómetro:</strong> Si alguien pide más tiempo, se rompe la tensión productiva. Los 60 segundos son sagrados.</li>
+            <li><strong>Dibujar la misma idea con cambios cosméticos en las 8 casillas:</strong> Cada casilla debe explorar una mecánica o disposición conceptual distinta.</li>
+            <li><strong>Explicar los bocetos verbalmente antes de votar:</strong> Los bocetos deben auto-explicarse visualmente.</li>
+            <li><strong>Evaluar la calidad del dibujo:</strong> Crazy Eights no es un concurso artístico; se evalúan conceptos y flujos de usuario.</li>
+            <li><strong>Hacer el ejercicio sin haber definido previamente el problema:</strong> Sin un objetivo nítido, los bocetos son irrelevantes.</li>
+            <li><strong>No prototipar el boceto ganador en las 24 horas siguientes:</strong> El impulso creativo se evapora si no se construye de inmediato.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="crazy-eights-ia">8. Crazy Eights con IA On-Device</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, puedes ejecutar un Crazy Eights digital: describes tu pantalla y el motor de IA local genera 8 variaciones estructurales de interfaz y flujo en formato Markdown descriptivo, listo para inspirar tus prototipos en Android.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-crazy-eights">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Qué pasa si no sé dibujar?</h4>
+                <p class="text-sm text-slate-600">Mejor aún. Crazy Eights funciona con cajas, flechas, líneas onduladas y texto esquemático. Los no diseñadores a menudo producen las soluciones más funcionales porque no se distraen con adornos.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Se puede usar para problemas no visuales (backend, modelos de negocio)?</h4>
+                <p class="text-sm text-slate-600">Sí. En backend, cada cuadrante puede representar un diagrama de flujo de datos, una topología de base de datos o un protocolo de cache diferente.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-crazy">10. Conclusiones y Próximo Sprint</h2>
+
+        <p>
+            Crazy Eights demuestra que la velocidad extrema es el mejor antídoto contra el bloqueo creativo y la parálisis de diseño. En solo 8 minutos, un equipo puede explorar más territorio conceptual del que normalmente cubriría en dos semanas de reuniones convencionales.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="brainwriting-6-3-5-ideacion-asincrona.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Brainwriting 6-3-5</h4>
+                    <p class="text-xs text-slate-500 mt-1">108 ideas en 30 minutos sin interrupciones ni sesgos.</p>
+                </a>
+                <a href="scamper-desbloqueo-tecnico.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Guía Completa SCAMPER</h4>
+                    <p class="text-xs text-slate-500 mt-1">7 operadores para transformar cualquier producto existente.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Boceta y clasifica ideas con IA en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] crazy-eights-diseno-rapido-design-sprint.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

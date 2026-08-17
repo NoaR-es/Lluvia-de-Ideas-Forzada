@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Técnica de la Escalera (Stepladder) contra el Groupthink | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Guía definitiva de la Técnica Stepladder de Rogelberg: protocolo peldaño a peldaño para erradicar el Groupthink y blindar decisiones arquitectónicas complejas.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Gestión de Innovación</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🪜 Gestión de Innovación</span>
+                <span class="blog-readtime">Lectura de 20 min · 4.800+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                La Técnica de la Escalera (Stepladder): Cómo Evitar el Pensamiento de Grupo (Groupthink) en Equipos de Software
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                El protocolo de integración progresiva de Rogelberg: cómo incorporar a cada miembro del equipo de forma escalonada para que presente su postura virgen antes de conocer el consenso previo de la sala.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#psicologia-groupthink" class="toc-sidebar-link" onclick="handleTocClick()">Psicología del Groupthink</a></li>
+                <li class="toc-sidebar-item"><a href="#origen-rogelberg" class="toc-sidebar-link" onclick="handleTocClick()">Origen: Rogelberg (1992)</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-peldaños" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo Peldaño a Peldaño</a></li>
+                <li class="toc-sidebar-item"><a href="#caso-base-datos" class="toc-sidebar-link" onclick="handleTocClick()">Caso Real: Elección de Base de Datos</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 Errores fatales a evitar</a></li>
+                <li class="toc-sidebar-item"><a href="#comparativa-metodos" class="toc-sidebar-link" onclick="handleTocClick()">Comparativa: Stepladder vs Clásico</a></li>
+                <li class="toc-sidebar-item"><a href="#madurez-botanica" class="toc-sidebar-link" onclick="handleTocClick()">Filtrado Semilla-Brote-Árbol</a></li>
+                <li class="toc-sidebar-item"><a href="#stepladder-ia" class="toc-sidebar-link" onclick="handleTocClick()">Stepladder con Agentes IA</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-stepladder" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-stepladder" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">🪜</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                El <strong>Pensamiento de Grupo (Groupthink)</strong> es el sesgo cognitivo más destructivo de las organizaciones tecnológicas: cuando 3 o 4 miembros veteranos expresan una opinión, el resto del equipo adopta automáticamente esa postura para preservar la armonía social y evitar el conflicto, silenciando advertencias críticas. La <strong>Técnica de la Escalera (Stepladder Technique)</strong>, desarrollada por Steven Rogelberg en 1992, es un protocolo de integración física escalonada: todos los miembros analizan el problema por separado. Dos personas inician la reunión en una sala. Luego entra el tercer miembro, quien <strong>debe exponer su propuesta individual ANTES de que los dos primeros le revelen lo que han estado debatiendo</strong>. A continuación entra el cuarto, y así sucesivamente. Esta guía desglosa el protocolo, un caso real de arquitectura de base de datos y cómo simular la escalera con IA local en Android.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="psicologia-groupthink">1. Psicología del Groupthink: El Experimento de Asch y la Conformidad</h2>
+
+        <p>
+            En 1951, el psicólogo Solomon Asch demostró que el 75% de las personas están dispuestas a negar la evidencia directa de sus propios ojos y afirmar que dos líneas de diferente longitud son iguales si los demás participantes (cómplices) lo afirman con seguridad.
+        </p>
+
+        <p>
+            En los comités de arquitectura de software, este fenómeno es endémico: si el Chief Technology Officer (CTO) y el Lead Architect afirman *"Vamos a reescribir todo en Kubernetes"*, los ingenieros que conocen los riesgos operativos se callan para no ser etiquetados como "pesimistas" o "frenos a la innovación".
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>🪜 El Principio Stepladder:</strong> La única forma de obtener una opinión sincera e incontaminada de un ingeniero es obligarle a exponerla antes de que sepa cuál es el consenso mayoritario de la sala.
+        </div>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="origen-rogelberg">2. Origen: Steven Rogelberg (1992) y la Evidencia Empírica</h2>
+
+        <p>
+            El Dr. <strong>Steven Rogelberg</strong> y sus colegas publicaron en el <em>Journal of Applied Psychology</em> un estudio donde compararon grupos tradicionales frente a grupos que aplicaban la Técnica Stepladder. Los grupos Stepladder produjeron consistentemente decisiones de **calidad significativamente superior y soluciones más innovadoras**, superando incluso el rendimiento de los mejores individuos del grupo por separado.
+        </p>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="protocolo-peldaños">3. El Protocolo Peldaño a Peldaño</h2>
+
+        <ol>
+            <li><strong>Peldaño 0: Reflexión Individual Asíncrona:</strong> Se entrega el documento del problema a todos los participantes con antelación. Cada uno debe redactar su postura por escrito de forma aislada.</li>
+            <li><strong>Peldaño 1: El Núcleo Base (Miembros A y B):</strong> Solo dos personas entran a la sala y debaten sus propuestas durante 10 minutos.</li>
+            <li><strong>Peldaño 2: Entrada del Miembro C:</strong> Entra la tercera persona. <em>Antes de escuchar el resumen de A y B</em>, C expone su propuesta virgen. Solo entonces se abre el debate a tres bandas.</li>
+            <li><strong>Peldaño 3: Entrada del Miembro D:</strong> Entra la cuarta persona, expone su visión independiente y luego se integra en la discusión colectiva.</li>
+            <li><strong>Peldaño N: Cierre y Decisión Final:</strong> Una vez integrado el último miembro, el equipo formula la resolución consensuada.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="caso-base-datos">4. Caso Real: Elección de Base de Datos y Modelo de Hosting</h2>
+
+        <p>
+            Una scale-up técnica debía decidir si migrar su base de datos a un clúster gestionado en la nube con coste de 4.000 €/mes o mantener una arquitectura local particionada con SQLite/PostgreSQL on-premise:
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 space-y-3 text-xs">
+            <p><strong>Peldaño 1 (CTO + Lead Backend):</strong> Habían acordado preliminarmente contratar el clúster cloud gestionado para ahorrar tiempo de administración.</p>
+            <p><strong>Peldaño 2 (Entra Dev Sec/Ops):</strong> Expone su informe independiente: <em>"El clúster gestionado almacena logs en regiones fuera de la UE, lo que viola el RGPD con nuestros clientes enterprise y acarrearía multas severas."</em></p>
+            <p><strong>Peldaño 3 (Entra Lead Mobile):</strong> Expone su informe independiente: <em>"El 70% de las consultas de nuestros usuarios son de solo lectura; si cacheamos con SQLite local en el móvil, la carga del servidor baja un 80% y no necesitamos el clúster caro."</em></p>
+            <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 font-semibold mt-3">
+                🎯 Resultado: La empresa evitó un gasto de 48.000 €/año y una infracción regulatoria grave gracias a que los miembros 2 y 3 no fueron intimidados por el consenso inicial de la sala.
+            </div>
+        </div>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Auditoría Anti-Groupthink en Android</div>
+                <p>Somete tus decisiones técnicas a evaluaciones escalonadas con agentes de IA locales sin compartir datos con servidores externos.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="errores-fatales">5. 7 Errores Fatales al Facilitar la Escalera</h2>
+
+        <ol>
+            <li><strong>Revelar el debate de la sala al nuevo miembro antes de que exponga su idea:</strong> Esto anula el valor del método por completo.</li>
+            <li><strong>No exigir el Peldaño 0 por escrito:</strong> Si los miembros que esperan afuera no han escrito su propuesta, pueden verse tentados a improvisar al entrar.</li>
+            <li><strong>Permitir que los que esperan afuera hablen entre sí:</strong> Deben permanecer aislados para no crear sub-consensos.</li>
+            <li><strong>Hacer la sesión con más de 6 personas:</strong> Con grupos grandes la espera exterior se hace tediosa.</li>
+            <li><strong>Interrumpir al nuevo miembro mientras expone su visión inicial:</strong> Debe tener 3 minutos de exposición ininterrumpida.</li>
+            <li><strong>Permitir gestos de condescendencia de los que ya están dentro:</strong> Clima de respeto científico absoluto.</li>
+            <li><strong>No registrar las discrepancias:</strong> Las discrepancias son la semilla de los tests de regresión.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="comparativa-metodos">6. Comparativa Metodológica: Stepladder vs. Reunión Convencional</h2>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-900 border-b border-slate-200">
+                        <th class="p-3 font-extrabold">Dimensión</th>
+                        <th class="p-3 font-extrabold text-brand-600">Técnica Stepladder</th>
+                        <th class="p-3 font-extrabold">Reunión Convencional</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Independencia de Juicio</td>
+                        <td class="p-3 font-bold text-emerald-600">100% garantizada por diseño</td>
+                        <td class="p-3 text-red-600">Muy baja (anclaje al primer orador)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Detección de Riesgos Críticos</td>
+                        <td class="p-3 font-bold text-brand-600">Máxima (los perfiles técnicos alertan sin miedo)</td>
+                        <td class="p-3">Baja (auto-censura)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">Tiempo Requerido</td>
+                        <td class="p-3">45 - 60 minutos estructurados</td>
+                        <td class="p-3">60 - 90 minutos caóticos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="madurez-botanica">7. Filtrado Botánico de Decisiones Stepladder</h2>
+
+        <ul>
+            <li><strong>🌱 Semillas:</strong> Acciones de refactorización inmediata identificadas por los perfiles individuales.</li>
+            <li><strong>🌿 Brotes:</strong> Nuevos componentes y adaptadores sugeridos por la integración escalonada.</li>
+            <li><strong>🌳 Árboles:</strong> La decisión estratégica global de arquitectura.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="stepladder-ia">8. Stepladder con Agentes Sintéticos de IA en Android</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, puedes invocar una sesión Stepladder virtual: el motor evalúa tu reto primero de forma aislada con cada agente (Dr. Tech, Elena Growth, Victoria VC) sin que conozcan las respuestas de los otros, y luego ejecuta la síntesis escalonada en un documento Markdown consolidado.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-stepladder">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Quiénes deben ser los dos primeros miembros que entran?</h4>
+                <p class="text-sm text-slate-600">Idealmente dos perfiles con visiones complementarias o moderadas. Es aconsejable que los líderes jerárquicos entren en los últimos peldaños para no influir en el proceso.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-stepladder">10. Conclusiones y Próximo Sprint</h2>
+
+        <p>
+            La Técnica de la Escalera demuestra que la verdad técnica no surge del consenso fácil, sino de la **protección meticulosa del disenso informado**. Al incorporar peldaño a peldaño a tu equipo, blindas tus proyectos contra los errores más costosos de la industria.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="brainstorming-round-robin-construccion-colectiva.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Round-Robin Brainstorming</h4>
+                    <p class="text-xs text-slate-500 mt-1">Participación 100% equitativa y construcción colectiva.</p>
+                </a>
+                <a href="seis-sombreros-pensar-pensamiento-paralelo.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Los 6 Sombreros para Pensar</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo alinear modos cognitivos y evitar sesgos en reuniones.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Erradica el Groupthink con IA local en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] tecnica-escalera-stepladder-evitar-groupthink.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

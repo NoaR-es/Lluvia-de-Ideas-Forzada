@@ -116,8 +116,10 @@
     <header class="blog-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
-                <a href="../index.html">Inicio</a><span class="separator">›</span>
-                <a href="../index.html#articulos">Blog</a><span class="separator">›</span>
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
                 <span>Pensamiento Analógico</span>
             </div>
             <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
@@ -125,7 +127,7 @@
                 <span class="blog-readtime">Lectura de 21 min · 4.900+ palabras</span>
             </div>
             <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-                Guía Completa: Biomímesis en Software — Diseñando Arquitecturas Resilientes Inspiradas en Sistemas Biológicos
+                Biomímesis en Software: Cómo los Sistemas Naturales Inspiran Arquitecturas Resilientes
             </h1>
             <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
                 Cómo transferir patrones de 3.800 millones de años de I+D biológico a la ingeniería de software moderna: estigmergia, redes miceliares, homeostasis y plasticidad sináptica para resolver problemas de concurrencia, escalabilidad y tolerancia a fallos.
@@ -133,7 +135,46 @@
         </div>
     </header>
 
-    <!-- BLOG CONTENT -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">11 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#que-es-biomimesis" class="toc-sidebar-link" onclick="handleTocClick()">¿Qué es la Biomímesis?</a></li>
+                <li class="toc-sidebar-item"><a href="#patron-estigmergia" class="toc-sidebar-link" onclick="handleTocClick()">Patrón 1: Estigmergia</a></li>
+                <li class="toc-sidebar-item"><a href="#patron-micelio" class="toc-sidebar-link" onclick="handleTocClick()">Patrón 2: Redes Miceliares</a></li>
+                <li class="toc-sidebar-item"><a href="#patron-homeostasis" class="toc-sidebar-link" onclick="handleTocClick()">Patrón 3: Homeostasis y Sistema Inmune</a></li>
+                <li class="toc-sidebar-item"><a href="#patron-plasticidad" class="toc-sidebar-link" onclick="handleTocClick()">Patrón 4: Plasticidad Sináptica</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-biomimetico" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo de 4 Fases</a></li>
+                <li class="toc-sidebar-item"><a href="#casos-estudio-bio" class="toc-sidebar-link" onclick="handleTocClick()">Casos de éxito reales</a></li>
+                <li class="toc-sidebar-item"><a href="#anti-patrones-bio" class="toc-sidebar-link" onclick="handleTocClick()">Anti-patrones a evitar</a></li>
+                <li class="toc-sidebar-item"><a href="#biomimesis-con-ia" class="toc-sidebar-link" onclick="handleTocClick()">Biomímesis con IA On-Device</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-biomimesis" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-biomimesis" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y descarga</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
     <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
     <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
         <div class="widget-icon">🧬</div>
@@ -491,6 +532,49 @@
             if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
         }
         window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        // Active section tracking in ToC
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
 
         console.log('[DEBUG][BlogArticle] Scripts inicializados correctamente');
     </script>

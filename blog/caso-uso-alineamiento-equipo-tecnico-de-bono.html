@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso Real: Alineamiento Técnico con los 6 Sombreros | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Estudio de caso de liderazgo técnico: cómo un equipo de 15 ingenieros resolvió una guerra de arquitectura (Rust vs Java) en 90 minutos con los 6 Sombreros.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Casos de Estudio</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">👥 Casos de Estudio</span>
+                <span class="blog-readtime">Lectura de 21 min · 4.950+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Caso Real: Desbloqueo y Alineamiento de un Equipo de 15 Desarrolladores con los 6 Sombreros de De Bono
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                Cómo desactivar la guerra de egos y opiniones dogmáticas entre ingenieros senior: la secuencia de pensamiento paralelo que resolvió una disputa técnica de 2 meses en solo 90 minutos.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#la-guerra-de-arquitectura" class="toc-sidebar-link" onclick="handleTocClick()">1. La Guerra de Arquitectura</a></li>
+                <li class="toc-sidebar-item"><a href="#por-que-fallo-el-debate" class="toc-sidebar-link" onclick="handleTocClick()">2. Por Qué Falló el Debate Tradicional</a></li>
+                <li class="toc-sidebar-item"><a href="#la-sesion-6-sombreros" class="toc-sidebar-link" onclick="handleTocClick()">3. La Sesión de 90 Minutos</a></li>
+                <li class="toc-sidebar-item"><a href="#el-recorrido-secuencial" class="toc-sidebar-link" onclick="handleTocClick()">4. El Recorrido Secuencial</a></li>
+                <li class="toc-sidebar-item"><a href="#la-solucion-lateral" class="toc-sidebar-link" onclick="handleTocClick()">5. La Solución Lateral Híbrida</a></li>
+                <li class="toc-sidebar-item"><a href="#metricas-alineamiento" class="toc-sidebar-link" onclick="handleTocClick()">6. Métricas de Impacto (+45% Velocidad)</a></li>
+                <li class="toc-sidebar-item"><a href="#lecciones-liderazgo" class="toc-sidebar-link" onclick="handleTocClick()">7. 5 Lecciones de Liderazgo Técnico</a></li>
+                <li class="toc-sidebar-item"><a href="#sombreros-ia-guia" class="toc-sidebar-link" onclick="handleTocClick()">8. Replicar con Agentes IA Locales</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-alineamiento" class="toc-sidebar-link" onclick="handleTocClick()">9. Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-alineamiento" class="toc-sidebar-link" onclick="handleTocClick()">10. Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">👥</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                En <strong>LogisticsCore</strong>, un equipo de 15 ingenieros senior se dividió en dos facciones irreconciliables: un grupo exigía reescribir todo el backend monolítico en <strong>Rust</strong> para optimizar rendimiento, mientras que el otro defendía mantener la base existente en <strong>Java/Spring Boot</strong> para no frenar nuevas funciones. Tras 8 semanas de hilos tóxicos en Slack y sprints bloqueados, el VP de Ingeniería convocó un taller de <strong>Pensamiento Paralelo con los 6 Sombreros de Edward de Bono</strong>. Al obligar a todos a adoptar simultáneamente el mismo modo cognitivo (datos puros, desahogo emocional de 60s, auditoría de riesgos y saltos laterales), el equipo descubrió en **90 minutos** una solución híbrida: conservar el backend en Java e integrar módulos críticos de Rust mediante FFI/JNI. La entrega de software se aceleró un 45% y la moral del equipo quedó restaurada.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="la-guerra-de-arquitectura">1. La Guerra de Arquitectura: 8 Semanas de Parálisis Técnica</h2>
+
+        <p>
+            Lo que comenzó como una discusión de diseño sobre latencia en el motor de cálculo de rutas derivó en una guerra de trincheras: los defensores de Rust acusaban a los otros de "anticuados y conformistas", mientras que los defensores de Java acusaban a los primeros de "perseguir modas y poner en riesgo a la empresa".
+        </p>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="por-que-fallo-el-debate">2. Por Qué Falló el Debate Tradicional</h2>
+
+        <p>
+            En cada reunión previa, el formato era el combate dialéctico: cada persona hablaba para defender su posición y buscar los fallos en el argumento del contrario. El ego impedía a los ingenieros reconocer los puntos válidos de la otra parte.
+        </p>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="la-sesion-6-sombreros">3. La Sesión de 90 Minutos: Las Reglas Inflexibles</h2>
+
+        <p>
+            El facilitador prohibió hablar en primera persona y estableció la rotación estricta de sombreros donde **los 15 ingenieros debían usar el mismo sombrero al mismo tiempo**:
+        </p>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="el-recorrido-secuencial">4. El Recorrido Secuencial Minuto a Minuto</h2>
+
+        <div class="space-y-4 my-6 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-slate-900 block mb-1">🔵 Sombrero Azul (Min 0-10): Encuadre</strong>
+                <p class="text-slate-600">El objetivo no es decidir qué lenguaje es "mejor", sino cómo procesar 50.000 rutas/seg con menos de 100 ms de latencia antes de final de trimestre.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-slate-900 block mb-1">⚪ Sombrero Blanco (Min 10-25): Hechos y Datos Puros</strong>
+                <p class="text-slate-600">El 92% del tiempo de CPU se consume exclusivamente en 1 función matemática de cálculo matricial de 400 líneas; el resto del backend (CRUD, autenticación, facturación) consume solo el 8% de CPU.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-rose-600 block mb-1">🔴 Sombrero Rojo (Min 25-35): Desahogo Emocional (60 seg por persona)</strong>
+                <p class="text-slate-600">Todos expresan sus miedos sin justificarse: <em>"Tengo miedo a que nos quedemos obsoletos"</em> vs <em>"Tengo pánico a reescribir 200.000 líneas y perder la estabilidad en producción"</em>.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-slate-900 block mb-1">⚫ Sombrero Negro (Min 35-55): Auditoría de Riesgos</strong>
+                <p class="text-slate-600">Los pro-Rust están obligados a buscar los riesgos de Rust (curva de aprendizaje de 4 meses, escasez de talento) y los pro-Java los riesgos de Java (pausas de Garbage Collector en picos de carga).</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-emerald-600 block mb-1">🟢 Sombrero Verde (Min 55-75): Salto Lateral</strong>
+                <p class="text-slate-600">Surge la propuesta disruptiva: <em>"¿Y si no reescribimos el backend y solo extraemos esa única función de 400 líneas a una librería Rust compilada a binario nativo e invocada por JNI/C-FFI?"</em>.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200">
+                <strong class="text-indigo-600 block mb-1">🔵 Sombrero Azul (Min 75-90): Acuerdo Consensuado</strong>
+                <p class="text-slate-600">Aprobación unánime del plan híbrido en 1 solo sprint de prueba.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="la-solucion-lateral">5. La Solución Lateral Híbrida</h2>
+
+        <p>
+            En lugar de una migración traumática de 9 meses, el equipo tardó **6 días** en compilar la función matricial en Rust con integración JNI. La latencia cayó de 340 ms a 18 ms, resolviendo el cuello de botella técnico al 100% sin reescribir el resto del sistema.
+        </p>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Desactiva Conflictos con IA en Android</div>
+                <p>Evalúa decisiones complejas con los 6 Sombreros asignando agentes sintéticos objetivos en tu teléfono sin conexión a internet.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="metricas-alineamiento">6. Métricas de Impacto: Velocidad de Entrega +45%</h2>
+
+        <ul>
+            <li>Velocidad de sprint (story points entregados): subió un **45%**.</li>
+            <li>Latencia de procesamiento de rutas: bajó de **340 ms a 18 ms**.</li>
+            <li>Moral y clima del equipo (eNPS): subió de **-18 a +54**.</li>
+            <li>Rotación voluntaria en los 6 meses posteriores: **0 ingenieros**.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="lecciones-liderazgo">7. 5 Lecciones de Liderazgo Técnico</h2>
+
+        <ol>
+            <li><strong>Las guerras técnicas casi nunca son técnicas:</strong> Suelen ser choques de egos, miedo a la obsolescencia y falta de datos empíricos.</li>
+            <li><strong>El dato blanco destruye las discusiones dogmáticas:</strong> Medir que solo el 8% del código causaba el problema desarmó el debate de inmediato.</li>
+            <li><strong>El Sombrero Rojo libera la tensión acumulada:</strong> Dar permiso para expresar miedo e inseguridad une al equipo.</li>
+            <li><strong>Obligar a buscar los defectos de la propia idea genera humildad:</strong> Cuando un senior busca los fallos de su propuesta, los demás bajan las defensas.</li>
+            <li><strong>La solución óptima suele ser un híbrido lateral:</strong> Raras veces la respuesta correcta es un "todo o nada".</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="sombreros-ia-guia">8. Cómo Simular Debates con Agentes IA</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, cuando te enfrentas a un dilema técnico en solitario, puedes convocar a los agentes *Dr. Tech*, *Victoria VC* y *Elena Growth* en una sesión de 6 Sombreros para obtener un análisis 360 grados sin sesgos.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-alineamiento">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Es necesario usar sombreros físicos?</h4>
+                <p class="text-sm text-slate-600">No es obligatorio, pero usar tarjetas visuales de colores o fondos virtuales en videollamada refuerza el anclaje mental del modo cognitivo activo.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-alineamiento">10. Conclusiones</h2>
+
+        <p>
+            El caso de LogisticsCore confirma que el mayor multiplicador de productividad en una empresa tecnológica no es el lenguaje de programación elegido, sino **la capacidad del equipo para suspender el ego y pensar en paralelo hacia un objetivo común**.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="seis-sombreros-pensar-pensamiento-paralelo.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Guía Los 6 Sombreros para Pensar</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo alinear modos cognitivos y evitar luchas de ego en reuniones.</p>
+                </a>
+                <a href="tecnica-escalera-stepladder-evitar-groupthink.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Gestión de Innovación</span>
+                    <h4 class="font-bold text-slate-900 mt-2">La Técnica de la Escalera</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo evitar el groupthink con integración progresiva.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Alinea equipos y toma decisiones con IA en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] caso-uso-alineamiento-equipo-tecnico-de-bono.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

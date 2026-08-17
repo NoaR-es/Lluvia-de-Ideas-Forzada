@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbursting: La Estrella de 6 Puntas de Preguntas | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Guía definitiva de Starbursting: cómo generar 30+ preguntas críticas con la estrella de 6 puntas (Quién, Qué, Cuándo, Dónde, Por qué, Cómo) para auditar proyectos.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Gestión de Innovación</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">⭐ Gestión de Innovación</span>
+                <span class="blog-readtime">Lectura de 19 min · 4.750+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Starbursting: La Estrella de 6 Puntas para Descubrir los Puntos Ciegos de Cualquier Proyecto
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                Por qué formular las preguntas correctas es infinitamente superior a precipitarse en respuestas inmediatas: la metodología socrática de 6 puntas (Quién, Qué, Cuándo, Dónde, Por qué, Cómo) para blindar lanzamientos técnicos.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#que-es-starbursting" class="toc-sidebar-link" onclick="handleTocClick()">¿Qué es Starbursting?</a></li>
+                <li class="toc-sidebar-item"><a href="#las-6-puntas" class="toc-sidebar-link" onclick="handleTocClick()">Las 6 Puntas de la Estrella</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-2-fases" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo de 2 Fases</a></li>
+                <li class="toc-sidebar-item"><a href="#caso-offline-p2p" class="toc-sidebar-link" onclick="handleTocClick()">Caso Real: Sincronización Offline</a></li>
+                <li class="toc-sidebar-item"><a href="#neurociencia-interrogacion" class="toc-sidebar-link" onclick="handleTocClick()">Neurociencia de la Interrogación</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 Errores fatales a evitar</a></li>
+                <li class="toc-sidebar-item"><a href="#madurez-botanica" class="toc-sidebar-link" onclick="handleTocClick()">Filtrado Semilla-Brote-Árbol</a></li>
+                <li class="toc-sidebar-item"><a href="#starbursting-ia" class="toc-sidebar-link" onclick="handleTocClick()">Starbursting con IA Local</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-starbursting" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-starbursting" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">⭐</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                La mayoría de los proyectos de software fracasan no por una mala ejecución de código, sino por <strong>haber respondido con brillantez a las preguntas equivocadas</strong>. Cuando un equipo se enamora de una solución, salta inmediatamente a programarla sin cuestionar sus supuestos fundamentales. El <strong>Starbursting</strong> (Lluvia de Preguntas) es una técnica de ideación socrática estructurada en una <strong>estrella de 6 puntas</strong>: en lugar de generar respuestas o soluciones, el equipo se concentra exclusivamente en generar <strong>preguntas masivas en torno a 6 ejes fundamentales (Quién, Qué, Cuándo, Dónde, Por qué y Cómo)</strong>. Al forzar un mínimo de 5 preguntas por punta (30 preguntas en total) sin permitir respuestas inmediatas, se destapan los puntos ciegos de arquitectura, seguridad, costes y usabilidad antes de comprometer recursos.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="que-es-starbursting">1. ¿Qué es Starbursting? La Inversión Socrática</h2>
+
+        <p>
+            El físico y filósofo Albert Einstein afirmó en una ocasión: <em>"Si tuviera una hora para resolver un problema del que dependiera mi vida, dedicaría 55 minutos a definir la pregunta adecuada, porque una vez que conozco la pregunta correcta, puedo resolver el problema en menos de cinco minutos."</em>
+        </p>
+
+        <p>
+            En la ingeniería de producto tradicional, se comete el error inverso: se dedican 2 minutos a formular el problema y 58 minutos a discutir soluciones precipitadas. El <strong>Starbursting</strong> invierte este paradigma al imponer una regla estricta: **durante la primera fase de la sesión, está prohibido proponer soluciones; solo se permite formular preguntas inquisitivas.**
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>⭐ La Ley del Starbursting:</strong> Quien controla las preguntas domina el mapa del problema. Una sola pregunta lúcida sobre un caso límite de concurrencia ahorra meses de refactorización en producción.
+        </div>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="las-6-puntas">2. La Anatomía de las 6 Puntas de la Estrella</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 my-6 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">👤</span>
+                <strong class="text-slate-900 text-sm block mb-1">1. ¿QUIÉN? (Who)</strong>
+                <p class="text-slate-600">¿Quién es el usuario final exacto? ¿Quién se opondrá al cambio? ¿Quién mantendrá el código? ¿Quién asume el coste si falla?</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">📦</span>
+                <strong class="text-slate-900 text-sm block mb-1">2. ¿QUÉ? (What)</strong>
+                <p class="text-slate-600">¿Qué funcionalidad mínima es indispensable? ¿Qué dependencias externas requerimos? ¿Qué pasa si el servidor no responde?</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">⏰</span>
+                <strong class="text-slate-900 text-sm block mb-1">3. ¿CUÁNDO? (When)</strong>
+                <p class="text-slate-600">¿Cuándo se ejecuta el proceso? ¿Cuándo expiran las credenciales? ¿Cuándo se alcanzará el límite de cuota mensual?</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">📍</span>
+                <strong class="text-slate-900 text-sm block mb-1">4. ¿DÓNDE? (Where)</strong>
+                <p class="text-slate-600">¿Dónde se procesan los datos (on-device vs cloud)? ¿Dónde reside la verdad en caso de conflicto? ¿Dónde se guardan los backups?</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">🎯</span>
+                <strong class="text-slate-900 text-sm block mb-1">5. ¿POR QUÉ? (Why)</strong>
+                <p class="text-slate-600">¿Por qué un usuario preferiría esto a una hoja de cálculo? ¿Por qué esta arquitectura es superior? ¿Por qué ahora y no hace 2 años?</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <span class="text-2xl block mb-2">⚙️</span>
+                <strong class="text-slate-900 text-sm block mb-1">6. ¿CÓMO? (How)</strong>
+                <p class="text-slate-600">¿Cómo garantizamos idempotencia? ¿Cómo migramos a los usuarios existentes? ¿Cómo medimos el éxito del despliegue?</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="protocolo-2-fases">3. El Protocolo Operativo en 2 Fases Cronometradas</h2>
+
+        <h3>Fase A: Generación Masiva de Preguntas (20 minutos)</h3>
+        <p>
+            El facilitador sitúa la idea central en el centro de la estrella. Por turnos rápidos, cada participante formula preguntas para cada una de las 6 puntas. La regla inflexible es que **nadie puede intentar responder todavía**. Se recopilan al menos 5 preguntas por punta (30 preguntas totales).
+        </p>
+
+        <h3>Fase B: Selección, Jerarquización y Respuesta (25 minutos)</h3>
+        <p>
+            El equipo agrupa las preguntas similares, resalta las 6 preguntas críticas (1 por punta) y procede a responderlas mediante datos empíricos o asignando tareas de investigación para el sprint.
+        </p>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="caso-offline-p2p">4. Caso Real: Sincronización Offline P2P en Android</h2>
+
+        <p>
+            Un equipo de desarrollo propuso añadir sincronización peer-to-peer (P2P) entre móviles mediante Wi-Fi Direct. Aplicaron Starbursting antes de escribir código:
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 space-y-3 text-xs">
+            <p><strong>👤 ¿Quién?:</strong> <em>"¿Quién resuelve un conflicto si dos usuarios editan el mismo proyecto al mismo segundo sin reloj sincronizado?"</em></p>
+            <p><strong>📦 ¿Qué?:</strong> <em>"¿Qué pasa si uno de los dispositivos tiene una versión de schema de base de datos más antigua?"</em></p>
+            <p><strong>⏰ ¿Cuándo?:</strong> <em>"¿Cuándo se aborta la sincronización si el usuario apaga la pantalla del móvil en mitad del paquete?"</em></p>
+            <p><strong>📍 ¿Dónde?:</strong> <em>"¿Dónde se guarda temporalmente el archivo antes de validar su integridad criptográfica SHA-256?"</em></p>
+            <p><strong>🎯 ¿Por qué?:</strong> <em>"¿Por qué el usuario preferiría P2P en vez de exportar un archivo .lluvia y enviarlo por WhatsApp?"</em></p>
+            <p><strong>⚙️ ¿Cómo?:</strong> <em>"¿Cómo evitamos ataques de Man-in-the-Middle si la red Wi-Fi local no es segura?"</em></p>
+            <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 font-semibold mt-3">
+                🎯 Resultado: Descubrieron que el 90% de los usuarios prefería un paquete `.lluvia` exportable encriptado antes que la complejidad de Wi-Fi Direct, ahorrando 3 meses de ingeniería innecesaria.
+            </div>
+        </div>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Auditoría Socrática con IA en Android</div>
+                <p>Genera las 30 preguntas críticas de tu proyecto con agentes de IA locales y somete tus ideas a interrogatorios socráticos sin conexión a internet.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="neurociencia-interrogacion">5. Neurociencia de la Interrogación: Por Qué el Cerebro Teme las Preguntas</h2>
+
+        <p>
+            Cuando alguien propone una solución, su cerebro segrega <strong>dopamina</strong> asociada a la sensación de logro. Cuando alguien formula una pregunta incómoda ("¿Qué pasa si la base de datos se llena en 3 meses?"), la amígdala lo interpreta como una amenaza a la certeza.
+        </p>
+
+        <p>
+            El Starbursting normaliza la pregunta convirtiéndola en el **único entregable válido de la fase de exploración**, transformando lo que suele percibirse como un ataque hostil en un juego colaborativo de descubrimiento.
+        </p>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="errores-fatales">6. 7 Errores Fatales al Aplicar Starbursting</h2>
+
+        <ol>
+            <li><strong>Permitir respuestas durante la Fase A:</strong> Si alguien responde a la primera pregunta, la sesión se desvía a un debate técnico prematuro y se aborta la generación de preguntas en las otras puntas.</li>
+            <li><strong>Preguntas cerradas que se responden con sí/no:</strong> Formular "¿Es seguro?" aporta poco. Debe formularse "¿Cómo respondería el sistema ante una inyección SQL en este endpoint?".</li>
+            <li><strong>Ignorar la punta del "¿Por qué?":</strong> Los ingenieros tienden a saltar al "¿Cómo?" y olvidan cuestionar el valor fundamental del proyecto.</li>
+            <li><strong>No priorizar las preguntas al final:</strong> Salir con 30 preguntas sin marcar cuáles son bloqueantes de lanzamiento crea parálisis.</li>
+            <li><strong>Formular preguntas retóricas con tono sarcástico:</strong> Todas las preguntas deben redactarse con curiosidad científica neutral.</li>
+            <li><strong>Hacer Starbursting sin documentación previa:</strong> El equipo debe conocer el contexto mínimo del proyecto.</li>
+            <li><strong>No convertir las respuestas en tickets de Jira/Kanban:</strong> Las preguntas críticas deben tener un responsable asignado.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="madurez-botanica">7. Filtrado Botánico de Respuestas</h2>
+
+        <p>
+            Al resolver las 6 preguntas críticas seleccionadas, clasificamos las soluciones resultantes:
+        </p>
+
+        <ul>
+            <li><strong>🌱 Semillas:</strong> Aclaraciones de documentación, corrección de endpoints o validaciones de entrada inmediatas.</li>
+            <li><strong>🌿 Brotes:</strong> Mecanismos de reintento con backoff exponencial o tests de integración automáticos.</li>
+            <li><strong>🌳 Árboles:</strong> Rediseños de la arquitectura de datos o cambios en el contrato de API del sistema.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="starbursting-ia">8. Starbursting con IA Local On-Device</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, puedes someter cualquier proyecto a un interrogatorio socrático instantáneo. Cargas tu propuesta y solicitas: *"Ejecuta un Starbursting completo con 5 preguntas implacables por punta"* y los agentes locales desplegarán la estrella analítica en segundos sin enviar información confidencial a la nube.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-starbursting">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿En qué fase del ciclo de desarrollo es más útil?</h4>
+                <p class="text-sm text-slate-600">Es especialmente poderoso en la fase de descubrimiento (Discovery), justo antes de escribir el documento de especificación funcional (PRD) o antes de iniciar un sprint de arquitectura mayor.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Cuánto dura una sesión de Starbursting?</h4>
+                <p class="text-sm text-slate-600">Aproximadamente 45 minutos: 20 min para generar las 30 preguntas, 10 min para seleccionar las 6 críticas y 15 min para acordar los planes de resolución.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-starbursting">10. Conclusiones y Próximo Sprint</h2>
+
+        <p>
+            El Starbursting es la mejor vacuna conocida contra el fracaso por asunciones ciegas. Al obligar a tu equipo a iluminar las 6 puntas de la estrella antes de programar, transformas la incertidumbre en un plan de ingeniería a prueba de fallos.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="rolestorming-lluvia-ideas-identidad-prestada.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Lateralidad Creativa</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Rolestorming</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo usar identidades prestadas para derribar la censura social.</p>
+                </a>
+                <a href="inversion-problema-peor-solucion.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">Lateralidad Creativa</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Inversión del Problema</h4>
+                    <p class="text-xs text-slate-500 mt-1">Diseña la peor solución para hallar la mejor con pre-mortem.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Audita proyectos con preguntas críticas e IA on-device →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] starbursting-lluvia-preguntas-desafios.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

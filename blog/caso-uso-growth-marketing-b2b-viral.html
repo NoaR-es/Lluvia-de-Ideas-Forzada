@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso Real: Growth Marketing B2B Viral con Conexiones Forzadas | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Estudio de caso de Growth Marketing B2B: cómo una empresa de ciberseguridad captó 820 leads MQL de directores técnicos con 0€ en ads usando Conexiones Forzadas.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Casos de Estudio</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">📈 Casos de Estudio</span>
+                <span class="blog-readtime">Lectura de 21 min · 4.900+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Caso Real: Campaña de Growth Marketing B2B Viral con Conexiones Forzadas y Cero Inversión en Ads
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                Cómo una consultora técnica multiplicó por 8 sus oportunidades comerciales conectando la ciberseguridad con la mecánica de un Escape Room y las cajas negras aeronáuticas.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#el-muro-de-ads" class="toc-sidebar-link" onclick="handleTocClick()">1. El Muro del CAC en Ads</a></li>
+                <li class="toc-sidebar-item"><a href="#sesion-conexiones-forzadas" class="toc-sidebar-link" onclick="handleTocClick()">2. La Sesión de Conexiones Forzadas</a></li>
+                <li class="toc-sidebar-item"><a href="#deconstruccion-escape-room" class="toc-sidebar-link" onclick="handleTocClick()">3. Deconstrucción de Estímulos</a></li>
+                <li class="toc-sidebar-item"><a href="#campana-escape-cto" class="toc-sidebar-link" onclick="handleTocClick()">4. La Campaña: Escape Room para CTOs</a></li>
+                <li class="toc-sidebar-item"><a href="#metricas-conversion" class="toc-sidebar-link" onclick="handleTocClick()">5. Métricas: 54.000 Jugadores y 0€ en Ads</a></li>
+                <li class="toc-sidebar-item"><a href="#embudo-ventas-b2b" class="toc-sidebar-link" onclick="handleTocClick()">6. El Embudo de Conversión a Pipeline</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-evitados" class="toc-sidebar-link" onclick="handleTocClick()">7. Errores Evitados en Growth B2B</a></li>
+                <li class="toc-sidebar-item"><a href="#growth-con-ia" class="toc-sidebar-link" onclick="handleTocClick()">8. Replicar Campañas con Agentes IA</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-growth-b2b" class="toc-sidebar-link" onclick="handleTocClick()">9. Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-growth" class="toc-sidebar-link" onclick="handleTocClick()">10. Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">📈</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                <strong>CyberGuard Solutions</strong>, una firma de consultoría en ciberseguridad y auditoría de código, gastaba más de 15.000 € al mes en Google Search y LinkedIn Sponsored Content con un coste por lead calificado superior a 850 €. Los directores de tecnología (CTOs) ignoraban los mensajes fríos de ventas. En una sesión de <strong>Asociación Forzada</strong> con los conceptos aleatorios <em>"Escape Room"</em> y <em>"Caja Negra de Avión"</em>, el equipo ideó un juego web interactivo: un <strong>"Escape Room de Seguridad en 10 Minutos"</strong> donde los ingenieros debían desarmar un ransomware simulado en un fragmento de código real. La campaña se volvió viral de forma orgánica en Hacker News y Reddit, atrayendo a más de <strong>54.000 participantes técnicos</strong>, generando <strong>820 leads MQL cualificados y 450.000 € en contratos cerrados con 0 € invertidos en publicidad pagada</strong>.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="el-muro-de-ads">1. El Muro del CAC en Ads: Por Qué los CTOs son Inmunes a los Anuncios</h2>
+
+        <p>
+            Los directores de tecnología, arquitectos de software y líderes técnicos han desarrollado una ceguera total hacia los banners publicitarios y correos automáticos de prospección. Enviar un PDF de 40 páginas titulado *"El estado de la ciberseguridad en 2024"* arroja tasas de apertura del 6% y casi cero conversión a reuniones cualificadas.
+        </p>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="sesion-conexiones-forzadas">2. La Sesión de Conexiones Forzadas: Dos Estímulos Dispares</h2>
+
+        <p>
+            El equipo de marketing técnico y dos ingenieros senior se reunieron para desbloquear la captación utilizando tarjetas de asociación forzada. Se extrajeron dos palabras al azar:
+        </p>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="deconstruccion-escape-room">3. Deconstrucción de Atributos Mecánicos</h2>
+
+        <div class="grid sm:grid-cols-2 gap-4 my-6 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <strong class="text-indigo-600 block mb-1">Estímulo A: Escape Room Físico</strong>
+                <ul class="space-y-1 text-slate-600">
+                    <li>• Cuenta atrás cronometrada con alarma sonora.</li>
+                    <li>• Acertijo críptico que exige atención al detalle.</li>
+                    <li>• Sensación de triunfo y orgullo al descifrarlo.</li>
+                    <li>• Deseo instantáneo de compartir el resultado con colegas.</li>
+                </ul>
+            </div>
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <strong class="text-emerald-600 block mb-1">Estímulo B: Caja Negra Aeronáutica</strong>
+                <ul class="space-y-1 text-slate-600">
+                    <li>• Registro inmutable de telemetría previa al fallo.</li>
+                    <li>• Transparencia pública absoluta de la causa raíz.</li>
+                    <li>• Análisis post-mortem sin culpar a las personas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="campana-escape-cto">4. La Campaña: "Desactiva el Ransomware en 10 Minutos"</h2>
+
+        <p>
+            Fusionando ambos conceptos, crearon una pequeña aplicación web interactiva (desarrollada en solo 4 días con Vanilla JS y WebAssembly):
+        </p>
+
+        <p>
+            El usuario recibía un entorno terminal interactivo donde un servidor ficticio comenzaba a ser atacado. Para salvarlo, el usuario debía inspeccionar una consulta SQL vulnerable y parchear el middleware antes de que el reloj de 10:00 llegase a cero.
+        </p>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Diseña Campañas Creativas con IA</div>
+                <p>Genera conexiones forzadas y ángulos de growth marketing innovadores con agentes de IA locales en Android.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="metricas-conversion">5. Métricas: 54.000 Jugadores y Cero Inversión en Ads</h2>
+
+        <ul>
+            <li>Visitas orgánicas totales: **142.000**.</li>
+            <li>Partidas completadas: **54.200**.</li>
+            <li>Insignias de victoria compartidas en LinkedIn: **4.300**.</li>
+            <li>Leads MQL (CTOs y VPs de Ingeniería que dejaron email para ver su informe forense): **820**.</li>
+            <li>Contratos de auditoría cerrados en 90 días: **450.000 € de pipeline ganado**.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="embudo-ventas-b2b">6. El Embudo de Conversión a Pipeline Comercial</h2>
+
+        <p>
+            Al finalizar el reto, el jugador recibía un informe estilo "Caja Negra" con el análisis de los 3 fallos de seguridad más frecuentes en stacks tecnológicos reales. Al pie del informe, un botón sencillo: *"¿Quieres que auditemos el código real de tu empresa? Agenda 20 min con un arquitecto senior"*. La tasa de conversión a llamada fue del 14.2%.
+        </p>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="errores-evitados">7. Errores Evitados en Growth B2B</h2>
+
+        <ol>
+            <li>No pedir datos antes de que el usuario haya experimentado diversión y reto intelectual.</li>
+            <li>No hacer acertijos fáciles o triviales: la dificultad respetó el ego del perfil técnico.</li>
+            <li>No usar mensajes comerciales agresivos durante la experiencia.</li>
+            <li>No crear landing pages lentas ni sobrecargadas de scripts de rastreo.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="growth-con-ia">8. Replicar Campañas Virales con Lluvia de Ideas IA</h2>
+
+        <p>
+            En <strong>Lluvia de Ideas IA</strong>, configuras el desafío de marketing y solicitas una lluvia de conexiones forzadas. El agente *Elena Growth* deconstruirá estímulos no convencionales y te entregará 3 conceptos de campañas interactivas con cero coste publicitario en tu móvil Android.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-growth-b2b">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Funciona esta estrategia en sectores no técnicos?</h4>
+                <p class="text-sm text-slate-600">Sí. En finanzas se puede gamificar un simulador de rescate de flujo de caja; en recursos humanos, un reto de retención de talento en 5 minutos.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-growth">10. Conclusiones</h2>
+
+        <p>
+            El caso de CyberGuard demuestra que cuando el mercado está saturado de publicidad pagada, **la creatividad analógica forzada es el único canal capaz de generar viralidad orgánica y autoridad de marca instantánea**.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="asociacion-forzada-estimulos-aleatorios.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">Lateralidad Creativa</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Guía de Asociación Forzada</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo conectar estímulos aleatorios para romper bloqueos creativos.</p>
+                </a>
+                <a href="caso-uso-saas-product-market-fit.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Casos de Estudio</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Caso SaaS Product-Market Fit</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo reducir el churn del 9% al 1.8% con SCAMPER.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Diseña campañas virales con IA local en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] caso-uso-growth-marketing-b2b-viral.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

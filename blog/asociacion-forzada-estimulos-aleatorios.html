@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Técnica de Asociación Forzada y Estímulos Aleatorios | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Guía avanzada de Asociación Forzada (Forced Connections): neurociencia de la sinaptogénesis, deconstrucción de atributos, matrices de transferencia y casos reales de software.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#3b82f6',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAVBAR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    💡
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="index.html" class="hover:text-brand-600 transition font-bold text-brand-600">Blog Hub</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()">📚 Blog Hub</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Descargar en Google Play
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLOG HEADER
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
+                <span>Lateralidad Creativa</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🎲 Lateralidad Creativa</span>
+                <span class="blog-readtime">Lectura de 21 min · 4.850+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                La Técnica de Asociación Forzada: Cómo Conectar Estímulos Aleatorios para Romper Bloqueos Creativos
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                El método científico de Charles Whiting para inducir sinaptogénesis forzada: deconstrucción de atributos mecánicos, matrices de transferencia analógica y cómo aplicarlo a la arquitectura de software y producto digital.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#neurobiologia-bloqueo" class="toc-sidebar-link" onclick="handleTocClick()">Neurobiología del Bloqueo Mental</a></li>
+                <li class="toc-sidebar-item"><a href="#origen-whiting" class="toc-sidebar-link" onclick="handleTocClick()">Origen: Charles Whiting (1958)</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-4-fases" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo de 4 Fases</a></li>
+                <li class="toc-sidebar-item"><a href="#matriz-deconstruccion" class="toc-sidebar-link" onclick="handleTocClick()">Matriz de Atributos</a></li>
+                <li class="toc-sidebar-item"><a href="#caso-autenticacion" class="toc-sidebar-link" onclick="handleTocClick()">Caso Real: Auth inspirado en Colmenas</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales" class="toc-sidebar-link" onclick="handleTocClick()">7 Errores fatales a evitar</a></li>
+                <li class="toc-sidebar-item"><a href="#clasificacion-ideas" class="toc-sidebar-link" onclick="handleTocClick()">Filtrado Semilla-Brote-Árbol</a></li>
+                <li class="toc-sidebar-item"><a href="#asociacion-ia" class="toc-sidebar-link" onclick="handleTocClick()">Asociación Forzada con IA Local</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-asociacion" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-asociacion" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y checklist</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">🎲</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                El cerebro humano es una máquina hiper-eficiente de optimización de energía que crea "surcos neuronales" automáticos (canales hebbianos). Cuando te enfrentas a un problema técnico difícil, tu cerebro recorre los mismos surcos una y otra vez, generando el conocido <strong>bloqueo mental o rigidez cognitiva</strong>. La <strong>Técnica de Asociación Forzada</strong> (<em>Forced Connections</em>), formalizada por Charles Whiting en 1958, introduce un <strong>estímulo aleatorio completamente inconexo</strong> (una palabra, un objeto físico o un concepto biológico como *"ancla"*, *"submarino"* o *"colmena"*), descompone sus atributos mecánicos y sensoriales, y obliga a la corteza cerebral a trazar puentes analógicos directos hacia el problema original. Esta guía enseña el protocolo de deconstrucción de 4 fases, cómo diseñar arquitecturas técnicas a partir de estímulos bizarros y cómo utilizar el generador de estímulos forzados con IA en Android.
+            </p>
+        </div>
+
+        <!-- ─── SECCIÓN 1 ─────────────────────────────────────────── -->
+        <h2 id="neurobiologia-bloqueo">1. Neurobiología del Bloqueo Mental: La Ley de Hebb y la Rigidez Cognitiva</h2>
+
+        <p>
+            El postulado neurocientífico de Donald Hebb (1949), conocido popularmente como <em>"Neurons that fire together, wire together"</em>, explica por qué los expertos experimentados a menudo sufren los peores bloqueos creativos: cuanto más tiempo llevas resolviendo problemas en un mismo dominio (ej: desarrollo web con React o microservicios Java), más reforzadas están las conexiones neuronales directas hacia las soluciones estándar.
+        </p>
+
+        <p>
+            Cuando surge un reto que la solución estándar no puede resolver (por ejemplo, latencia insostenible o agotamiento del modelo de precios), el cerebro experimenta **fricción atencional**: intenta aplicar la misma receta con mayor fuerza en lugar de cambiar de dimensión.
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>⚡ La Chispa Sináptica Forzada:</strong> Al inyectar un estímulo aleatorio externo ("Reloj de arena", "Cactus", "Semáforo"), el cerebro no puede utilizar sus vías hebbianas habituales. Para resolver la paradoja cognitiva, se ve forzado a construir <em>nuevas sinapsis transversales</em> en tiempo real, saltando hacia áreas asociativas distantes del neocórtex.
+        </div>
+
+        <!-- ─── SECCIÓN 2 ─────────────────────────────────────────── -->
+        <h2 id="origen-whiting">2. Origen: Charles Whiting (1958) y la Formalización de las Conexiones</h2>
+
+        <p>
+            Aunque las vanguardias artísticas (los dadaístas y los surrealistas con el <em>Cadavre Exquis</em>) usaban el azar con fines estéticos, fue el ingeniero e investigador estadounidense <strong>Charles S. Whiting</strong> quien en su tratado <em>Creative Thinking</em> (1958) formalizó la técnica como una herramienta de ingeniería industrial.
+        </p>
+
+        <p>
+            Whiting demostró que cualquier par de conceptos, por absurdos o lejanos que parezcan, comparten al menos 3 dimensiones estructurales subyacentes cuando se deconstruyen a nivel atómico.
+        </p>
+
+        <!-- ─── SECCIÓN 3 ─────────────────────────────────────────── -->
+        <h2 id="protocolo-4-fases">3. El Protocolo de 4 Fases de la Asociación Forzada</h2>
+
+        <ol>
+            <li><strong>Fase 1: Extracción del Estímulo Forzado (1 min):</strong> Mediante un generador aleatorio o tarjeta física, se selecciona una palabra o concepto que no guarde absolutamente ninguna relación con el proyecto (ej: *"Ancla marina"*).</li>
+            <li><strong>Fase 2: Deconstrucción Atómica de Atributos (5 min):</strong> El equipo enumera en una lista rápida de 8 a 10 atributos físicos, mecánicos, sensoriales y funcionales del estímulo, <em>olvidándose por completo del problema principal</em>.</li>
+            <li><strong>Fase 3: Puente de Transferencia Analógica (15 min):</strong> Se toma cada atributo de forma individual y se formula la pregunta forzada: <em>"¿Cómo se traduce [Atributo X] a nuestra arquitectura o producto?"</em>.</li>
+            <li><strong>Fase 4: Síntesis y Enfriamiento Viable (10 min):</strong> Se depuran las ideas absurdas y se conservan los mecanismos arquitectónicos o de negocio viables.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 4 ─────────────────────────────────────────── -->
+        <h2 id="matriz-deconstruccion">4. Matriz de Atributos: El Puente entre lo Absurdo y lo Técnico</h2>
+
+        <p>
+            Supongamos que nuestro desafío técnico es: *"¿Cómo reducir el abandono de usuarios en la pantalla de onboarding de nuestra aplicación móvil?"* y el estímulo aleatorio extraído es <strong>"Cinta Transportadora de Sushi (Kaitenzushi)"</strong>:
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm my-6 overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-900 border-b border-slate-200">
+                        <th class="p-3 font-extrabold">Atributo del Estímulo</th>
+                        <th class="p-3 font-extrabold">Propiedad Mecánica/Sensorial</th>
+                        <th class="p-3 font-extrabold text-brand-600">Idea de Transferencia al Onboarding</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">1. Movimiento continuo visual</td>
+                        <td class="p-3">Los platos desfilan ante ti sin que tengas que pedir una carta densa.</td>
+                        <td class="p-3 font-semibold text-brand-700">Carrusel horizontal interactivo que muestra plantillas pre-creadas listas para clonar con 1 solo toque.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">2. Código de color en platos</td>
+                        <td class="p-3">El color del plato indica el precio y nivel de complejidad sin leer texto.</td>
+                        <td class="p-3 font-semibold text-brand-700">Badges cromáticos instantáneos (Verde = 1 min, Azul = 5 min, Dorado = Pro) en lugar de párrafos de texto.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">3. Puedes tomarlo o dejarlo pasar</td>
+                        <td class="p-3">Si no tomas un plato, vuelve a pasar más tarde sin penalización.</td>
+                        <td class="p-3 font-semibold text-brand-700">Onboarding progresivo diferido: puedes omitir cualquier paso de configuración y la app te lo recordará sutilmente tras tu primer éxito.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold bg-slate-50">4. Pila de platos visible</td>
+                        <td class="p-3">Ves físicamente cuántos platos has consumido al terminar.</td>
+                        <td class="p-3 font-semibold text-brand-700">Barra visual acumulativa de logros completados en el perfil del usuario.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── SECCIÓN 5 ─────────────────────────────────────────── -->
+        <h2 id="caso-autenticacion">5. Caso Técnico Real: Sistema de Autenticación Inspirado en una Colmena</h2>
+
+        <p>
+            Un equipo de ciberseguridad se encontraba estancado buscando una alternativa a las contraseñas complejas que no dependiera de SMS (vulnerables a SIM swapping) ni de hardware tokens caros.
+        </p>
+
+        <p>
+            Al aplicar Asociación Forzada con la palabra <strong>"Colmena de Abejas"</strong>, extrajeron el atributo: <em>"Las abejas reconocen a sus compañeras de colmena por la combinación de feromonas químicas compartidas y micro-vibraciones de las alas en la entrada."</em>
+        </p>
+
+        <p>
+            <strong>La solución técnica resultante:</strong> Un protocolo de autenticación basado en <em>huella ambiental y biométrica de baja fricción</em>: la app valida al usuario mediante la firma combinada del Bluetooth de sus auriculares habituales, la red Wi-Fi conocida y el acelerómetro del dispositivo. Si 2 de los 3 parámetros coinciden, el acceso es instantáneo con 0 clics.
+        </p>
+
+        <!-- CTA INTERMEDIO -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Banco de 1.000 Estímulos Forzados</div>
+                <p>Genera palabras forzadas con un toque y deja que los agentes de IA locales deconstruyan sus atributos para romper tus bloqueos en Android.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar en Google Play</span>
+            </a>
+        </div>
+
+        <!-- ─── SECCIÓN 6 ─────────────────────────────────────────── -->
+        <h2 id="errores-fatales">6. 7 Errores Fatales al Aplicar Conexiones Forzadas</h2>
+
+        <ol>
+            <li><strong>Elegir palabras que ya tienen relación obvia:</strong> Si tu app es de finanzas y eliges "Billetera" o "Banco", no hay salto lateral. Debes usar "Volcán", "Telescopio" o "Panadería".</li>
+            <li><strong>Juzgar los atributos antes de transferirlos:</strong> Decir "Una cinta transportadora no tiene nada que ver con código" aborta la sinapsis en seco. Se deben listar los atributos sin censura.</li>
+            <li><strong>Quedarse en la metáfora literal:</strong> Si el estímulo es "Barco", no intentes poner un icono de timón en la web; extrae el principio mecánico subyacente (ej: *flotabilidad = redundancia de servidores*).</li>
+            <li><strong>No deconstruir suficientes atributos:</strong> Listar solo 2 atributos reduce la probabilidad estadística de éxito. Apunta a un mínimo de 8 atributos detallados.</li>
+            <li><strong>Falta de tiempo límite:</strong> Las sesiones deben ser rápidas e intensas (máximo 20 minutos por estímulo).</li>
+            <li><strong>Descartar ideas que parecen locas al principio:</strong> Las ideas más rentables nacen siempre con apariencia absurda. Se descartan en la fase 4, nunca en la fase 3.</li>
+            <li><strong>No guardar el registro de analogías:</strong> Las analogías descartadas hoy son a menudo la solución a problemas del próximo mes.</li>
+        </ol>
+
+        <!-- ─── SECCIÓN 7 ─────────────────────────────────────────── -->
+        <h2 id="clasificacion-ideas">7. Filtrado Botánico de Ideas Forzadas</h2>
+
+        <p>
+            Al terminar la matriz de transferencia, clasificamos las propuestas resultantes en nuestro marco de madurez:
+        </p>
+
+        <ul>
+            <li><strong>🌱 Semillas:</strong> Modificaciones cosméticas o de copy inmediatas.</li>
+            <li><strong>🌿 Brotes:</strong> Nuevos flujos de interacción o componentes de software modulares.</li>
+            <li><strong>🌳 Árboles:</strong> Nuevos modelos de arquitectura o líneas de negocio completas.</li>
+        </ul>
+
+        <!-- ─── SECCIÓN 8 ─────────────────────────────────────────── -->
+        <h2 id="asociacion-ia">8. Asociación Forzada con IA Local On-Device</h2>
+
+        <p>
+            En la aplicación <strong>Lluvia de Ideas IA</strong>, el motor cuenta con una ruleta de estímulos forzados con más de 1.000 conceptos multidimensionales. Al activar la función, el motor empareja tu desafío con 3 conceptos dispares y ejecuta la deconstrucción de atributos en segundo plano mediante modelos locales cuantizados, entregándote una tabla de transferencia analógica lista para debatir.
+        </p>
+
+        <!-- ─── SECCIÓN 9 ─────────────────────────────────────────── -->
+        <h2 id="faq-asociacion">9. Preguntas Frecuentes</h2>
+
+        <div class="space-y-4 my-6">
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Funciona la técnica si el equipo es escéptico?</h4>
+                <p class="text-sm text-slate-600">Sí. De hecho, a los perfiles más analíticos y escépticos les resulta fascinante el paso de descomposición mecánica de atributos, porque apela a su pensamiento estructurado.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">¿Cuántos estímulos aleatorios se deben probar por sesión?</h4>
+                <p class="text-sm text-slate-600">Lo ideal son entre 2 y 3 estímulos distintos de 15 minutos cada uno. Si el primer estímulo no produce la chispa, el segundo suele detonar la solución definitiva.</p>
+            </div>
+        </div>
+
+        <!-- ─── SECCIÓN 10 ─────────────────────────────────────────── -->
+        <h2 id="conclusiones-asociacion">10. Conclusiones y Próximo Sprint</h2>
+
+        <p>
+            La Asociación Forzada es la prueba definitiva de que la creatividad no es magia, sino **ingeniería de recombinación conceptual**. Cuando los caminos habituales están cerrados, forzar una colisión semántica controlada es la forma más rápida y elegante de encontrar la salida.
+        </p>
+
+        <!-- Artículos Relacionados -->
+        <div class="mt-16 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-6">Artículos y Metodologías Relacionadas</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="biomimesis-software-arquitecturas-resilientes.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Pensamiento Analógico</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Biomímesis en Software</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cómo la naturaleza inspira sistemas distribuidos y resilientes.</p>
+                </a>
+                <a href="scamper-desbloqueo-tecnico.html" class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-brand-500 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">Técnicas de Pensamiento</span>
+                    <h4 class="font-bold text-slate-900 mt-2">Guía SCAMPER</h4>
+                    <p class="text-xs text-slate-500 mt-1">7 operadores para transformar cualquier producto existente.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Rompe bloqueos con estímulos aleatorios e IA on-device →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] asociacion-forzada-estimulos-aleatorios.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) {
+                nav.classList.remove('open');
+                btn.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                nav.classList.add('open');
+                btn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>

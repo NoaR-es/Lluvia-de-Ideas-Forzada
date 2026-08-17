@@ -116,8 +116,10 @@
     <header class="blog-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
-                <a href="../index.html">Inicio</a><span class="separator">›</span>
-                <a href="../index.html#articulos">Blog</a><span class="separator">›</span>
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
                 <span>Lateralidad Creativa</span>
             </div>
             <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
@@ -125,7 +127,7 @@
                 <span class="blog-readtime">Lectura de 20 min · 4.800+ palabras</span>
             </div>
             <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-                Guía Completa: Inversión del Problema — Cómo Diseñar la Peor Solución para Hallar la Mejor
+                La Técnica de Inversión del Problema: Diseñando la Peor Solución para Hallar la Mejor
             </h1>
             <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
                 El método que desactiva el sesgo de optimismo y la parálisis de perfección mediante ingeniería inversa mental: formula el fracaso absoluto garantizado para descubrir la arquitectura del éxito rotundo.
@@ -133,7 +135,45 @@
         </div>
     </header>
 
-    <!-- BLOG CONTENT -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">10 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#origen-inversion" class="toc-sidebar-link" onclick="handleTocClick()">Origen del Pensamiento Inverso</a></li>
+                <li class="toc-sidebar-item"><a href="#neurociencia-inversion" class="toc-sidebar-link" onclick="handleTocClick()">Neurociencia de la Inversión</a></li>
+                <li class="toc-sidebar-item"><a href="#protocolo-inversion" class="toc-sidebar-link" onclick="handleTocClick()">Protocolo de 5 Pasos</a></li>
+                <li class="toc-sidebar-item"><a href="#pre-mortem-klein" class="toc-sidebar-link" onclick="handleTocClick()">Técnica Pre-Mortem (Klein)</a></li>
+                <li class="toc-sidebar-item"><a href="#casos-reales-industria" class="toc-sidebar-link" onclick="handleTocClick()">Casos reales de la industria</a></li>
+                <li class="toc-sidebar-item"><a href="#ejemplos-tecnicos" class="toc-sidebar-link" onclick="handleTocClick()">Ejemplos técnicos aplicados</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-fatales-inversion" class="toc-sidebar-link" onclick="handleTocClick()">7 errores fatales</a></li>
+                <li class="toc-sidebar-item"><a href="#inversion-con-ia" class="toc-sidebar-link" onclick="handleTocClick()">Inversión con IA forzada</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-inversion" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-inversion" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y descarga</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
     <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
     <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
         <div class="widget-icon">🔄</div>
@@ -524,6 +564,49 @@
             if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
         }
         window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        // Active section tracking in ToC
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
 
         console.log('[DEBUG][BlogArticle] Scripts inicializados correctamente');
     </script>

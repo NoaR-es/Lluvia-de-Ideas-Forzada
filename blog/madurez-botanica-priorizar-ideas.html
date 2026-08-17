@@ -92,8 +92,10 @@
     <header class="blog-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
-                <a href="../index.html">Inicio</a><span class="separator">›</span>
-                <a href="../index.html#articulos">Blog</a><span class="separator">›</span>
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html">Blog Hub</a>
+                <span class="separator">›</span>
                 <span>Gestión de Innovación</span>
             </div>
             <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
@@ -101,15 +103,57 @@
                 <span class="blog-readtime">Lectura de 22 min · 5.100+ palabras</span>
             </div>
             <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-                Guía Completa: Madurez Botánica — Cómo Priorizar Ideas con el Framework Semilla-Brote-Árbol
+                La Metáfora de Madurez Botánica: Cómo Priorizar Ideas con Semillas, Brotes y Árboles
             </h1>
             <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
-                El framework que evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación a largo plazo. Con la regla del balance 2-2-2, criterios de transición, métricas de portafolio y ejemplos aplicados.
+                Framework Semilla-Brote-Árbol con la Regla del Balance 2-2-2, criterios de transición entre niveles y métricas de portafolio de innovación para evitar la parálisis post-brainstorming.
             </p>
         </div>
     </header>
 
-    <!-- BLOG CONTENT -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR REPLEGABLE (COLLAPSIBLE TOC) & WIDGET FLOTANTE
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Botón flotante para desplegar el índice -->
+    <button class="toc-collapsed-btn" id="toc-collapsed-trigger" onclick="toggleTocSidebar()" aria-label="Abrir índice de contenidos">
+        <span class="toc-icon">📑</span>
+        <span>Índice</span>
+        <span class="toc-badge">14 secciones</span>
+    </button>
+
+    <!-- Panel lateral replegable del índice -->
+    <aside class="toc-sidebar-wrapper is-collapsed" id="toc-sidebar" aria-label="Índice de contenidos">
+        <div class="toc-sidebar-header">
+            <div class="toc-sidebar-title">
+                <span>📑</span>
+                <span>Índice del Artículo</span>
+            </div>
+            <button class="toc-sidebar-close-btn" onclick="toggleTocSidebar()" aria-label="Cerrar índice">✕</button>
+        </div>
+        <div class="toc-sidebar-scroll">
+            <ol class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a href="#el-problema" class="toc-sidebar-link" onclick="handleTocClick()">El problema universal</a></li>
+                <li class="toc-sidebar-item"><a href="#origen-metafora" class="toc-sidebar-link" onclick="handleTocClick()">Origen de la metáfora</a></li>
+                <li class="toc-sidebar-item"><a href="#nivel-semilla" class="toc-sidebar-link" onclick="handleTocClick()">🌱 Nivel Semilla (Inmediato)</a></li>
+                <li class="toc-sidebar-item"><a href="#nivel-brote" class="toc-sidebar-link" onclick="handleTocClick()">🌿 Nivel Brote (Modular)</a></li>
+                <li class="toc-sidebar-item"><a href="#nivel-arbol" class="toc-sidebar-link" onclick="handleTocClick()">🌳 Nivel Árbol (10x Moonshot)</a></li>
+                <li class="toc-sidebar-item"><a href="#regla-222" class="toc-sidebar-link" onclick="handleTocClick()">La Regla del Balance 2-2-2</a></li>
+                <li class="toc-sidebar-item"><a href="#criterios-transicion" class="toc-sidebar-link" onclick="handleTocClick()">Criterios de transición</a></li>
+                <li class="toc-sidebar-item"><a href="#errores-clasificacion" class="toc-sidebar-link" onclick="handleTocClick()">7 errores fatales</a></li>
+                <li class="toc-sidebar-item"><a href="#metricas-portafolio" class="toc-sidebar-link" onclick="handleTocClick()">Métricas de portafolio</a></li>
+                <li class="toc-sidebar-item"><a href="#botanica-equipos" class="toc-sidebar-link" onclick="handleTocClick()">Madurez para equipos</a></li>
+                <li class="toc-sidebar-item"><a href="#comparativa-frameworks" class="toc-sidebar-link" onclick="handleTocClick()">Comparativa de frameworks</a></li>
+                <li class="toc-sidebar-item"><a href="#implementacion-app" class="toc-sidebar-link" onclick="handleTocClick()">Implementación práctica</a></li>
+                <li class="toc-sidebar-item"><a href="#faq-botanica" class="toc-sidebar-link" onclick="handleTocClick()">Preguntas frecuentes</a></li>
+                <li class="toc-sidebar-item"><a href="#conclusiones-botanica" class="toc-sidebar-link" onclick="handleTocClick()">Conclusiones y descarga</a></li>
+            </ol>
+        </div>
+        <div class="toc-sidebar-footer">
+            <a href="index.html">← Volver al Blog Hub</a>
+        </div>
+    </aside>
+
     <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
     <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
         <div class="widget-icon">🌱</div>
@@ -688,6 +732,50 @@
             if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
         }
         window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+
+        // ToC Sidebar Toggle & Scrollspy
+        function toggleTocSidebar() {
+            try {
+                const sidebar = document.getElementById('toc-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('is-collapsed');
+                    const isCollapsed = sidebar.classList.contains('is-collapsed');
+                    console.log('[DEBUG][ToC] Sidebar toggled. is-collapsed:', isCollapsed);
+                }
+            } catch (err) {
+                console.error('[DEBUG][ToC] Error in toggleTocSidebar:', err);
+            }
+        }
+
+        function handleTocClick() {
+            if (window.innerWidth < 768) {
+                toggleTocSidebar();
+            }
+        }
+
+        // Active section tracking in ToC
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('main h2[id], main h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-sidebar-link');
+            let currentId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentId = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
         console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
     </script>
 </body>
