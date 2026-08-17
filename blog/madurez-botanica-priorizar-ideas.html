@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa: Madurez Botánica — Cómo Priorizar Ideas con el Framework Semilla-Brote-Árbol | Lluvia de Ideas IA</title>
+    <meta name="description" content="Framework completo de clasificación de ideas por madurez (Semilla, Brote, Árbol). Incluye regla del balance 2-2-2, criterios de transición entre niveles, errores de clasificación, métricas de portafolio y guía de implementación práctica.">
+    <meta name="keywords" content="priorización ideas, madurez botánica, semillas brotes árboles, gestión innovación, brainstorming clasificación, quick wins moonshot, portafolio de innovación, horizonte de innovación">
+    <meta name="author" content="Raúl Navas (NoaR)">
+    <link rel="canonical" href="https://lluviadeideasia.com/blog/madurez-botanica-priorizar-ideas.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Guía Completa: Madurez Botánica — Framework Semilla-Brote-Árbol para Priorizar Ideas">
+    <meta property="og:description" content="El framework más práctico para clasificar ideas por tiempo de ejecución, riesgo e impacto. Con regla 2-2-2, métricas y casos reales.">
+    <meta property="og:url" content="https://lluviadeideasia.com/blog/madurez-botanica-priorizar-ideas.html">
+    <meta property="og:site_name" content="Lluvia de Ideas IA">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:published_time" content="2026-08-16T10:00:00+02:00">
+    <meta property="article:author" content="Raúl Navas">
+    <meta property="article:section" content="Gestión de Innovación">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Madurez Botánica: Framework Semilla-Brote-Árbol">
+    <meta name="twitter:description" content="El framework más práctico para clasificar ideas por madurez y ejecutar con claridad estratégica.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Guía Completa: Madurez Botánica — Cómo Priorizar Ideas con el Framework Semilla-Brote-Árbol",
+        "description": "Framework completo de clasificación de ideas por madurez. Incluye regla del balance 2-2-2, criterios de transición, métricas de portafolio y guía práctica.",
+        "author": { "@type": "Person", "name": "Raúl Navas", "alternateName": "NoaR" },
+        "publisher": { "@type": "Organization", "name": "Lluvia de Ideas IA" },
+        "datePublished": "2026-08-16",
+        "dateModified": "2026-08-17",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lluviadeideasia.com/blog/madurez-botanica-priorizar-ideas.html" },
+        "articleSection": "Gestión de Innovación",
+        "wordCount": 5100,
+        "inLanguage": "es"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['"Plus Jakarta Sans"','sans-serif']},colors:{brand:{50:'#eef2ff',100:'#e0e7ff',500:'#6366f1',600:'#4f46e5',700:'#4338ca',accent:'#3b82f6',amber:'#f59e0b'}}}}}</script>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="bg-mesh text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVEGACIÓN -->
+    <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20">💡</div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="../index.html#articulos" class="hover:text-brand-600 transition font-bold text-brand-600">Blog</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="../index.html#articulos" onclick="closeMobileNav()">📝 Blog</a>
+        <div class="mt-6"><a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">🚀 Empieza Gratis con Lluvia de Ideas Forzada</a></div>
+    </nav>
+
+    <!-- BLOG HEADER -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a><span class="separator">›</span>
+                <a href="../index.html#articulos">Blog</a><span class="separator">›</span>
+                <span>Gestión de Innovación</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🌱 Gestión de Innovación</span>
+                <span class="blog-readtime">Lectura de 22 min · 5.100+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Guía Completa: Madurez Botánica — Cómo Priorizar Ideas con el Framework Semilla-Brote-Árbol
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                El framework que evita que las tareas tácticas inmediatas colisionen con los proyectos de transformación a largo plazo. Con la regla del balance 2-2-2, criterios de transición, métricas de portafolio y ejemplos aplicados.
+            </p>
+        </div>
+    </header>
+
+    <!-- BLOG CONTENT -->
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">🌱</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Gratis · Android</div>
+    </aside>
+
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                La mayoría de sesiones de brainstorming mueren en un documento desordenado porque tratan por igual una optimización de 2 horas y un proyecto que requiere reconstruir toda la infraestructura. La Clasificación de Madurez Botánica resuelve esto con tres niveles: <strong>🌱 Semillas</strong> (acción táctica en menos de 48h, coste cercano a cero), <strong>🌿 Brotes</strong> (innovación modular en 1-2 semanas, requiere prototipado) y <strong>🌳 Árboles</strong> (transformación 10x a largo plazo, requiere planificación formal). La Regla del Balance 2-2-2 dice que una sesión saludable produce 2 de cada tipo. El artículo cubre el origen de la metáfora, cada nivel con criterios precisos y ejemplos reales, las reglas de transición entre niveles, 7 errores fatales de clasificación, métricas de portafolio de innovación, y la implementación práctica en la app.
+            </p>
+        </div>
+
+        <div class="toc-container">
+            <div class="toc-title">📑 Contenido del artículo</div>
+            <ol>
+                <li><a href="#el-problema">El problema universal de las ideas sin clasificar</a></li>
+                <li><a href="#origen-metafora">Origen de la metáfora botánica y por qué funciona</a></li>
+                <li><a href="#nivel-semilla">🌱 Nivel Semilla — Acción Táctica Inmediata (detalle completo)</a></li>
+                <li><a href="#nivel-brote">🌿 Nivel Brote — Innovación Modular (detalle completo)</a></li>
+                <li><a href="#nivel-arbol">🌳 Nivel Árbol — Transformación 10x (detalle completo)</a></li>
+                <li><a href="#regla-222">La Regla del Balance 2-2-2</a></li>
+                <li><a href="#criterios-transicion">Criterios de transición: cuándo y cómo evoluciona una idea</a></li>
+                <li><a href="#errores-clasificacion">7 errores fatales al clasificar ideas</a></li>
+                <li><a href="#metricas-portafolio">Métricas de portafolio de innovación</a></li>
+                <li><a href="#botanica-equipos">Madurez Botánica para equipos: roles y dinámicas</a></li>
+                <li><a href="#comparativa-frameworks">Comparativa con otros frameworks de priorización</a></li>
+                <li><a href="#implementacion-app">Implementación práctica en Lluvia de Ideas IA</a></li>
+                <li><a href="#faq-botanica">Preguntas frecuentes</a></li>
+                <li><a href="#conclusiones-botanica">Conclusiones y siguiente paso concreto</a></li>
+            </ol>
+        </div>
+
+        <h2 id="el-problema">El problema universal de las ideas sin clasificar</h2>
+
+        <p>
+            Imagina una sesión de brainstorming exitosa: el equipo ha generado 24 ideas potentes sobre cómo reducir la tasa de abandono de la app. Se sienten energizados, motivados, con la sensación visceral de que han desbloqueado algo importante. Alguien las anota en un documento compartido de Google Docs. La reunión termina con aplausos y café.
+        </p>
+
+        <p>
+            Tres semanas después, nadie ha ejecutado nada. El documento tiene 24 puntos sin jerarquía, sin propietarios, sin fechas. "Cambiar el color del botón de CTA" (tarea de 30 minutos) está al mismo nivel visual que "Rediseñar completamente el flujo de onboarding con IA adaptativa" (proyecto de 3 meses). El equipo abre el documento, se siente abrumado por la lista, no sabe por dónde empezar, y lo cierra para "revisarlo la semana que viene". Esa semana nunca llega.
+        </p>
+
+        <p>
+            Este patrón no es un fallo de motivación ni de disciplina. Es un <strong>fallo de sistema</strong>. La parálisis no viene de la falta de ideas; viene de la falta de un protocolo de clasificación que distinga las acciones inmediatas de las transformaciones estructurales. Sin esa distinción, el cerebro no puede priorizar porque no tiene un criterio de comparación: ¿cómo decides entre "cambiar un color" y "rediseñar un sistema completo" cuando ambas opciones aparecen en la misma lista plana?
+        </p>
+
+        <p>
+            Este problema fue documentado formalmente por McKinsey en 1999 con su framework de "Tres Horizontes de Innovación" (H1: optimizar el negocio actual, H2: explorar oportunidades emergentes, H3: crear negocios futuros). Lo que la Clasificación de Madurez Botánica hace es <strong>adaptar ese principio corporativo a la escala individual y de equipo pequeño</strong>, con un lenguaje visual intuitivo que cualquier persona puede usar sin necesidad de formación en gestión de la innovación, sin slides de McKinsey y sin consultores.
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>📊 Dato de referencia:</strong> Según un estudio de Harvard Business Review (2018), el 67% de las ideas generadas en sesiones de brainstorming corporativo nunca llegan a fase de evaluación formal porque "nadie sabe qué hacer con ellas después de la reunión". El problema no es la generación; es la clasificación y el seguimiento.
+        </div>
+
+        <h2 id="origen-metafora">Origen de la metáfora botánica y por qué funciona</h2>
+
+        <p>
+            La metáfora no es arbitraria ni decorativa. Las plantas siguen un ciclo de vida que replica con precisión la evolución de una idea de negocio, y la analogía es inmediatamente comprensible para cualquier ser humano sin necesidad de explicación técnica:
+        </p>
+
+        <h4>La semilla</h4>
+        <p>
+            Es compacta, autosuficiente y puede germinar en cualquier condición mínimamente favorable. No necesita un ecosistema elaborado: solo tierra, agua y sol. Es barata de producir, fácil de transportar, y si no germina, el coste de oportunidad es despreciable. Una planta produce cientos de semillas porque asume que la mayoría no prosperarán, y eso está bien. Lo mismo aplica a las ideas de acción inmediata: generas muchas, ejecutas rápido, y las que no funcionan se descartan sin drama.
+        </p>
+
+        <h4>El brote</h4>
+        <p>
+            Ya tiene raíces visibles y hojas incipientes. Ha superado la fase de validación inicial (la semilla germinó) pero aún es vulnerable: un helada inesperada, falta de riego, una plaga temprana puede matarlo. Necesita nutrientes adicionales — recursos, tiempo, iteración — para consolidarse. Pero ya no es una apuesta ciega: hay evidencia observable de que está creciendo en la dirección correcta. Las ideas-brote requieren inversión consciente pero controlada: un sprint de 1-2 semanas con objetivos medibles.
+        </p>
+
+        <h4>El árbol</h4>
+        <p>
+            Es una transformación completa del paisaje. Tiene raíces profundas que estabilizan el terreno, copa amplia que da sombra a toda la zona, y modifica el ecosistema a su alrededor (atrae aves, genera oxígeno, retiene agua). Pero tardó años en llegar ahí, y cortarlo tiene consecuencias sistémicas que van más allá del árbol en sí. Las ideas-árbol son transformaciones que redefinen el modelo de negocio, abren mercados nuevos o sustituyen la base tecnológica — y requieren planificación formal, recursos dedicados y paciencia.
+        </p>
+
+        <p>
+            La potencia de esta metáfora reside en su <strong>universalidad cognitiva</strong>. No necesitas explicar qué significa "Horizonte 1, 2 o 3". No necesitas un glosario de términos de gestión de la innovación. Todo el mundo entiende la diferencia entre plantar una semilla y hacer crecer un árbol. Desde un CEO con 30 años de experiencia hasta un becario de primer día. La metáfora elimina la barrera de vocabulario técnico que hace inaccesibles otros frameworks de priorización.
+        </p>
+
+        <h2 id="nivel-semilla">🌱 Nivel Semilla (Seed) — Acción Táctica Inmediata</h2>
+
+        <p>
+            Son propuestas listas para ejecutar en <strong>menos de 48 horas</strong>. Requieren coste nulo o despreciable, mínimo riesgo operativo y validación instantánea. Su propósito no es resolver el problema grande; es generar <strong>victorias rápidas</strong> (<em>quick wins</em>) que inyecten tracción, moral de equipo y datos de validación temprana.
+        </p>
+
+        <h4>Los 5 criterios de una Semilla</h4>
+        <ol>
+            <li><strong>Tiempo de ejecución ≤ 48 horas</strong> desde la decisión hasta el resultado medible.</li>
+            <li><strong>Coste ≤ 0 € adicionales.</strong> Se ejecuta con recursos existentes, sin aprobación presupuestaria.</li>
+            <li><strong>Riesgo de reversión ≈ 0.</strong> Si falla, vuelves al estado anterior sin consecuencias.</li>
+            <li><strong>No requiere coordinación interdepartamental.</strong> Una persona o un equipo pequeño puede ejecutarla autónomamente.</li>
+            <li><strong>Impacto medible en 24-72 horas.</strong> Puedes verificar si funcionó antes del fin de semana.</li>
+        </ol>
+
+        <h4>10 ejemplos reales de Semillas</h4>
+        <ol>
+            <li>Cambiar el copy del CTA de "Registrarse" a "Empezar gratis en 30 segundos".</li>
+            <li>Añadir un tooltip explicativo en la pantalla con mayor tasa de abandono.</li>
+            <li>Reorganizar los tres primeros pasos del onboarding sin cambiar la lógica subyacente.</li>
+            <li>Enviar un email de seguimiento a los usuarios que no completaron el onboarding en las últimas 72h.</li>
+            <li>Añadir un mensaje de "X usuarios activos ahora" como social proof en la landing page.</li>
+            <li>Reducir el número de campos del formulario de registro de 6 a 3.</li>
+            <li>Cambiar el orden de las opciones en un menú dropdown basándose en datos de uso.</li>
+            <li>Añadir un enlace de "Saltear" en el tutorial obligatorio de primera ejecución.</li>
+            <li>Crear un template predefinido para el caso de uso más común de tus usuarios.</li>
+            <li>Publicar un post en LinkedIn compartiendo un insight de tu análisis de usuarios.</li>
+        </ol>
+
+        <div class="callout-box callout-emerald">
+            <strong>🌱 Regla de la Semilla:</strong> Si no puedes explicar la implementación completa en un Post-it (no una hoja A4, un Post-it), probablemente no es una Semilla. Si necesitas una reunión para aprobarla, definitivamente no lo es. Las Semillas se ejecutan, no se debaten.
+        </div>
+
+        <h4>El valor estratégico oculto de las Semillas</h4>
+        <p>
+            Las Semillas parecen triviales, y esa es precisamente su potencia. Su valor no está en el impacto individual de cada una (que suele ser modesto), sino en tres efectos sistémicos:
+        </p>
+        <ul>
+            <li><strong>Momentum psicológico:</strong> Ejecutar una idea en 48 horas genera la sensación de "estamos avanzando" que previene la parálisis post-brainstorming.</li>
+            <li><strong>Datos de validación temprana:</strong> Cada Semilla ejecutada produce datos reales (el copy nuevo convirtió un 3% más, el tooltip redujo un 8% la tasa de drop) que informan las decisiones de los Brotes y los Árboles.</li>
+            <li><strong>Cultura de ejecución:</strong> Un equipo que ejecuta 4 Semillas por semana desarrolla el hábito de "idea → acción → medición" que es el fundamento de la innovación ágil.</li>
+        </ul>
+
+        <h2 id="nivel-brote">🌿 Nivel Brote (Sprout) — Innovación Modular</h2>
+
+        <p>
+            Iniciativas que combinan tecnologías existentes o rediseñan procesos internos. Requieren entre <strong>1 y 2 semanas de prototipado</strong> y medición de métricas. Representan el motor de <strong>mejora continua</strong> y optimización sostenible de cualquier proyecto o empresa.
+        </p>
+
+        <h4>Los 5 criterios de un Brote</h4>
+        <ol>
+            <li><strong>Tiempo de ejecución: 1-2 semanas</strong> incluyendo diseño, implementación y primera medición.</li>
+            <li><strong>Presupuesto contenido pero no trivial.</strong> Puede requerir herramientas, horas de diseño/desarrollo, o licencias temporales.</li>
+            <li><strong>Requiere coordinación limitada.</strong> Puede necesitar alineamiento con otro equipo o stakeholder.</li>
+            <li><strong>Impacto medible en 2-4 semanas</strong> post-lanzamiento. Requiere un ciclo de feedback más largo que las Semillas.</li>
+            <li><strong>Reversible con coste moderado.</strong> Si falla, se puede pivotar o revertir sin daño estructural.</li>
+        </ol>
+
+        <h4>10 ejemplos reales de Brotes</h4>
+        <ol>
+            <li>Implementar un flujo de onboarding completamente nuevo con 3 variantes A/B.</li>
+            <li>Crear un sistema de notificaciones push basado en comportamiento del usuario.</li>
+            <li>Integrar un endpoint de IA para sugerir nombres de proyectos automáticamente.</li>
+            <li>Rediseñar la arquitectura de exportación para soportar formatos PDF vectoriales.</li>
+            <li>Crear una página de comparativa "Nuestra App vs Competidor X" con datos reales.</li>
+            <li>Implementar un sistema de feedback in-app con categorización automática.</li>
+            <li>Lanzar una campaña de email nurturing de 5 emails para usuarios inactivos.</li>
+            <li>Crear un dashboard interno de métricas clave con actualización diaria.</li>
+            <li>Desarrollar un prototipo de chatbot de soporte basado en FAQ existentes.</li>
+            <li>Implementar deep links para que los artículos del blog abran features específicas de la app.</li>
+        </ol>
+
+        <h4>La trampa del Brote eterno</h4>
+        <p>
+            El error más peligroso con los Brotes es no definir un <strong>criterio de éxito claro antes de empezar</strong>. Sin un "esto funciona si X métrica mejora un Y%" definido a priori, el Brote se convierte en un proyecto zombie que consume recursos indefinidamente sin que nadie tenga el coraje de matarlo o de promoverlo a Árbol. Todo Brote debe tener una <strong>fecha de evaluación</strong> (típicamente 2-4 semanas post-lanzamiento) y un <strong>umbral de éxito</strong> medible. Si no alcanza el umbral, se mata o se pivota. Sin excepciones.
+        </p>
+
+        <!-- App CTA inline 1 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">🌱 Convierte ideas en acción inmediata</div>
+                <p>
+                    Clasifica automáticamente cada idea en Semilla (48h), Brote (2 semanas) o Árbol (10x) con asistencia de IA en tu Android.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <h2 id="nivel-arbol">🌳 Nivel Árbol (Tree) — Transformación 10x</h2>
+
+        <p>
+            Propuestas de impacto sistémico que redefinen por completo el modelo de negocio, abren nuevos mercados, sustituyen la base tecnológica o transforman la propuesta de valor fundamental. Su ciclo de maduración es de <strong>medio a largo plazo</strong> (meses, trimestres, años) y requieren asignación formal de recursos, aprobación ejecutiva y gestión del cambio organizacional.
+        </p>
+
+        <h4>Los 5 criterios de un Árbol</h4>
+        <ol>
+            <li><strong>Tiempo de ejecución: meses a trimestres.</strong> Requiere planificación de múltiples sprints o un proyecto dedicado con roadmap propio.</li>
+            <li><strong>Presupuesto significativo.</strong> Implica inversión en infraestructura, contratación, herramientas enterprise, o desarrollo a medida.</li>
+            <li><strong>Requiere buy-in de liderazgo.</strong> No se puede ejecutar sin aprobación de C-level o stakeholders con poder de decisión presupuestaria.</li>
+            <li><strong>Impacto se mide en trimestres, no en semanas.</strong> Los resultados tardan en materializarse pero son proporcionalmente más grandes.</li>
+            <li><strong>Irreversible o con alto coste de reversión.</strong> Una vez comprometido, volver atrás tiene consecuencias significativas (contractuales, técnicas, organizativas).</li>
+        </ol>
+
+        <h4>10 ejemplos reales de Árboles</h4>
+        <ol>
+            <li>Migrar toda la app de una arquitectura monolítica a microservicios.</li>
+            <li>Lanzar una versión iOS de la app con motor de IA multiplataforma.</li>
+            <li>Crear un marketplace de templates de brainstorming creado por la comunidad de usuarios.</li>
+            <li>Implementar un modelo de IA propietario entrenado con datos sintéticos de sesiones de ideación.</li>
+            <li>Expandir a un mercado geográfico completamente nuevo (ej: APAC) con localización completa.</li>
+            <li>Pivotar el modelo de negocio de licencia perpetua a suscripción SaaS.</li>
+            <li>Construir una API pública para que terceros integren tu motor de ideación en sus productos.</li>
+            <li>Desarrollar un programa de certificación para facilitadores de brainstorming con IA.</li>
+            <li>Adquirir o fusionarse con un producto complementario para ampliar la propuesta de valor.</li>
+            <li>Crear una vertical enterprise con SSO, auditoría de compliance y administración centralizada.</li>
+        </ol>
+
+        <div class="callout-box callout-amber">
+            <strong>⚠️ El peligro de los Árboles prematuros:</strong> Un Árbol sin validación previa por Semillas y Brotes es una apuesta ciega de alto riesgo. Antes de comprometer 6 meses de desarrollo en una "versión iOS", valida con Semillas (encuesta a usuarios actuales sobre interés en iOS, landing page de pre-registro) y Brotes (prototipo funcional mínimo en React Native para 100 beta testers). El Árbol solo se planta cuando la tierra ha sido validada por las Semillas y los Brotes.
+        </div>
+
+        <h2 id="regla-222">La Regla del Balance 2-2-2</h2>
+
+        <p>
+            En una sesión saludable de 6 ideas seleccionadas (después del filtrado convergente), la distribución óptima es <strong>2 Semillas, 2 Brotes y 2 Árboles</strong>. Esta regla no es un capricho estético; asegura tres equilibrios estratégicos simultáneamente:
+        </p>
+
+        <h4>Equilibrio 1: Tracción inmediata</h4>
+        <p>
+            Las 2 Semillas se ejecutan en las próximas 48 horas. Generan momentum ("hemos hecho algo"), datos de validación ("el cambio de copy funcionó") y moral de equipo ("nuestras ideas se convierten en acción"). Sin Semillas, la sesión de brainstorming se siente abstracta e improductiva.
+        </p>
+
+        <h4>Equilibrio 2: Mejora continua</h4>
+        <p>
+            Los 2 Brotes alimentan el pipeline de mejora para las próximas 2-4 semanas. Son lo suficientemente ambiciosos para generar impacto real pero lo suficientemente acotados para no paralizar al equipo. Sin Brotes, te quedas en optimizaciones cosméticas (solo Semillas) o en sueños inalcanzables (solo Árboles).
+        </p>
+
+        <h4>Equilibrio 3: Visión estratégica</h4>
+        <p>
+            Los 2 Árboles mantienen el horizonte de transformación vivo y documentado. No se ejecutan ahora, pero se <strong>maduran activamente</strong>: se investigan, se documentan requisitos previos, se estima el coste, se identifican dependencias. Cuando los recursos estén disponibles (nueva financiación, nuevo trimestre, nuevo equipo), el Árbol ya tiene un business case preparado.
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>📊 Señales de alarma del portafolio:</strong><br>
+            • <strong>6 Semillas, 0 Brotes, 0 Árboles:</strong> Estás optimizando localmente sin visión de futuro. Mucha actividad, poco impacto acumulativo.<br>
+            • <strong>0 Semillas, 0 Brotes, 6 Árboles:</strong> Estás soñando sin ejecutar. El equipo se frustra porque nada se materializa.<br>
+            • <strong>0 Semillas, 6 Brotes, 0 Árboles:</strong> Mejora continua sin tracción inmediata ni visión. Riesgo de "optimizar lo incorrecto" sin Semillas que validen dirección.<br>
+            • <strong>2 Semillas, 2 Brotes, 2 Árboles:</strong> Portafolio equilibrado. Tracción + mejora + visión.
+        </div>
+
+        <!-- App CTA inline 2 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">⚖️ Aplica la Regla del Balance 2-2-2</div>
+                <p>
+                    Mantén un portafolio equilibrado entre victorias rápidas, mejoras iterativas y visiones estratégicas de futuro.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Empieza Gratis con Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <h2 id="criterios-transicion">Criterios de transición: cuándo y cómo evoluciona una idea</h2>
+
+        <p>
+            Las ideas no son estáticas. Una de las ventajas más potentes del framework botánico es que permite <strong>transiciones documentadas</strong> entre niveles, creando un registro de aprendizaje organizacional.
+        </p>
+
+        <h4>De Semilla a Brote: la promoción por evidencia</h4>
+        <p>
+            Una Semilla se promueve a Brote cuando los datos de su ejecución rápida muestran potencial de impacto mayor. <strong>Criterio:</strong> la Semilla produjo un resultado medible positivo (aunque modesto) y hay evidencia de que una versión más elaborada multiplicaría ese resultado.
+        </p>
+        <p>
+            <strong>Ejemplo:</strong> "Cambiar el copy del CTA de 'Registrarse' a 'Empezar gratis en 30 segundos'" (Semilla) aumentó la tasa de conversión un 8%. Esto justifica un Brote: "Rediseñar completamente la landing page con test A/B de 4 variantes de propuesta de valor" que podría multiplicar ese 8% al 20-30%.
+        </p>
+
+        <h4>De Brote a Árbol: la escalación justificada</h4>
+        <p>
+            Un Brote se promueve a Árbol cuando su éxito validado sugiere un impacto sistémico si se escala. <strong>Criterio:</strong> el Brote alcanzó o superó su umbral de éxito y hay evidencia de que el mercado/la tecnología soporta una apuesta mayor.
+        </p>
+        <p>
+            <strong>Ejemplo:</strong> "Implementar notificaciones push basadas en comportamiento" (Brote) logró un engagement rate del 45%. Esto justifica un Árbol: "Construir un motor de personalización completo con ML que adapte toda la experiencia de la app al perfil cognitivo del usuario".
+        </p>
+
+        <h4>De Árbol a Semilla: la descomposición estratégica</h4>
+        <p>
+            Esta transición inversa es igualmente importante. Un Árbol que parece inabarcable se descompone en Semillas y Brotes que lo validan progresivamente. <strong>Criterio:</strong> el Árbol tiene demasiadas asunciones no validadas como para comprometer recursos directamente.
+        </p>
+        <p>
+            <strong>Ejemplo:</strong> "Lanzar versión iOS" (Árbol) → Semillas de validación: encuesta a 500 usuarios sobre interés en iOS, análisis de market share iOS en tu segmento, landing page de pre-registro. Si las Semillas confirman demanda, se lanza un Brote (prototipo mínimo para 100 beta testers).
+        </p>
+
+        <h2 id="errores-clasificacion">7 errores fatales al clasificar ideas</h2>
+
+        <h4>Error 1: Clasificar por dificultad técnica en vez de por tiempo de ejecución</h4>
+        <p>
+            Una idea puede ser técnicamente compleja pero ejecutable en 48 horas si ya tienes las herramientas. La clasificación botánica mide <strong>tiempo hasta impacto medible</strong>, no complejidad intrínseca. Un deploy de un cambio de copy en producción puede requerir pipeline CI/CD, review de código y QA — técnicamente "complejo" — pero ejecutable en 4 horas.
+        </p>
+
+        <h4>Error 2: Promover prematuramente un Brote a Árbol</h4>
+        <p>
+            Solo porque un Brote ha salido bien no significa que deba escalar a Árbol. Un Brote exitoso puede simplemente convertirse en un proceso estándar sin necesidad de una transformación sistémica. "Las notificaciones push funcionan bien" no significa automáticamente que necesites "un motor de personalización con ML".
+        </p>
+
+        <h4>Error 3: Descartar Árboles por "irrealistas"</h4>
+        <p>
+            Los Árboles no son para ejecutar hoy. Son para documentar, madurar y tener listos cuando el contexto cambie. Una idea que hoy parece imposible (nueva financiación, nueva regulación, nueva tecnología, nueva alianza) puede ser viable en 6 meses. El Banco de Ideas preserva los Árboles para ese momento.
+        </p>
+
+        <h4>Error 4: Tener solo Semillas en el portafolio</h4>
+        <p>
+            El "síndrome del quick-win perpetuo" genera mucha actividad pero poco impacto acumulativo. Si tu equipo solo ejecuta Semillas, estás optimizando un sistema que quizás debería ser reemplazado por completo. Las Semillas sin Árboles son eficiencia sin dirección.
+        </p>
+
+        <!-- App CTA inline 3 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">📁 Banco de Ideas con Exportación PDF</div>
+                <p>
+                    Guarda y evoluciona todo tu historial de innovación clasificado por madurez botánica y exporta informes ejecutivos limpios.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <h4>Error 5: No definir criterios de éxito antes de empezar un Brote</h4>
+        <p>
+            Un Brote sin umbral de éxito predefinido se convierte en un proyecto zombie que nadie tiene el coraje de matar. "Vamos a ver cómo va" no es un criterio de éxito. "Si el engagement rate supera el 15% en 3 semanas, continuamos; si no, matamos el experimento" sí lo es.
+        </p>
+
+        <h4>Error 6: Confundir la clasificación con la priorización</h4>
+        <p>
+            Clasificar una idea como Semilla no significa que sea más importante que un Árbol. Significa que tiene un horizonte temporal diferente. Un Árbol puede ser estratégicamente más valioso que 10 Semillas, pero no compite con ellas porque opera en una dimensión temporal diferente. Comparar Semillas con Árboles es como comparar una estrategia de sprint con un plan de maratón.
+        </p>
+
+        <h4>Error 7: No registrar las transiciones</h4>
+        <p>
+            El mayor valor del framework botánico a largo plazo no son las clasificaciones individuales; es el <strong>historial de transiciones</strong>. ¿Qué Semillas germinaron? ¿Qué Brotes prosperaron? ¿Qué Árboles se validaron? Este registro crea un modelo predictivo empírico sobre qué tipo de ideas funcionan en tu contexto específico.
+        </p>
+
+        <h2 id="metricas-portafolio">Métricas de portafolio de innovación</h2>
+
+        <p>
+            Una vez que acumulas suficientes sesiones clasificadas con el framework botánico, puedes derivar métricas de portafolio que informan la estrategia de innovación:
+        </p>
+
+        <h4>Tasa de germinación</h4>
+        <p>
+            Porcentaje de Semillas ejecutadas que producen un resultado positivo medible. Una tasa saludable es del 40-60%. Por debajo del 20%, la calidad de las Semillas es baja (son ideas triviales sin impacto). Por encima del 80%, estás siendo demasiado conservador (las Semillas son tan "seguras" que no aportan aprendizaje).
+        </p>
+
+        <h4>Tasa de supervivencia de Brotes</h4>
+        <p>
+            Porcentaje de Brotes que alcanzan su umbral de éxito predefinido. Una tasa saludable es del 30-50%. Por debajo del 15%, la selección de Brotes necesita mejorar. Por encima del 70%, estás siendo demasiado conservador en la selección.
+        </p>
+
+        <h4>Ratio de transición Semilla→Brote</h4>
+        <p>
+            Porcentaje de Semillas exitosas que se promueven a Brote. Indica cuánto aprendizaje se aprovecha de las ejecuciones rápidas. Un ratio saludable es del 15-25% (no todas las Semillas exitosas justifican un Brote; algunas simplemente se integran como mejoras permanentes).
+        </p>
+
+        <h4>Distribución del portafolio activo</h4>
+        <p>
+            La proporción de Semillas : Brotes : Árboles en tu backlog activo. La distribución objetivo es aproximadamente 50% : 30% : 20% (muchas Semillas para tracción, varios Brotes para mejora continua, pocos Árboles para visión estratégica).
+        </p>
+
+        <h2 id="botanica-equipos">Madurez Botánica para equipos: roles y dinámicas</h2>
+
+        <h4>El Jardinero (Facilitador)</h4>
+        <p>
+            Persona responsable de mantener el Banco de Ideas actualizado, moderar las clasificaciones, y asegurar que las Semillas se ejecutan dentro de sus 48 horas y los Brotes se evalúan en su fecha predefinida. No genera ideas; cuida el ecosistema de ideas generadas por otros.
+        </p>
+
+        <h4>Sesión de clasificación semanal (15 minutos)</h4>
+        <p>
+            Reunión rápida donde el equipo revisa las nuevas ideas generadas durante la semana, las clasifica por consenso (Semilla/Brote/Árbol), asigna propietarios a las Semillas de la semana, y revisa el estado de los Brotes activos. 15 minutos máximo. Sin debate extenso: si no hay consenso en 30 segundos sobre la clasificación, el facilitador decide.
+        </p>
+
+        <h4>Revisión trimestral de Árboles (1 hora)</h4>
+        <p>
+            Una vez por trimestre, el equipo revisa los Árboles acumulados en el Banco de Ideas. ¿Ha cambiado el contexto que los hacía inviables? ¿Hay nueva financiación, nueva tecnología o nuevo talento que los haga viables? ¿Algún Árbol ha sido validado por Semillas y Brotes y está listo para planificación formal?
+        </p>
+
+        <h2 id="comparativa-frameworks">Comparativa con otros frameworks de priorización</h2>
+
+        <h4>vs. Matriz Eisenhower (Urgente/Importante)</h4>
+        <p>
+            La matriz Eisenhower clasifica por urgencia e importancia, pero no por <strong>horizonte temporal de ejecución</strong> ni por <strong>nivel de riesgo</strong>. Una idea puede ser "importante y no urgente" (cuadrante 2) pero ¿es una Semilla de 2 horas o un Árbol de 6 meses? Eisenhower no distingue. La Madurez Botánica sí.
+        </p>
+
+        <h4>vs. MoSCoW (Must/Should/Could/Won't)</h4>
+        <p>
+            MoSCoW prioriza por necesidad ("Must have" vs "Nice to have") pero trata todas las ideas como si operaran en el mismo horizonte temporal. Un "Must have" puede ser una Semilla (corregir un bug crítico en 2 horas) o un Árbol (migrar la base de datos a una nueva arquitectura en 3 meses). MoSCoW no captura esa diferencia. La Madurez Botánica la hace explícita.
+        </p>
+
+        <h4>vs. RICE Scoring (Reach, Impact, Confidence, Effort)</h4>
+        <p>
+            RICE es excelente para priorizar dentro de un backlog de producto, pero requiere estimación numérica de cada variable, lo que introduce subjetividad cuantificada (que se siente más objetiva de lo que realmente es). La Madurez Botánica es deliberadamente cualitativa: no pretendes asignar un score de 1-10 al impacto; preguntas "¿esto es una acción de 48 horas, un prototipo de 2 semanas, o una transformación de 6 meses?". La pregunta es más fácil de responder y más difícil de manipular.
+        </p>
+
+        <h2 id="implementacion-app">Implementación práctica en Lluvia de Ideas IA</h2>
+
+        <p>
+            En Lluvia de Ideas IA, la clasificación botánica está integrada en el flujo de trabajo de forma nativa:
+        </p>
+
+        <ol>
+            <li><strong>Generación pre-clasificada:</strong> La IA genera 6 ideas con la distribución 2-2-2 como objetivo por defecto. Cada idea viene con una sugerencia de clasificación (🌱/🌿/🌳) basada en el análisis del contexto.</li>
+            <li><strong>Reclasificación manual:</strong> El usuario puede cambiar la clasificación de cualquier idea con un toque. La IA sugiere, pero el humano decide.</li>
+            <li><strong>Indicadores de urgencia:</strong> Las Semillas aparecen con un badge de "Ejecutar en 48h" que genera urgencia positiva sin ser intrusivo.</li>
+            <li><strong>Estimaciones de Brotes:</strong> Los Brotes incluyen una estimación de tiempo de prototipado generada por la IA basándose en la complejidad descrita.</li>
+            <li><strong>Documentación de Árboles:</strong> Los Árboles se marcan como "Visión estratégica" y se guardan en una sección dedicada del Banco de Ideas para revisión periódica.</li>
+            <li><strong>Filtrado por nivel:</strong> El Banco de Ideas permite filtrar por nivel botánico (ver solo Semillas pendientes, ver solo Árboles madurados) para gestionar el portafolio de innovación completo.</li>
+            <li><strong>Registro de transiciones:</strong> Cuando una idea cambia de nivel (Semilla→Brote, Brote→Árbol), la transición queda registrada con fecha y motivo, creando el historial de aprendizaje organizacional.</li>
+        </ol>
+
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Clasifica tus ideas automáticamente</div>
+                <p>La IA genera ideas pre-clasificadas en 🌱 Semillas, 🌿 Brotes y 🌳 Árboles con estimaciones de ejecución y tracking de transiciones.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">🌱 Descargar Lluvia de Ideas Forzada</a>
+        </div>
+
+        <h2 id="faq-botanica">Preguntas frecuentes</h2>
+
+        <h4>¿La clasificación botánica sustituye a Scrum o Kanban?</h4>
+        <p>
+            No. Complementa. Scrum/Kanban gestionan el <em>cómo</em> de la ejecución (sprints, columnas, WIP limits). La Madurez Botánica gestiona el <em>qué</em> y el <em>cuándo</em>: qué ideas merecen ejecutarse y en qué horizonte temporal. Las Semillas entran directamente al sprint actual. Los Brotes se planifican para sprints futuros. Los Árboles alimentan el roadmap a largo plazo.
+        </p>
+
+        <h4>¿Puedo usar este framework para ideas personales, no solo profesionales?</h4>
+        <p>
+            Absolutamente. "Aprender a cocinar un plato nuevo este fin de semana" es una Semilla. "Tomar un curso online de fotografía en el próximo mes" es un Brote. "Cambiar de carrera profesional hacia diseño UX" es un Árbol. El framework funciona con cualquier tipo de objetivo que tenga diferentes horizontes temporales.
+        </p>
+
+        <h4>¿Qué hago si todas mis ideas son del mismo nivel?</h4>
+        <p>
+            Es señal de que la sesión de ideación fue homogénea. Si todas son Semillas, forzate a pensar "¿qué cambio grande haría si tuviera presupuesto ilimitado?" (genera Árboles). Si todas son Árboles, forzate a pensar "¿qué puedo hacer en las próximas 2 horas con lo que tengo?" (genera Semillas). El desbalance indica un sesgo cognitivo en la sesión, no un problema del framework.
+        </p>
+
+        <h4>¿Cada cuánto debo revisar la clasificación de mis ideas?</h4>
+        <p>
+            Semillas: diariamente (¿la ejecuté? ¿qué resultado dio?). Brotes: semanalmente (¿cómo va el prototipo? ¿alcanzó el umbral?). Árboles: trimestralmente (¿ha cambiado el contexto que los hacía inviables?).
+        </p>
+
+        <h2 id="conclusiones-botanica">Conclusiones y siguiente paso concreto</h2>
+
+        <p>
+            La Clasificación de Madurez Botánica no es otro framework bonito para slides. Es un <strong>protocolo operativo</strong> que convierte el output caótico de una sesión de brainstorming en un portafolio de innovación gestionable con tres líneas de acción claras: ejecución inmediata (Semillas), mejora continua (Brotes) y transformación estratégica (Árboles).
+        </p>
+
+        <p>
+            Tu siguiente paso concreto: toma las últimas 6 ideas que generaste (en una reunión, en una nota, en la ducha, o en una sesión de la app) y clasifícalas usando los criterios de este artículo. ¿Cuántas son Semillas? ¿Cuántas Brotes? ¿Cuántas Árboles? Si la distribución está desbalanceada, ya sabes qué tipo de pensamiento necesitas forzar en tu próxima sesión.
+        </p>
+
+        <p>
+            Las ideas sin clasificación son ideas perdidas. Las ideas clasificadas son un portafolio de innovación.
+        </p>
+
+        <!-- App CTA inline 4 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">🚀 Empieza a clasificar tus ideas hoy</div>
+                <p>
+                    Descarga Lluvia de Ideas Forzada en tu Android y toma el control de tu portafolio de proyectos con IA.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Empieza Gratis con Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- ARTÍCULOS RELACIONADOS -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-8">Artículos relacionados</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="scamper-desbloqueo-tecnico.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full border border-brand-100">Técnicas de Pensamiento</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">Guía Completa SCAMPER: 7 Operadores de Disrupción</h3>
+                    <p class="text-xs text-slate-500">Protocolo paso a paso con ejemplos reales y variaciones avanzadas.</p>
+                </a>
+                <a href="inversion-problema-peor-solucion.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-100">Lateralidad Creativa</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">Técnica de Inversión del Problema</h3>
+                    <p class="text-xs text-slate-500">Diseñar la peor solución para hallar la mejor.</p>
+                </a>
+                <a href="rag-on-device-proteccion-negocio.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">Inteligencia Artificial Local</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">RAG On-Device: Bases Vectoriales Locales</h3>
+                    <p class="text-xs text-slate-500">Arquitectura completa de RAG local para proteger tus datos.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Clasifica ideas con IA: Semillas, Brotes y Árboles →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] madurez-botanica-priorizar-ideas.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            console.log('[DEBUG][BlogArticle] toggleMobileNav llamado');
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) { nav.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow = ''; console.log('[DEBUG] Nav cerrado'); }
+            else { nav.classList.add('open'); btn.classList.add('active'); document.body.style.overflow = 'hidden'; console.log('[DEBUG] Nav abierto'); }
+        }
+
+        function closeMobileNav() {
+            console.log('[DEBUG][BlogArticle] closeMobileNav llamado');
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+</html>

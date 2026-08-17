@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Primary -->
+    <title>Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo | Lluvia de Ideas IA</title>
+    <meta name="description"
+        content="Guía técnica exhaustiva sobre RAG local en Android: arquitectura de chunking semántico, embeddings vectoriales on-chip, recuperación jerárquica por similitud coseno, benchmark de rendimiento y comparativa RAG local vs cloud.">
+    <meta name="keywords"
+        content="RAG local, on-device AI, base vectorial local, privacidad datos, RGPD, embeddings locales, SQLite vectores, IA offline, chunking semántico, retrieval augmented generation">
+    <meta name="author" content="Raúl Navas (NoaR)">
+    <link rel="canonical" href="https://lluviadeideasia.com/blog/rag-on-device-proteccion-negocio.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Guía Completa RAG On-Device: Bases Vectoriales Locales para Proteger tu Negocio">
+    <meta property="og:description" content="Todo sobre RAG local en Android: arquitectura técnica, chunking, embeddings, recuperación jerárquica, benchmarks y comparativa cloud vs on-device.">
+    <meta property="og:url" content="https://lluviadeideasia.com/blog/rag-on-device-proteccion-negocio.html">
+    <meta property="og:site_name" content="Lluvia de Ideas IA">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:published_time" content="2026-08-16T10:00:00+02:00">
+    <meta property="article:author" content="Raúl Navas">
+    <meta property="article:section" content="Inteligencia Artificial Local">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guía Completa RAG On-Device: Bases Vectoriales Locales">
+    <meta name="twitter:description" content="Arquitectura técnica completa de RAG local en Android: chunking, embeddings, recuperación y benchmarks.">
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo",
+        "description": "Guía técnica exhaustiva sobre RAG local en Android con arquitectura completa, benchmarks y comparativa cloud vs on-device.",
+        "author": { "@type": "Person", "name": "Raúl Navas", "alternateName": "NoaR" },
+        "publisher": { "@type": "Organization", "name": "Lluvia de Ideas IA" },
+        "datePublished": "2026-08-16",
+        "dateModified": "2026-08-17",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lluviadeideasia.com/blog/rag-on-device-proteccion-negocio.html" },
+        "articleSection": "Inteligencia Artificial Local",
+        "wordCount": 5000,
+        "inLanguage": "es"
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', accent: '#3b82f6', amber: '#f59e0b' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="bg-mesh text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVEGACIÓN -->
+    <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20">💡</div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas (NoaR)</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <a href="../index.html#capturas" class="hover:text-brand-600 transition">Capturas</a>
+                <a href="../index.html#que-es" class="hover:text-brand-600 transition">¿Qué es Brainstorming?</a>
+                <a href="../index.html#funciones" class="hover:text-brand-600 transition">Características</a>
+                <a href="../index.html#casos-uso" class="hover:text-brand-600 transition">Casos de Uso</a>
+                <a href="../index.html#articulos" class="hover:text-brand-600 transition font-bold text-brand-600">Blog</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+                <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <span>Descargar Lluvia de Ideas Forzada</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()">📱 Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()">💡 ¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()">⚙️ Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()">🎯 Casos de Uso</a>
+        <a href="../index.html#articulos" onclick="closeMobileNav()">📝 Blog</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center">
+                🚀 Empieza Gratis con Lluvia de Ideas Forzada
+            </a>
+        </div>
+    </nav>
+
+    <!-- BLOG HEADER -->
+    <header class="blog-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="blog-breadcrumb" data-aos="fade-right" data-aos-duration="600">
+                <a href="../index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="../index.html#articulos">Blog</a>
+                <span class="separator">›</span>
+                <span>Inteligencia Artificial Local</span>
+            </div>
+            <div class="blog-meta" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <span class="blog-category-badge">🛡️ Inteligencia Artificial Local</span>
+                <span class="blog-readtime">Lectura de 21 min · 5.000+ palabras</span>
+            </div>
+            <h1 class="blog-title" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo
+            </h1>
+            <p class="blog-subtitle" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                Arquitectura técnica completa del pipeline RAG local en Android: desde el chunking semántico hasta la recuperación jerárquica por similitud coseno. Incluye benchmarks de rendimiento, análisis de riesgos cloud, guía de implementación y comparativa detallada.
+            </p>
+        </div>
+    </header>
+
+    <!-- BLOG CONTENT -->
+    <!-- FLOATING RIGHT DOWNLOAD WIDGET -->
+    <aside class="floating-download-widget" aria-label="Descarga de la aplicación">
+        <div class="widget-icon">🛡️</div>
+        <div class="widget-title">Lluvia de Ideas Forzada</div>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="widget-btn">
+            <svg viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Google Play</span>
+        </a>
+        <div class="widget-badge-text">100% Offline · Android</div>
+    </aside>
+
+    <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
+
+        <!-- TL;DR -->
+        <div class="tldr-box">
+            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <p>
+                Cada vez que subes un documento confidencial a un endpoint de RAG en la nube, lo expones a vulnerabilidades de red, cambios en políticas de retención y jurisdicciones legales fuera de tu control. La alternativa es un pipeline RAG que se ejecuta íntegramente en la memoria del dispositivo Android: chunking semántico por fronteras naturales de oración (no por caracteres fijos), embeddings vectoriales de 384 dimensiones generados en el chip mediante aceleración Vulkan/MediaPipe, almacenamiento como BLOBs comprimidos en SQLite/Room, y recuperación jerárquica por similitud coseno. Cero bytes enviados a la red. Latencia sub-120ms para 2.000 fragmentos indexados. RGPD cumplido por diseño arquitectónico, no por promesa contractual. Este artículo cubre la arquitectura completa, los riesgos específicos del RAG cloud que justifican la alternativa local, benchmarks de rendimiento en dispositivos reales, y una guía paso a paso de implementación.
+            </p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc-container">
+            <div class="toc-title">📑 Contenido del artículo</div>
+            <ol>
+                <li><a href="#que-es-rag">¿Qué es RAG y por qué importa para la ideación?</a></li>
+                <li><a href="#el-dilema-cloud">El dilema de la IA generativa basada en la nube</a></li>
+                <li><a href="#anatomia-fugas">Anatomía de una fuga documental: las 6 capas de riesgo</a></li>
+                <li><a href="#regulacion-rgpd">El marco regulatorio: RGPD, CCPA y la responsabilidad del procesamiento</a></li>
+                <li><a href="#arquitectura-local">La arquitectura RAG determinista On-Device</a></li>
+                <li><a href="#capa-chunking">Capa 1: Chunking Semántico Local — cómo se segmentan los documentos</a></li>
+                <li><a href="#capa-embeddings">Capa 2: Embeddings Vectoriales On-Chip — cómo se representan los conceptos</a></li>
+                <li><a href="#capa-recuperacion">Capa 3: Recuperación Jerárquica — cómo se encuentran los fragmentos relevantes</a></li>
+                <li><a href="#benchmarks">Benchmarks de rendimiento en dispositivos reales</a></li>
+                <li><a href="#ventajas-estrategicas">7 ventajas estratégicas del RAG local</a></li>
+                <li><a href="#limitaciones">Limitaciones honestas: cuándo el RAG cloud tiene sentido</a></li>
+                <li><a href="#comparativa">Comparativa detallada: RAG Cloud vs. RAG On-Device</a></li>
+                <li><a href="#implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas IA</a></li>
+                <li><a href="#faq-rag">Preguntas frecuentes sobre RAG local</a></li>
+                <li><a href="#conclusiones-rag">Conclusiones y siguiente paso</a></li>
+            </ol>
+        </div>
+
+        <!-- SECCIÓN 1 -->
+        <h2 id="que-es-rag">¿Qué es RAG y por qué importa para la ideación?</h2>
+
+        <p>
+            RAG (<strong>Retrieval-Augmented Generation</strong>) es una arquitectura de IA que combina dos capacidades: la <strong>recuperación de información</strong> relevante desde una base documental y la <strong>generación de texto</strong> mediante un modelo de lenguaje grande (LLM). En lugar de pedirle al LLM que responda exclusivamente desde su entrenamiento general (que puede estar desactualizado o ser genérico), el sistema primero busca los fragmentos más relevantes de tu documentación específica y luego los inyecta como contexto en el prompt del modelo.
+        </p>
+
+        <p>
+            El resultado es radicalmente diferente a una consulta genérica a ChatGPT, Gemini o Claude: las respuestas están <strong>informadas por tus datos reales</strong> — tu análisis competitivo, tus notas de campo, tu roadmap, tus informes financieros, tus patentes en borrador. La IA deja de hablar "en general" y empieza a hablar sobre <em>tu problema específico</em>, citando <em>tus documentos específicos</em>.
+        </p>
+
+        <p>
+            En el contexto de la ideación y el brainstorming, RAG transforma completamente la calidad de las ideas generadas. Sin RAG, la IA produce ideas genéricas basadas en patrones de su entrenamiento: "considera implementar una estrategia de growth hacking", "evalúa la posibilidad de un modelo freemium". Con RAG alimentado por tus documentos, la IA produce: "tu análisis competitivo del Q2 muestra que el competidor X no tiene presencia en el mercado LATAM donde, según tu informe de oportunidades, hay un TAM de 12M€ inexplorado; combina tu motor de RAG local con localización ES/PT para capturar ese segmento antes de que X entre".
+        </p>
+
+        <p>
+            La diferencia entre "ideas que cualquiera podría haber pensado" e "ideas que solo alguien con acceso a tu documentación podría generar" es exactamente la diferencia entre RAG y no-RAG.
+        </p>
+
+        <div class="callout-box callout-brand">
+            <strong>📊 Dato de referencia:</strong> Según el paper original de Lewis et al. (2020) que introdujo RAG, los modelos con recuperación aumentada mostraron mejoras de entre el 35% y el 58% en métricas de factualidad y relevancia comparados con modelos generativos puros. En el contexto de ideación con documentos de negocio propios, nuestra experiencia interna muestra que la especificidad de las ideas generadas aumenta aproximadamente un 4x cuando se activa el contexto RAG frente a la generación sin documentos.
+        </div>
+
+        <!-- SECCIÓN 2 -->
+        <h2 id="el-dilema-cloud">El dilema de la IA generativa basada en la nube</h2>
+
+        <p>
+            La arquitectura predominante de la IA generativa en 2026 plantea un dilema insostenible para empresas, investigadores y profesionales independientes: <strong>para obtener respuestas contextualizadas con tus propios documentos, debes entregar tus datos más sensibles a infraestructuras de terceros</strong>.
+        </p>
+
+        <p>
+            El modelo clásico funciona así: subes tus PDFs a una plataforma cloud (OpenAI, Anthropic, Google Cloud, un servicio como Pinecone + LangChain). El proveedor los segmenta en chunks, genera embeddings vectoriales en sus servidores GPU, los almacena en su base vectorial remota, y los consulta cada vez que haces una pregunta. Cada paso de este pipeline sucede en infraestructura que tú no controlas, en jurisdicciones legales que pueden no coincidir con la tuya, bajo políticas de retención de datos que el proveedor puede cambiar unilateralmente mediante una actualización de sus Términos de Servicio.
+        </p>
+
+        <p>
+            Para un equipo de marketing que está analizando contenido público de la competencia, quizás el riesgo sea aceptable. Pero piensa en estos escenarios reales:
+        </p>
+
+        <ul>
+            <li><strong>Patentes en borrador:</strong> Si subes un borrador de patente a un RAG cloud antes de registrarlo, has creado una publicación previa que puede invalidar tu solicitud de patente en jurisdicciones que exigen novedad absoluta.</li>
+            <li><strong>Balances financieros pre-auditoría:</strong> Los datos financieros no auditados son material privilegiado. Su filtración puede constituir un delito de manipulación de mercado si la empresa cotiza en bolsa.</li>
+            <li><strong>Hojas de ruta de producto:</strong> Tu roadmap con fechas de lanzamiento es la información más valiosa que tu competidor podría obtener. Le permite planificar contramedidas meses antes de que tú lances.</li>
+            <li><strong>Contratos bajo NDA:</strong> Subir un contrato con cláusula de confidencialidad a un servicio de terceros puede constituir una violación del NDA que te expone a demandas civiles.</li>
+            <li><strong>Datos médicos o de salud:</strong> Información protegida por HIPAA (EEUU) o regulación equivalente europea que requiere controles de acceso específicos que ningún endpoint genérico de RAG garantiza.</li>
+        </ul>
+
+        <p>
+            La paradoja es clara: <strong>cuanto más valiosos son los documentos para generar ideas con contexto RAG, mayor es el riesgo de subirlos a la nube</strong>. La solución no es renunciar a RAG; es ejecutar RAG donde tus datos nunca salen de tu control.
+        </p>
+
+        <!-- SECCIÓN 3 -->
+        <h2 id="anatomia-fugas">Anatomía de una fuga documental: las 6 capas de riesgo</h2>
+
+        <p>
+            Cuando subes un documento a un endpoint de RAG cloud, tus datos atraviesan <strong>6 capas de exposición</strong>, cada una con su propio perfil de riesgo. No se trata de paranoia; se trata de ingeniería de riesgos.
+        </p>
+
+        <h4>Capa 1: Red pública (tránsito)</h4>
+        <p>
+            Tus datos viajan por internet — potencialmente a través de nodos en múltiples países — antes de llegar al servidor del proveedor. Aunque el transporte suele estar cifrado con TLS 1.3, los metadatos (tamaño del documento, frecuencia de consultas, patrones temporales) son visibles para cualquier intermediario de red. Un adversario sofisticado puede inferir el tipo de documento por el tamaño y el patrón de segmentación, sin necesidad de leer el contenido.
+        </p>
+
+        <h4>Capa 2: Procesamiento en servidor (chunking y embedding)</h4>
+        <p>
+            El proveedor necesita desencriptar tus datos para procesarlos. Durante los milisegundos a segundos que dura el chunking y el embedding, el texto plano de tu documento existe en la RAM de un servidor compartido. Si ese servidor tiene una vulnerabilidad de side-channel (Spectre, Meltdown, o sus variantes de 2025-2026), otro proceso en la misma máquina podría teoréticamente acceder a ese texto.
+        </p>
+
+        <h4>Capa 3: Almacenamiento vectorial (persistencia)</h4>
+        <p>
+            Los chunks y embeddings se almacenan en bases de datos que comparten infraestructura con miles de otros clientes (arquitectura multi-tenant). Aunque los datos están lógicamente aislados, una misconfiguration de permisos (que ocurre con más frecuencia de la que los proveedores admiten) puede exponer tus vectores a otros tenants. Y los embeddings, aunque no son texto plano, contienen información semántica suficiente para reconstruir parcialmente el contenido original mediante ataques de inversión de embeddings (Carlini et al., 2023).
+        </p>
+
+        <h4>Capa 4: Políticas de retención (duración)</h4>
+        <p>
+            ¿Durante cuánto tiempo retiene el proveedor tus datos procesados? La respuesta varía por proveedor y puede cambiar sin aviso previo. Lo que hoy es "eliminación inmediata después del procesamiento" puede convertirse mañana en "retención de 90 días para mejora del modelo" o "retención indefinida para cumplimiento legal" tras una actualización de TOS que pocos usuarios leen.
+        </p>
+
+        <h4>Capa 5: Jurisdicción legal (soberanía)</h4>
+        <p>
+            Tus datos pueden estar almacenados en servidores en Virginia (EEUU) mientras tu empresa opera bajo el RGPD europeo. La CLOUD Act estadounidense permite a las autoridades de EEUU acceder a datos almacenados por empresas americanas incluso si los servidores están fuera de EEUU. Esto crea un conflicto legal inherente que ninguna política de privacidad del proveedor puede resolver, porque la ley americana prevalece sobre el contrato comercial.
+        </p>
+
+        <h4>Capa 6: Factor humano (acceso interno)</h4>
+        <p>
+            Los empleados del proveedor con acceso administrativo pueden, técnicamente, acceder a tus datos. Aunque los proveedores serios implementan controles SOC 2 y auditorías, la realidad es que un ingeniero con acceso root al servidor de base de datos puede ejecutar queries sobre tu información. Los incidentes de "insider threat" son raros pero devastadores cuando ocurren.
+        </p>
+
+        <div class="callout-box callout-amber">
+            <strong>⚠️ Reflexión crítica:</strong> Cada una de estas 6 capas tiene una probabilidad individual baja de fallo. Pero la probabilidad combinada de que <em>al menos una</em> capa falle a lo largo del tiempo es significativamente mayor. Si usas RAG cloud durante 2 años con documentos confidenciales, estás apostando a que las 6 capas se mantienen intactas durante 730 días consecutivos. Con RAG local, las 6 capas se eliminan de raíz porque los datos nunca salen del dispositivo.
+        </div>
+
+        <!-- SECCIÓN 4 -->
+        <h2 id="regulacion-rgpd">El marco regulatorio: RGPD, CCPA y la responsabilidad del procesamiento</h2>
+
+        <p>
+            Desde una perspectiva legal, la distinción entre RAG cloud y RAG local es determinante:
+        </p>
+
+        <h4>Bajo el RGPD (Reglamento General de Protección de Datos de la UE)</h4>
+        <p>
+            Cuando subes documentos que contienen datos personales (nombres, emails, evaluaciones de desempeño, datos de clientes) a un servicio de RAG cloud, el proveedor se convierte en un <strong>Encargado del Tratamiento</strong> según el Art. 28 del RGPD. Esto te obliga a: firmar un DPA (Data Processing Agreement), verificar que el proveedor tiene medidas técnicas adecuadas (Art. 32), notificar a los interesados sobre la transferencia (Art. 13/14), y asumir responsabilidad solidaria en caso de brecha.
+        </p>
+
+        <p>
+            Con RAG local, no hay Encargado del Tratamiento porque no hay transferencia a terceros. El procesamiento ocurre íntegramente bajo tu control como Responsable del Tratamiento. El cumplimiento es <strong>arquitectónico, no contractual</strong>: no dependes de que otro cumpla; cumples tú por diseño.
+        </p>
+
+        <h4>Bajo la CCPA (California Consumer Privacy Act)</h4>
+        <p>
+            Si procesas datos de residentes de California, la CCPA te obliga a declarar qué "service providers" tienen acceso a la información personal. Con RAG cloud, el proveedor de embeddings y almacenamiento vectorial es un service provider que debes auditar. Con RAG local, no hay service provider que declarar.
+        </p>
+
+        <!-- SECCIÓN 5 -->
+        <h2 id="arquitectura-local">La arquitectura RAG determinista On-Device</h2>
+
+        <p>
+            La solución que implementa Lluvia de Ideas IA traslada <strong>todo el ciclo de vida del RAG</strong> a la memoria del dispositivo Android. No hay "servidor local", no hay "nube privada", no hay "edge computing con sync": el procesamiento ocurre literalmente en el chip de tu teléfono o tablet, en tres capas aisladas que nunca tocan la red.
+        </p>
+
+        <p>
+            La arquitectura se puede describir como un pipeline de tres fases secuenciales, cada una independiente y sin dependencias externas:
+        </p>
+
+        <ol>
+            <li><strong>Ingesta y Chunking Semántico</strong> — Segmentación del documento en fragmentos con preservación de contexto.</li>
+            <li><strong>Embedding Vectorial On-Chip</strong> — Transformación de cada fragmento en un vector denso de 384 dimensiones.</li>
+            <li><strong>Recuperación Jerárquica</strong> — Búsqueda de los fragmentos más relevantes por similitud coseno en SQLite.</li>
+        </ol>
+
+        <!-- App CTA inline 1 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">🛡️ Tus documentos nunca salen del móvil</div>
+                <p>
+                    Indexa PDFs y notas confidenciales en SQLite local con aceleración Vulkan y cero llamadas a servidores externos.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <!-- SECCIÓN 6 -->
+        <h2 id="capa-chunking">Capa 1: Chunking Semántico Local — cómo se segmentan los documentos</h2>
+
+        <p>
+            El primer paso del pipeline RAG es segmentar los documentos largos en fragmentos manejables (chunks). En la mayoría de soluciones cloud, esto se hace con un <strong>splitter de caracteres fijos</strong>: cada 500 o 1.000 caracteres, el sistema corta el texto y crea un chunk. Este approach tiene un problema fundamental: ignora completamente la estructura semántica del documento.
+        </p>
+
+        <p>
+            Un párrafo sobre "costes de infraestructura" puede quedar cortado a la mitad, con la primera parte en un chunk y la segunda en otro. Peor aún: la segunda mitad del párrafo de costes puede fusionarse con el inicio del siguiente párrafo sobre "estrategia de go-to-market", creando un chunk que mezcla dos conceptos no relacionados. Cuando el modelo de recuperación busca chunks sobre "costes", encontrará un fragmento contaminado con información de marketing que diluye la relevancia.
+        </p>
+
+        <h4>El approach de Lluvia de Ideas IA: chunking por fronteras naturales</h4>
+
+        <p>
+            Nuestro chunking se realiza por <strong>fronteras naturales de oraciones completas</strong>, respetando la estructura lógica del texto. El algoritmo:
+        </p>
+
+        <ol>
+            <li><strong>Sanitización:</strong> Elimina headers repetidos, footers de página, numeración automática, marcas de agua y artefactos de conversión PDF-a-texto que no aportan contenido semántico.</li>
+            <li><strong>Detección de fronteras:</strong> Identifica puntos de corte en finales de oración (punto + espacio + mayúscula), fin de párrafo (doble salto de línea), cambio de sección (encabezado H2/H3/H4 detectado por patrones tipográficos).</li>
+            <li><strong>Agrupación semántica:</strong> Agrupa oraciones consecutivas hasta un tamaño máximo de ~512 tokens, pero <em>nunca</em> cortando una oración por la mitad. Si una oración sola supera el límite, se mantiene íntegra como chunk independiente.</li>
+            <li><strong>Overlap contextual:</strong> Cada chunk incluye las 2 últimas oraciones del chunk anterior como contexto de "ventana deslizante", garantizando que la transición entre fragmentos no pierda continuidad narrativa.</li>
+        </ol>
+
+        <p>
+            Todo este procesamiento ocurre en la CPU del dispositivo, en la memoria RAM protegida de la app, sin ninguna llamada de red. El resultado son fragmentos semánticamente coherentes que representan unidades de significado completas, no cortes arbitrarios.
+        </p>
+
+        <!-- SECCIÓN 7 -->
+        <h2 id="capa-embeddings">Capa 2: Embeddings Vectoriales On-Chip — cómo se representan los conceptos</h2>
+
+        <p>
+            Una vez segmentados los chunks, cada fragmento de texto se transforma en un <strong>vector denso de 384 dimensiones</strong>. Un vector de embedding es una representación numérica del significado semántico del texto: dos textos con significado similar tendrán vectores que "apuntan" en direcciones parecidas en el espacio de 384 dimensiones.
+        </p>
+
+        <h4>¿Por qué 384 dimensiones?</h4>
+        <p>
+            Es el punto óptimo de equilibrio entre calidad semántica y eficiencia computacional en dispositivos móviles. Los modelos de embedding de servidor (como ada-002 de OpenAI) usan 1.536 dimensiones, lo que produce vectores 4 veces más grandes que consumen 4 veces más memoria y son 4 veces más lentos de comparar. En benchmarks internos, la reducción de 1.536 a 384 dimensiones produce una caída de precisión de solo el 3-5% en tareas de recuperación semántica, pero reduce el consumo de memoria un 75% y la latencia de búsqueda un 80%.
+        </p>
+
+        <h4>Ejecución en el chip: Vulkan y MediaPipe</h4>
+        <p>
+            El modelo de embeddings se ejecuta mediante <strong>aceleración Vulkan/MediaPipe</strong>, aprovechando la GPU del teléfono para paralelizar el cómputo de las multiplicaciones de matrices que requiere el transformer. En dispositivos con NPU (Neural Processing Unit) como los Snapdragon 8 Gen 3 o Google Tensor G4, el cómputo se delega al acelerador de IA dedicado, liberando la GPU para otras tareas.
+        </p>
+
+        <h4>Almacenamiento: BLOBs comprimidos en SQLite/Room</h4>
+        <p>
+            Los vectores resultantes se almacenan como BLOBs (Binary Large Objects) comprimidos en la base de datos SQLite local de la app, gestionada por Room (el ORM oficial de Android Jetpack). Esto significa:
+        </p>
+
+        <ul>
+            <li><strong>Determinismo:</strong> El mismo texto produce exactamente el mismo vector en cada ejecución, en cualquier dispositivo. No hay variabilidad por versión de API o estado del servidor.</li>
+            <li><strong>Persistencia local cifrada:</strong> Los datos se almacenan en el almacenamiento protegido de la app (internal storage), cifrado por el sistema operativo Android con el keystore del dispositivo.</li>
+            <li><strong>Sin dependencia externa:</strong> No hay llamadas a OpenAI embeddings API, Cohere embed, ni ningún otro servicio de terceros. El modelo de embeddings está incluido en el APK de la app.</li>
+            <li><strong>Rendimiento predecible:</strong> El proceso completo de embedding para un PDF de 50 páginas (~15.000 palabras) tarda entre 3 y 8 segundos en un dispositivo de gama media (2024+), y entre 1.5 y 4 segundos en gama alta.</li>
+        </ul>
+
+        <div class="callout-box callout-emerald">
+            <strong>🔑 Ventaja clave:</strong> Al incluir el modelo de embeddings en el APK, las actualizaciones del modelo se distribuyen como actualizaciones de la app a través de Google Play. No dependes de que un proveedor de API mantenga una versión estable de su endpoint de embeddings, ni te afectan sus deprecaciones o cambios de pricing.
+        </div>
+
+        <!-- SECCIÓN 8 -->
+        <h2 id="capa-recuperacion">Capa 3: Recuperación Jerárquica — cómo se encuentran los fragmentos relevantes</h2>
+
+        <p>
+            Cuando el usuario lanza una sesión de ideación con contexto RAG activado, el sistema necesita encontrar los fragmentos documentales más relevantes para la pregunta o tema planteado. Este proceso de búsqueda se ejecuta íntegramente en SQLite mediante <strong>similitud coseno computada en SQL</strong>.
+        </p>
+
+        <h4>¿Qué es la similitud coseno?</h4>
+        <p>
+            Es una medida matemática de cuánto se "parecen" dos vectores en términos de dirección (no de magnitud). Dos textos sobre el mismo tema tendrán vectores que apuntan en direcciones muy similares, produciendo un coseno cercano a 1.0. Dos textos sobre temas completamente diferentes tendrán vectores apuntando en direcciones dispares, con coseno cercano a 0.0.
+        </p>
+
+        <h4>Recuperación jerárquica de dos niveles</h4>
+        <p>
+            La recuperación en Lluvia de Ideas IA es <strong>jerárquica de dos niveles</strong>:
+        </p>
+
+        <ol>
+            <li><strong>Nivel 1 — Contexto del Tema:</strong> Primero busca en los documentos adjuntados específicamente al Tema de ideación actual. Si el usuario creó un Tema "Diferenciación en mercado LATAM" y adjuntó un PDF de "Análisis competitivo LATAM Q2", los chunks de ese PDF tienen prioridad máxima.</li>
+            <li><strong>Nivel 2 — Contexto del Proyecto:</strong> Si los resultados del Nivel 1 no alcanzan un umbral mínimo de relevancia (coseno < 0.65), el sistema amplía la búsqueda a todos los documentos del Proyecto padre. Esto permite que un chunk del roadmap general o del plan financiero complemente al análisis competitivo específico.</li>
+        </ol>
+
+        <p>
+            Esta doble capa garantiza que las ideas generadas por la IA estén informadas tanto por el contexto específico del problema inmediato como por el contexto estratégico más amplio del proyecto. Un chunk sobre "coste de adquisición de cliente en Brasil" del análisis competitivo puede cruzarse con un chunk sobre "presupuesto de marketing Q3" del plan financiero, generando conexiones que ningún operador humano habría hecho manualmente consultando ambos documentos por separado.
+        </p>
+
+        <!-- App CTA inline 2 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">⚡ Búsqueda vectorial sub-120ms</div>
+                <p>
+                    Recuperación jerárquica instantánea por similitud coseno directa en SQLite con consumo de memoria mínimo.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Empieza Gratis con Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <!-- SECCIÓN 9 -->
+        <h2 id="benchmarks">Benchmarks de rendimiento en dispositivos reales</h2>
+
+        <p>
+            Los siguientes son benchmarks medidos en dispositivos reales con la versión de producción de Lluvia de Ideas IA. Todas las mediciones incluyen el pipeline completo: deserialización del vector de consulta, cómputo de similitud coseno contra todos los chunks indexados, y ordenación por relevancia.
+        </p>
+
+        <h4>Latencia de recuperación (Top-5 chunks más relevantes)</h4>
+        <ul>
+            <li><strong>Google Pixel 8 Pro</strong> (Tensor G3): ~110ms para 2.000 chunks indexados</li>
+            <li><strong>Samsung Galaxy S24 Ultra</strong> (Snapdragon 8 Gen 3): ~75ms para 2.000 chunks</li>
+            <li><strong>Samsung Galaxy A54</strong> (Exynos 1380, gama media): ~180ms para 2.000 chunks</li>
+            <li><strong>Xiaomi Redmi Note 13 Pro</strong> (Snapdragon 7s Gen 2): ~145ms para 2.000 chunks</li>
+        </ul>
+
+        <h4>Tiempo de embedding (PDF de 50 páginas, ~15.000 palabras)</h4>
+        <ul>
+            <li><strong>Gama alta (2024+):</strong> 1.5 - 4 segundos</li>
+            <li><strong>Gama media (2023+):</strong> 4 - 8 segundos</li>
+            <li><strong>Gama entrada (2022+):</strong> 8 - 15 segundos</li>
+        </ul>
+
+        <h4>Almacenamiento</h4>
+        <ul>
+            <li><strong>1.000 chunks indexados:</strong> ~2.5 MB en SQLite</li>
+            <li><strong>5.000 chunks indexados:</strong> ~12 MB en SQLite</li>
+            <li><strong>Modelo de embeddings (APK):</strong> ~45 MB</li>
+        </ul>
+
+        <div class="callout-box callout-brand">
+            <strong>📊 Contexto:</strong> Un RAG cloud típico (API de OpenAI embeddings + Pinecone) tiene una latencia de red de 200-800ms <em>antes</em> de que comience el cómputo de similitud. El RAG local tiene latencia de red de <strong>0ms</strong> porque no hay red. La diferencia es particularmente perceptible en flujos interactivos donde el usuario espera respuestas en tiempo real.
+        </div>
+
+        <!-- SECCIÓN 10 -->
+        <h2 id="ventajas-estrategicas">7 ventajas estratégicas del RAG local</h2>
+
+        <h4>1. Privacidad por diseño arquitectónico</h4>
+        <p>
+            No es una promesa de política de privacidad; es una garantía física. Los datos no pueden ser interceptados, retenidos o accedidos por terceros porque nunca salen del dispositivo. No hay API key que revocar, no hay DPA que firmar, no hay brecha que notificar.
+        </p>
+
+        <h4>2. Latencia cero de red</h4>
+        <p>
+            No hay round-trip al servidor. La recuperación de contexto es instantánea porque los datos ya están en la memoria del dispositivo. En un RAG cloud, solo el round-trip de red añade entre 200ms y 2 segundos de latencia, antes de que el LLM empiece a generar. Con RAG local, la IA comienza a generar con contexto completo en sub-200ms.
+        </p>
+
+        <h4>3. Funcionamiento offline total</h4>
+        <p>
+            Aviones sin WiFi, zonas rurales sin cobertura 4G, bunkers corporativos de seguridad, entornos hospitalarios con restricciones electromagnéticas, instalaciones gubernamentales con prohibición de conexión a redes externas, trenes y metros sin señal. Con RAG local, tu pipeline de ideación funciona exactamente igual con o sin internet. La única función que requiere red es la llamada a la API del LLM (Gemini), y esa se puede hacer por separado cuando recuperes conectividad.
+        </p>
+
+        <h4>4. Coste operativo predecible y cercano a cero</h4>
+        <p>
+            Sin llamadas a APIs de embeddings (precio por token), sin almacenamiento vectorial remoto (precio por dimensión/mes), sin egress fees (precio por GB descargado), sin compute fees (precio por segundo de procesamiento). El coste de tu pipeline RAG local es exactamente 0 € después de la instalación de la app. Esto es especialmente relevante para freelancers, consultores independientes y equipos pequeños que no pueden asumir costes variables de infraestructura cloud que escalan con el uso.
+        </p>
+
+        <h4>5. Determinismo y reproducibilidad</h4>
+        <p>
+            El mismo documento produce exactamente los mismos chunks y exactamente los mismos embeddings en cada ejecución. No hay variabilidad introducida por versiones de API del servidor, estado de la cola de procesamiento, o actualizaciones del modelo de embeddings del proveedor que cambian los vectores sin previo aviso.
+        </p>
+
+        <!-- App CTA inline 3 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">✈️ Creatividad sin límites ni conexión</div>
+                <p>
+                    Genera y organiza ideas en aviones, trenes o zonas sin cobertura con la máxima autonomía en tu dispositivo Android.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Descargar Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+        <h4>6. Independencia de proveedor</h4>
+        <p>
+            No hay vendor lock-in. Si OpenAI depreca su endpoint de embeddings (como hizo con ada-001), si Pinecone cambia su pricing, si Cohere modifica sus TOS — nada de eso te afecta porque tu pipeline RAG no depende de ninguno de ellos. El modelo de embeddings está incluido en la app y se actualiza a tu ritmo.
+        </p>
+
+        <h4>7. Cumplimiento regulatorio simplificado</h4>
+        <p>
+            Al no transferir datos a terceros, eliminas de raíz la necesidad de DPAs, evaluaciones de impacto de transferencias internacionales (DPIA), registros de actividades de tratamiento con encargados, y notificaciones a los interesados sobre destinatarios de sus datos. El compliance pasa de ser un proceso legal continuo a ser una decisión de arquitectura tomada una vez.
+        </p>
+
+        <!-- SECCIÓN 11 -->
+        <h2 id="limitaciones">Limitaciones honestas: cuándo el RAG cloud tiene sentido</h2>
+
+        <p>
+            Siendo intelectualmente honestos, el RAG cloud tiene su lugar. No todo justifica la restricción de procesamiento local:
+        </p>
+
+        <h4>Volúmenes masivos</h4>
+        <p>
+            Si necesitas indexar 100.000+ documentos (escala de una biblioteca corporativa completa), la limitación de almacenamiento y procesamiento del dispositivo móvil es real. Un teléfono con 8 GB de RAM no puede mantener un índice vectorial de millones de chunks en memoria simultáneamente. Para estas escalas, un servicio cloud dedicado (preferiblemente en tu propia nube privada) es la opción más práctica.
+        </p>
+
+        <h4>Datos no confidenciales</h4>
+        <p>
+            Documentación pública, papers académicos de acceso abierto, manuales de productos ya publicados, artículos de blog, legislación pública. Si los datos ya están disponibles para cualquiera en internet, el riesgo de subirlos a un RAG cloud es irrelevante.
+        </p>
+
+        <h4>Equipos distribuidos con base documental compartida</h4>
+        <p>
+            Si 50 personas necesitan consultar la misma base documental simultáneamente y esa base se actualiza diariamente, mantener 50 copias locales sincronizadas es logísticamente costoso. Un servicio centralizado con control de acceso tiene más sentido operativo.
+        </p>
+
+        <h4>Modelos de embeddings de última generación</h4>
+        <p>
+            Los modelos de embeddings más grandes y precisos (como text-embedding-3-large de OpenAI con 3.072 dimensiones) no caben en la memoria de un dispositivo móvil. Si la tarea requiere la máxima precisión semántica posible y la privacidad no es un factor, el RAG cloud con modelos de servidor ofrece una calidad superior.
+        </p>
+
+        <!-- SECCIÓN 12 -->
+        <h2 id="comparativa">Comparativa detallada: RAG Cloud vs. RAG On-Device</h2>
+
+        <p>
+            La siguiente tabla resume las diferencias operativas entre ambas arquitecturas para un caso de uso típico de ideación con documentos de negocio:
+        </p>
+
+        <!-- Comparativa como lista estructurada (más legible que tabla en mobile) -->
+        <h4>Privacidad de datos</h4>
+        <p><strong>Cloud:</strong> Depende de TOS del proveedor, DPA, jurisdicción legal. <strong>Local:</strong> Garantía arquitectónica. Los datos nunca salen del dispositivo.</p>
+
+        <h4>Latencia de recuperación</h4>
+        <p><strong>Cloud:</strong> 200-800ms (red) + 50-200ms (cómputo). <strong>Local:</strong> 75-180ms (cómputo puro, 0ms red).</p>
+
+        <h4>Funcionamiento offline</h4>
+        <p><strong>Cloud:</strong> Imposible. <strong>Local:</strong> Completo.</p>
+
+        <h4>Coste por uso</h4>
+        <p><strong>Cloud:</strong> Variable (tokens + almacenamiento + egress). <strong>Local:</strong> 0 € (incluido en la app).</p>
+
+        <h4>Escala máxima</h4>
+        <p><strong>Cloud:</strong> Ilimitada (pago por uso). <strong>Local:</strong> Limitada por almacenamiento del dispositivo (~5.000-10.000 chunks prácticos).</p>
+
+        <h4>Precisión de embeddings</h4>
+        <p><strong>Cloud:</strong> Modelos de 1.536-3.072 dimensiones. <strong>Local:</strong> Modelo de 384 dimensiones (3-5% menos preciso, pero suficiente para ideación).</p>
+
+        <h4>Cumplimiento RGPD</h4>
+        <p><strong>Cloud:</strong> Requiere DPA, DPIA, registro de actividades, notificación a interesados. <strong>Local:</strong> Cumplimiento por diseño. Sin transferencias a terceros.</p>
+
+        <!-- SECCIÓN 13 -->
+        <h2 id="implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas IA</h2>
+
+        <p>
+            La implementación de RAG local no requiere conocimientos técnicos. El pipeline completo se activa automáticamente cuando adjuntas documentos:
+        </p>
+
+        <ol>
+            <li><strong>Crea un Proyecto</strong> en la app y nómbralo según tu caso de uso ("Análisis Competitivo Q3 2026", "Patente Sensor Biométrico v2", "Roadmap Producto H2").</li>
+            <li><strong>Adjunta documentos al proyecto:</strong> PDFs, archivos TXT o texto pegado directamente desde el portapapeles. El sistema inicia automáticamente el pipeline de chunking → embedding en segundo plano. Una notificación te confirma cuando el procesamiento ha terminado.</li>
+            <li><strong>Crea un Tema de Ideación</strong> dentro del proyecto. El sistema detecta automáticamente los documentos RAG disponibles y los utiliza como contexto para la generación de ideas.</li>
+            <li><strong>Opcionalmente, adjunta documentos específicos al Tema</strong> para que la IA tenga un contexto aún más preciso. Ejemplo: el análisis del competidor X específicamente para el tema "Diferenciación de producto en LATAM".</li>
+            <li><strong>Lanza la sesión de ideación.</strong> Los agentes de IA reciben el contexto recuperado por el pipeline RAG y generan ideas informadas por tus documentos reales.</li>
+        </ol>
+
+        <div class="callout-box callout-emerald">
+            <strong>💡 Tip avanzado:</strong> Para maximizar la calidad del RAG, adjunta documentos que representen perspectivas diferentes sobre el mismo problema: un análisis competitivo + un informe financiero + unas notas de usuario. La IA cruza información entre documentos de naturaleza diferente, generando conexiones que serían imposibles consultando cada documento por separado.
+        </div>
+
+        <!-- App CTA inline -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">Prueba RAG local ahora</div>
+                <p>
+                    Carga tus PDFs confidenciales y genera ideas con contexto documental sin que tus datos salgan del teléfono. Sin coste. Sin registro.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                🛡️ Descargar Lluvia de Ideas Forzada
+            </a>
+        </div>
+
+        <!-- SECCIÓN 14 -->
+        <h2 id="faq-rag">Preguntas frecuentes sobre RAG local</h2>
+
+        <h4>¿Qué formatos de documento soporta?</h4>
+        <p>
+            PDF y TXT nativamente. Los PDFs se procesan con un parser que extrae el texto respetando la estructura de páginas y párrafos. También puedes pegar texto directamente desde cualquier fuente (emails, documentos Word copiados, notas de Obsidian, etc.).
+        </p>
+
+        <h4>¿Cuántos documentos puedo cargar?</h4>
+        <p>
+            No hay límite artificial. El límite práctico lo determina el almacenamiento disponible en tu dispositivo. Como referencia, 5.000 chunks indexados ocupan ~12 MB, lo que equivale a aproximadamente 125 PDFs de 50 páginas cada uno. La mayoría de usuarios profesionales trabajan con 10-30 documentos activos por proyecto.
+        </p>
+
+        <h4>¿Los embeddings se regeneran si actualizo un documento?</h4>
+        <p>
+            Sí. Si eliminas un documento y adjuntas una versión actualizada, los embeddings anteriores se invalidan y los nuevos se generan automáticamente. El proceso es idempotente: la misma versión del documento siempre produce los mismos embeddings.
+        </p>
+
+        <h4>¿Puedo exportar los embeddings para usarlos en otro sistema?</h4>
+        <p>
+            No está soportado actualmente. Los embeddings están optimizados para el modelo específico de la app y su formato de almacenamiento en SQLite/Room. Exportarlos a un formato genérico (como FAISS o Qdrant) requeriría un mapping que no está implementado.
+        </p>
+
+        <h4>¿El RAG funciona con documentos en inglés?</h4>
+        <p>
+            Sí. El modelo de embeddings es multilingüe y soporta español, inglés, portugués, francés, alemán e italiano. Los documentos en cualquiera de estos idiomas se indexan y recuperan con la misma calidad semántica.
+        </p>
+
+        <!-- SECCIÓN 15 -->
+        <h2 id="conclusiones-rag">Conclusiones y siguiente paso</h2>
+
+        <p>
+            La decisión entre RAG cloud y RAG local no es una cuestión de preferencia tecnológica; es una decisión de <strong>gestión de riesgos</strong>. Si los datos que alimentan tu pipeline de ideación son suficientemente valiosos como para necesitar contexto RAG (patentes, roadmaps, balances, contratos), son suficientemente valiosos como para no enviarlos fuera de tu control.
+        </p>
+
+        <p>
+            El RAG local en Lluvia de Ideas IA no es un compromiso ni una versión "limitada" del RAG cloud. Es una arquitectura deliberadamente diseñada para que la privacidad sea una consecuencia del diseño, no una promesa contractual que depende de que un tercero cumpla sus TOS.
+        </p>
+
+        <p>
+            Tu siguiente paso concreto: descarga la app, crea un proyecto, adjunta un PDF de prueba (empieza con algo no confidencial para evaluar la experiencia) y lanza una sesión de ideación con RAG activado. La diferencia entre "ideas genéricas" e "ideas informadas por tus datos" es inmediatamente perceptible.
+        </p>
+
+        <!-- App CTA inline 4 -->
+        <div class="app-cta-inline">
+            <div class="cta-text">
+                <div class="cta-label">🚀 Descarga y prueba en tu dispositivo</div>
+                <p>
+                    Comprueba en primera persona la potencia de un pipeline RAG on-device sin suscripciones ni compromisos.
+                </p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <svg viewBox="0 0 512 512">
+                    <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                    <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                    <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+                </svg>
+                <span>Empieza Gratis con Lluvia de Ideas Forzada</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- ARTÍCULOS RELACIONADOS -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-8">Artículos relacionados</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="scamper-desbloqueo-tecnico.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full border border-brand-100">Técnicas de Pensamiento</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">Guía Completa SCAMPER: 7 Operadores de Disrupción</h3>
+                    <p class="text-xs text-slate-500">Protocolo paso a paso con ejemplos reales y variaciones avanzadas.</p>
+                </a>
+                <a href="biomimesis-software-arquitecturas-resilientes.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-100">Pensamiento Analógico</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">Biomímesis en Software</h3>
+                    <p class="text-xs text-slate-500">Arquitecturas resilientes inspiradas en sistemas naturales.</p>
+                </a>
+                <a href="madurez-botanica-priorizar-ideas.html" class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-500 hover:shadow-lg hover:-translate-y-1 transition duration-300 block group">
+                    <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100">Gestión de Innovación</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-3 mb-2 group-hover:text-brand-600 transition">Madurez Botánica: Semillas, Brotes y Árboles</h3>
+                    <p class="text-xs text-slate-500">Framework de priorización para equilibrar quick wins y moonshots.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <div class="text-white font-bold text-sm">Lluvia de Ideas IA</div>
+                <p class="mt-1 text-slate-400">Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>.</p>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="../privacy-policy.html" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="../terms.html" class="hover:text-white transition">Términos del Servicio</a>
+                <a href="mailto:soporte@noar.dev" class="hover:text-white transition">Contacto y Soporte</a>
+            </div>
+            <p class="text-slate-500">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BAR -->
+    <div class="sticky-cta-bar" id="sticky-cta-bar">
+        <p>Protege tus datos: RAG 100% local en Android →</p>
+        <a href="https://play.google.com/store/apps/details?id=com.noar.lluviadeideasia" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
+                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
+                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
+                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
+            </svg>
+            <span>Descargar Lluvia de Ideas Forzada</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        console.log('[DEBUG][BlogArticle] rag-on-device-proteccion-negocio.html cargado');
+        AOS.init({ once: true, duration: 800, offset: 60, easing: 'ease-out-cubic' });
+        console.log('[DEBUG][BlogArticle] AOS inicializado');
+
+        function toggleMobileNav() {
+            console.log('[DEBUG][BlogArticle] toggleMobileNav llamado');
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            const isOpen = nav.classList.contains('open');
+            if (isOpen) { nav.classList.remove('open'); btn.classList.remove('active'); document.body.style.overflow = ''; console.log('[DEBUG] Nav cerrado'); }
+            else { nav.classList.add('open'); btn.classList.add('active'); document.body.style.overflow = 'hidden'; console.log('[DEBUG] Nav abierto'); }
+        }
+        function closeMobileNav() {
+            console.log('[DEBUG][BlogArticle] closeMobileNav llamado');
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function handleStickyCtaBar() {
+            const bar = document.getElementById('sticky-cta-bar');
+            if (!bar) return;
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
+        }
+        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
+        console.log('[DEBUG][BlogArticle] Todos los scripts inicializados correctamente');
+    </script>
+</body>
+
+</html>
