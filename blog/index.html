@@ -103,9 +103,32 @@
                     </svg>
                     <span data-i18n="header_download_btn">Testear App (Próximo Lanzamiento)</span>
                 </a>
+
+                <!-- BOTÓN HAMBURGUESA PARA MÓVILES Y TABLETS -->
+                <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- MENÚ MÓVIL Y TABLET DESPLEGABLE -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#capturas" onclick="closeMobileNav()" data-i18n="nav_screens">Capturas</a>
+        <a href="../index.html#que-es" onclick="closeMobileNav()" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
+        <a href="../index.html#funciones" onclick="closeMobileNav()" data-i18n="nav_features">Características</a>
+        <a href="../index.html#casos-uso" onclick="closeMobileNav()" data-i18n="nav_use_cases">Casos de Uso</a>
+        <a href="index.html" onclick="closeMobileNav()" data-i18n="nav_blog">Blog</a>
+        <div class="mt-6">
+            <a href="https://play.google.com/apps/internaltest/4700277861957688979" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center hover:bg-emerald-500 transition">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                <span data-i18n="header_download_btn">Testear App (Próximo Lanzamiento)</span>
+            </a>
+        </div>
+    </nav>
 
     <!-- ═══════════════════════════════════════════════════════════════
          FLOATING RIGHT DOWNLOAD WIDGET
@@ -861,6 +884,27 @@
                 console.info(`[Blog Hub] Idioma cambiado a: ${lang}`);
             } catch (err) {
                 console.error("[Blog Hub] Error en selectLanguage:", err);
+            }
+        }
+
+        // CONTROL DE NAVEGACIÓN MÓVIL Y TABLET
+        function toggleMobileNav() {
+            const btn = document.getElementById('hamburger-btn');
+            const nav = document.getElementById('mobile-nav');
+            if (btn && nav) {
+                btn.classList.toggle('active');
+                nav.classList.toggle('open');
+                console.info('[Blog Hub] Menú móvil/tablet:', nav.classList.contains('open') ? 'abierto' : 'cerrado');
+            }
+        }
+
+        function closeMobileNav() {
+            const btn = document.getElementById('hamburger-btn');
+            const nav = document.getElementById('mobile-nav');
+            if (btn && nav) {
+                btn.classList.remove('active');
+                nav.classList.remove('open');
+                console.info('[Blog Hub] Menú móvil/tablet cerrado');
             }
         }
 
