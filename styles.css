@@ -1,4 +1,4 @@
-/* ===================================================================
+﻿/* ===================================================================
    LLUVIA DE IDEAS IA — SHARED STYLES
    Archivo CSS compartido entre landing (index.html) y blog.
    =================================================================== */
@@ -251,6 +251,15 @@ a {
 @media (max-width: 1023px) {
     .hamburger-btn {
         display: flex;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hamburger-btn {
+        display: none !important;
+    }
+    .mobile-nav {
+        display: none !important;
     }
 }
 
