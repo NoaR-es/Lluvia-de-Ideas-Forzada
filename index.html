@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 
 <head>
@@ -92,13 +92,13 @@
                 <a href="blog/index.html" class="hover:text-brand-600 transition" data-i18n="nav_blog">Blog</a>
             </nav>
 
-            <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 sm:gap-3">
                 <!-- SELECTOR DE IDIOMA (ESPAÑOL / INGLÉS) -->
                 <div class="relative inline-block text-left" id="custom-lang-container">
                     <button type="button" onclick="toggleLanguageDropdown()" id="lang-btn"
-                        class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-xl shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                        class="inline-flex items-center gap-1.5 sm:gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-bold py-2 px-2.5 sm:px-3 rounded-xl shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
                         <span id="selected-flag" class="text-base leading-none">🇪🇸</span>
-                        <span id="selected-lang-name" class="tracking-wide">Español</span>
+                        <span id="selected-lang-name" class="tracking-wide hidden sm:inline">Español</span>
                         <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7">
                             </path>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
 
-                <a href="#descarga-gratis"
+                <a href="https://play.google.com/apps/internaltest/4700277861957688979" target="_blank" rel="noopener noreferrer"
                     class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
@@ -127,7 +127,7 @@
                     <span data-i18n="cta_header">Testea la App Gratis (Próximo Lanzamiento)</span>
                 </a>
 
-                <!-- BOTÓN HAMBURGUESA PARA MÓVILES Y TABLETS -->
+                <!-- BOTÓN HAMBURGUESA PARA MÓVILES Y TABLETS (< lg) -->
                 <button class="hamburger-btn lg:hidden" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Abrir menú de navegación">
                     <span></span><span></span><span></span>
                 </button>
@@ -137,11 +137,11 @@
 
     <!-- MENÚ MÓVIL Y TABLET DESPLEGABLE -->
     <nav class="mobile-nav" id="mobile-nav">
-        <a href="#capturas" onclick="closeMobileNav()" class="text-lg font-bold" data-i18n="nav_screens">Capturas</a>
-        <a href="#que-es" onclick="closeMobileNav()" class="text-lg font-bold" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
-        <a href="#funciones" onclick="closeMobileNav()" class="text-lg font-bold" data-i18n="nav_features">Características</a>
-        <a href="#casos-uso" onclick="closeMobileNav()" class="text-lg font-bold" data-i18n="nav_use_cases">Casos de Uso</a>
-        <a href="blog/index.html" onclick="closeMobileNav()" class="text-lg font-bold" data-i18n="nav_blog">Blog</a>
+        <a href="#capturas" onclick="closeMobileNav()" data-i18n="nav_screens">Capturas</a>
+        <a href="#que-es" onclick="closeMobileNav()" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
+        <a href="#funciones" onclick="closeMobileNav()" data-i18n="nav_features">Características</a>
+        <a href="#casos-uso" onclick="closeMobileNav()" data-i18n="nav_use_cases">Casos de Uso</a>
+        <a href="blog/index.html" onclick="closeMobileNav()" data-i18n="nav_blog">Blog</a>
         <div class="mt-6">
             <a href="https://play.google.com/apps/internaltest/4700277861957688979" target="_blank" rel="noopener noreferrer"
                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center hover:bg-emerald-500 transition">
