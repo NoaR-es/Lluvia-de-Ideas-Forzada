@@ -208,9 +208,9 @@
          ═══════════════════════════════════════════════════════════════ -->
     <main class="blog-content" data-aos="fade-up" data-aos-duration="800">
 
-        <!-- TL;DR -->
+        <!-- RESUMEN EJECUTIVO -->
         <div class="tldr-box">
-            <div class="tldr-label">⚡ TL;DR — Si tienes 2 minutos</div>
+            <div class="tldr-label">⚡ Resumen Ejecutivo • Lectura en 2 minutos</div>
             <p>
                 Una plataforma de pagos y pedidos en línea procesaba 12.000 transacciones por minuto cuando, durante el Black Friday anterior, un microservicio secundario de recomendación de productos sufrió un timeout de 5 segundos. Este pequeño retraso provocó un <strong>efecto dominó devastador (cascading failure)</strong>: el pool de hilos de los servidores API se agotó, los clientes móviles iniciaron reintentos agresivos simultáneos ($Thundering\ Herd$) y toda la infraestructura cayó durante 47 minutos con pérdidas superiores a 600.000 €. Para el siguiente año, el equipo no compró más servidores en la nube; en su lugar, ejecutaron una sesión de <strong>Inversión del Problema (Pre-Mortem)</strong>: diseñaron deliberadamente las 8 formas más crueles de destruir el sistema y las convirtieron en patrones de ingeniería resiliente (Circuit Breakers, degradación elegante local en SQLite y backoff exponencial con Jitter). El siguiente Black Friday procesaron 48.000 transacciones/min con <strong>cero caídas y SLA del 99.999%</strong>.
             </p>
