@@ -1,4 +1,4 @@
-﻿/* ===================================================================
+/* ===================================================================
    LLUVIA DE IDEAS IA — SHARED STYLES
    Archivo CSS compartido entre landing (index.html) y blog.
    =================================================================== */
@@ -158,58 +158,113 @@ a {
     overflow: hidden;
 }
 
-/* ─── HAMBURGER MENU ──────────────────────────────────────────────── */
+/* ─── MODERN PILL NAVIGATION BAR ─────────────────────────────────── */
+.nav-pill-group {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-2xl);
+    background: rgba(241, 245, 249, 0.85); /* slate-100/85 */
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.nav-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-xl);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--slate-700);
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-pill-btn:hover {
+    color: var(--brand-600);
+    background: #ffffff;
+    border-color: rgba(226, 232, 240, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    transform: translateY(-1px);
+}
+
+.nav-pill-btn.active {
+    color: var(--brand-600);
+    background: #ffffff;
+    border-color: rgba(99, 102, 241, 0.25);
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.08);
+}
+
+/* ─── HAMBURGER CAPSULE BUTTON ────────────────────────────────────── */
 .hamburger-btn {
     display: none;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: transparent;
+    gap: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    background: #ffffff;
     border: 1px solid var(--slate-200);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     cursor: pointer;
-    padding: 0;
-    transition: background var(--transition-fast);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-700);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-fast);
 }
 
 .hamburger-btn:hover {
-    background: var(--slate-100);
+    background: var(--slate-50);
+    border-color: var(--brand-500);
+    color: var(--brand-600);
 }
 
-.hamburger-btn span {
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 12px;
+}
+
+.hamburger-icon span {
     display: block;
-    width: 18px;
+    width: 16px;
     height: 2px;
-    background: var(--slate-700);
+    background: currentColor;
     border-radius: 2px;
     transition: all var(--transition-base);
 }
 
-.hamburger-btn span:nth-child(1) {
-    margin-bottom: 4px;
+.hamburger-icon span:nth-child(1) {
+    margin-bottom: 3px;
 }
 
-.hamburger-btn span:nth-child(3) {
-    margin-top: 4px;
+.hamburger-icon span:nth-child(3) {
+    margin-top: 3px;
 }
 
 /* Hamburger open state */
-.hamburger-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 4px);
+.hamburger-btn.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(3.5px, 3.5px);
 }
 
-.hamburger-btn.active span:nth-child(2) {
+.hamburger-btn.active .hamburger-icon span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
 
-.hamburger-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(4px, -4px);
+.hamburger-btn.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(3.5px, -3.5px);
 }
 
-/* Mobile nav overlay */
+/* ─── MOBILE NAV OVERLAY ─────────────────────────────────────────── */
 .mobile-nav {
     position: fixed;
     top: 80px; /* header height */
@@ -222,6 +277,7 @@ a {
     z-index: 50;
     display: flex;
     flex-direction: column;
+    gap: 0.6rem;
     padding: var(--space-xl) var(--space-lg);
     transform: translateX(100%);
     transition: transform var(--transition-base);
@@ -234,23 +290,36 @@ a {
     transform: translateX(0);
 }
 
-.mobile-nav a {
-    display: block;
-    padding: var(--space-md) 0;
-    font-size: var(--text-lg);
-    font-weight: 600;
-    color: var(--slate-700);
-    border-bottom: 1px solid var(--slate-100);
-    transition: color var(--transition-fast);
+.mobile-nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-fast);
+    text-decoration: none;
 }
 
-.mobile-nav a:hover {
+.mobile-nav-pill:hover,
+.mobile-nav-pill:active {
+    background: #ffffff;
+    border-color: var(--brand-500);
     color: var(--brand-600);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+    transform: translateX(4px);
 }
 
 @media (max-width: 1023px) {
     .hamburger-btn {
-        display: flex;
+        display: inline-flex !important;
+    }
+    .nav-pill-group {
+        display: none !important;
     }
 }
 
@@ -260,6 +329,9 @@ a {
     }
     .mobile-nav {
         display: none !important;
+    }
+    .nav-pill-group {
+        display: flex !important;
     }
 }
 
