@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Primary -->
-    <title>Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo | Lluvia de Ideas IA</title>
+    <title>Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo | Lluvia de Ideas Forzada</title>
     <meta name="description"
         content="Guía técnica exhaustiva sobre RAG local en Android: arquitectura de chunking semántico, embeddings vectoriales on-chip, recuperación jerárquica por similitud coseno, benchmark de rendimiento y comparativa RAG local vs cloud.">
     <meta name="keywords"
@@ -19,7 +19,7 @@
     <meta property="og:title" content="Guía Completa RAG On-Device: Bases Vectoriales Locales para Proteger tu Negocio">
     <meta property="og:description" content="Todo sobre RAG local en Android: arquitectura técnica, chunking, embeddings, recuperación jerárquica, benchmarks y comparativa cloud vs on-device.">
     <meta property="og:url" content="https://lluviadeideasia.com/blog/rag-on-device-proteccion-negocio.html">
-    <meta property="og:site_name" content="Lluvia de Ideas IA">
+    <meta property="og:site_name" content="Lluvia de Ideas Forzada">
     <meta property="og:locale" content="es_ES">
     <meta property="article:published_time" content="2026-08-16T10:00:00+02:00">
     <meta property="article:author" content="Raúl Navas">
@@ -38,7 +38,7 @@
         "headline": "Guía Completa: RAG On-Device — Cómo y Por Qué Mantener tus Bases Vectoriales en el Dispositivo",
         "description": "Guía técnica exhaustiva sobre RAG local en Android con arquitectura completa, benchmarks y comparativa cloud vs on-device.",
         "author": { "@type": "Person", "name": "Raúl Navas", "alternateName": "NoaR" },
-        "publisher": { "@type": "Organization", "name": "Lluvia de Ideas IA" },
+        "publisher": { "@type": "Organization", "name": "Lluvia de Ideas Forzada" },
         "datePublished": "2026-08-16",
         "dateModified": "2026-08-17",
         "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lluviadeideasia.com/blog/rag-on-device-proteccion-negocio.html" },
@@ -80,7 +80,7 @@
             <a href="../index.html" class="flex items-center space-x-3">
                 <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-amber via-brand-500 to-brand-600 flex items-center justify-center text-white text-2xl shadow-md shadow-brand-500/20">💡</div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas IA</span>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block">Lluvia de Ideas Forzada</span>
                     <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas</span>
                 </div>
             </a>
@@ -256,7 +256,7 @@
                 <li><a href="#ventajas-estrategicas">7 ventajas estratégicas del RAG local</a></li>
                 <li><a href="#limitaciones">Limitaciones honestas: cuándo el RAG cloud tiene sentido</a></li>
                 <li><a href="#comparativa">Comparativa detallada: RAG Cloud vs. RAG On-Device</a></li>
-                <li><a href="#implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas IA</a></li>
+                <li><a href="#implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas Forzada</a></li>
                 <li><a href="#faq-rag">Preguntas frecuentes sobre RAG local</a></li>
                 <li><a href="#conclusiones-rag">Conclusiones y siguiente paso</a></li>
             </ol>
@@ -378,7 +378,7 @@
         <h2 id="arquitectura-local">La arquitectura RAG determinista On-Device</h2>
 
         <p>
-            La solución que implementa Lluvia de Ideas IA traslada <strong>todo el ciclo de vida del RAG</strong> a la memoria del dispositivo Android. No hay "servidor local", no hay "nube privada", no hay "edge computing con sync": el procesamiento ocurre literalmente en el chip de tu teléfono o tablet, en tres capas aisladas que nunca tocan la red.
+            La solución que implementa Lluvia de Ideas Forzada traslada <strong>todo el ciclo de vida del RAG</strong> a la memoria del dispositivo Android. No hay "servidor local", no hay "nube privada", no hay "edge computing con sync": el procesamiento ocurre literalmente en el chip de tu teléfono o tablet, en tres capas aisladas que nunca tocan la red.
         </p>
 
         <p>
@@ -421,7 +421,7 @@
             Un párrafo sobre "costes de infraestructura" puede quedar cortado a la mitad, con la primera parte en un chunk y la segunda en otro. Peor aún: la segunda mitad del párrafo de costes puede fusionarse con el inicio del siguiente párrafo sobre "estrategia de go-to-market", creando un chunk que mezcla dos conceptos no relacionados. Cuando el modelo de recuperación busca chunks sobre "costes", encontrará un fragmento contaminado con información de marketing que diluye la relevancia.
         </p>
 
-        <h4>El approach de Lluvia de Ideas IA: chunking por fronteras naturales</h4>
+        <h4>El approach de Lluvia de Ideas Forzada: chunking por fronteras naturales</h4>
 
         <p>
             Nuestro chunking se realiza por <strong>fronteras naturales de oraciones completas</strong>, respetando la estructura lógica del texto. El algoritmo:
@@ -485,7 +485,7 @@
 
         <h4>Recuperación jerárquica de dos niveles</h4>
         <p>
-            La recuperación en Lluvia de Ideas IA es <strong>jerárquica de dos niveles</strong>:
+            La recuperación en Lluvia de Ideas Forzada es <strong>jerárquica de dos niveles</strong>:
         </p>
 
         <ol>
@@ -520,7 +520,7 @@
         <h2 id="benchmarks">Benchmarks de rendimiento en dispositivos reales</h2>
 
         <p>
-            Los siguientes son benchmarks medidos en dispositivos reales con la versión de producción de Lluvia de Ideas IA. Todas las mediciones incluyen el pipeline completo: deserialización del vector de consulta, cómputo de similitud coseno contra todos los chunks indexados, y ordenación por relevancia.
+            Los siguientes son benchmarks medidos en dispositivos reales con la versión de producción de Lluvia de Ideas Forzada. Todas las mediciones incluyen el pipeline completo: deserialización del vector de consulta, cómputo de similitud coseno contra todos los chunks indexados, y ordenación por relevancia.
         </p>
 
         <h4>Latencia de recuperación (Top-5 chunks más relevantes)</h4>
@@ -663,7 +663,7 @@
         <p><strong>Cloud:</strong> Requiere DPA, DPIA, registro de actividades, notificación a interesados. <strong>Local:</strong> Cumplimiento por diseño. Sin transferencias a terceros.</p>
 
         <!-- SECCIÓN 13 -->
-        <h2 id="implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas IA</h2>
+        <h2 id="implementacion">Guía paso a paso: implementación práctica en Lluvia de Ideas Forzada</h2>
 
         <p>
             La implementación de RAG local no requiere conocimientos técnicos. El pipeline completo se activa automáticamente cuando adjuntas documentos:
@@ -730,7 +730,7 @@
         </p>
 
         <p>
-            El RAG local en Lluvia de Ideas IA no es un compromiso ni una versión "limitada" del RAG cloud. Es una arquitectura deliberadamente diseñada para que la privacidad sea una consecuencia del diseño, no una promesa contractual que depende de que un tercero cumpla sus TOS.
+            El RAG local en Lluvia de Ideas Forzada no es un compromiso ni una versión "limitada" del RAG cloud. Es una arquitectura deliberadamente diseñada para que la privacidad sea una consecuencia del diseño, no una promesa contractual que depende de que un tercero cumpla sus TOS.
         </p>
 
         <p>
@@ -787,7 +787,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
                 <div class="flex items-center gap-3">
-                    <span class="text-slate-900 font-bold text-sm">Lluvia de Ideas IA</span>
+                    <span class="text-slate-900 font-bold text-sm">Lluvia de Ideas Forzada</span>
                     <img src="https://i.ibb.co/C5G249VC/firma-web-email.png" onerror="this.src='../firma-web-email.png'" alt="Firma Raúl Navas" class="h-14 w-auto object-contain inline-block" style="max-height: 56px; width: auto;" />
                 </div>
                 <p class="mt-1 text-slate-500">Desarrollado y mantenido por <strong class="text-slate-800">Raúl Navas Montero</strong>.</p>
@@ -797,7 +797,7 @@
                 <a href="../terms.html" class="hover:text-brand-600 transition">Términos del Servicio</a>
                 <a href="mailto:soporte@noar.dev" class="hover:text-brand-600 transition">Contacto y Soporte</a>
             </div>
-            <p class="text-slate-400">&copy; 2026 Lluvia de Ideas IA. Todos los derechos reservados.</p>
+            <p class="text-slate-400">&copy; 2026 Lluvia de Ideas Forzada. Todos los derechos reservados.</p>
         </div>
     </footer>
 
