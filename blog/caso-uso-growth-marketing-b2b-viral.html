@@ -371,21 +371,7 @@
         </div>
     </footer>
 
-    <!-- STICKY CTA BAR -->
-    <div class="sticky-cta-bar" id="sticky-cta-bar">
-        <p>Diseña campañas virales con IA local en Android →</p>
-        <a href="https://play.google.com/apps/internaltest/4700277861957688979" target="_blank" rel="noopener noreferrer">
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 512 512">
-                <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
-                <path fill="#00e5ff" d="M47 38.3c-7.9 8.7-12.7 20.5-12.7 34.6v366.1c0 14.2 4.8 26 12.7 34.7l217.4-217.7L47 38.3z" />
-                <path fill="#ff3a44" d="M385.4 337.8L104.6 499l220.7-221.3 60.1 60.1z" />
-                <path fill="#ffc400" d="M475.2 238.2l-89.8-51.6-60.1 60.1 60.1 60.1 89.8-51.6c14.7-8.5 23.8-24.1 23.8-41.2s-9.1-32.7-23.8-41.2z" />
-            </svg>
-            <span>Testear App (Próximo Lanzamiento)</span>
-        </a>
-    </div>
-
-    <!-- SCRIPTS -->
+<!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         console.log('[DEBUG][BlogArticle] caso-uso-growth-marketing-b2b-viral.html cargado');
@@ -412,14 +398,6 @@
             document.getElementById('hamburger-btn').classList.remove('active');
             document.body.style.overflow = '';
         }
-
-        function handleStickyCtaBar() {
-            const bar = document.getElementById('sticky-cta-bar');
-            if (!bar) return;
-            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            if (pct > 30) { bar.classList.add('visible'); } else { bar.classList.remove('visible'); }
-        }
-        window.addEventListener('scroll', handleStickyCtaBar, { passive: true });
 
         // ToC Sidebar Toggle & Scrollspy
         function toggleTocSidebar() {
