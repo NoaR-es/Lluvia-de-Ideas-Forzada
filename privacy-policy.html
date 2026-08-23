@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Metadatos SEO y Cumplimiento Legal -->
+    <title>Política de Privacidad Oficial | Lluvia de Ideas Forzada (App Android & Web)</title>
+    <meta name="description"
+        content="Política de Privacidad oficial para la aplicación de Android Lluvia de Ideas Forzada y su plataforma web. Transparencia total, procesamiento on-device, gestión segura de API Keys y cumplimiento estricto de RGPD y CCPA.">
+    <meta name="author" content="NoaR - Raúl Navas Montero">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lluviadeideasia.com/privacy-policy.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Política de Privacidad Oficial | Lluvia de Ideas Forzada">
+    <meta property="og:description" content="Información legal detallada sobre privacidad, tratamiento local de datos y seguridad para la app móvil Android y entorno web de Lluvia de Ideas Forzada.">
+    <meta property="og:url" content="https://lluviadeideasia.com/privacy-policy.html">
+    <meta property="og:site_name" content="Lluvia de Ideas Forzada">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Estilos CSS Limpios, Embebidos y Modulares (Garantía de modo claro y ausencia de fuentes blancas) -->
+    <style>
+        /* ─── RESET Y VARIABLES ─────────────────────────────────────────── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Paleta de Marca Profesional */
+            --brand-50: #eef2ff;
+            --brand-100: #e0e7ff;
+            --brand-200: #c7d2fe;
+            --brand-600: #4338ca;
+            --brand-700: #3730a3;
+            --brand-800: #312e81;
+            --brand-900: #1e1b4b;
+
+            /* Paleta Neutra (Modo Claro de Alto Contraste) */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --slate-950: #020617;
+
+            /* Semánticos para Etiquetas Legales */
+            --emerald-bg: #ecfdf5;
+            --emerald-border: #a7f3d0;
+            --emerald-text: #065f46;
+            --amber-bg: #fffbeb;
+            --amber-border: #fde68a;
+            --amber-text: #92400e;
+            --blue-bg: #eff6ff;
+            --blue-border: #bfdbfe;
+            --blue-text: #1e40af;
+            --purple-bg: #faf5ff;
+            --purple-border: #e9d5ff;
+            --purple-text: #6b21a8;
+
+            /* Tipografía y Sombras */
+            --font-main: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+            --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+            --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+            --shadow-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--slate-50);
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--slate-800);
+            background-color: var(--slate-50);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Selección sin fuentes blancas */
+        ::selection {
+            background-color: var(--brand-100);
+            color: var(--brand-900);
+        }
+
+        /* ─── CONTENEDORES Y ESTRUCTURA ─────────────────────────────────── */
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Barra Superior / Cabecera */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--slate-200);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--slate-900);
+            font-weight: 800;
+            font-size: 1.125rem;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background-color: var(--brand-100);
+            border: 1px solid var(--brand-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--brand-900);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--slate-700);
+            background-color: var(--slate-100);
+            border: 1px solid var(--slate-200);
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            color: var(--brand-800);
+            background-color: var(--brand-50);
+            border-color: var(--brand-200);
+        }
+
+        /* ─── ENCABEZADO PRINCIPAL (HERO LEGAL) ─────────────────────────── */
+        .legal-hero {
+            padding: 3.5rem 0 2rem 0;
+            text-align: left;
+            border-bottom: 1px solid var(--slate-200);
+            background: linear-gradient(180deg, #ffffff 0%, var(--slate-50) 100%);
+        }
+
+        .compliance-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-google {
+            background-color: var(--blue-bg);
+            border: 1px solid var(--blue-border);
+            color: var(--blue-text);
+        }
+
+        .badge-rgpd {
+            background-color: var(--emerald-bg);
+            border: 1px solid var(--emerald-border);
+            color: var(--emerald-text);
+        }
+
+        .badge-privacy {
+            background-color: var(--purple-bg);
+            border: 1px solid var(--purple-border);
+            color: var(--purple-text);
+        }
+
+        .badge-local {
+            background-color: var(--amber-bg);
+            border: 1px solid var(--amber-border);
+            color: var(--amber-text);
+        }
+
+        .legal-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .legal-subtitle {
+            font-size: 1.0625rem;
+            color: var(--slate-600);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--slate-600);
+            padding-top: 1rem;
+            border-top: 1px dashed var(--slate-200);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .meta-item strong {
+            color: var(--slate-900);
+            font-weight: 600;
+        }
+
+        /* ─── RESUMEN EJECUTIVO DESTACADO ───────────────────────────────── */
+        .executive-summary {
+            margin: 2rem 0;
+            background-color: #ffffff;
+            border: 1px solid var(--brand-200);
+            border-left: 5px solid var(--brand-600);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .executive-summary h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--brand-900);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .executive-summary ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .executive-summary li {
+            font-size: 0.9rem;
+            color: var(--slate-700);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .executive-summary li::before {
+            content: "✓";
+            color: var(--brand-700);
+            font-weight: 800;
+        }
+
+        /* ─── CONTENIDO PRINCIPAL Y SECCIONES ───────────────────────────── */
+        .legal-content {
+            padding: 2.5rem 0 4rem 0;
+        }
+
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* Índice lateral fijo */
+        .legal-sidebar {
+            position: sticky;
+            top: 6rem;
+            background-color: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .sidebar-title {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.84rem;
+            color: var(--slate-600);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: all 0.15s ease;
+            line-height: 1.4;
+        }
+
+        .toc-link:hover {
+            color: var(--brand-800);
+            background-color: var(--brand-50);
+            font-weight: 600;
+        }
+
+        /* Artículos del documento */
+        .legal-article {
+            background-color: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .section-block {
+            margin-bottom: 2.75rem;
+            padding-bottom: 2.25rem;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .section-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background-color: var(--brand-50);
+            color: var(--brand-800);
+            border: 1px solid var(--brand-200);
+            font-size: 0.9rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .subheading {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: var(--slate-700);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: var(--slate-900);
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+            color: var(--slate-700);
+        }
+
+        li {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Cajas de llamada y comparativas */
+        .info-box {
+            background-color: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .info-box.alert-emerald {
+            background-color: var(--emerald-bg);
+            border-color: var(--emerald-border);
+        }
+
+        .info-box.alert-amber {
+            background-color: var(--amber-bg);
+            border-color: var(--amber-border);
+        }
+
+        .info-box.alert-blue {
+            background-color: var(--blue-bg);
+            border-color: var(--blue-border);
+        }
+
+        .info-box-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-emerald .info-box-title { color: var(--emerald-text); }
+        .alert-amber .info-box-title { color: var(--amber-text); }
+        .alert-blue .info-box-title { color: var(--blue-text); }
+
+        /* Cuadrícula Comparativa de Doble Vía de IA */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            border: 1px solid var(--slate-200);
+            background-color: #ffffff;
+        }
+
+        .comparison-card.local-mode {
+            border-color: var(--amber-border);
+            background-color: #fffdf5;
+        }
+
+        .comparison-card.cloud-mode {
+            border-color: var(--blue-border);
+            background-color: #f8fbff;
+        }
+
+        .comparison-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .local-mode h4 { color: var(--amber-text); }
+        .cloud-mode h4 { color: var(--blue-text); }
+
+        /* Marcadores de posición editables para el usuario */
+        .placeholder {
+            background-color: #fef08a;
+            color: #713f12;
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-family: monospace;
+            border: 1px dashed #ca8a04;
+        }
+
+        /* Tabla de Permisos de Android */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-md);
+        }
+
+        .legal-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        .legal-table th {
+            background-color: var(--slate-100);
+            color: var(--slate-900);
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .legal-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--slate-200);
+            color: var(--slate-700);
+            vertical-align: top;
+        }
+
+        .legal-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .permission-code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--brand-800);
+            background-color: var(--brand-50);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid var(--brand-200);
+            display: inline-block;
+        }
+
+        /* Tarjeta de Contacto Oficial */
+        .contact-card {
+            background-color: var(--slate-100);
+            border: 1px solid var(--slate-300);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--slate-500);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item a {
+            color: var(--brand-700);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── PIE DE PÁGINA ─────────────────────────────────────────────── */
+        .site-footer {
+            background-color: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 2.5rem 0;
+            font-size: 0.85rem;
+            color: var(--slate-600);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .footer-links a {
+            color: var(--slate-600);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-800);
+        }
+
+        /* ─── RESPONSIVIDAD Y OPTIMIZACIÓN MÓVIL ────────────────────────── */
+        @media (max-width: 860px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-sidebar {
+                display: none; /* En pantallas pequeñas se prioriza la lectura lineal */
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-title {
+                font-size: 1.75rem;
+            }
+
+            .legal-article {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Estilo para impresión legal */
+        @media print {
+            .site-header, .legal-sidebar, .site-footer, .nav-btn {
+                display: none !important;
+            }
+
+            body, html {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt;
+            }
+
+            .legal-article {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+
+            .section-block {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CABECERA DE NAVEGACIÓN
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="brand-link" title="Volver al inicio">
+                <div class="brand-icon">💡</div>
+                <span>Lluvia de Ideas Forzada</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-btn">← Volver a la Web</a>
+                <a href="blog/index.html" class="nav-btn">Blog de Innovación</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO LEGAL & METADATOS DE CUMPLIMIENTO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="legal-hero">
+        <div class="container">
+            <div class="compliance-badges">
+                <span class="badge badge-google">Google Play Policy Compliant</span>
+                <span class="badge badge-rgpd">RGPD / GDPR (UE)</span>
+                <span class="badge badge-privacy">CCPA / CPRA (California)</span>
+                <span class="badge badge-local">Zero-Server Architecture</span>
+            </div>
+            <h1 class="legal-title">Política de Privacidad Oficial</h1>
+            <p class="legal-subtitle">
+                Declaración de transparencia, tratamiento de datos, seguridad de Inteligencia Artificial (Modo Local vs. Nube) y ejercicio de derechos para la aplicación de Android <strong>Lluvia de Ideas Forzada</strong> (Forced Brainstorming AI) y sus plataformas asociadas.
+            </p>
+
+            <div class="meta-bar">
+                <div class="meta-item">
+                    <span>Responsable:</span>
+                    <strong>NoaR (Raúl Navas Montero)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Contacto:</span>
+                    <strong>raulnmt@gmail.com</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Fecha de entrada en vigor:</span>
+                    <strong>23 de agosto de 2026</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Versión del documento:</span>
+                    <strong>1.2 (Revisión Final Google Play)</strong>
+                </div>
+            </div>
+
+            <!-- Resumen Ejecutivo para lectura rápida -->
+            <div class="executive-summary">
+                <h3>📌 Compromiso Fundamental de Privacidad en Breve</h3>
+                <p>
+                    En <strong>Lluvia de Ideas Forzada</strong>, la privacidad y la protección de su propiedad intelectual no son opciones configurables, sino el pilar arquitectónico sobre el que se ha construido la aplicación:
+                </p>
+                <ul>
+                    <li><strong>Cero servidores del desarrollador:</strong> No almacenamos, no recopilamos ni vendemos sus ideas, prompts ni datos personales.</li>
+                    <li><strong>Procesamiento On-Device prioritario:</strong> La IA local y el motor RAG operan 100% en el chip de su teléfono móvil.</li>
+                    <li><strong>Claves de API Privadas (BYOK):</strong> Si conecta Google Gemini, su clave se guarda cifrada únicamente en su dispositivo.</li>
+                    <li><strong>Control y eliminación total:</strong> Usted es el único dueño de sus datos y puede borrarlos o exportarlos en cualquier instante.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CUERPO LEGAL Y ARTÍCULOS DETALLADOS
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="legal-content">
+        <div class="container legal-layout">
+
+            <!-- ÍNDICE DE NAVEGACIÓN RÁPIDA (SIDEBAR) -->
+            <aside class="legal-sidebar">
+                <div class="sidebar-title">Estructura del Documento</div>
+                <ul class="toc-list">
+                    <li><a href="#responsable" class="toc-link">1. Identificación del Responsable</a></li>
+                    <li><a href="#modalidades-ia" class="toc-link">2. Procesamiento de IA (Local vs Nube)</a></li>
+                    <li><a href="#api-keys" class="toc-link">3. Gestión de Claves de API</a></li>
+                    <li><a href="#datos-recopilados" class="toc-link">4. Recopilación y Almacenamiento</a></li>
+                    <li><a href="#permisos" class="toc-link">5. Permisos de Android</a></li>
+                    <li><a href="#retencion-eliminacion" class="toc-link">6. Retención y Eliminación</a></li>
+                    <li><a href="#menores" class="toc-link">7. Privacidad Infantil (COPPA/RGPD)</a></li>
+                    <li><a href="#derechos-usuario" class="toc-link">8. Derechos del Usuario (ARCO-POL)</a></li>
+                    <li><a href="#seguridad" class="toc-link">9. Seguridad de la Información</a></li>
+                    <li><a href="#modificaciones-contacto" class="toc-link">10. Modificaciones y Contacto</a></li>
+                </ul>
+            </aside>
+
+            <!-- CONTENIDO DE LOS ARTÍCULOS -->
+            <article class="legal-article">
+
+                <!-- 1. IDENTIFICACIÓN DEL RESPONSABLE -->
+                <section id="responsable" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">1</span>
+                        Identificación del Responsable del Tratamiento
+                    </h2>
+                    <p>
+                        En cumplimiento del Reglamento General de Protección de Datos (RGPD UE 2016/679), la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), la Ley de Privacidad del Consumidor de California (CCPA/CPRA) y las directrices para desarrolladores de Google Play Store, se informa de los datos identificativos del responsable de la aplicación:
+                    </p>
+                    <ul>
+                        <li><strong>Nombre de la Aplicación:</strong> Lluvia de Ideas Forzada (en adelante, "la Aplicación" o "la App"), identificada internacionalmente como <em>Forced Brainstorming AI</em>.</li>
+                        <li><strong>Desarrollador / Responsable Legal:</strong> Raúl Navas Montero (marca / sello de autor: <strong>NoaR</strong>).</li>
+                        <li><strong>Identificación Fiscal / Nacionalidad:</strong> <span class="placeholder">[NIF/DNI/ID Fiscal según requiera la autoridad: ES-XXXXXXXXX]</span>, España (Unión Europea).</li>
+                        <li><strong>Domicilio a efectos de notificaciones:</strong> <span class="placeholder">[Dirección Postal o Ciudad: Madrid / España]</span>.</li>
+                        <li><strong>Correo Electrónico Oficial de Contacto y Soporte:</strong> <a href="mailto:raulnmt@gmail.com" style="color: var(--brand-700); font-weight: 600;">raulnmt@gmail.com</a>.</li>
+                    </ul>
+                </section>
+
+                <!-- 2. MODALIDADES DE PROCESAMIENTO DE IA (DOBLE VÍA) -->
+                <section id="modalidades-ia" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">2</span>
+                        Modalidades de Procesamiento de Inteligencia Artificial (Doble Vía)
+                    </h2>
+                    <p>
+                        La Aplicación está diseñada para ofrecer dos modos de funcionamiento diferenciados en materia de inferencia y generación de ideas mediante Inteligencia Artificial:
+                    </p>
+
+                    <div class="comparison-grid">
+                        <!-- MODO LOCAL -->
+                        <div class="comparison-card local-mode">
+                            <h4>🌱 Modo Local (On-Device AI)</h4>
+                            <p style="font-size: 0.88rem; color: var(--slate-700);">
+                                <strong>Aislamiento total y privacidad física:</strong> Todo el procesamiento de algoritmos, técnicas creativas (SCAMPER, Inversión, Madurez Botánica, Rolestorming), generación combinatoria y bases vectoriales RAG locales se ejecuta <strong>exclusivamente dentro del procesador/chip de su dispositivo Android</strong>.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--slate-700); margin-top: 0.5rem;">
+                                <strong>Garantía técnica:</strong> En este modo, ningún texto, idea, palabra clave, prompt, nota ni documento ingresado por el usuario sale jamás del teléfono ni se transmite por red a servidores externos.
+                            </p>
+                        </div>
+
+                        <!-- MODO NUBE -->
+                        <div class="comparison-card cloud-mode">
+                            <h4>☁️ Modo Nube (Google Gemini Cloud API)</h4>
+                            <p style="font-size: 0.88rem; color: var(--slate-700);">
+                                <strong>Inferencia avanzada opcional:</strong> El usuario puede conectar voluntariamente la aplicación con los modelos avanzados de Google Gemini (Google AI / Vertex AI) introduciendo su propia clave privada de API (modelo BYOK - <em>Bring Your Own Key</em>) o utilizando los canales integrados habilitados.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--slate-700); margin-top: 0.5rem;">
+                                <strong>Tratamiento de red:</strong> Al pulsar "Generar en la Nube", los textos y prompts requeridos para la inferencia se transmiten de forma cifrada mediante protocolo seguro <strong>HTTPS (TLS 1.3)</strong> directamente a los servidores de <strong>Google LLC</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-box alert-blue">
+                        <div class="info-box-title">ℹ️ Marco Contractual de Terceros (Google Gemini API)</div>
+                        <p style="font-size: 0.88rem; margin-bottom: 0;">
+                            Cuando el usuario decide activar el Modo Nube, el tratamiento de los datos procesados en la inferencia se rige por los <a href="https://ai.google.dev/terms" target="_blank" rel="noopener noreferrer" style="color: var(--blue-text); font-weight: 700;">Términos del Servicio de Google AI</a> y la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--blue-text); font-weight: 700;">Política de Privacidad de Google Cloud</a>. De acuerdo con las políticas oficiales de Google AI para desarrolladores, los datos enviados a través de llamadas de API con claves comerciales de pago no se utilizan para entrenar los modelos base de Google.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 3. GESTIÓN Y SEGURIDAD DE CLAVES DE API (API KEYS) -->
+                <section id="api-keys" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">3</span>
+                        Gestión y Seguridad de Claves de API Privadas (BYOK)
+                    </h2>
+                    <p>
+                        En caso de que el usuario configure una clave privada de API personal de Google Gemini:
+                    </p>
+                    <ul>
+                        <li><strong>Almacenamiento Local Cifrado:</strong> La clave de API se almacena de forma estrictamente local en el almacenamiento protegido de la aplicación en el dispositivo del usuario, utilizando las bibliotecas nativas de seguridad de Android (<em>EncryptedSharedPreferences / Jetpack Security</em> o almacén aislado por sandbox).</li>
+                        <li><strong>Ausencia de Servidores Intermediarios:</strong> El desarrollador (NoaR / Raúl Navas Montero) <strong>no cuenta con servidores intermediarios, proxies ni bases de datos remotas</strong> donde se reciban, registren o reenvíen sus claves de API. La conexión viaja directamente desde el cliente Android hasta el endpoint oficial de Google (<code>generativelanguage.googleapis.com</code>).</li>
+                        <li><strong>Revocación Inmediata:</strong> El usuario puede eliminar su clave de API en cualquier momento desde la sección de <em>Ajustes</em> de la app, lo que provoca su borrado físico e irrecuperable de la memoria local del terminal.</li>
+                    </ul>
+                </section>
+
+                <!-- 4. RECOPILACIÓN Y ALMACENAMIENTO DE DATOS -->
+                <section id="datos-recopilados" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">4</span>
+                        Recopilación, Tratamiento y Almacenamiento de Datos
+                    </h2>
+                    <div class="info-box alert-emerald">
+                        <div class="info-box-title">🛡️ Declaración de No Recopilación (Zero-Data Collection Policy)</div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">
+                            El desarrollador declara formalmente que <strong>NO recopila, NO almacena en servidores externos, NO comercializa, NO comparte con terceros ni monetiza</strong> ninguna categoría de datos personales, identificadores de dispositivo, registros de actividad de uso, historial de navegación, textos generados ni sesiones de lluvia de ideas.
+                        </p>
+                    </div>
+
+                    <h3 class="subheading">4.1. Datos Gestionados Exclusivamente en el Dispositivo (On-Device Storage)</h3>
+                    <p>
+                        La Aplicación utiliza una base de datos local (SQLite mediante Room Database) en el almacenamiento interno privado del dispositivo para guardar:
+                    </p>
+                    <ul>
+                        <li>Proyectos, categorías, árboles de temas y sesiones de ideación creadas por el usuario.</li>
+                        <li>Historiales de ideas generadas, estados de madurez botánica (Semilla, Brote, Árbol) y filtros aplicados.</li>
+                        <li>Preferencias de configuración de la interfaz (modo de visualización, agentes de rolestorming seleccionados).</li>
+                        <li>Embeddings vectoriales locales generados para la función RAG On-Device.</li>
+                    </ul>
+
+                    <h3 class="subheading">4.2. Ausencia de Telemetría Invasiva y Rastreadores (No Trackers)</h3>
+                    <p>
+                        La aplicación <strong>no incluye SDKs de publicidad de terceros</strong> (como Google AdMob, Unity Ads, AppLovin), <strong>ni rastreadores de analítica invasiva</strong> (como Facebook Analytics, AppsFlyer o Adjust). No se recopilan identificadores publicitarios (GAID/AAID) ni la dirección MAC o IMEI de su teléfono.
+                    </p>
+                </section>
+
+                <!-- 5. PERMISOS DEL DISPOSITIVO ANDROID -->
+                <section id="permisos" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">5</span>
+                        Permisos del Dispositivo Android y Justificación Técnica
+                    </h2>
+                    <p>
+                        Siguiendo el principio de minimización de datos del RGPD y las directrices de seguridad de Google Play, la Aplicación solicita el número estrictamente indispensable de permisos del sistema:
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table class="legal-table">
+                            <thead>
+                                <tr>
+                                    <th>Permiso Técnico</th>
+                                    <th>Nivel de Acceso</th>
+                                    <th>Justificación de Uso Estricto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="permission-code">android.permission.INTERNET</span></td>
+                                    <td>Normal</td>
+                                    <td>Permite realizar llamadas de red salientes vía HTTPS <strong>única y exclusivamente</strong> cuando el usuario activa el Modo Nube para consultar la API de Google Gemini. No se emplea para telemetría ni carga de anuncios.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="permission-code">android.permission.ACCESS_NETWORK_STATE</span></td>
+                                    <td>Normal</td>
+                                    <td>Permite a la aplicación verificar si el dispositivo dispone de conexión a Internet activa antes de intentar una solicitud a la API en la nube, evitando bloqueos y ofreciendo una respuesta clara al usuario.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-box alert-amber">
+                        <div class="info-box-title">🚫 Ausencia Explícita de Permisos Sensibles o Invasivos</div>
+                        <p style="font-size: 0.88rem; margin-bottom: 0;">
+                            La aplicación <strong>NO solicita, NO accede y NO requiere</strong> permisos sobre la cámara fotográfica (<code>CAMERA</code>), lista de contactos (<code>READ_CONTACTS</code>), ubicación geográfica GPS o redes (<code>ACCESS_FINE_LOCATION</code>), micrófono (<code>RECORD_AUDIO</code>), lectura de almacenamiento compartido externo innecesario, registro de llamadas ni identificadores del estado del teléfono.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 6. RETENCIÓN, CONTROL, EXPORTACIÓN Y ELIMINACIÓN -->
+                <section id="retencion-eliminacion" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">6</span>
+                        Retención, Control, Exportación y Eliminación de Datos
+                    </h2>
+                    <p>
+                        El usuario mantiene en todo momento la soberanía total e irrestricta sobre el ciclo de vida de su información:
+                    </p>
+                    <ul>
+                        <li><strong>Control Absoluto:</strong> Usted puede crear, editar, duplicar, archivar o borrar cualquier idea, proyecto o reporte directamente desde la interfaz de la app mediante los controles proporcionados.</li>
+                        <li><strong>Exportación Local de Datos:</strong> La app ofrece mecanismos para exportar sus sesiones y proyectos en formatos estándar abiertos (archivos Markdown <code>.md</code>, documentos PDF y paquetes comprimidos ZIP generados en local), permitiéndole conservar copias de seguridad personales sin intermediación de la nube.</li>
+                        <li><strong>Eliminación Definitiva:</strong> Para eliminar todos los datos almacenados por la aplicación, el usuario puede:
+                            <ol style="margin-top: 0.5rem; margin-left: 1.25rem;">
+                                <li>Acceder a <em>Ajustes de Android &gt; Aplicaciones &gt; Lluvia de Ideas Forzada &gt; Almacenamiento &gt; Borrar datos y Borrar caché</em>.</li>
+                                <li>Desinstalar la aplicación de su dispositivo. Al realizarlo, el sistema operativo Android destruye inmediatamente el contenedor aislado y la base de datos SQLite asociada.</li>
+                            </ol>
+                        </li>
+                        <li><strong>Tratamiento Efímero en la Nube:</strong> En el Modo Nube, las peticiones enviadas a los endpoints de Google Gemini son procesadas de manera transitoria y efímera conforme a la infraestructura de Google Cloud para emitir la respuesta correspondiente.</li>
+                    </ul>
+                </section>
+
+                <!-- 7. PRIVACIDAD INFANTIL (MENORES DE EDAD) -->
+                <section id="menores" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">7</span>
+                        Privacidad Infantil y Protección de Menores (COPPA / RGPD)
+                    </h2>
+                    <p>
+                        Nuestra aplicación es una herramienta de productividad, pensamiento lateral y creatividad técnica orientada al público general y a profesionales:
+                    </p>
+                    <ul>
+                        <li>La Aplicación <strong>no está dirigida a niños menores de 13 años</strong> (o la edad mínima legal que determine la jurisdicción del país del usuario, como 16 años en determinados Estados miembros de la Unión Europea).</li>
+                        <li>No recopilamos deliberadamente información personal de menores de edad.</li>
+                        <li>Al no existir registro de cuentas de usuario, perfiles en la nube ni recopilación remota de datos identificativos, no se almacena información susceptible de vulnerar la Ley de Protección de la Privacidad Infantil en Línea (COPPA) de EE.UU. ni el Artículo 8 del RGPD de la UE.</li>
+                        <li>Si un padre, madre o tutor legal detecta que un menor a su cargo ha introducido datos sensibles en la aplicación y desea eliminarlos, basta con borrar el almacenamiento local de la app o desinstalarla del terminal.</li>
+                    </ul>
+                </section>
+
+                <!-- 8. DERECHOS DE LOS USUARIOS (RGPD, CCPA Y NORMATIVA INTERNACIONAL) -->
+                <section id="derechos-usuario" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">8</span>
+                        Derechos de Privacidad de los Usuarios (RGPD / CCPA)
+                    </h2>
+                    <p>
+                        De conformidad con el marco normativo internacional, los usuarios ostentan los siguientes derechos fundamentales:
+                    </p>
+                    <ul>
+                        <li><strong>Derecho de Acceso y Rectificación:</strong> Puede consultar y modificar en cualquier momento sus datos e ideas en las pantallas de la propia app.</li>
+                        <li><strong>Derecho de Supresión ("Derecho al Olvido"):</strong> Puede eliminar instantáneamente cualquier registro u optar por el borrado integral desinstalando la aplicación.</li>
+                        <li><strong>Derecho a la Limitación del Tratamiento y Oposición:</strong> Puede negarse al uso de servicios de nube manteniendo la aplicación de forma indefinida en Modo Local (On-Device).</li>
+                        <li><strong>Derecho a la Portabilidad:</strong> Puede exportar sus creaciones en formatos estándar legibles por máquina (Markdown, PDF, ZIP).</li>
+                        <li><strong>Derechos bajo la CCPA / CPRA (California):</strong> Declaramos formalmente que <em>"No Vendemos ni Compartimos Información Personal"</em> (<em>We Do Not Sell or Share Personal Information</em>) bajo ninguna circunstancia.</li>
+                    </ul>
+                    <p>
+                        Dado que la arquitectura de la Aplicación es local y descentralizada (el desarrollador no posee acceso técnico ni custodia sus bases de datos locales), el ejercicio de la inmensa mayoría de estos derechos se realiza de manera autónoma y directa por el propio usuario en su dispositivo.
+                    </p>
+                </section>
+
+                <!-- 9. MEDIDAS DE SEGURIDAD Y CIFRADO -->
+                <section id="seguridad" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">9</span>
+                        Medidas de Seguridad y Protección de la Información
+                    </h2>
+                    <p>
+                        Para salvaguardar la integridad y confidencialidad de la información, se aplican rigurosas medidas técnicas de diseño:
+                    </p>
+                    <ul>
+                        <li><strong>Sandboxing de Android:</strong> Los datos de la app se encuentran confinados dentro del espacio de almacenamiento seguro asignado por el sistema operativo Android mediante Linux UID isolation, impidiendo que otras apps instaladas en el terminal accedan a sus bases de datos.</li>
+                        <li><strong>Cifrado en Tránsito (TLS 1.3 / HTTPS):</strong> Toda comunicación saliente hacia la API de Google Gemini en el Modo Nube utiliza exclusivamente canales cifrados con certificados SSL/TLS de alta graduación.</li>
+                        <li><strong>Aislamiento de Claves Criptográficas:</strong> Las credenciales privadas de API introducidas por el usuario se gestionan mediante mecanismos de almacenamiento cifrado local y nunca se incluyen en copias de respaldo no seguras.</li>
+                    </ul>
+                </section>
+
+                <!-- 10. MODIFICACIONES DE LA POLÍTICA Y CANAL DE CONTACTO FORMAL -->
+                <section id="modificaciones-contacto" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">10</span>
+                        Modificaciones de la Política y Canal de Contacto Formal
+                    </h2>
+                    <p>
+                        El responsable se reserva el derecho de actualizar o modificar la presente Política de Privacidad para adaptarla a futuras novedades legislativas, jurisprudenciales o mejoras técnicas en la arquitectura de la aplicación.
+                    </p>
+                    <p>
+                        Cualquier modificación sustancial será publicada en esta misma página web pública (<a href="https://lluviadeideasia.com/privacy-policy.html" style="color: var(--brand-700); font-weight: 600;">lluviadeideasia.com/privacy-policy.html</a>) y se reflejará actualizando la fecha de "Última Actualización" situada en el encabezado. Se recomienda a los usuarios revisar periódicamente esta política.
+                    </p>
+
+                    <div class="contact-card">
+                        <h4>📬 Canal de Contacto Oficial para Privacidad y Soporte Legal</h4>
+                        <p style="font-size: 0.88rem; color: var(--slate-600); margin-bottom: 1rem;">
+                            Si tiene cualquier duda, consulta, sugerencia o desea realizar una comunicación formal relativa a esta Política de Privacidad o al tratamiento de datos, puede ponerse en contacto directo con el desarrollador:
+                        </p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span>Responsable</span>
+                                <strong>NoaR · Raúl Navas Montero</strong>
+                            </div>
+                            <div class="contact-item">
+                                <span>Correo de Privacidad</span>
+                                <a href="mailto:raulnmt@gmail.com">raulnmt@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span>Soporte Alternativo</span>
+                                <a href="mailto:soporte@noar.dev">soporte@noar.dev</a>
+                            </div>
+                            <div class="contact-item">
+                                <span>Jurisdicción y Ley</span>
+                                <strong>España · Unión Europea</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PIE DE PÁGINA OFICIAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <p style="margin-bottom: 0.25rem; font-weight: 700; color: var(--slate-900);">
+                    Lluvia de Ideas Forzada · Forced Brainstorming AI
+                </p>
+                <p style="font-size: 0.8rem; color: var(--slate-500); margin-bottom: 0;">
+                    Desarrollado y mantenido por <strong>Raúl Navas Montero (NoaR)</strong>. Todos los derechos reservados &copy; 2026.
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="blog/index.html">Blog</a>
+                <a href="privacy-policy.html" style="font-weight: 700; color: var(--brand-700);">Política de Privacidad</a>
+                <a href="mailto:raulnmt@gmail.com">Contacto Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de diagnóstico y depuración para consola -->
+    <script>
+        console.log('[DEBUG][PrivacyPolicy] Documento de Política de Privacidad inicializado correctamente.');
+        console.log('[DEBUG][PrivacyPolicy] Cumplimiento normativo activo: RGPD (UE), CCPA (California), Google Play Developer Policy.');
+        console.log('[DEBUG][PrivacyPolicy] Arquitectura declarada: Zero-Server / On-Device Local AI + BYOK Gemini Cloud API.');
+    </script>
+</body>
+
+</html>
