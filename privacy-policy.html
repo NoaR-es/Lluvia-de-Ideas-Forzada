@@ -789,12 +789,13 @@
                     <li><a href="#modalidades-ia" class="toc-link">2. Procesamiento de IA (Local vs Nube)</a></li>
                     <li><a href="#api-keys" class="toc-link">3. Gestión de Claves de API</a></li>
                     <li><a href="#datos-recopilados" class="toc-link">4. Recopilación y Almacenamiento</a></li>
-                    <li><a href="#permisos" class="toc-link">5. Permisos de Android</a></li>
-                    <li><a href="#retencion-eliminacion" class="toc-link">6. Retención y Eliminación</a></li>
-                    <li><a href="#menores" class="toc-link">7. Privacidad Infantil (COPPA/RGPD)</a></li>
-                    <li><a href="#derechos-usuario" class="toc-link">8. Derechos del Usuario (ARCO-POL)</a></li>
-                    <li><a href="#seguridad" class="toc-link">9. Seguridad de la Información</a></li>
-                    <li><a href="#modificaciones-contacto" class="toc-link">10. Modificaciones y Contacto</a></li>
+                    <li><a href="#p2p-mesh" class="toc-link">5. Conexiones P2P, Mesh y Custodia</a></li>
+                    <li><a href="#permisos" class="toc-link">6. Permisos de Android</a></li>
+                    <li><a href="#retencion-eliminacion" class="toc-link">7. Retención y Eliminación</a></li>
+                    <li><a href="#menores" class="toc-link">8. Privacidad Infantil (COPPA/RGPD)</a></li>
+                    <li><a href="#derechos-usuario" class="toc-link">9. Derechos del Usuario (ARCO-POL)</a></li>
+                    <li><a href="#seguridad" class="toc-link">10. Seguridad de la Información</a></li>
+                    <li><a href="#modificaciones-contacto" class="toc-link">11. Modificaciones y Contacto</a></li>
                 </ul>
             </aside>
 
@@ -907,10 +908,38 @@
                     </p>
                 </section>
 
-                <!-- 5. PERMISOS DEL DISPOSITIVO ANDROID -->
-                <section id="permisos" class="section-block">
+                <!-- 5. CONEXIONES PEER-TO-PEER (P2P), REDES MESH Y CUSTODIA LOCAL DE DATOS -->
+                <section id="p2p-mesh" class="section-block">
                     <h2 class="section-heading">
                         <span class="section-number">5</span>
+                        Conexiones Peer-to-Peer (P2P), Redes Mesh y Responsabilidad de Custodia Local
+                    </h2>
+                    <p>
+                        La Aplicación incorpora opciones de sincronización descentralizada, intercambio de paquetes de proyectos y colaboración en tiempo real mediante arquitectura punto a punto (Peer-to-Peer / P2P) y topología de red Mesh entre dispositivos:
+                    </p>
+
+                    <div class="info-box alert-amber">
+                        <div class="info-box-title">🔗 Arquitectura Descentralizada de Extremo a Extremo (Zero-Cloud Intermediary)</div>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">
+                            Cuando el Usuario activa una sesión de colaboración o sincronización P2P / Mesh, los paquetes de datos de proyectos, ideas y diagramas viajan <strong>directamente de terminal a terminal</strong> (a través de canales locales cifrados, Wi-Fi Direct o protocolos de señalización efímeros). <strong>Ningún servidor central del desarrollador recibe, indexa, almacena, procesa ni registra el contenido de dichas sesiones.</strong>
+                        </p>
+                    </div>
+
+                    <h3 class="subheading">5.1. Responsabilidad de la Custodia y Seguridad en el Dispositivo</h3>
+                    <p>
+                        La custodia física, lógica y biométrica de la información almacenada en la base de datos local (SQLite/Room) corresponde de manera <strong>única y exclusiva al Usuario</strong>:
+                    </p>
+                    <ul>
+                        <li><strong>Seguridad Integral del Dispositivo:</strong> El Usuario es el único responsable de mantener activadas las medidas de seguridad provistas por el sistema operativo Android (cifrado de almacenamiento en reposo del terminal, bloqueo de pantalla mediante biometría o PIN seguro y control de acceso físico).</li>
+                        <li><strong>Control de Emparejamiento Voluntario:</strong> La conexión a redes Mesh y sesiones P2P se efectúa siempre bajo control y autorización expresa del Usuario. Es responsabilidad del Usuario compartir las claves, tokens o códigos QR de emparejamiento exclusivamente con personas y dispositivos de su confianza.</li>
+                        <li><strong>Seguridad de la Red de Transporte:</strong> El Usuario debe velar por no establecer sesiones colaborativas a través de redes Wi-Fi públicas desprotegidas o entornos de red comprometidos.</li>
+                    </ul>
+                </section>
+
+                <!-- 6. PERMISOS DEL DISPOSITIVO ANDROID -->
+                <section id="permisos" class="section-block">
+                    <h2 class="section-heading">
+                        <span class="section-number">6</span>
                         Permisos del Dispositivo Android y Justificación Técnica
                     </h2>
                     <p>
@@ -930,12 +959,12 @@
                                 <tr>
                                     <td><span class="permission-code">android.permission.INTERNET</span></td>
                                     <td>Normal</td>
-                                    <td>Permite realizar llamadas de red salientes vía HTTPS <strong>única y exclusivamente</strong> cuando el usuario activa el Modo Nube para consultar la API de Google Gemini. No se emplea para telemetría ni carga de anuncios.</td>
+                                    <td>Permite realizar llamadas de red salientes vía HTTPS cuando el usuario activa el Modo Nube (API de Google Gemini) o para la señalización efímera de sesiones colaborativas P2P. No se emplea para telemetría ni carga de anuncios.</td>
                                 </tr>
                                 <tr>
                                     <td><span class="permission-code">android.permission.ACCESS_NETWORK_STATE</span></td>
                                     <td>Normal</td>
-                                    <td>Permite a la aplicación verificar si el dispositivo dispone de conexión a Internet activa antes de intentar una solicitud a la API en la nube, evitando bloqueos y ofreciendo una respuesta clara al usuario.</td>
+                                    <td>Permite a la aplicación verificar si el dispositivo dispone de conectividad activa antes de intentar una solicitud a la API en la nube o descubrir pares en red local.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -949,10 +978,10 @@
                     </div>
                 </section>
 
-                <!-- 6. RETENCIÓN, CONTROL, EXPORTACIÓN Y ELIMINACIÓN -->
+                <!-- 7. RETENCIÓN, CONTROL, EXPORTACIÓN Y ELIMINACIÓN -->
                 <section id="retencion-eliminacion" class="section-block">
                     <h2 class="section-heading">
-                        <span class="section-number">6</span>
+                        <span class="section-number">7</span>
                         Retención, Control, Exportación y Eliminación de Datos
                     </h2>
                     <p>
@@ -971,10 +1000,10 @@
                     </ul>
                 </section>
 
-                <!-- 7. PRIVACIDAD INFANTIL (MENORES DE EDAD) -->
+                <!-- 8. PRIVACIDAD INFANTIL (MENORES DE EDAD) -->
                 <section id="menores" class="section-block">
                     <h2 class="section-heading">
-                        <span class="section-number">7</span>
+                        <span class="section-number">8</span>
                         Privacidad Infantil y Protección de Menores (COPPA / RGPD)
                     </h2>
                     <p>
@@ -988,10 +1017,10 @@
                     </ul>
                 </section>
 
-                <!-- 8. DERECHOS DE LOS USUARIOS (RGPD, CCPA Y NORMATIVA INTERNACIONAL) -->
+                <!-- 9. DERECHOS DE LOS USUARIOS (RGPD, CCPA Y NORMATIVA INTERNACIONAL) -->
                 <section id="derechos-usuario" class="section-block">
                     <h2 class="section-heading">
-                        <span class="section-number">8</span>
+                        <span class="section-number">9</span>
                         Derechos de Privacidad de los Usuarios (RGPD / CCPA)
                     </h2>
                     <p>
@@ -1009,10 +1038,10 @@
                     </p>
                 </section>
 
-                <!-- 9. MEDIDAS DE SEGURIDAD Y CIFRADO -->
+                <!-- 10. MEDIDAS DE SEGURIDAD Y CIFRADO -->
                 <section id="seguridad" class="section-block">
                     <h2 class="section-heading">
-                        <span class="section-number">9</span>
+                        <span class="section-number">10</span>
                         Medidas de Seguridad y Protección de la Información
                     </h2>
                     <p>
@@ -1025,10 +1054,10 @@
                     </ul>
                 </section>
 
-                <!-- 10. MODIFICACIONES DE LA POLÍTICA Y CANAL DE CONTACTO FORMAL -->
+                <!-- 11. MODIFICACIONES DE LA POLÍTICA Y CANAL DE CONTACTO FORMAL -->
                 <section id="modificaciones-contacto" class="section-block">
                     <h2 class="section-heading">
-                        <span class="section-number">10</span>
+                        <span class="section-number">11</span>
                         Modificaciones de la Política y Canal de Contacto Formal
                     </h2>
                     <p>
