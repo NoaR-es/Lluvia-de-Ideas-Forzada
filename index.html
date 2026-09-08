@@ -74,28 +74,20 @@
 
     <!-- NAVEGACIÓN -->
     <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[5rem] py-2.5 flex flex-wrap items-center justify-between gap-y-2.5 gap-x-4">
+            <!-- 1. IDENTIDAD DE MARCA (BLINDADA CONTRA ESTRANGULAMIENTO - FILA 1 IZQUIERDA) -->
+            <div class="flex items-center space-x-3 shrink-0 order-1">
                 <img src="logo.jpg" alt="Logo Lluvia de Ideas Forzada"
-                    class="w-11 h-11 rounded-full object-cover shadow-md shadow-slate-900/15 border-2 border-slate-200" />
-                <div>
-                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block"
+                    class="w-11 h-11 rounded-full object-cover shadow-md shadow-slate-900/15 border-2 border-slate-200 shrink-0" />
+                <div class="shrink-0">
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block whitespace-nowrap"
                         data-i18n="app_title">Lluvia de Ideas Forzada</span>
-                    <span class="text-xs text-brand-600 font-semibold tracking-wide">by Raúl Navas</span>
+                    <span class="text-xs text-brand-600 font-semibold tracking-wide block whitespace-nowrap">by Raúl Navas</span>
                 </div>
             </div>
 
-                        <!-- BOTONERA MODERNA EN CÁPSULAS (DESKTOP) -->
-            <nav class="nav-pill-group">
-                <a href="#capturas" class="nav-pill-btn" data-i18n="nav_screens">Capturas</a>
-                <a href="#que-es" class="nav-pill-btn" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
-                <a href="#funciones" class="nav-pill-btn" data-i18n="nav_features">Características</a>
-                <a href="#casos-uso" class="nav-pill-btn" data-i18n="nav_use_cases">Casos de Uso</a>
-                <a href="#tutoriales" class="nav-pill-btn" data-i18n="nav_tutorials">Guías & Ayuda</a>
-                <a href="blog/index.html" class="nav-pill-btn" data-i18n="nav_blog">Blog</a>
-            </nav>
-
-            <div class="flex items-center gap-2 sm:gap-3">
+            <!-- 2. CONTROLES DERECHOS (IDIOMA + CTA + HAMBURGUESA - FILA 1 DERECHA) -->
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0 order-2 2xl:order-3">
                 <!-- SELECTOR DE IDIOMA (ESPAÑOL / INGLÉS) -->
                 <div class="relative inline-block text-left" id="custom-lang-container">
                     <button type="button" onclick="toggleLanguageDropdown()" id="lang-btn"
@@ -122,7 +114,7 @@
                 </div>
 
                 <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
-                    class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-400 text-emerald-950 hover:bg-emerald-300 transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 whitespace-nowrap">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -138,6 +130,16 @@
                     <span class="text-xs font-bold">Menú</span>
                 </button>
             </div>
+
+            <!-- 3. BOTONERA MODERNA EN CÁPSULAS (FILA 2 CENTRADA EN RESOLUCIONES COMUNES, O FILA 1 EN PANTALLAS ANCHAS) -->
+            <nav class="nav-pill-group order-3 2xl:order-2 w-full 2xl:w-auto justify-center">
+                <a href="#capturas" class="nav-pill-btn" data-i18n="nav_screens">Capturas</a>
+                <a href="#que-es" class="nav-pill-btn" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
+                <a href="#funciones" class="nav-pill-btn" data-i18n="nav_features">Características</a>
+                <a href="#casos-uso" class="nav-pill-btn" data-i18n="nav_use_cases">Casos de Uso</a>
+                <a href="#tutoriales" class="nav-pill-btn" data-i18n="nav_tutorials">Guías & Ayuda</a>
+                <a href="blog/index.html" class="nav-pill-btn" data-i18n="nav_blog">Blog</a>
+            </nav>
         </div>
     </header>
 
@@ -2178,10 +2180,14 @@
         function toggleMobileNav() {
             const btn = document.getElementById('hamburger-btn');
             const nav = document.getElementById('mobile-nav');
+            const header = document.querySelector('header');
             if (btn && nav) {
+                if (header) {
+                    nav.style.top = header.offsetHeight + 'px';
+                }
                 btn.classList.toggle('active');
                 nav.classList.toggle('open');
-                console.log('[DEBUG][LandingWeb] Menú móvil/tablet:', nav.classList.contains('open') ? 'abierto' : 'cerrado');
+                console.log('[DEBUG][LandingWeb] Menú móvil/tablet:', nav.classList.contains('open') ? 'abierto' : 'cerrado', 'Top offset:', header ? header.offsetHeight : 80);
             }
         }
 
