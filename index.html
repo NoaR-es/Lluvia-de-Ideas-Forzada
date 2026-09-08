@@ -1242,8 +1242,14 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 md:gap-8 items-center">
                     <!-- Media Illustration Column -->
                     <div class="md:col-span-6 flex justify-center w-full">
-                        <div class="w-full aspect-[16/10] sm:aspect-[16/11] max-h-56 sm:max-h-72 md:max-h-96 rounded-2xl bg-slate-950 border border-slate-800 p-2 sm:p-3 flex items-center justify-center shadow-2xl overflow-hidden">
-                            <img id="modal-step-img" src="" alt="Ilustración del tutorial" class="w-full h-full object-contain drop-shadow-md transition-all duration-300 rounded-lg" loading="lazy" />
+                        <div class="relative w-full aspect-[16/10] sm:aspect-[16/11] max-h-56 sm:max-h-72 md:max-h-96 rounded-2xl bg-slate-950 border border-slate-800 p-2 sm:p-3 flex items-center justify-center shadow-2xl overflow-hidden cursor-zoom-in group"
+                            onclick="openTutorialLightbox()"
+                            title="Clic para ver en tamaño original a pantalla completa">
+                            <img id="modal-step-img" src="" alt="Ilustración del tutorial" class="w-full h-full object-contain drop-shadow-md group-hover:scale-[1.02] transition-all duration-300 rounded-lg" loading="lazy" />
+                            <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-amber-300 text-[11px] font-bold shadow-lg flex items-center gap-1.5 pointer-events-none group-hover:bg-amber-400 group-hover:text-slate-950 group-hover:border-amber-500 transition-all">
+                                <span>🔍</span>
+                                <span data-i18n="tut_zoom_hint">Pantalla Completa</span>
+                            </div>
                         </div>
                     </div>
 
@@ -1286,6 +1292,39 @@
                     <span id="modal-btn-next-text" data-i18n="tut_btn_next">Siguiente →</span>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         VISOR LIGHTBOX A PANTALLA COMPLETA PARA IMÁGENES DEL TUTORIAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="tutorial-lightbox" class="fixed inset-0 z-[60] hidden bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-between p-3 sm:p-5 transition-all duration-300" role="dialog" aria-modal="true" aria-label="Visor de capturas a pantalla completa">
+        <!-- Lightbox Header Bar -->
+        <div class="w-full max-w-7xl flex items-center justify-between gap-3 px-2 py-2 shrink-0">
+            <div class="flex items-center gap-2 overflow-hidden">
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-amber-400 text-slate-950 shrink-0 shadow-sm">
+                    🔍 <span data-i18n="tut_zoom_hint">Pantalla Completa</span>
+                </span>
+                <span id="lightbox-caption" class="text-xs sm:text-sm font-bold text-slate-200 truncate"></span>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <button type="button" onclick="closeTutorialLightbox()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold transition cursor-pointer border border-amber-500 shadow-md touch-manipulation" title="Cerrar visor a pantalla completa">
+                    <span>✕</span>
+                    <span class="hidden sm:inline" data-i18n="tut_lightbox_close">Cerrar (Esc)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lightbox Image Wrapper (Centrado y con cursor-zoom-out para clic fuera) -->
+        <div class="w-full flex-1 flex items-center justify-center overflow-auto p-1 sm:p-3 cursor-zoom-out" onclick="closeTutorialLightbox()">
+            <img id="lightbox-img" src="" alt="Captura de pantalla en tamaño original" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-slate-800 transition-transform duration-200 cursor-default" onclick="event.stopPropagation()" />
+        </div>
+
+        <!-- Lightbox Footer Hint -->
+        <div class="w-full max-w-7xl text-center py-1 shrink-0">
+            <span class="text-[11px] text-slate-400 font-medium" data-i18n="tut_lightbox_hint">
+                💡 Haz clic fuera de la imagen o pulsa Esc para volver al tutorial
+            </span>
         </div>
     </div>
 
@@ -1508,7 +1547,10 @@
                 tut_btn_prev: "Anterior",
                 tut_btn_next: "Siguiente →",
                 tut_btn_finish: "¡Listo! Finalizar ✓",
-                tut_step_of: "Paso {current} de {total}"
+                tut_step_of: "Paso {current} de {total}",
+                tut_zoom_hint: "Pantalla Completa",
+                tut_lightbox_close: "Cerrar (Esc)",
+                tut_lightbox_hint: "💡 Haz clic fuera de la imagen o pulsa Esc para volver al tutorial"
             },
             en: {
                 app_title: "Forced Brainstorming",
@@ -1630,7 +1672,10 @@
                 tut_btn_prev: "Previous",
                 tut_btn_next: "Next →",
                 tut_btn_finish: "Done! Close ✓",
-                tut_step_of: "Step {current} of {total}"
+                tut_step_of: "Step {current} of {total}",
+                tut_zoom_hint: "Full Screen",
+                tut_lightbox_close: "Close (Esc)",
+                tut_lightbox_hint: "💡 Click outside the image or press Esc to return to the guide"
             }
         };
 
@@ -2084,6 +2129,33 @@
             console.log('[DEBUG][TutorialHub] Modal de tutorial cerrado.');
         }
 
+        // CONTROL DEL VISOR LIGHTBOX A PANTALLA COMPLETA
+        function openTutorialLightbox() {
+            const imgEl = document.getElementById('modal-step-img');
+            const lightbox = document.getElementById('tutorial-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const stepTitle = document.getElementById('modal-step-title');
+
+            if (imgEl && lightbox && lightboxImg) {
+                lightboxImg.src = imgEl.src;
+                lightboxImg.alt = imgEl.alt || 'Captura de pantalla en tamaño original';
+                if (lightboxCaption && stepTitle) {
+                    lightboxCaption.innerText = stepTitle.innerText || '';
+                }
+                lightbox.classList.remove('hidden');
+                console.log('[DEBUG][Lightbox] Visor a pantalla completa abierto para captura:', imgEl.src);
+            }
+        }
+
+        function closeTutorialLightbox() {
+            const lightbox = document.getElementById('tutorial-lightbox');
+            if (lightbox) {
+                lightbox.classList.add('hidden');
+                console.log('[DEBUG][Lightbox] Visor a pantalla completa cerrado.');
+            }
+        }
+
         function checkUrlForTutorial() {
             const hash = window.location.hash;
             if (hash.startsWith('#guia=')) {
@@ -2156,6 +2228,11 @@
 
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
+                const lightbox = document.getElementById('tutorial-lightbox');
+                if (lightbox && !lightbox.classList.contains('hidden')) {
+                    closeTutorialLightbox();
+                    return;
+                }
                 closeArticleModal();
                 closeTutorialModal();
             }
