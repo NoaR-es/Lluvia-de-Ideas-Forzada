@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <filter id="shadowErr1" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="600" height="380" rx="16" fill="#F8FAFC"/>
+  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <g transform="translate(80, 50)" filter="url(#shadowErr1)">
+    <rect width="440" height="280" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="30" y="24" width="90" height="22" rx="11" fill="#FEF3C7"/>
+    <text x="40" y="38" fill="#B45309" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">LÍMITE POR MINUTO</text>
+    
+    <text x="30" y="76" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">Error 429: Cuota Excedida</text>
+    <text x="30" y="96" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Google asigna 15 peticiones gratuitas por minuto (15 RPM)</text>
+
+    <!-- Speedometer / RPM Graphic -->
+    <g transform="translate(30, 115)">
+      <rect width="380" height="70" rx="12" fill="#FFFBEB" stroke="#FDE68A"/>
+      <circle cx="40" cy="35" r="22" fill="#F59E0B"/>
+      <text x="32" y="42" fill="#FFFFFF" font-size="20">⏱️</text>
+      <text x="76" y="30" fill="#92400E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800">Ventana rodante de 60 segundos</text>
+      <text x="76" y="48" fill="#B45309" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Al lanzar muchas disrupciones continuas, el servidor pide una breve pausa.</text>
+    </g>
+
+    <!-- Solution note -->
+    <g transform="translate(30, 205)">
+      <rect width="380" height="48" rx="10" fill="#F0FDF4" stroke="#BBF7D0"/>
+      <text x="14" y="22" fill="#166534" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">✓ Solución inmediata: Espera 60s o cambia a IA Local</text>
+      <text x="14" y="38" fill="#15803D" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">El contador se resetea automáticamente en el siguiente minuto.</text>
+    </g>
+  </g>
+</svg>

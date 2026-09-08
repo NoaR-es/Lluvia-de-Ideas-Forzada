@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <filter id="shadow1" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EFF6FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="380" rx="16" fill="url(#bgGrad1)"/>
+  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- Browser / App Header Bar -->
+  <rect x="0" y="0" width="600" height="42" rx="16" fill="#FFFFFF"/>
+  <path d="M0 26 h600 v16 h-600 z" fill="#FFFFFF"/>
+  <line x1="0" y1="42" x2="600" y2="42" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="40" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="56" cy="21" r="5" fill="#10B981"/>
+
+  <!-- URL Pill -->
+  <rect x="140" y="9" width="320" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <path d="M154 18 a3 3 0 0 1 6 0 v2 h-6 v-2 z M152 20 h10 v6 h-10 z" fill="#64748B"/>
+  <text x="170" y="25" fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">aistudio.google.com</text>
+
+  <!-- Google AI Studio Logo Branding in Canvas -->
+  <g transform="translate(40, 70)">
+    <!-- Sparkle AI Icon -->
+    <path d="M20 4 C20 12 28 20 36 20 C28 20 20 28 20 36 C20 28 12 20 4 20 C12 20 20 12 20 4 Z" fill="#4F46E5"/>
+    <text x="48" y="26" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800">Google AI Studio</text>
+    <rect x="230" y="9" width="86" height="22" rx="11" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="242" y="24" fill="#4338CA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">DEVELOPER</text>
+  </g>
+
+  <!-- Login Card Window -->
+  <g transform="translate(110, 120)" filter="url(#shadow1)">
+    <rect width="380" height="220" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <!-- Step Badge -->
+    <rect x="30" y="24" width="70" height="22" rx="11" fill="#EEF2FF"/>
+    <text x="42" y="38" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">PASO 1</text>
+
+    <text x="30" y="74" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">Inicia Sesión con Google</text>
+    <text x="30" y="98" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Usa la misma cuenta de Gmail que utilizas en tu Android</text>
+
+    <!-- Google Sign In Button Highlighted -->
+    <g transform="translate(30, 124)">
+      <rect width="320" height="52" rx="14" fill="#F8FAFC" stroke="#4F46E5" stroke-width="2"/>
+      
+      <!-- Google 4-Color 'G' Logo -->
+      <g transform="translate(24, 16)">
+        <path d="M19.6 10.2 c0-.7-.06-1.4-.18-2 H10 v4 h5.4 c-.23 1.2-.95 2.3-2 3 v2.5 h3.2 c1.9-1.8 3-4.4 3-7.5 z" fill="#4285F4"/>
+        <path d="M10 20 c2.7 0 5-0.9 6.6-2.4 l-3.2-2.5 c-0.9 0.6-2.1 1-3.4 1 -2.6 0-4.8-1.8-5.6-4.2 H1.1 v2.6 C2.8 17.8 6.1 20 10 20 z" fill="#34A853"/>
+        <path d="M4.4 11.9 c-.2-.6-.3-1.3-.3-1.9 0-.7.1-1.3.3-1.9 V5.5 H1.1 C0.4 6.9 0 8.4 0 10 c0 1.6.4 3.1 1.1 4.5 l3.3-2.6 z" fill="#FBBC05"/>
+        <path d="M10 3.9 c1.5 0 2.8.5 3.8 1.5 l2.9-2.9 C15 1 12.7 0 10 0 6.1 0 2.8 2.2 1.1 5.5 l3.3 2.6 C5.2 5.7 7.4 3.9 10 3.9 z" fill="#EA4335"/>
+      </g>
+
+      <text x="64" y="31" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Continuar con Google / Gmail</text>
+      
+      <!-- Click Indicator Pin -->
+      <circle cx="300" cy="26" r="14" fill="#4F46E5" fill-opacity="0.15"/>
+      <circle cx="300" cy="26" r="8" fill="#4F46E5"/>
+    </g>
+
+    <!-- Free Tier Notice -->
+    <text x="100" y="198" fill="#059669" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">✓ 100% Gratuito • Sin tarjeta bancaria requerida</text>
+  </g>
+</svg>

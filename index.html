@@ -91,6 +91,7 @@
                 <a href="#que-es" class="nav-pill-btn" data-i18n="nav_what_is">¿Qué es Brainstorming?</a>
                 <a href="#funciones" class="nav-pill-btn" data-i18n="nav_features">Características</a>
                 <a href="#casos-uso" class="nav-pill-btn" data-i18n="nav_use_cases">Casos de Uso</a>
+                <a href="#tutoriales" class="nav-pill-btn" data-i18n="nav_tutorials">Guías & Ayuda</a>
                 <a href="blog/index.html" class="nav-pill-btn" data-i18n="nav_blog">Blog</a>
             </nav>
 
@@ -158,6 +159,10 @@
             <span class="text-lg">🎯</span>
             <span data-i18n="nav_use_cases">Casos de Uso</span>
         </a>
+        <a href="#tutoriales" onclick="closeMobileNav()" class="mobile-nav-pill">
+            <span class="text-lg">🛠️</span>
+            <span data-i18n="nav_tutorials">Guías & Ayuda</span>
+        </a>
         <a href="blog/index.html" onclick="closeMobileNav()" class="mobile-nav-pill">
             <span class="text-lg">📝</span>
             <span data-i18n="nav_blog">Blog</span>
@@ -179,10 +184,18 @@
             <div class="grid lg:grid-cols-12 gap-12 items-center">
 
                 <div class="lg:col-span-7 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-6 shadow-sm">
-                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span data-i18n="hero_pill">Descarga 100% Gratuita • Sin Suscripciones</span>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6">
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold shadow-sm">
+                            <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span data-i18n="hero_pill">Descarga 100% Gratuita • Sin Suscripciones</span>
+                        </div>
+                        <button type="button" onclick="openTutorial('aistudio-api-key')"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 text-xs font-bold transition shadow-sm transform hover:-translate-y-0.5">
+                            <span>🔑</span>
+                            <span data-i18n="hero_api_guide_pill">Guía: Clave de Google AI Studio Gratis</span>
+                            <span class="text-indigo-500 font-bold">➔</span>
+                        </button>
                     </div>
 
                     <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
@@ -864,6 +877,139 @@
         </div>
     </section>
 
+    <!-- CENTRO DE GUÍAS PRÁCTICAS & RESOLUCIÓN DE PROBLEMAS (TUTORIAL HUB) -->
+    <section id="tutoriales" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-200"
+                    data-i18n="tut_tag">Centro de Guías & Ayuda</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3" data-i18n="tut_title">
+                    Aprende a Sacar el Máximo Partido a tu IA
+                </h2>
+                <p class="mt-4 text-base text-slate-600 font-normal leading-relaxed" data-i18n="tut_sub">
+                    Tutoriales paso a paso ilustrados para configurar tus claves gratuitas y dominar cada herramienta.
+                </p>
+            </div>
+
+            <!-- TARJETA DESTACADA (SPOTLIGHT): GOOGLE AI STUDIO API KEY -->
+            <div class="p-6 sm:p-10 rounded-[32px] bg-white border border-slate-200 shadow-xl shadow-slate-900/5 hover:border-brand-300 transition duration-300 mb-12"
+                data-aos="fade-up">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="flex flex-wrap items-center gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200"
+                                data-i18n="tut_feat_badge">Guía Esencial</span>
+                            <span class="text-xs font-semibold text-slate-500" data-i18n="tut_feat_time">Lectura de 3 min</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">0 € • Sin Tarjeta</span>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight"
+                            data-i18n="tut_feat_title">
+                            Cómo Activar tu API de Gemini en Google AI Studio (100% Gratis)
+                        </h3>
+
+                        <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal"
+                            data-i18n="tut_feat_desc">
+                            Tutorial guiado paso a paso desde cero: inicia sesión con Google, acepta las condiciones de IA, crea tu clave en un proyecto automático sin costes y vincúlala en tu Android.
+                        </p>
+
+                        <ul class="mt-6 space-y-2.5 text-xs sm:text-sm font-semibold text-slate-700">
+                            <li class="flex items-center gap-2">
+                                <span class="text-emerald-500 font-bold text-base">✓</span>
+                                <span data-i18n="tut_feat_point1">Sin tarjeta de crédito ni suscripciones (nivel gratuito developer).</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-emerald-500 font-bold text-base">✓</span>
+                                <span data-i18n="tut_feat_point2">Configuración en 2 minutos directamente desde tu navegador.</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-emerald-500 font-bold text-base">✓</span>
+                                <span data-i18n="tut_feat_point3">Tu clave se guarda encriptada únicamente en tu móvil.</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+                            <button type="button" onclick="openTutorial('aistudio-api-key')"
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm border border-amber-500/40 transition-all shadow-md transform hover:-translate-y-0.5 touch-manipulation cursor-pointer">
+                                <span data-i18n="tut_btn_open">Iniciar Tutorial Guiado con Imágenes</span>
+                                <span>➔</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="relative group cursor-pointer" onclick="openTutorial('aistudio-api-key')">
+                            <div class="w-full aspect-[16/11] rounded-2xl bg-slate-50 border border-slate-200/80 p-3 shadow-inner overflow-hidden flex items-center justify-center">
+                                <img src="img/tutorials/aistudio-step-1.svg" alt="Google AI Studio Tutorial Preview"
+                                    class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                            </div>
+                            <div class="absolute inset-0 bg-slate-900/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-4 py-2 rounded-xl bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold shadow-md" data-i18n="tut_preview_click">
+                                    🔍 Clic para Abrir Pasos
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRILLA DE RESOLUCIÓN DE PROBLEMAS FRECUENTES (ESCALABILIDAD EN ACCIÓN) -->
+            <div class="mt-12" data-aos="fade-up">
+                <div class="flex items-center justify-between mb-6">
+                    <h4 class="text-lg sm:text-xl font-extrabold text-slate-900" data-i18n="tut_more_heading">
+                        Resolución de Problemas Frecuentes
+                    </h4>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Tarjeta Problema 2: Error 429 -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-brand-300 hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+                                    Solución de Error
+                                </span>
+                                <span class="text-xs text-slate-500 font-semibold">1 min</span>
+                            </div>
+                            <h5 class="text-base font-bold text-slate-900 mb-2" data-i18n="tut_card2_title">
+                                Cómo solucionar el 'Error 429: Cuota Excedida'
+                            </h5>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="tut_card2_desc">
+                                Qué hacer cuando se alcanza el límite de 15 peticiones por minuto de la API gratuita.
+                            </p>
+                        </div>
+                        <button type="button" onclick="openTutorial('error-429-cuota')"
+                            class="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-600 hover:text-brand-700 transition pt-3 border-t border-slate-100">
+                            <span data-i18n="tut_btn_view_solution">Ver Solución Paso a Paso →</span>
+                        </button>
+                    </div>
+
+                    <!-- Tarjeta Problema 3: RAG Local -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-brand-300 hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    Documentos & RAG
+                                </span>
+                                <span class="text-xs text-slate-500 font-semibold">2 min</span>
+                            </div>
+                            <h5 class="text-base font-bold text-slate-900 mb-2" data-i18n="tut_card3_title">
+                                Optimización de Documentos y PDFs en RAG Local
+                            </h5>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4" data-i18n="tut_card3_desc">
+                                Formatos recomendados para que el motor vectorial local extraiga ideas con máxima precisión.
+                            </p>
+                        </div>
+                        <button type="button" onclick="openTutorial('rag-local-setup')"
+                            class="inline-flex items-center gap-1.5 text-xs font-extrabold text-brand-600 hover:text-brand-700 transition pt-3 border-t border-slate-100">
+                            <span data-i18n="tut_btn_view_solution">Ver Solución Paso a Paso →</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BLOG EXTENDIDO (ENRUTAMIENTO SPA VIA URL HASH) -->
     <section id="articulos" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1070,6 +1216,77 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         VISOR MODAL UNIVERSAL RESPONSIVE DE TUTORIALES
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="tutorial-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-5 md:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-step-title">
+        <div class="relative w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh] my-auto animate-modal-in">
+            <!-- Modal Header -->
+            <div class="px-4 sm:px-8 py-3.5 sm:py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/95 shrink-0">
+                <div class="flex items-center gap-2 sm:gap-3 overflow-hidden">
+                    <span id="modal-tutorial-badge" class="px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-extrabold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200 shrink-0"></span>
+                    <h3 id="modal-tutorial-title" class="text-xs sm:text-base md:text-lg font-extrabold text-slate-900 truncate"></h3>
+                </div>
+                <button type="button" onclick="closeTutorialModal()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm sm:text-base transition shrink-0 ml-2 touch-manipulation cursor-pointer" aria-label="Cerrar modal">✕</button>
+            </div>
+
+            <!-- Progress Track -->
+            <div class="w-full h-1.5 bg-slate-100 relative overflow-hidden shrink-0">
+                <div id="modal-progress-bar" class="h-full bg-gradient-to-r from-brand-500 via-indigo-600 to-brand-accent transition-all duration-300 ease-out" style="width: 20%;"></div>
+            </div>
+
+            <!-- Modal Body (Responsive Scrollable Grid) -->
+            <div class="p-3.5 sm:p-6 md:p-8 overflow-y-auto flex-1 overscroll-contain">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 md:gap-8 items-center">
+                    <!-- Media Illustration Column -->
+                    <div class="md:col-span-6 flex justify-center w-full">
+                        <div class="w-full aspect-[16/10] sm:aspect-[16/11] max-h-48 sm:max-h-60 md:max-h-80 rounded-2xl bg-slate-50 border border-slate-200/80 p-2 sm:p-3 flex items-center justify-center shadow-inner overflow-hidden">
+                            <img id="modal-step-img" src="" alt="Ilustración del tutorial" class="w-full h-full object-contain drop-shadow-sm transition-all duration-300" loading="lazy" />
+                        </div>
+                    </div>
+
+                    <!-- Step Explanation Column -->
+                    <div class="md:col-span-6 flex flex-col justify-center text-left">
+                        <div class="flex items-center gap-2 mb-2 sm:mb-2.5">
+                            <span id="modal-step-num" class="text-xs font-extrabold text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-200">Paso 1 de 5</span>
+                            <span class="text-xs text-slate-400">•</span>
+                            <span class="text-xs font-semibold text-slate-500" data-i18n="tut_step_guide_label">Paso a paso ilustrado</span>
+                        </div>
+                        <h4 id="modal-step-title" class="text-sm sm:text-lg md:text-xl font-extrabold text-slate-900 leading-snug mb-2 sm:mb-2.5"></h4>
+                        <p id="modal-step-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3 sm:mb-4"></p>
+
+                        <!-- External Action Button (Optional) -->
+                        <div id="modal-action-container" class="mb-3 sm:mb-4 hidden">
+                            <a id="modal-action-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 font-bold text-xs shadow-sm transition transform hover:-translate-y-0.5 touch-manipulation">
+                                <span id="modal-action-text"></span>
+                            </a>
+                        </div>
+
+                        <!-- Tip or Warning Callout Box -->
+                        <div id="modal-callout" class="tutorial-callout hidden">
+                            <span id="modal-callout-icon" class="text-base shrink-0 mt-0.5">💡</span>
+                            <p id="modal-callout-text" class="text-xs font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer (Stepper Controls) -->
+            <div class="px-3.5 sm:px-8 py-3 sm:py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-2 sm:gap-3 shrink-0">
+                <button type="button" id="modal-btn-prev" onclick="prevTutorialStep()" class="inline-flex items-center gap-1 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 font-bold text-xs hover:bg-slate-100 transition shadow-sm min-h-[40px] sm:min-h-[44px] touch-manipulation cursor-pointer shrink-0">
+                    ← <span data-i18n="tut_btn_prev">Anterior</span>
+                </button>
+
+                <!-- Step Dots Indicator -->
+                <div id="modal-step-dots" class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1 max-w-[120px] xs:max-w-[160px] sm:max-w-none justify-center shrink"></div>
+
+                <button type="button" id="modal-btn-next" onclick="nextTutorialStep()" class="inline-flex items-center gap-1 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs border border-amber-500/40 transition shadow-sm transform hover:-translate-y-0.5 min-h-[40px] sm:min-h-[44px] touch-manipulation cursor-pointer shrink-0">
+                    <span id="modal-btn-next-text" data-i18n="tut_btn_next">Siguiente →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPT COMPLETO: MOTOR DE ARTÍCULOS, I18N Y DEEP-LINKING HASH -->
     <script>
         let currentLanguage = 'es';
@@ -1256,7 +1473,40 @@
                 f_privacy: "Política de Privacidad",
                 f_terms: "Términos del Servicio",
                 f_contact: "Contacto y Soporte",
-                f_rights: "© 2026 Lluvia de Ideas Forzada. Todos los derechos reservados."
+                f_rights: "© 2026 Lluvia de Ideas Forzada. Todos los derechos reservados.",
+                // Tutorial Hub & Modal
+                nav_tutorials: "Guías & Ayuda",
+                hero_api_guide_pill: "Guía: Clave de Google AI Studio Gratis ➔",
+                tut_tag: "Centro de Guías & Ayuda",
+                tut_title: "Aprende a Sacar el Máximo Partido a tu IA",
+                tut_sub: "Tutoriales paso a paso ilustrados para configurar tus claves gratuitas y dominar cada herramienta.",
+                tut_feat_badge: "Guía Esencial",
+                tut_feat_time: "Lectura de 3 min",
+                tut_feat_free_pill: "0 € • Sin Tarjeta",
+                tut_feat_title: "Cómo Activar tu API de Gemini en Google AI Studio (100% Gratis)",
+                tut_feat_desc: "Tutorial guiado paso a paso desde cero: inicia sesión con Google, acepta las condiciones de IA, crea tu clave en un proyecto automático sin costes y vincúlala en tu Android.",
+                tut_feat_point1: "Sin tarjeta de crédito ni suscripciones (nivel gratuito developer).",
+                tut_feat_point2: "Configuración en 2 minutos directamente desde tu navegador.",
+                tut_feat_point3: "Tu clave se guarda encriptada únicamente en tu móvil.",
+                tut_btn_open: "Iniciar Tutorial Guiado con Imágenes",
+                tut_preview_click: "🔍 Clic para Abrir Pasos",
+                tut_more_heading: "Resolución de Problemas Frecuentes",
+                tut_card2_badge: "Solución de Error",
+                tut_card2_time: "1 min",
+                tut_card2_title: "Cómo solucionar el 'Error 429: Cuota Excedida'",
+                tut_card2_desc: "Qué hacer cuando se alcanza el límite de 15 peticiones por minuto de la API gratuita.",
+                tut_card2_btn: "Ver Solución Paso a Paso →",
+                tut_card3_badge: "Documentos & RAG",
+                tut_card3_time: "2 min",
+                tut_card3_title: "Optimización de Documentos y PDFs en RAG Local",
+                tut_card3_desc: "Formatos recomendados para que el motor vectorial local extraiga ideas con máxima precisión.",
+                tut_card3_btn: "Ver Solución Paso a Paso →",
+                tut_btn_view_solution: "Ver Solución Paso a Paso →",
+                tut_step_guide_label: "Paso a paso ilustrado",
+                tut_btn_prev: "Anterior",
+                tut_btn_next: "Siguiente →",
+                tut_btn_finish: "¡Listo! Finalizar ✓",
+                tut_step_of: "Paso {current} de {total}"
             },
             en: {
                 app_title: "Forced Brainstorming",
@@ -1345,7 +1595,234 @@
                 f_privacy: "Privacy Policy",
                 f_terms: "Terms of Service",
                 f_contact: "Contact & Support",
-                f_rights: "© 2026 Forced Brainstorming. All rights reserved."
+                f_rights: "© 2026 Forced Brainstorming. All rights reserved.",
+                // Tutorial Hub & Modal
+                nav_tutorials: "Guides & Help",
+                hero_api_guide_pill: "Guide: Free Google AI Studio API Key ➔",
+                tut_tag: "Help Center & Practical Guides",
+                tut_title: "Unlock the Full Power of Your AI",
+                tut_sub: "Illustrated step-by-step walkthroughs to configure your free keys and master each tool.",
+                tut_feat_badge: "Essential Guide",
+                tut_feat_time: "3 min read",
+                tut_feat_free_pill: "0 € • No Credit Card",
+                tut_feat_title: "How to Activate Your Gemini API Key in Google AI Studio (100% Free)",
+                tut_feat_desc: "Step-by-step zero-friction onboarding: sign in with Google, accept generative AI terms, generate your key in an automated free project, and link it in Android.",
+                tut_feat_point1: "Zero credit card or paid subscriptions needed (free developer tier).",
+                tut_feat_point2: "Complete 2-minute setup directly in your mobile browser.",
+                tut_feat_point3: "Your key stays encrypted locally on your Android device.",
+                tut_btn_open: "Launch Illustrated Step-by-Step Guide",
+                tut_preview_click: "🔍 Click to Open Steps",
+                tut_more_heading: "Frequent Troubleshooting & Quick Fixes",
+                tut_card2_badge: "Troubleshooting",
+                tut_card2_time: "1 min",
+                tut_card2_title: "How to Fix 'Error 429: Resource Exhausted / Rate Limit'",
+                tut_card2_desc: "What to do when hitting the 15 requests/minute limit on the free Gemini tier.",
+                tut_card2_btn: "View Step-by-Step Fix →",
+                tut_card3_badge: "Documents & RAG",
+                tut_card3_time: "2 min",
+                tut_card3_title: "Optimizing Documents & PDFs for Edge Local RAG",
+                tut_card3_desc: "Recommended file formats and chunking tips for maximum precision in offline vector search.",
+                tut_card3_btn: "View Step-by-Step Fix →",
+                tut_btn_view_solution: "View Step-by-Step Fix →",
+                tut_step_guide_label: "Illustrated walkthrough",
+                tut_btn_prev: "Previous",
+                tut_btn_next: "Next →",
+                tut_btn_finish: "Done! Close ✓",
+                tut_step_of: "Step {current} of {total}"
+            }
+        };
+
+        // BASE DE DATOS DE TUTORIALES Y RESOLUCIÓN DE PROBLEMAS (BILINGÜE ES/EN)
+        const tutorialsDatabase = {
+            es: {
+                "aistudio-api-key": {
+                    id: "aistudio-api-key",
+                    category: "api",
+                    featured: true,
+                    badge: "Guía Esencial",
+                    timeEstimate: "3 min",
+                    title: "Cómo activar tu API de Google AI Studio desde cero (100% Gratis)",
+                    problemSummary: "¿Primera vez usando tu propia IA? Guía paso a paso ilustrada sin necesidad de tarjeta ni suscripciones de pago.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "Acceso e Inicio de Sesión",
+                            description: "Accede al portal oficial de Google AI Studio con tu cuenta habitual de Google / Gmail (la misma cuenta que usas en tu teléfono Android).",
+                            image: "img/tutorials/aistudio-step-1.svg",
+                            actionButton: {
+                                text: "Abrir Google AI Studio ➔",
+                                url: "https://aistudio.google.com/app/apikey"
+                            },
+                            tip: "No necesitas tarjeta de crédito ni Gemini Advanced; el nivel estándar developer es 100% gratuito."
+                        },
+                        {
+                            stepNumber: 2,
+                            title: "Aceptación de Términos de Servicio de IA",
+                            description: "Al ser tu primera vez, Google te mostrará los Términos de Servicio de IA Generativa. Marca las casillas requeridas y confirma que estás conforme con el servicio.",
+                            image: "img/tutorials/aistudio-step-2.svg",
+                            tip: "Este paso inicializa tu espacio de desarrollo en Google Cloud de forma automática y con coste 0 €."
+                        },
+                        {
+                            stepNumber: 3,
+                            title: "Creación de la Clave de API",
+                            description: "Pulsa en 'Get API key' y luego en 'Create API key'. Selecciona la opción 'Create API key in new project' para que Google autoconfigure el entorno.",
+                            image: "img/tutorials/aistudio-step-3.svg",
+                            tip: "No necesitas crear manualmente proyectos en Google Cloud Console, AI Studio lo hace en un clic."
+                        },
+                        {
+                            stepNumber: 4,
+                            title: "Copia Segura de tu Clave",
+                            description: "Copia la clave alfanumérica generada (inicia siempre por 'AIzaSy...'). Guárdala en el portapapeles de tu dispositivo.",
+                            image: "img/tutorials/aistudio-step-4.svg",
+                            warning: "Mantén esta clave privada. No la compartas en capturas públicas, foros ni redes sociales."
+                        },
+                        {
+                            stepNumber: 5,
+                            title: "Vinculación en 'Lluvia de Ideas Forzada'",
+                            description: "Abre la app en tu Android, ve a Ajustes > Proveedor IA > Clave de API Gemini, pega la clave y pulsa 'Validar y Conectar'.",
+                            image: "img/tutorials/aistudio-step-5.svg",
+                            tip: "Aparecerá una insignia verde de verificación activa y ya podrás realizar lluvias de ideas ilimitadas."
+                        }
+                    ]
+                },
+                "error-429-cuota": {
+                    id: "error-429-cuota",
+                    category: "troubleshooting",
+                    featured: false,
+                    badge: "Solución de Error",
+                    timeEstimate: "1 min",
+                    title: "Cómo solucionar el 'Error 429: Cuota Excedida / Resource Exhausted'",
+                    problemSummary: "La API gratuita de Google permite hasta 15 peticiones por minuto. Aprende cómo gestionarlo con total facilidad.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "Comprender la Ventana de 60 Segundos",
+                            description: "Google reinicia el contador de peticiones cada minuto. Si generas muchas ideas consecutivas en pocos segundos, el servidor pausa temporalmente las llamadas.",
+                            image: "img/tutorials/error-429-step-1.svg",
+                            tip: "El contador se restablece automáticamente transcurridos 60 segundos."
+                        },
+                        {
+                            stepNumber: 2,
+                            title: "Alternar a Motor Local o Esperar 1 Minuto",
+                            description: "Puedes esperar un minuto para continuar con la API de Google, o activar en Ajustes el motor 'Gemini Nano / On-Device' para ideación 100% offline y sin límite de peticiones.",
+                            image: "img/tutorials/error-429-step-2.svg",
+                            tip: "La ideación local no consume cuota de internet ni depende de servidores externos."
+                        }
+                    ]
+                },
+                "rag-local-setup": {
+                    id: "rag-local-setup",
+                    category: "rag",
+                    featured: false,
+                    badge: "Documentos & RAG",
+                    timeEstimate: "2 min",
+                    title: "Optimización de Documentos y PDFs en RAG Local",
+                    problemSummary: "Mejores prácticas de formato y fragmentación para búsquedas vectoriales precisas en tu dispositivo.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "Carga y Vectorización de Archivos",
+                            description: "Adjunta archivos PDF limpios con texto seleccionable o notas en formato TXT/Markdown. La app genera vectores semánticos locales en tu SQLite sin enviar el archivo a ningún servidor.",
+                            image: "img/tutorials/rag-step-1.svg",
+                            tip: "Evita documentos escaneados como imagen sin OCR para que el buscador semántico pueda indexar los párrafos."
+                        }
+                    ]
+                }
+            },
+            en: {
+                "aistudio-api-key": {
+                    id: "aistudio-api-key",
+                    category: "api",
+                    featured: true,
+                    badge: "Essential Guide",
+                    timeEstimate: "3 min",
+                    title: "How to set up your Google AI Studio API Key from scratch (100% Free)",
+                    problemSummary: "First time bringing your own AI? Illustrated step-by-step walkthrough with no credit card or paid subscriptions required.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "Sign In with Google",
+                            description: "Go to Google AI Studio using your standard Google / Gmail account (the same one you use on your Android device).",
+                            image: "img/tutorials/aistudio-step-1.svg",
+                            actionButton: {
+                                text: "Open Google AI Studio ➔",
+                                url: "https://aistudio.google.com/app/apikey"
+                            },
+                            tip: "No credit card or Gemini Advanced plan required; the developer tier is 100% free."
+                        },
+                        {
+                            stepNumber: 2,
+                            title: "Accept Generative AI Terms",
+                            description: "On your first visit, review and accept Google's Generative AI Terms of Service and confirm regional compliance.",
+                            image: "img/tutorials/aistudio-step-2.svg",
+                            tip: "This automatically sets up your sandbox workspace in Google Cloud with 0€ charges."
+                        },
+                        {
+                            stepNumber: 3,
+                            title: "Generate API Key",
+                            description: "Click on 'Get API key' and then 'Create API key'. Choose 'Create API key in new project' for an effortless automatic setup.",
+                            image: "img/tutorials/aistudio-step-3.svg",
+                            tip: "No need to manually configure Google Cloud Console; AI Studio handles it in one click."
+                        },
+                        {
+                            stepNumber: 4,
+                            title: "Copy Your Secure Key",
+                            description: "Copy the generated alphanumeric string (it starts with 'AIzaSy...'). Save it to your clipboard.",
+                            image: "img/tutorials/aistudio-step-4.svg",
+                            warning: "Keep this key strictly private. Never share it in screenshots, public repositories, or forums."
+                        },
+                        {
+                            stepNumber: 5,
+                            title: "Link in 'Forced Brainstorming'",
+                            description: "Open the app on your Android device, head to Settings > AI Provider > Gemini API Key, paste it, and tap 'Validate & Connect'.",
+                            image: "img/tutorials/aistudio-step-5.svg",
+                            tip: "A green confirmation badge will appear and you can start generating unlimited ideas."
+                        }
+                    ]
+                },
+                "error-429-cuota": {
+                    id: "error-429-cuota",
+                    category: "troubleshooting",
+                    featured: false,
+                    badge: "Troubleshooting",
+                    timeEstimate: "1 min",
+                    title: "How to fix 'Error 429: Quota Exceeded / Resource Exhausted'",
+                    problemSummary: "The Google free tier allows up to 15 requests per minute. Here is how to handle it effortlessly.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "Understand the 60-Second Quota Window",
+                            description: "Google refreshes API quotas every 60 seconds. Rapidly firing brainstorming prompts in sequence can trigger a temporary throttle.",
+                            image: "img/tutorials/error-429-step-1.svg",
+                            tip: "The quota counter resets automatically after 60 seconds."
+                        },
+                        {
+                            stepNumber: 2,
+                            title: "Wait 60s or Switch to Local Engine",
+                            description: "Simply wait 60 seconds to resume cloud generation, or switch in Settings to 'Gemini Nano / On-Device' for 100% offline, quota-free brainstorming.",
+                            image: "img/tutorials/error-429-step-2.svg",
+                            tip: "Local on-device models do not consume API limits or internet data."
+                        }
+                    ]
+                },
+                "rag-local-setup": {
+                    id: "rag-local-setup",
+                    category: "rag",
+                    featured: false,
+                    badge: "Documents & RAG",
+                    timeEstimate: "2 min",
+                    title: "Optimizing Documents & PDFs for Edge Local RAG",
+                    problemSummary: "Best practices for document structure and chunking to achieve high-precision vector retrieval offline.",
+                    steps: [
+                        {
+                            stepNumber: 1,
+                            title: "File Attachment & Vectorization",
+                            description: "Attach clean searchable PDFs or plain text/Markdown notes. The app computes local semantic embeddings directly into your SQLite database with zero cloud transfer.",
+                            image: "img/tutorials/rag-step-1.svg",
+                            tip: "Avoid purely scanned image PDFs without OCR so the semantic tokenizer can parse paragraph vectors."
+                        }
+                    ]
+                }
             }
         };
 
@@ -1436,6 +1913,184 @@
             }
         }
 
+        // ═══════════════════════════════════════════════════════════════
+        // MOTOR DE TUTORIALES PASO A PASO (STEPPER INTERACTIVO RESPONSIVE)
+        // ═══════════════════════════════════════════════════════════════
+        let activeTutorialId = null;
+        let activeTutorialStep = 0;
+
+        function openTutorial(tutorialId, stepIndex = 0, updateHistory = true) {
+            console.log('[DEBUG][TutorialHub] Solicitud openTutorial:', tutorialId, 'Paso:', stepIndex);
+            const db = tutorialsDatabase[currentLanguage] || tutorialsDatabase['es'];
+            const tutorial = db[tutorialId];
+            if (!tutorial) {
+                console.warn('[DEBUG][TutorialHub] Tutorial no encontrado en base de datos:', tutorialId);
+                return;
+            }
+
+            activeTutorialId = tutorialId;
+            activeTutorialStep = Math.max(0, Math.min(stepIndex, tutorial.steps.length - 1));
+
+            renderCurrentTutorialStep();
+
+            const modal = document.getElementById('tutorial-modal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('article-modal-active');
+
+            if (updateHistory) {
+                window.location.hash = `guia=${tutorialId}`;
+            }
+
+            console.log('[DEBUG][TutorialHub] Modal de tutorial visible para:', tutorialId);
+        }
+
+        function renderCurrentTutorialStep() {
+            if (!activeTutorialId) return;
+            const db = tutorialsDatabase[currentLanguage] || tutorialsDatabase['es'];
+            const tutorial = db[activeTutorialId];
+            if (!tutorial) return;
+
+            const totalSteps = tutorial.steps.length;
+            if (activeTutorialStep >= totalSteps) activeTutorialStep = totalSteps - 1;
+            const step = tutorial.steps[activeTutorialStep];
+            const i18n = translations[currentLanguage] || translations['es'];
+
+            // Header info
+            document.getElementById('modal-tutorial-badge').innerText = tutorial.badge;
+            document.getElementById('modal-tutorial-title').innerText = tutorial.title;
+
+            // Progress bar
+            const progressPercent = Math.round(((activeTutorialStep + 1) / totalSteps) * 100);
+            document.getElementById('modal-progress-bar').style.width = `${progressPercent}%`;
+
+            // Media illustration
+            const imgEl = document.getElementById('modal-step-img');
+            imgEl.src = step.image;
+            imgEl.alt = `${tutorial.title} - ${step.title}`;
+
+            // Step number badge
+            const stepOfTemplate = i18n.tut_step_of || 'Paso {current} de {total}';
+            document.getElementById('modal-step-num').innerText = stepOfTemplate
+                .replace('{current}', activeTutorialStep + 1)
+                .replace('{total}', totalSteps);
+
+            // Step texts
+            document.getElementById('modal-step-title').innerText = step.title;
+            document.getElementById('modal-step-desc').innerText = step.description;
+
+            // Optional action button
+            const actionContainer = document.getElementById('modal-action-container');
+            const actionBtn = document.getElementById('modal-action-btn');
+            const actionText = document.getElementById('modal-action-text');
+            if (step.actionButton) {
+                actionBtn.href = step.actionButton.url;
+                actionText.innerText = step.actionButton.text;
+                actionContainer.classList.remove('hidden');
+            } else {
+                actionContainer.classList.add('hidden');
+            }
+
+            // Tip / Warning Callout Box
+            const calloutEl = document.getElementById('modal-callout');
+            const calloutIcon = document.getElementById('modal-callout-icon');
+            const calloutText = document.getElementById('modal-callout-text');
+
+            if (step.warning) {
+                calloutEl.className = 'tutorial-callout warning';
+                calloutIcon.innerText = '⚠️';
+                calloutText.innerText = step.warning;
+                calloutEl.classList.remove('hidden');
+            } else if (step.tip) {
+                calloutEl.className = 'tutorial-callout tip';
+                calloutIcon.innerText = '💡';
+                calloutText.innerText = step.tip;
+                calloutEl.classList.remove('hidden');
+            } else {
+                calloutEl.classList.add('hidden');
+            }
+
+            // Stepper Dots Indicator
+            const dotsContainer = document.getElementById('modal-step-dots');
+            let dotsHtml = '';
+            for (let i = 0; i < totalSteps; i++) {
+                const isActive = i === activeTutorialStep;
+                dotsHtml += `<button type="button" onclick="goToTutorialStep(${i})" class="tutorial-dot ${isActive ? 'active' : ''}" aria-label="Ir al paso ${i + 1}"></button>`;
+            }
+            dotsContainer.innerHTML = dotsHtml;
+
+            // Prev Button
+            const prevBtn = document.getElementById('modal-btn-prev');
+            if (activeTutorialStep === 0) {
+                prevBtn.classList.add('opacity-40', 'pointer-events-none');
+            } else {
+                prevBtn.classList.remove('opacity-40', 'pointer-events-none');
+            }
+
+            // Next / Finish Button
+            const nextBtnText = document.getElementById('modal-btn-next-text');
+            if (activeTutorialStep === totalSteps - 1) {
+                nextBtnText.innerText = i18n.tut_btn_finish || '¡Listo! Finalizar ✓';
+            } else {
+                nextBtnText.innerText = i18n.tut_btn_next || 'Siguiente →';
+            }
+
+            console.log(`[DEBUG][TutorialHub] Renderizado paso ${activeTutorialStep + 1}/${totalSteps} para ${activeTutorialId}`);
+        }
+
+        function nextTutorialStep() {
+            if (!activeTutorialId) return;
+            const db = tutorialsDatabase[currentLanguage] || tutorialsDatabase['es'];
+            const tutorial = db[activeTutorialId];
+            if (!tutorial) return;
+
+            if (activeTutorialStep < tutorial.steps.length - 1) {
+                activeTutorialStep++;
+                renderCurrentTutorialStep();
+                console.log('[DEBUG][TutorialHub] Avanzando al paso:', activeTutorialStep + 1);
+            } else {
+                console.log('[DEBUG][TutorialHub] Último paso alcanzado. Cerrando modal.');
+                closeTutorialModal();
+            }
+        }
+
+        function prevTutorialStep() {
+            if (!activeTutorialId) return;
+            if (activeTutorialStep > 0) {
+                activeTutorialStep--;
+                renderCurrentTutorialStep();
+                console.log('[DEBUG][TutorialHub] Retrocediendo al paso:', activeTutorialStep + 1);
+            }
+        }
+
+        function goToTutorialStep(stepIndex) {
+            if (!activeTutorialId) return;
+            activeTutorialStep = stepIndex;
+            renderCurrentTutorialStep();
+            console.log('[DEBUG][TutorialHub] Navegación directa al paso:', stepIndex + 1);
+        }
+
+        function closeTutorialModal(updateHistory = true) {
+            const modal = document.getElementById('tutorial-modal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('article-modal-active');
+            activeTutorialId = null;
+            activeTutorialStep = 0;
+
+            if (updateHistory && window.location.hash.startsWith('#guia=')) {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+            console.log('[DEBUG][TutorialHub] Modal de tutorial cerrado.');
+        }
+
+        function checkUrlForTutorial() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#guia=')) {
+                const tutorialKey = hash.replace('#guia=', '');
+                console.log('[DEBUG][TutorialHub] Detectado hash de guía en URL:', tutorialKey);
+                openTutorial(tutorialKey, 0, false);
+            }
+        }
+
         // GESTIÓN DEL SELECTOR DE IDIOMA
         function toggleLanguageDropdown() {
             const dropdown = document.getElementById('lang-dropdown');
@@ -1464,6 +2119,7 @@
 
             renderArticlesGrid();
 
+            // Si el modal de artículo está abierto, refrescar contenido en el nuevo idioma
             if (!document.getElementById('article-modal').classList.contains('hidden')) {
                 const hash = window.location.hash;
                 if (hash.startsWith('#articulo=')) {
@@ -1471,26 +2127,44 @@
                     openArticleModal(articleKey, false);
                 }
             }
+
+            // Si el modal de tutorial está abierto, refrescar contenido en el nuevo idioma
+            if (activeTutorialId && !document.getElementById('tutorial-modal').classList.contains('hidden')) {
+                renderCurrentTutorialStep();
+            }
         }
 
         // EVENT LISTENERS GLOBALES
         window.addEventListener('hashchange', () => {
             if (window.location.hash.startsWith('#articulo=')) {
                 checkUrlForArticle();
+            } else if (window.location.hash.startsWith('#guia=')) {
+                checkUrlForTutorial();
             } else {
-                const modal = document.getElementById('article-modal');
-                if (!modal.classList.contains('hidden')) {
+                const articleModal = document.getElementById('article-modal');
+                if (articleModal && !articleModal.classList.contains('hidden')) {
                     closeArticleModal(false);
+                }
+                const tutorialModal = document.getElementById('tutorial-modal');
+                if (tutorialModal && !tutorialModal.classList.contains('hidden')) {
+                    closeTutorialModal(false);
                 }
             }
         });
 
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeArticleModal();
+            if (e.key === 'Escape') {
+                closeArticleModal();
+                closeTutorialModal();
+            }
         });
 
         document.getElementById('article-modal').addEventListener('click', (e) => {
             if (e.target.id === 'article-modal') closeArticleModal();
+        });
+
+        document.getElementById('tutorial-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'tutorial-modal') closeTutorialModal();
         });
 
         document.addEventListener('click', (e) => {
@@ -1529,7 +2203,8 @@
 
             selectLanguage(initialLang);
             checkUrlForArticle();
-            console.log('[DEBUG][LandingWeb] Cabecera cargada con icono circular logo.jpg');
+            checkUrlForTutorial();
+            console.log('[DEBUG][LandingWeb] Cabecera cargada con icono circular logo.jpg y Hub de Tutoriales inicializado');
         });
     </script>
 

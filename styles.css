@@ -1,4 +1,4 @@
-﻿/* ===================================================================
+/* ===================================================================
    LLUVIA DE IDEAS FORZADA — SHARED STYLES
    Archivo CSS compartido entre landing (index.html) y blog.
    =================================================================== */
@@ -1481,5 +1481,62 @@ a {
 
 .blog-hub-card:hover .blog-hub-card-readmore {
     gap: 8px;
+}
+
+/* ─── HUB DE TUTORIALES Y VISOR MODAL RESPONSIVE ─── */
+.tutorial-callout {
+    border-radius: 1rem;
+    padding: 0.875rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--text-xs);
+    line-height: 1.5;
+}
+
+.tutorial-callout.tip {
+    background-color: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    color: #166534;
+}
+
+.tutorial-callout.warning {
+    background-color: #FFFBEB;
+    border: 1px solid #FDE68A;
+    color: #92400E;
+}
+
+.tutorial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: #CBD5E1;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.tutorial-dot:hover {
+    background-color: #94A3B8;
+}
+
+.tutorial-dot.active {
+    width: 26px;
+    background-color: #4F46E5;
+}
+
+@keyframes modalZoomFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-modal-in {
+    animation: modalZoomFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 

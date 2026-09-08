@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <filter id="shadowErr2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="600" height="380" rx="16" fill="#F8FAFC"/>
+  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <g transform="translate(80, 50)" filter="url(#shadowErr2)">
+    <rect width="440" height="280" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="30" y="24" width="70" height="22" rx="11" fill="#EEF2FF"/>
+    <text x="40" y="38" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">ALTERNATIVA LOCAL</text>
+    
+    <text x="30" y="76" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">Conmuta al Motor On-Device</text>
+    <text x="30" y="96" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Sin cuota, sin internet y con privacidad total en tu Android</text>
+
+    <!-- App Engine Switcher Card -->
+    <g transform="translate(30, 115)">
+      <rect width="380" height="70" rx="12" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <circle cx="40" cy="35" r="20" fill="#4F46E5"/>
+      <text x="32" y="42" fill="#FFFFFF" font-size="18">📱</text>
+      <text x="74" y="30" fill="#1E1B4B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800">Modo Gemini Nano / MediaPipe</text>
+      <text x="74" y="48" fill="#4338CA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Ejecución en el chip local de tu smartphone sin límite de peticiones.</text>
+    </g>
+
+    <!-- Toggle Action -->
+    <g transform="translate(30, 205)">
+      <rect width="380" height="48" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="14" y="28" fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Abre Ajustes en la App > Selector de Motor > Selecciona 'Modo Local'</text>
+    </g>
+  </g>
+</svg>
