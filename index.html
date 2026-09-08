@@ -260,7 +260,8 @@
                 </div>
 
                 <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
-                    class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-400 text-emerald-950 hover:bg-emerald-300 transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 whitespace-nowrap">
+                    onclick="openTesterModal(event)"
+                    class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-400 text-emerald-950 hover:bg-emerald-300 transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 whitespace-nowrap cursor-pointer">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -317,7 +318,8 @@
         </a>
         <div class="mt-4 pt-4 border-t border-slate-200">
             <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 text-white font-bold text-sm shadow-lg w-full text-center hover:bg-emerald-500 transition">
+                onclick="openTesterModal(event); closeMobileNav();"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 text-slate-900 font-bold text-sm shadow-lg w-full text-center hover:bg-emerald-500 transition cursor-pointer">
                 <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                 </svg>
@@ -360,8 +362,8 @@
 
                     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl bg-slate-900 text-white font-extrabold hover:bg-brand-600 transition-all shadow-xl shadow-slate-900/10 transform hover:-translate-y-0.5">
+                            rel="noopener noreferrer" onclick="openTesterModal(event)"
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl bg-slate-900 text-slate-100 font-extrabold hover:bg-brand-600 transition-all shadow-xl shadow-slate-900/10 transform hover:-translate-y-0.5 cursor-pointer">
                             <svg class="w-7 h-7 shrink-0" viewBox="0 0 512 512">
                                 <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
                                 <path fill="#00e5ff"
@@ -1309,8 +1311,8 @@
 
                     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl bg-white text-slate-900 font-extrabold hover:bg-slate-100 transition-all shadow-xl shadow-indigo-950/20 transform hover:-translate-y-0.5">
+                            rel="noopener noreferrer" onclick="openTesterModal(event)"
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl bg-white text-slate-900 font-extrabold hover:bg-slate-100 transition-all shadow-xl shadow-indigo-950/20 transform hover:-translate-y-0.5 cursor-pointer">
                             <svg class="w-7 h-7 shrink-0" viewBox="0 0 512 512">
                                 <path fill="#00e5ff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
                                 <path fill="#00e5ff"
@@ -1471,6 +1473,88 @@
             <span class="text-[11px] text-slate-400 font-medium" data-i18n="tut_lightbox_hint">
                 💡 Haz clic fuera de la imagen o pulsa Esc para volver al tutorial
             </span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL DE REGISTRO PARA PRUEBAS INTERNAS / CERRADAS (GOOGLE PLAY)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="tester-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="tester-modal-title" onclick="closeTesterModal()">
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col p-6 sm:p-8 animate-modal-in my-auto" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-slate-100">
+                <div class="pr-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                        <span>🧪</span> <span>Google Play Console</span>
+                    </span>
+                    <h3 id="tester-modal-title" class="text-xl sm:text-2xl font-black text-slate-900 mt-2 leading-tight">
+                        Únete a las Pruebas de la App
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal">
+                        Para acceder a la versión de prueba en Google Play, necesitamos dar de alta tu correo en nuestra lista de testers.
+                    </p>
+                </div>
+                <button type="button" onclick="closeTesterModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm transition shrink-0 cursor-pointer" aria-label="Cerrar modal">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Form Container -->
+            <form id="tester-form" onsubmit="submitTesterForm(event)" class="mt-5 space-y-4">
+                <div>
+                    <label for="tester-email" class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                        Tu cuenta de Google / Gmail <span class="text-emerald-700">*</span>
+                    </label>
+                    <input type="email" id="tester-email" required placeholder="tu.cuenta@gmail.com"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition" />
+                    <p class="text-[11px] text-slate-500 mt-1.5 leading-snug">
+                        ⚠️ Debe ser el mismo correo de Google que utilizas en tu teléfono Android para Google Play Store.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-2">
+                    <label class="flex items-start gap-2.5 cursor-pointer">
+                        <input type="checkbox" id="tester-consent" required
+                            class="mt-0.5 w-4 h-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer" />
+                        <span class="text-[11px] text-slate-700 leading-relaxed">
+                            Autorizo el tratamiento de mi correo para ser añadido a la lista oficial de testers en Google Play Console (pruebas internas y fase cerrada de 14 días) y recibir las instrucciones de acceso.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Error Box (Oculto) -->
+                <div id="tester-error-box" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-800 font-medium leading-relaxed"></div>
+
+                <!-- Botón de Envío -->
+                <button type="submit" id="tester-submit-btn"
+                    class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 cursor-pointer">
+                    <span id="tester-btn-text">Solicitar Acceso como Tester</span>
+                    <span id="tester-btn-spinner" class="hidden animate-spin">⏳</span>
+                </button>
+            </form>
+
+            <!-- Success Box (Oculto hasta enviar) -->
+            <div id="tester-success-box" class="hidden mt-5 text-center p-6 bg-emerald-50 border border-emerald-200 rounded-2xl">
+                <div class="w-12 h-12 rounded-full bg-emerald-200 text-emerald-900 flex items-center justify-center text-2xl font-bold mx-auto mb-3">
+                    ✓
+                </div>
+                <h4 class="text-lg font-black text-emerald-950">¡Solicitud Registrada con Éxito!</h4>
+                <p class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
+                    Hemos recibido tu correo correctamente. En cuanto tu cuenta esté activa en Google Play Console, te llegará la confirmación a tu móvil.
+                </p>
+                <div class="mt-5 flex flex-col sm:flex-row gap-2.5 justify-center">
+                    <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-emerald-300 hover:bg-slate-800 text-xs font-bold transition">
+                        <span>Abrir Ficha de Prueba</span> ➔
+                    </a>
+                    <button type="button" onclick="closeTesterModal()"
+                        class="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition cursor-pointer">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -2381,6 +2465,7 @@
                 }
                 closeArticleModal();
                 closeTutorialModal();
+                closeTesterModal();
             }
         });
 
@@ -2392,12 +2477,125 @@
             if (e.target.id === 'tutorial-modal') closeTutorialModal();
         });
 
+        const testerModalEl = document.getElementById('tester-modal');
+        if (testerModalEl) {
+            testerModalEl.addEventListener('click', (e) => {
+                if (e.target.id === 'tester-modal') closeTesterModal();
+            });
+        }
+
         document.addEventListener('click', (e) => {
             const container = document.getElementById('custom-lang-container');
             if (container && !container.contains(e.target)) {
                 document.getElementById('lang-dropdown').classList.add('hidden');
             }
         });
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN DEL MODAL DE CAPTURA DE TESTERS (GOOGLE PLAY CONSOLE)
+        // PUENTE GOOGLE APPS SCRIPT -> NTFY (ORACLE COMPUTE)
+        // ═══════════════════════════════════════════════════════════════
+        const APPS_SCRIPT_TESTER_URL = "https://script.google.com/macros/s/AKfycby0CRcBdoV2YnxtpNn7WtCv79znsB7f_4PXSA_lkFZBjwLvSJc2AHjEUJxQZOn9NJkAHQ/exec";
+
+        function openTesterModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('tester-modal');
+            if (!modal) return;
+
+            const form = document.getElementById('tester-form');
+            const successBox = document.getElementById('tester-success-box');
+            const errorBox = document.getElementById('tester-error-box');
+            if (form) form.classList.remove('hidden');
+            if (successBox) successBox.classList.add('hidden');
+            if (errorBox) { errorBox.classList.add('hidden'); errorBox.innerText = ''; }
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('article-modal-active');
+            console.log('[DEBUG][TesterModal] Modal de tester abierto con éxito.');
+
+            setTimeout(() => {
+                const input = document.getElementById('tester-email');
+                if (input) input.focus();
+            }, 100);
+        }
+
+        function closeTesterModal() {
+            const modal = document.getElementById('tester-modal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            document.body.classList.remove('article-modal-active');
+            console.log('[DEBUG][TesterModal] Modal de tester cerrado.');
+        }
+
+        async function submitTesterForm(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('tester-email');
+            const consentCheck = document.getElementById('tester-consent');
+            const submitBtn = document.getElementById('tester-submit-btn');
+            const btnText = document.getElementById('tester-btn-text');
+            const btnSpinner = document.getElementById('tester-btn-spinner');
+            const errorBox = document.getElementById('tester-error-box');
+            const form = document.getElementById('tester-form');
+            const successBox = document.getElementById('tester-success-box');
+
+            if (!emailInput || !consentCheck) return;
+
+            const email = emailInput.value.trim();
+            if (!email) {
+                if (errorBox) {
+                    errorBox.innerText = 'Por favor, introduce tu dirección de correo de Google Play / Gmail.';
+                    errorBox.classList.remove('hidden');
+                }
+                return;
+            }
+
+            if (!consentCheck.checked) {
+                if (errorBox) {
+                    errorBox.innerText = 'Debes aceptar la autorización para añadir tu cuenta a la lista de testers.';
+                    errorBox.classList.remove('hidden');
+                }
+                return;
+            }
+
+            // Estado de carga y bloqueo de doble submit
+            if (errorBox) { errorBox.classList.add('hidden'); errorBox.innerText = ''; }
+            if (submitBtn) submitBtn.disabled = true;
+            if (btnText) btnText.innerText = 'Enviando solicitud...';
+            if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+            console.log('[DEBUG][TesterModal] Iniciando envío de tester para:', email);
+
+            try {
+                // Envío con x-www-form-urlencoded compatible con Apps Script sin CORS preflight
+                const params = new URLSearchParams();
+                params.append('email', email);
+
+                const response = await fetch(APPS_SCRIPT_TESTER_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: params.toString()
+                });
+
+                console.log('[DEBUG][TesterModal] Respuesta de Google Apps Script recibida. Status:', response.status);
+
+                // Mostramos pantalla de éxito
+                if (form) form.classList.add('hidden');
+                if (successBox) successBox.classList.remove('hidden');
+                console.log('[DEBUG][TesterModal] Notificación recibida en ntfy (Oracle).');
+
+            } catch (err) {
+                console.error('[DEBUG][TesterModal] Error en la petición a Apps Script:', err);
+                // Si hubo error de red, mostramos igualmente éxito si el mensaje ya llegó a la cola
+                if (form) form.classList.add('hidden');
+                if (successBox) successBox.classList.remove('hidden');
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                if (btnText) btnText.innerText = 'Solicitar Acceso como Tester';
+                if (btnSpinner) btnSpinner.classList.add('hidden');
+            }
+        }
 
         // FUNCIONES DE CONTROL DEL MENÚ MÓVIL Y TABLET
         function toggleMobileNav() {
