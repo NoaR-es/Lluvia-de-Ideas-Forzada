@@ -1,69 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
   <defs>
-    <filter id="shadow2" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
-    </filter>
-    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#EFF6FF"/>
+    <linearGradient id="bgDim2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.8"/>
     </linearGradient>
+    <filter id="modalShadow2" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="380" rx="16" fill="url(#bgGrad2)"/>
-  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
-
-  <!-- Browser Header -->
-  <rect x="0" y="0" width="600" height="42" rx="16" fill="#FFFFFF"/>
-  <path d="M0 26 h600 v16 h-600 z" fill="#FFFFFF"/>
-  <line x1="0" y1="42" x2="600" y2="42" stroke="#E2E8F0" stroke-width="1.5"/>
+  <!-- Studio Background (dimmed) -->
+  <rect width="800" height="500" rx="16" fill="#F1F5F9"/>
+  <!-- Simulated background studio header and sidebar -->
+  <rect x="0" y="0" width="800" height="42" fill="#FFFFFF"/>
   <circle cx="24" cy="21" r="5" fill="#EF4444"/>
   <circle cx="40" cy="21" r="5" fill="#F59E0B"/>
   <circle cx="56" cy="21" r="5" fill="#10B981"/>
-  <rect x="140" y="9" width="320" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
-  <text x="210" y="25" fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">aistudio.google.com/terms</text>
+  <rect x="0" y="42" width="220" height="458" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="20" y="74" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">Google AI Studio</text>
+  
+  <!-- Dimmed Backdrop Overlay -->
+  <rect width="800" height="500" rx="16" fill="url(#bgDim2)"/>
 
-  <!-- Modal Dialog: Terms of Service -->
-  <g transform="translate(90, 60)" filter="url(#shadow2)">
-    <rect width="420" height="295" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-
-    <!-- Header & Badge -->
-    <rect x="30" y="20" width="70" height="22" rx="11" fill="#EEF2FF"/>
-    <text x="42" y="34" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">PASO 2</text>
+  <!-- Terms of Service Real Google Modal -->
+  <g transform="translate(130, 48)">
+    <rect x="0" y="0" width="540" height="404" rx="20" fill="#FFFFFF" filter="url(#modalShadow2)" stroke="#CBD5E1"/>
     
-    <text x="30" y="66" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="800">Términos de Servicio de IA de Google</text>
-    <text x="30" y="86" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500">Aparece únicamente la primera vez que entras en la plataforma</text>
-
-    <!-- Checkbox 1: Terms of Service -->
-    <g transform="translate(30, 106)">
-      <rect width="20" height="20" rx="5" fill="#4F46E5"/>
-      <path d="M5 10 l3 4 l7 -8" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-      <text x="32" y="14" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Acepto los Términos del Servicio de Google APIs</text>
-      <text x="32" y="28" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Incluye los términos adicionales de Gemini API y uso gratuito</text>
+    <!-- Modal Header -->
+    <g transform="translate(36, 32)">
+      <circle cx="16" cy="16" r="16" fill="#EEF2FF"/>
+      <path d="M12 8 L20 16 L12 24" stroke="#4F46E5" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="44" y="16" font-family="sans-serif" font-size="18" font-weight="800" fill="#0F172A">Términos del Servicio de Gemini API</text>
+      <text x="44" y="34" font-family="sans-serif" font-size="12" fill="#64748B">Primer acceso a Google AI Studio</text>
     </g>
 
-    <!-- Checkbox 2: Age Verification -->
-    <g transform="translate(30, 154)">
-      <rect width="20" height="20" rx="5" fill="#4F46E5"/>
-      <path d="M5 10 l3 4 l7 -8" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-      <text x="32" y="14" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Confirmo que tengo al menos 18 años de edad</text>
-      <text x="32" y="28" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Requisito estándar de cumplimiento normativo</text>
+    <line x1="0" y1="90" x2="540" y2="90" stroke="#F1F5F9" stroke-width="1.5"/>
+
+    <!-- Terms Body -->
+    <g transform="translate(36, 110)">
+      <text x="0" y="16" font-family="sans-serif" font-size="12" fill="#334155" leading="1.6">
+        Para comenzar a generar tus claves de API gratuitas, Google solicita aceptar las condiciones:
+      </text>
+
+      <!-- Checkbox 1 -->
+      <g transform="translate(0, 36)">
+        <rect x="0" y="0" width="22" height="22" rx="6" fill="#2563EB" stroke="#1D4ED8"/>
+        <path d="M5 11 L9 15 L17 7" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="32" y="15" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">Acepto los Términos de Servicio de las APIs de Google</text>
+        <text x="32" y="30" font-family="sans-serif" font-size="11" fill="#64748B">y los Términos Adicionales de la API de Gemini.</text>
+      </g>
+
+      <!-- Checkbox 2 -->
+      <g transform="translate(0, 84)">
+        <rect x="0" y="0" width="22" height="22" rx="6" fill="#2563EB" stroke="#1D4ED8"/>
+        <path d="M5 11 L9 15 L17 7" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="32" y="15" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F172A">Confirmo la Política de Uso Prohibido de IA Generativa</text>
+        <text x="32" y="30" font-family="sans-serif" font-size="11" fill="#64748B">y el cumplimiento de la edad mínima regional requerida.</text>
+      </g>
+
+      <!-- Free of charge confirmation notice box -->
+      <g transform="translate(0, 132)">
+        <rect x="0" y="0" width="468" height="66" rx="10" fill="#F0FDF4" stroke="#BBF7D0"/>
+        <text x="16" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#166534">💡 Nivel de uso gratuito asegurado</text>
+        <text x="16" y="44" font-family="sans-serif" font-size="11" fill="#15803D">
+          La aceptación no requiere tarjeta de crédito ni facturación. Inicializa tu sandbox a coste 0 €.
+        </text>
+      </g>
     </g>
 
-    <!-- Callout: Zero Cost -->
-    <g transform="translate(30, 196)">
-      <rect width="360" height="34" rx="8" fill="#F0FDF4" stroke="#BBF7D0"/>
-      <text x="14" y="21" fill="#15803D" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">💡 Importante: Aceptar estos términos no tiene ningún coste.</text>
-    </g>
+    <!-- Modal Footer -->
+    <line x1="0" y1="334" x2="540" y2="334" stroke="#F1F5F9" stroke-width="1.5"/>
+    <g transform="translate(36, 348)">
+      <rect x="0" y="0" width="100" height="38" rx="8" fill="#F1F5F9"/>
+      <text x="50" y="24" font-family="sans-serif" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">Cancelar</text>
 
-    <!-- Button 'Agree and Continue' -->
-    <g transform="translate(30, 242)">
-      <rect width="360" height="38" rx="10" fill="#4F46E5"/>
-      <text x="130" y="24" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">Aceptar y Continuar ➔</text>
-      
-      <!-- Click Indicator Pin -->
-      <circle cx="280" cy="19" r="12" fill="#FFFFFF" fill-opacity="0.25"/>
-      <circle cx="280" cy="19" r="6" fill="#FFFFFF"/>
+      <!-- Agree button with cursor -->
+      <g transform="translate(308, 0)">
+        <rect x="0" y="0" width="160" height="38" rx="8" fill="#1D4ED8"/>
+        <text x="80" y="23" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Aceptar y Continuar ➔</text>
+      </g>
     </g>
   </g>
 </svg>

@@ -1,71 +1,133 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
   <defs>
-    <filter id="shadow1" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
-    </filter>
     <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#EEF2F6"/>
     </linearGradient>
+    <linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A73E8"/>
+      <stop offset="50%" stop-color="#8AB4F8"/>
+      <stop offset="100%" stop-color="#9334E8"/>
+    </linearGradient>
+    <filter id="cardShadow1" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="380" rx="16" fill="url(#bgGrad1)"/>
-  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  <!-- Background Canvas -->
+  <rect width="800" height="500" rx="16" fill="url(#bgGrad1)" stroke="#E2E8F0" stroke-width="2"/>
 
-  <!-- Browser / App Header Bar -->
-  <rect x="0" y="0" width="600" height="42" rx="16" fill="#FFFFFF"/>
-  <path d="M0 26 h600 v16 h-600 z" fill="#FFFFFF"/>
-  <line x1="0" y1="42" x2="600" y2="42" stroke="#E2E8F0" stroke-width="1.5"/>
+  <!-- Browser Header Bar -->
+  <rect x="0" y="0" width="800" height="42" rx="16" fill="#FFFFFF"/>
+  <rect x="0" y="32" width="800" height="10" fill="#FFFFFF"/>
+  <line x1="0" y1="42" x2="800" y2="42" stroke="#E2E8F0" stroke-width="1"/>
   <circle cx="24" cy="21" r="5" fill="#EF4444"/>
   <circle cx="40" cy="21" r="5" fill="#F59E0B"/>
   <circle cx="56" cy="21" r="5" fill="#10B981"/>
 
-  <!-- URL Pill -->
-  <rect x="140" y="9" width="320" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
-  <path d="M154 18 a3 3 0 0 1 6 0 v2 h-6 v-2 z M152 20 h10 v6 h-10 z" fill="#64748B"/>
-  <text x="170" y="25" fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">aistudio.google.com</text>
+  <!-- Browser URL Omnibar -->
+  <rect x="140" y="9" width="520" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <path d="M152 21 a4 4 0 0 1 8 0 v3 h-8 z M156 15 a2 2 0 0 1 2 2 v4 h-4 v-4 a2 2 0 0 1 2 -2" fill="#64748B"/>
+  <text x="168" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#334155">https://aistudio.google.com</text>
 
-  <!-- Google AI Studio Logo Branding in Canvas -->
-  <g transform="translate(40, 70)">
-    <!-- Sparkle AI Icon -->
-    <path d="M20 4 C20 12 28 20 36 20 C28 20 20 28 20 36 C20 28 12 20 4 20 C12 20 20 12 20 4 Z" fill="#4F46E5"/>
-    <text x="48" y="26" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800">Google AI Studio</text>
-    <rect x="230" y="9" width="86" height="22" rx="11" fill="#EEF2FF" stroke="#C7D2FE"/>
-    <text x="242" y="24" fill="#4338CA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">DEVELOPER</text>
+  <!-- Google AI Studio Top Navigation -->
+  <rect x="0" y="43" width="800" height="48" fill="#FFFFFF"/>
+  <line x1="0" y1="91" x2="800" y2="91" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Logo Gemini -->
+  <g transform="translate(20, 55)">
+    <path d="M12 0 C12 6.6 6.6 12 0 12 C6.6 12 12 17.4 12 24 C12 17.4 17.4 12 24 12 C17.4 12 12 6.6 12 0 Z" fill="url(#geminiGrad)"/>
+    <text x="32" y="17" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="16" font-weight="800" fill="#1E293B">Google AI Studio</text>
   </g>
 
-  <!-- Login Card Window -->
-  <g transform="translate(110, 120)" filter="url(#shadow1)">
-    <rect width="380" height="220" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <!-- User profile right top -->
+  <rect x="680" y="53" width="100" height="28" rx="14" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <circle cx="696" cy="67" r="9" fill="#2563EB"/>
+  <text x="696" y="70" font-family="sans-serif" font-size="10" font-weight="bold" fill="#F8FAFC" text-anchor="middle">G</text>
+  <text x="712" y="71" font-family="sans-serif" font-size="10" font-weight="bold" fill="#334155">Cuenta</text>
 
-    <!-- Step Badge -->
-    <rect x="30" y="24" width="70" height="22" rx="11" fill="#EEF2FF"/>
-    <text x="42" y="38" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">PASO 1</text>
+  <!-- Left Sidebar (Navigation real de Google AI Studio) -->
+  <rect x="0" y="92" width="220" height="408" fill="#FFFFFF"/>
+  <line x1="220" y1="92" x2="220" y2="500" stroke="#E2E8F0" stroke-width="1"/>
 
-    <text x="30" y="74" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">Inicia Sesión con Google</text>
-    <text x="30" y="98" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Usa la misma cuenta de Gmail que utilizas en tu Android</text>
+  <!-- Sidebar Items -->
+  <g transform="translate(14, 106)">
+    <!-- Create prompt button -->
+    <rect x="0" y="0" width="192" height="34" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3730A3">+ Create new prompt</text>
 
-    <!-- Google Sign In Button Highlighted -->
-    <g transform="translate(30, 124)">
-      <rect width="320" height="52" rx="14" fill="#F8FAFC" stroke="#4F46E5" stroke-width="2"/>
-      
-      <!-- Google 4-Color 'G' Logo -->
-      <g transform="translate(24, 16)">
-        <path d="M19.6 10.2 c0-.7-.06-1.4-.18-2 H10 v4 h5.4 c-.23 1.2-.95 2.3-2 3 v2.5 h3.2 c1.9-1.8 3-4.4 3-7.5 z" fill="#4285F4"/>
-        <path d="M10 20 c2.7 0 5-0.9 6.6-2.4 l-3.2-2.5 c-0.9 0.6-2.1 1-3.4 1 -2.6 0-4.8-1.8-5.6-4.2 H1.1 v2.6 C2.8 17.8 6.1 20 10 20 z" fill="#34A853"/>
-        <path d="M4.4 11.9 c-.2-.6-.3-1.3-.3-1.9 0-.7.1-1.3.3-1.9 V5.5 H1.1 C0.4 6.9 0 8.4 0 10 c0 1.6.4 3.1 1.1 4.5 l3.3-2.6 z" fill="#FBBC05"/>
-        <path d="M10 3.9 c1.5 0 2.8.5 3.8 1.5 l2.9-2.9 C15 1 12.7 0 10 0 6.1 0 2.8 2.2 1.1 5.5 l3.3 2.6 C5.2 5.7 7.4 3.9 10 3.9 z" fill="#EA4335"/>
-      </g>
-
-      <text x="64" y="31" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Continuar con Google / Gmail</text>
-      
-      <!-- Click Indicator Pin -->
-      <circle cx="300" cy="26" r="14" fill="#4F46E5" fill-opacity="0.15"/>
-      <circle cx="300" cy="26" r="8" fill="#4F46E5"/>
+    <!-- Prompts group -->
+    <text x="12" y="58" font-family="sans-serif" font-size="10" font-weight="bold" fill="#94A3B8" letter-spacing="1">WORKSPACE</text>
+    
+    <g transform="translate(0, 68)">
+      <rect x="0" y="0" width="192" height="28" rx="6" fill="transparent"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="12" fill="#475569">💬  Chat prompt</text>
     </g>
 
-    <!-- Free Tier Notice -->
-    <text x="100" y="198" fill="#059669" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">✓ 100% Gratuito • Sin tarjeta bancaria requerida</text>
+    <g transform="translate(0, 98)">
+      <rect x="0" y="0" width="192" height="28" rx="6" fill="transparent"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="12" fill="#475569">📝  Freeform prompt</text>
+    </g>
+
+    <g transform="translate(0, 128)">
+      <rect x="0" y="0" width="192" height="28" rx="6" fill="transparent"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="12" fill="#475569">📊  Structured prompt</text>
+    </g>
+
+    <!-- HIGHLIGHTED TARGET: GET API KEY -->
+    <g transform="translate(0, 170)">
+      <rect x="0" y="0" width="192" height="42" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+      <text x="12" y="26" font-family="sans-serif" font-size="13" font-weight="800" fill="#78350F">🔑  Get API key</text>
+      <circle cx="174" cy="21" r="5" fill="#D97706"/>
+    </g>
+
+    <g transform="translate(0, 226)">
+      <rect x="0" y="0" width="192" height="28" rx="6" fill="transparent"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="12" fill="#64748B">⚙️  Settings &amp; Quotas</text>
+    </g>
+    <g transform="translate(0, 256)">
+      <rect x="0" y="0" width="192" height="28" rx="6" fill="transparent"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="12" fill="#64748B">📚  Documentation</text>
+    </g>
+  </g>
+
+  <!-- Central Work Area -->
+  <g transform="translate(240, 108)">
+    <rect x="0" y="0" width="536" height="368" rx="16" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#cardShadow1)"/>
+    
+    <!-- Hero Banner inside Studio -->
+    <rect x="24" y="24" width="488" height="110" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="44" y="56" font-family="sans-serif" font-size="18" font-weight="800" fill="#0F172A">Bienvenido a Google AI Studio</text>
+    <text x="44" y="78" font-family="sans-serif" font-size="12" fill="#475569">Entorno de desarrollo oficial para acceder a los modelos Gemini 2.0 y Flash.</text>
+    <rect x="44" y="92" width="140" height="24" rx="6" fill="#DCFCE7" stroke="#86EFAC"/>
+    <text x="54" y="108" font-family="sans-serif" font-size="10" font-weight="bold" fill="#166534">✓ Nivel Gratuito Activo (0 €)</text>
+
+    <!-- Explanatory pointer box -->
+    <g transform="translate(24, 154)">
+      <rect x="0" y="0" width="488" height="190" rx="12" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1.5"/>
+      <text x="24" y="32" font-family="sans-serif" font-size="14" font-weight="bold" fill="#92400E">📍 PASO 1: Dirígete al menú lateral izquierdo</text>
+      <text x="24" y="58" font-family="sans-serif" font-size="12" fill="#78350F" font-weight="500">
+        1. Inicia sesión con tu cuenta de Gmail (la misma de tu Android).
+      </text>
+      <text x="24" y="82" font-family="sans-serif" font-size="12" fill="#78350F" font-weight="500">
+        2. En el menú de navegación de la izquierda, haz clic en <tspan font-weight="bold" fill="#0F172A">"Get API key"</tspan> (icono de llave 🔑).
+      </text>
+      <text x="24" y="106" font-family="sans-serif" font-size="12" fill="#78350F" font-weight="500">
+        3. No necesitas tarjeta bancaria ni contratar planes de pago.
+      </text>
+
+      <!-- Direct Action Badge -->
+      <g transform="translate(24, 126)">
+        <rect x="0" y="0" width="280" height="42" rx="8" fill="#1E293B"/>
+        <text x="16" y="26" font-family="sans-serif" font-size="12" font-weight="bold" fill="#F8FAFC">Acceso Directo: aistudio.google.com</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Pointer Arrow indicating the Get API Key button -->
+  <g transform="translate(196, 266)">
+    <line x1="0" y1="16" x2="60" y2="16" stroke="#DC2626" stroke-width="3" stroke-dasharray="4 3"/>
+    <polygon points="5,16 16,10 16,22" fill="#DC2626"/>
+    <circle cx="5" cy="16" r="14" fill="none" stroke="#DC2626" stroke-width="2"/>
   </g>
 </svg>

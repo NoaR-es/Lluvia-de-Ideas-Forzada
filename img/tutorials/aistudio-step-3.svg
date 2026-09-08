@@ -1,77 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
   <defs>
-    <filter id="shadow3" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+    <filter id="modalShadow3" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#0F172A" flood-opacity="0.2"/>
     </filter>
-    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#EFF6FF"/>
-    </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="380" rx="16" fill="url(#bgGrad3)"/>
-  <rect x="1" y="1" width="598" height="378" rx="15" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  <!-- Canvas Background -->
+  <rect width="800" height="500" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
 
-  <!-- Browser Header -->
-  <rect x="0" y="0" width="600" height="42" rx="16" fill="#FFFFFF"/>
-  <path d="M0 26 h600 v16 h-600 z" fill="#FFFFFF"/>
-  <line x1="0" y1="42" x2="600" y2="42" stroke="#E2E8F0" stroke-width="1.5"/>
+  <!-- Browser Omnibar -->
+  <rect x="0" y="0" width="800" height="42" fill="#FFFFFF"/>
   <circle cx="24" cy="21" r="5" fill="#EF4444"/>
   <circle cx="40" cy="21" r="5" fill="#F59E0B"/>
   <circle cx="56" cy="21" r="5" fill="#10B981"/>
-  <rect x="140" y="9" width="320" height="24" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
-  <text x="200" y="25" fill="#334155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">aistudio.google.com/app/apikey</text>
+  <rect x="140" y="9" width="520" height="24" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="168" y="25" font-family="sans-serif" font-size="11" font-weight="600" fill="#334155">https://aistudio.google.com/app/apikey</text>
 
-  <!-- Top Action Bar in AI Studio -->
-  <g transform="translate(40, 60)">
-    <text x="0" y="20" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">API Keys</text>
-    <text x="0" y="38" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Gestiona y crea tus claves para conectar la app de Lluvia de Ideas</text>
+  <!-- Background Content: API Keys Dashboard -->
+  <g transform="translate(40, 62)">
+    <text x="0" y="28" font-family="sans-serif" font-size="22" font-weight="800" fill="#0F172A">API keys</text>
+    <text x="0" y="48" font-family="sans-serif" font-size="12" fill="#64748B">Genera y administra claves de autenticación para Gemini API</text>
 
-    <!-- Get API Key / Create Key Button on Top Right -->
-    <g transform="translate(380, 4)">
-      <rect width="140" height="36" rx="8" fill="#4F46E5"/>
-      <!-- Key Icon -->
-      <path d="M16 18 a4 4 0 1 1 8 0 a4 4 0 0 1 -8 0 m7 -1 h7 v3 h-2 v2 h-2 v-2 h-3" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-      <text x="42" y="23" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Create API key</text>
+    <!-- Top Action Button in Studio -->
+    <g transform="translate(560, 10)">
+      <rect x="0" y="0" width="160" height="38" rx="8" fill="#1D4ED8"/>
+      <text x="80" y="23" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">+ Create API key</text>
     </g>
+
+    <!-- Background Table Placeholder -->
+    <rect x="0" y="70" width="720" height="120" rx="12" fill="#FFFFFF" stroke="#E2E8F0"/>
+    <line x1="0" y1="106" x2="720" y2="106" stroke="#F1F5F9"/>
+    <text x="24" y="94" font-family="sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">KEY NAME</text>
+    <text x="260" y="94" font-family="sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">PROJECT</text>
+    <text x="480" y="94" font-family="sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">PLAN</text>
+    <text x="630" y="94" font-family="sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">ACTIONS</text>
   </g>
 
-  <!-- Key Creation Dialog (The core action for new users) -->
-  <g transform="translate(100, 115)" filter="url(#shadow3)">
-    <rect width="400" height="235" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <!-- Dim overlay for the dialog -->
+  <rect x="0" y="42" width="800" height="458" fill="#0F172A" fill-opacity="0.45"/>
 
-    <!-- Step Badge -->
-    <rect x="26" y="20" width="70" height="22" rx="11" fill="#EEF2FF"/>
-    <text x="38" y="34" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">PASO 3</text>
+  <!-- Modal Dialog: Create API Key in new project -->
+  <g transform="translate(140, 100)">
+    <rect x="0" y="0" width="520" height="330" rx="16" fill="#FFFFFF" filter="url(#modalShadow3)" stroke="#CBD5E1"/>
 
-    <text x="26" y="66" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">Elige dónde crear la clave</text>
-    <text x="26" y="85" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Elige la opción automática para no complicarte con proyectos</text>
+    <!-- Dialog Header -->
+    <g transform="translate(32, 28)">
+      <text x="0" y="16" font-family="sans-serif" font-size="18" font-weight="800" fill="#0F172A">Create API key</text>
+      <text x="0" y="36" font-family="sans-serif" font-size="12" fill="#64748B">Selecciona dónde alojar tu clave de Google Cloud</text>
+    </g>
+    <line x1="0" y1="80" x2="520" y2="80" stroke="#F1F5F9"/>
 
-    <!-- Option 1: Create API key in new project (Recommended) -->
-    <g transform="translate(26, 102)">
-      <rect width="348" height="52" rx="10" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2"/>
-      <circle cx="24" cy="26" r="8" fill="#4F46E5"/>
-      <circle cx="24" cy="26" r="3.5" fill="#FFFFFF"/>
-      <text x="44" y="22" fill="#0F172A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Create API key in new project</text>
-      <text x="44" y="38" fill="#4F46E5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Recomendado: Google configura todo en segundo plano</text>
+    <!-- Options Radio Group -->
+    <g transform="translate(32, 100)">
+      <!-- OPTION 1: SELECTED (Create in new project) -->
+      <g>
+        <rect x="0" y="0" width="456" height="74" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+        <circle cx="24" cy="26" r="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="5"/>
+        <text x="44" y="24" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1E3A8A">Create API key in new project</text>
+        <text x="44" y="44" font-family="sans-serif" font-size="11" fill="#2563EB">
+          ✓ Recomendado: Crea un sandbox automático a coste 0 € con cuota Free tier activa.
+        </text>
+        <text x="44" y="60" font-family="sans-serif" font-size="10" font-weight="600" fill="#1D4ED8">
+          Sin necesidad de configurar facturación ni tarjetas bancarias.
+        </text>
+      </g>
+
+      <!-- OPTION 2: UNSELECTED (Existing project) -->
+      <g transform="translate(0, 86)">
+        <rect x="0" y="0" width="456" height="50" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+        <circle cx="24" cy="25" r="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+        <text x="44" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#475569">Select existing Google Cloud project</text>
+        <text x="44" y="38" font-family="sans-serif" font-size="10" fill="#94A3B8">Usa un proyecto corporativo existente de tu consola Google Cloud.</text>
+      </g>
     </g>
 
-    <!-- Option 2: Existing project (Greyed out for beginners) -->
-    <g transform="translate(26, 160)">
-      <rect width="348" height="38" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
-      <circle cx="24" cy="19" r="7" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
-      <text x="44" y="23" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500">Create API key in existing project (Solo usuarios avanzados)</text>
-    </g>
+    <!-- Dialog Footer -->
+    <line x1="0" y1="264" x2="520" y2="264" stroke="#F1F5F9"/>
+    <g transform="translate(32, 278)">
+      <rect x="0" y="0" width="90" height="36" rx="8" fill="#F1F5F9"/>
+      <text x="45" y="22" font-family="sans-serif" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">Cancel</text>
 
-    <!-- Click Indicator -->
-    <circle cx="340" cy="128" r="14" fill="#4F46E5" fill-opacity="0.2"/>
-    <circle cx="340" cy="128" r="8" fill="#4F46E5"/>
-
-    <!-- Bottom Action Button -->
-    <g transform="translate(230, 206)">
-      <rect width="144" height="32" rx="8" fill="#4F46E5"/>
-      <text x="24" y="21" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Crear Clave Ahora ➔</text>
+      <!-- Create action button -->
+      <g transform="translate(236, 0)">
+        <rect x="0" y="0" width="220" height="36" rx="8" fill="#1D4ED8"/>
+        <text x="110" y="22" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Create API key in new project ➔</text>
+      </g>
     </g>
   </g>
 </svg>
