@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PÁGINA DE INICIO (LANDING PRINCIPAL)
+         ═══════════════════════════════════════════════════════════════ -->
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HUB PRINCIPAL DEL BLOG
+         ═══════════════════════════════════════════════════════════════ -->
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ARTÍCULOS PILAR DE METODOLOGÍAS Y GUÍAS TÉCNICAS
+         ═══════════════════════════════════════════════════════════════ -->
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/scamper-desbloqueo-tecnico.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/rag-on-device-proteccion-negocio.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/madurez-botanica-priorizar-ideas.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/inversion-problema-peor-solucion.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/biomimesis-software-arquitecturas-resilientes.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/brainwriting-6-3-5-ideacion-asincrona.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/flor-de-loto-expansion-matricial-ideas.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/seis-sombreros-pensar-pensamiento-paralelo.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/asociacion-forzada-estimulos-aleatorios.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/metodo-disney-creatividad-tres-salas.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/crazy-eights-diseno-rapido-design-sprint.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/rolestorming-lluvia-ideas-identidad-prestada.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/starbursting-lluvia-preguntas-desafios.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/tecnica-escalera-stepladder-evitar-groupthink.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/brainstorming-round-robin-construccion-colectiva.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CASOS DE USO Y GUÍAS PRÁCTICAS DEL BLOG
+         ═══════════════════════════════════════════════════════════════ -->
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-saas-product-market-fit.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-validacion-mvp-48-horas.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-arquitectura-microservicios-resilientes.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-alineamiento-equipo-tecnico-de-bono.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-auditoria-pre-mortem-ciberseguridad.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-growth-marketing-b2b-viral.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-onboarding-app-movil-ux.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-pivote-agencia-a-producto-saas.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-reduccion-costes-cloud-finops.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/caso-uso-retencion-gamificacion-ecommerce.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PÁGINAS LEGALES Y COMPLIANCE
+         ═══════════════════════════════════════════════════════════════ -->
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/privacy-policy.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/terms.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.50</priority>
+    </url>
+
+</urlset>
