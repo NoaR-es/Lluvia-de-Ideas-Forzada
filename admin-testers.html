@@ -73,9 +73,10 @@
                 Credenciales incorrectas. Acceso denegado.
             </div>
 
-            <button type="submit"
-                class="w-full py-3.5 px-6 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 cursor-pointer">
-                Desbloquear Panel
+            <button type="submit" id="login-submit-btn"
+                class="w-full py-3.5 px-6 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none">
+                <span id="login-btn-spinner" class="hidden animate-spin">⏳</span>
+                <span id="login-btn-text">Desbloquear Panel</span>
             </button>
         </form>
     </div>
@@ -363,11 +364,14 @@
             }
         }
 
-        function handleLogin(e) {
+        async function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('admin-user').value.trim();
             const pass = document.getElementById('admin-pass').value.trim();
             const errorBox = document.getElementById('login-error');
+            const submitBtn = document.getElementById('login-submit-btn');
+            const btnText = document.getElementById('login-btn-text');
+            const btnSpinner = document.getElementById('login-btn-spinner');
 
             if (!user || !pass) {
                 if (errorBox) {
@@ -378,12 +382,65 @@
                 return;
             }
 
-            // Credenciales almacenadas únicamente en memoria de sesión volátil del navegador
-            sessionStorage.setItem('admin_user', user);
-            sessionStorage.setItem('admin_pass', pass);
-            sessionStorage.setItem('admin_authenticated', 'true');
+            // Bloquear botón y mostrar spinner de verificación remota
+            if (submitBtn) submitBtn.disabled = true;
+            if (btnText) btnText.innerText = 'Verificando con Apps Script...';
+            if (btnSpinner) btnSpinner.classList.remove('hidden');
             if (errorBox) errorBox.classList.add('hidden');
-            checkSession();
+
+            logConsole(`Verificando credenciales de "${user}" con Google Apps Script...`, 'info');
+
+            try {
+                const payload = new URLSearchParams();
+                payload.append('action', 'verify_admin');
+                payload.append('user', user);
+                payload.append('pass', pass);
+
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: payload.toString()
+                });
+
+                const rawText = await response.text();
+                let resultData = null;
+                try {
+                    resultData = JSON.parse(rawText);
+                } catch (parseErr) {
+                    console.warn('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
+                }
+
+                if (resultData && resultData.status === 'success' && resultData.authenticated === true) {
+                    // Credenciales verificadas y aprobadas por Google Apps Script
+                    sessionStorage.setItem('admin_user', user);
+                    sessionStorage.setItem('admin_pass', pass);
+                    sessionStorage.setItem('admin_authenticated', 'true');
+                    if (errorBox) errorBox.classList.add('hidden');
+                    logConsole(`Credenciales validadas con éxito por Google Apps Script.`, 'success');
+                    checkSession();
+                } else {
+                    // Credenciales rechazadas por el backend
+                    const msg = (resultData && resultData.message) ? resultData.message : 'Credenciales incorrectas. Acceso denegado.';
+                    if (errorBox) {
+                        errorBox.innerText = msg;
+                        errorBox.classList.remove('hidden');
+                    }
+                    logConsole(`Acceso denegado por Google Apps Script: ${msg}`, 'error');
+                }
+            } catch (networkErr) {
+                console.error('[DEBUG][AdminTesters] Error al conectar con Apps Script para login:', networkErr);
+                if (errorBox) {
+                    errorBox.innerText = 'Error al contactar con Google Apps Script: ' + networkErr.message;
+                    errorBox.classList.remove('hidden');
+                }
+                logConsole(`Error de red verificando credenciales: ${networkErr.message}`, 'error');
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                if (btnText) btnText.innerText = 'Desbloquear Panel';
+                if (btnSpinner) btnSpinner.classList.add('hidden');
+            }
         }
 
         function logoutAdmin() {
