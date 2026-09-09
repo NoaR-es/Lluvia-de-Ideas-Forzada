@@ -5,7 +5,6 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-2ea44f?style=for-the-badge&logo=github)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/)
 [![Autor](https://img.shields.io/badge/Autor-Raúl%20Navas%20Montero%20(Noar--es)-0284c7?style=for-the-badge&logo=github)](https://github.com/noar-es)
-[![Propiedad Comercial](https://img.shields.io/badge/Propiedad-Comercial%20%7C%20Privada-991b1b?style=for-the-badge)](terms.html)
 [![Google Play Internal](https://img.shields.io/badge/Google%20Play-Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
 
 <br/>
@@ -93,19 +92,14 @@ Lluvia-de-Ideas-Forzada/
 
 ---
 
-## 👤 Autor y Contacto
+## 👤 Autor
 
-* **Desarrollador Principal y Titular:** **Raúl Navas Montero**
+* **Desarrollador Principal:** **Raúl Navas Montero**
 * **Alias / GitHub:** [Noar-es](https://github.com/noar-es)
 * **Proyecto:** Lluvia de Ideas Forzada
-* **Contacto y Soporte:** Para consultas comerciales, incidencias o propuestas de integración, abre una *Issue* en este repositorio.
 
 ---
 
-## ⚖️ Propiedad Intelectual y Derechos Reservados
+## 📌 Nota del Proyecto
 
-© 2026 **Raúl Navas Montero (Noar-es)**. Todos los derechos reservados.
-
-Este repositorio, su código fuente, diseño, metodología, manuales y activos digitales constituyen la plataforma oficial y material comercial protegido del proyecto **Lluvia de Ideas Forzada**.
-
-Queda expresamente prohibida la copia, reproducción, distribución, modificación, reventa, explotación comercial, ingeniería inversa o descompilación de cualquier elemento de este software y su diseño sin el consentimiento previo, expreso y por escrito del autor y titular legítimo. Para conocer las condiciones legales de uso, consulta los [Términos de Servicio](terms.html).
+Este repositorio, su código fuente, diseño, metodología, manuales y activos digitales constituyen la plataforma oficial y material del proyecto Lluvia de Ideas Forzada.

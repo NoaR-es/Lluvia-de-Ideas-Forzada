@@ -5,7 +5,6 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-2ea44f?style=for-the-badge&logo=github)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/)
 [![Author](https://img.shields.io/badge/Author-Raúl%20Navas%20Montero%20(Noar--es)-0284c7?style=for-the-badge&logo=github)](https://github.com/noar-es)
-[![Commercial Property](https://img.shields.io/badge/Property-Commercial%20%7C%20Proprietary-991b1b?style=for-the-badge)](terms.html)
 [![Google Play Internal](https://img.shields.io/badge/Google%20Play-Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
 
 <br/>
@@ -93,19 +92,14 @@ Lluvia-de-Ideas-Forzada/
 
 ---
 
-## 👤 Author & Contact
+## 👤 Author
 
-* **Lead Developer and Sole Proprietor:** **Raúl Navas Montero**
+* **Lead Developer:** **Raúl Navas Montero**
 * **Handle / GitHub:** [Noar-es](https://github.com/noar-es)
 * **Project:** Lluvia de Ideas Forzada
-* **Contact & Inquiries:** For commercial opportunities, licensing inquiries, or technical support, please open an *Issue* in this repository.
 
 ---
 
-## ⚖️ Intellectual Property & Copyright Notice
+## 📌 Project Note
 
-© 2026 **Raúl Navas Montero (Noar-es)**. All rights reserved.
-
-This repository, its underlying source code, architectural design, methodology, documentation, and digital assets represent the proprietary commercial property of the **Lluvia de Ideas Forzada (Forced Brainstorming)** project.
-
-Any unauthorized copying, reproduction, distribution, modification, resale, commercial exploitation, reverse engineering, or decompilation of any part of this software, platform, or design without prior explicit written consent from the author and rightful owner is strictly prohibited. For complete terms, please consult the [Terms of Service](terms.html).
+This repository, its source code, design, methodology, manuals, and digital assets constitute the official platform and material of the Lluvia de Ideas Forzada project.
