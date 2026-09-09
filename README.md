@@ -5,7 +5,8 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-2ea44f?style=for-the-badge&logo=github)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/)
 [![Autor](https://img.shields.io/badge/Autor-Raúl%20Navas%20Montero%20(Noar--es)-0284c7?style=for-the-badge&logo=github)](https://github.com/noar-es)
-[![Google Play Internal](https://img.shields.io/badge/Google%20Play-Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
+[![Apuntarse como Tester](https://img.shields.io/badge/🧪%20Programa%20de%20Testers-¡Apúntate%20Aquí!-f59e0b?style=for-the-badge)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester)
+[![Descarga Google Play](https://img.shields.io/badge/Google%20Play-Descarga%20Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
 
 <br/>
 
@@ -18,9 +19,22 @@
   <b>Plataforma web oficial y ecosistema de ideación asistida por Inteligencia Artificial orientada a la privacidad, el pensamiento divergente y la maduración orgánica de ideas.</b>
 </p>
 
-[🌐 Visitar Landing Web en GitHub Pages](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/) • [📖 Hub de Tutoriales](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tutoriales) • [⚖️ Privacidad y Legal](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/privacy-policy.html) • [📝 Términos de Uso](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/terms.html)
+[🌐 Visitar Landing Web](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/) • [🧪 **Apuntarse como Tester (Formulario)**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) • [📲 **Descarga Internal Test (Google Play)**](https://play.google.com/apps/internaltest/4701515406502658173) • [📖 Hub de Tutoriales](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tutoriales) • [⚖️ Privacidad](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/privacy-policy.html) • [📝 Términos](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/terms.html)
 
 </div>
+
+---
+
+## 🧪 Programa Oficial de Testers y Acceso Anticipado (Android)
+
+> [!IMPORTANT]
+> **¿Cómo participar en las pruebas de la app en Google Play?**  
+> Al encontrarse actualmente en fase de **Pruebas Internas / Cerradas**, Google Play Store requiere que tu cuenta de Google (Gmail) esté autorizada previamente en la lista de probadores. Tienes a tu disposición ambos accesos directos:
+
+| Paso | Acción | Enlace de Acceso | Finalidad |
+| :---: | :--- | :--- | :--- |
+| **Paso 1** | **Apuntarse como Tester** | [👉 **Abrir Formulario de Alta de Testers**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Paso previo necesario.** Introduce tu correo Gmail de Google Play para darte de alta de inmediato en la lista autorizada de Google Play Console. |
+| **Paso 2** | **Descargar la App** | [📲 **Descargar en Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Una vez registrado, accede a la ficha oficial de pruebas en Google Play Store para instalar la app en tu teléfono Android. |
 
 ---
 

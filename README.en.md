@@ -5,7 +5,8 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-2ea44f?style=for-the-badge&logo=github)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/)
 [![Author](https://img.shields.io/badge/Author-Raúl%20Navas%20Montero%20(Noar--es)-0284c7?style=for-the-badge&logo=github)](https://github.com/noar-es)
-[![Google Play Internal](https://img.shields.io/badge/Google%20Play-Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
+[![Join as Tester](https://img.shields.io/badge/🧪%20Tester%20Program-Sign%20Up%20Here!-f59e0b?style=for-the-badge)](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester)
+[![Download Google Play](https://img.shields.io/badge/Google%20Play-Download%20Internal%20Test-34d399?style=for-the-badge&logo=googleplay)](https://play.google.com/apps/internaltest/4701515406502658173)
 
 <br/>
 
@@ -18,9 +19,22 @@
   <b>Official web platform and AI-assisted ideation ecosystem focused on privacy, divergent thinking, and organic idea maturation.</b>
 </p>
 
-[🌐 Visit Landing Web on GitHub Pages](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/) • [📖 Tutorial Hub](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tutoriales) • [⚖️ Privacy Policy](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/privacy-policy.html) • [📝 Terms of Service](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/terms.html)
+[🌐 Visit Landing Web](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/) • [🧪 **Sign Up as Tester (Form)**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) • [📲 **Download Internal Test (Google Play)**](https://play.google.com/apps/internaltest/4701515406502658173) • [📖 Tutorial Hub](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tutoriales) • [⚖️ Privacy Policy](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/privacy-policy.html) • [📝 Terms](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/terms.html)
 
 </div>
+
+---
+
+## 🧪 Official Tester Program & Early Access (Android)
+
+> [!IMPORTANT]
+> **How to participate in the Google Play closed testing track?**  
+> Because the app is currently in **Internal / Closed Testing**, Google Play requires your Google account (Gmail) to be pre-authorized in the official testers list. You have direct access to both steps:
+
+| Step | Action | Direct Link | Purpose |
+| :---: | :--- | :--- | :--- |
+| **Step 1** | **Sign Up as a Tester** | [👉 **Open Tester Registration Form**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Mandatory initial step.** Submit your Google Play / Gmail address to be immediately added to the authorized Google Play Console testers list. |
+| **Step 2** | **Download the App** | [📲 **Download on Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Once authorized, access the official private testing listing on Google Play Store to install the app on your Android device. |
 
 ---
 

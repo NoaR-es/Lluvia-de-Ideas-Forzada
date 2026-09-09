@@ -2438,12 +2438,22 @@
             }
         }
 
+        function checkUrlForTester() {
+            const hash = window.location.hash.toLowerCase();
+            if (hash === '#tester' || hash === '#testers' || hash === '#registro-tester' || hash === '#unete-tester') {
+                console.log('[DEBUG][TesterModal] Detectado hash de registro de tester en URL:', hash);
+                openTesterModal();
+            }
+        }
+
         // EVENT LISTENERS GLOBALES
         window.addEventListener('hashchange', () => {
             if (window.location.hash.startsWith('#articulo=')) {
                 checkUrlForArticle();
             } else if (window.location.hash.startsWith('#guia=')) {
                 checkUrlForTutorial();
+            } else if (window.location.hash === '#tester' || window.location.hash === '#testers') {
+                checkUrlForTester();
             } else {
                 const articleModal = document.getElementById('article-modal');
                 if (articleModal && !articleModal.classList.contains('hidden')) {
@@ -2631,6 +2641,7 @@
             selectLanguage(initialLang);
             checkUrlForArticle();
             checkUrlForTutorial();
+            checkUrlForTester();
             console.log('[DEBUG][LandingWeb] Cabecera cargada con icono circular logo.jpg y Hub de Tutoriales inicializado');
         });
     </script>
