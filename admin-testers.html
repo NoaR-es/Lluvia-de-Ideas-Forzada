@@ -255,6 +255,7 @@
         const AUTH_USER = "triops";
         const AUTH_PASS = "Amiga500@";
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0CRcBdoV2YnxtpNn7WtCv79znsB7f_4PXSA_lkFZBjwLvSJc2AHjEUJxQZOn9NJkAHQ/exec";
+        let currentAppsScriptUrl = localStorage.getItem('custom_apps_script_url') || APPS_SCRIPT_URL;
 
         let validEmailsList = [];
 
@@ -415,7 +416,7 @@
                 progressPercentage.innerText = '50%';
                 progressStatus.innerText = 'Despachando correos desde tu Gmail...';
 
-                const response = await fetch(APPS_SCRIPT_URL, {
+                const response = await fetch(currentAppsScriptUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -423,23 +424,45 @@
                     body: payload.toString()
                 });
 
+                const rawText = await response.text();
+                let resultData = null;
+                try {
+                    resultData = JSON.parse(rawText);
+                } catch (e) {
+                    console.log('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
+                }
+
                 progressBar.style.width = '100%';
                 progressPercentage.innerText = '100%';
-                progressStatus.innerText = '¡Envío finalizado con éxito!';
 
-                logConsole(`Petición procesada con código HTTP ${response.status}.`, 'success');
-                validEmailsList.forEach(email => {
-                    logConsole(`Invitación enviada a: ${email}`, 'success');
-                });
-                logConsole(`Notificación enviada a la instancia de Ntfy en Oracle Compute.`, 'success');
-
-                alert(`¡Éxito! Se han enviado ${validEmailsList.length} invitaciones preestablecidas a los testers.`);
-                clearForm();
+                if (resultData && resultData.status === 'success') {
+                    progressStatus.innerText = `¡Éxito! ${resultData.sentCount} invitaciones enviadas.`;
+                    logConsole(`Petición procesada con éxito por Apps Script. Enviados: ${resultData.sentCount}`, 'success');
+                    if (resultData.failedCount > 0) {
+                        logConsole(`Fallaron ${resultData.failedCount} envíos. Detalles en consola.`, 'warn');
+                        console.warn('[DEBUG][AdminTesters] Fallidos:', resultData.failedList);
+                    }
+                    validEmailsList.forEach(email => {
+                        logConsole(`[✓] Correo despachado a: ${email}`, 'success');
+                    });
+                    logConsole(`Notificación enviada a la instancia de Ntfy en Oracle Compute.`, 'success');
+                    alert(`¡Éxito! Se han enviado ${resultData.sentCount} invitaciones preestablecidas a los testers.`);
+                    clearForm();
+                } else if (resultData && resultData.status === 'error') {
+                    progressStatus.innerText = 'Error en backend de Apps Script.';
+                    logConsole(`Apps Script respondió con error: ${resultData.message}`, 'error');
+                    alert(`Error reportado por Google Apps Script:\n${resultData.message}`);
+                } else {
+                    progressStatus.innerText = 'Petición enviada (respuesta recibida).';
+                    logConsole(`Respuesta recibida: ${rawText.slice(0, 150)}...`, 'info');
+                    alert(`Petición completada con estado ${response.status}. Revisa si llegó a tu bandeja o la pestaña Ejecuciones en Apps Script.`);
+                    clearForm();
+                }
 
             } catch (err) {
                 console.error('[DEBUG][AdminTesters] Error en envío:', err);
                 logConsole(`Error en la conexión con Apps Script: ${err.message}`, 'error');
-                alert('Ocurrió un error al contactar con el backend. Revisa la consola de auditoría.');
+                alert(`Ocurrió un error al contactar con el backend: ${err.message}`);
             } finally {
                 sendBtn.disabled = false;
                 btnText.innerText = 'Enviar Notificación a Testers';
