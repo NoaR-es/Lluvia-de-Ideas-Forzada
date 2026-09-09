@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Activación de Testers - Lluvia de Ideas Forzada</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-950 text-slate-900 font-sans min-h-screen flex flex-col items-center justify-start p-4 sm:p-8">
+
+    <!-- CABECERA SUPERIOR -->
+    <header class="w-full max-w-5xl flex items-center justify-between py-4 border-b border-slate-800/80 mb-8">
+        <div class="flex items-center gap-3">
+            <img src="logo.jpg" alt="Logo Lluvia de Ideas" class="w-10 h-10 rounded-full border border-emerald-500/40 shadow-md">
+            <div>
+                <h1 class="text-lg font-black text-slate-100 tracking-tight flex items-center gap-2">
+                    <span>Lluvia de Ideas Forzada</span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        Admin Testers
+                    </span>
+                </h1>
+                <p class="text-xs text-slate-400">Gestor oficial de notificaciones y activación en Google Play</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition border border-slate-700">
+                ← Volver a la Web
+            </a>
+            <button id="logout-btn" onclick="logoutAdmin()" class="hidden px-3 py-1.5 rounded-xl bg-red-950/60 hover:bg-red-900/80 text-red-200 text-xs font-semibold transition border border-red-800/50">
+                Cerrar Sesión
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PANTALLA 1: ACCESO DE SEGURIDAD (LOGIN PRIVADO)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="login-container" class="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 my-auto animate-fade-in">
+        <div class="text-center mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-3 text-2xl font-bold border border-emerald-300">
+                🔒
+            </div>
+            <h2 class="text-2xl font-black text-slate-900">Acceso Restringido</h2>
+            <p class="text-xs text-slate-600 mt-1">Introduce tus credenciales para gestionar el envío a testers.</p>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+            <div>
+                <label for="admin-user" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Usuario
+                </label>
+                <input type="text" id="admin-user" required autocomplete="username" placeholder="Usuario"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
+            </div>
+
+            <div>
+                <label for="admin-pass" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Contraseña
+                </label>
+                <input type="password" id="admin-pass" required autocomplete="current-password" placeholder="••••••••"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
+            </div>
+
+            <div id="login-error" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 font-bold leading-relaxed text-center">
+                Credenciales incorrectas. Acceso denegado.
+            </div>
+
+            <button type="submit"
+                class="w-full py-3.5 px-6 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 cursor-pointer">
+                Desbloquear Panel
+            </button>
+        </form>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PANTALLA 2: PANEL DE ADMINISTRACIÓN Y ENVÍO MASIVO
+         ═══════════════════════════════════════════════════════════════ -->
+    <main id="dashboard-container" class="hidden w-full max-w-5xl space-y-6">
+
+        <!-- TARJETA DE ACCIÓN: LISTA DE EMAILS Y ENVÍO -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-slate-100 gap-4">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                        <span>🚀</span> <span>Despacho a Google Play Testers</span>
+                    </span>
+                    <h2 class="text-2xl font-black text-slate-900 mt-2">
+                        Notificar Activación de Cuentas Autorizadas
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                        Pega aquí los correos que acabas de dar de alta en Google Play Console. El sistema les enviará el correo con el enlace directo y las instrucciones.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="openPreviewModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition border border-slate-200 flex items-center gap-2 cursor-pointer">
+                        <span>👁️</span> <span>Ver Plantilla de Email</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-6 space-y-5">
+                <!-- Asunto del Correo -->
+                <div>
+                    <label for="email-subject" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                        Asunto del Correo Preestablecido
+                    </label>
+                    <input type="text" id="email-subject"
+                        value="🌿 ¡Tu acceso a Lluvia de Ideas Forzada ya está activo en Google Play!"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-semibold text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
+                </div>
+
+                <!-- Caja de Texto de Emails -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label for="emails-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Listado de Correos de Google Play (Gmail)
+                        </label>
+                        <span id="emails-counter" class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                            0 correos válidos
+                        </span>
+                    </div>
+                    <textarea id="emails-input" rows="7" oninput="processEmailsInput()"
+                        placeholder="pega.aqui@gmail.com&#10;otro.usuario@gmail.com&#10;tercer.tester@gmail.com"
+                        class="w-full px-4 py-3 rounded-2xl border border-slate-300 bg-slate-50 text-slate-900 font-mono text-xs sm:text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition leading-relaxed"></textarea>
+                    <p class="text-[11px] text-slate-500 mt-1">
+                        💡 Puedes separar los correos con saltos de línea, comas o espacios. Los duplicados y formatos incorrectos se filtran automáticamente.
+                    </p>
+                </div>
+
+                <!-- Lista de Chips de Emails Parseados -->
+                <div id="chips-container" class="hidden flex flex-wrap gap-1.5 max-h-36 overflow-y-auto p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                </div>
+
+                <!-- Barra de Progreso y Mensajes de Estado -->
+                <div id="progress-container" class="hidden space-y-2">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+                        <span id="progress-status">Enviando invitaciones...</span>
+                        <span id="progress-percentage">0%</span>
+                    </div>
+                    <div class="w-full h-3 rounded-full bg-slate-200 overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-emerald-500 transition-all duration-300 rounded-full" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-slate-100">
+                    <button type="button" onclick="clearForm()" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                        Limpiar Lista
+                    </button>
+                    <button type="button" id="send-emails-btn" onclick="sendTesterInvitations()"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 disabled:pointer-events-none">
+                        <span id="send-btn-icon">🚀</span>
+                        <span id="send-btn-text">Enviar Notificación a Testers</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONSOLA DE REGISTRO EN TIEMPO REAL (TERMINAL) -->
+        <div class="bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-800 text-slate-200 font-mono text-xs">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-slate-400">
+                <span class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Consola de Auditoría y Salida (Apps Script / Ntfy)</span>
+                </span>
+                <button onclick="clearConsoleLog()" class="hover:text-slate-200 transition text-[11px]">
+                    Limpiar Log
+                </button>
+            </div>
+            <div id="console-output" class="mt-3 space-y-1 max-h-56 overflow-y-auto leading-relaxed text-slate-300">
+                <p class="text-slate-500">[SISTEMA] Panel inicializado y conectado a Google Apps Script.</p>
+                <p class="text-slate-500">[SISTEMA] En espera de listado de testers autorizados.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL: PREVISUALIZACIÓN DE LA PLANTILLA OFICIAL DE EMAIL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="preview-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto" onclick="closePreviewModal()">
+        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden p-6 sm:p-8 my-auto animate-modal-in" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+                <h3 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                    <span>📧</span> <span>Previsualización del Correo Preestablecido</span>
+                </h3>
+                <button onclick="closePreviewModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm transition">
+                    ✕
+                </button>
+            </div>
+
+            <!-- MAQUETACIÓN DEL CORREO QUE RECIBIRÁ EL TESTER -->
+            <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4 text-left">
+                <div class="border-b border-slate-200 pb-3">
+                    <p class="text-xs text-slate-500"><strong>De:</strong> Lluvia de Ideas Forzada &lt;noreply@google.com&gt;</p>
+                    <p class="text-xs text-slate-500"><strong>Para:</strong> <span class="text-emerald-700 font-mono">tester@gmail.com</span></p>
+                    <p class="text-xs text-slate-900 mt-1 font-bold"><strong>Asunto:</strong> 🌿 ¡Tu acceso a Lluvia de Ideas Forzada ya está activo en Google Play!</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.jpg" alt="Logo" class="w-10 h-10 rounded-full border border-emerald-300">
+                        <div>
+                            <h4 class="text-base font-black text-slate-900">¡Hola, Innovador!</h4>
+                            <p class="text-xs text-slate-600">Bienvenido al programa oficial de pruebas de Lluvia de Ideas Forzada.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        Te confirmamos que <strong>tu cuenta de Google Play ya ha sido dada de alta y autorizada</strong> en nuestra consola de desarrollador para la versión de pruebas internas en Android.
+                    </p>
+
+                    <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
+                        <p class="text-xs font-bold text-emerald-950">📋 Pasos para comenzar:</p>
+                        <ol class="list-decimal list-inside text-xs text-slate-700 space-y-1">
+                            <li>Haz clic en el botón de abajo desde tu teléfono Android con tu cuenta de Google activa.</li>
+                            <li>En la pantalla de Google Play, pulsa en <strong>"Aceptar invitación / Participar en el programa"</strong>.</li>
+                            <li>Descarga e instala la app directamente desde Google Play Store.</li>
+                        </ol>
+                    </div>
+
+                    <div class="text-center py-2">
+                        <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
+                            class="inline-block px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-sm shadow-md hover:bg-emerald-400 transition">
+                            📲 Descargar App en Google Play Store
+                        </a>
+                    </div>
+
+                    <p class="text-[11px] text-slate-500 text-center leading-snug">
+                        Si al abrir el enlace Google Play muestra que el elemento no está disponible, espera unos minutos a que los servidores de Google sincronicen la autorización en tu región.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-5 flex justify-end">
+                <button onclick="closePreviewModal()" class="px-5 py-2.5 rounded-xl bg-slate-900 text-slate-100 hover:bg-slate-800 text-xs font-bold transition">
+                    Cerrar Vista Previa
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LÓGICA JAVASCRIPT DEL PANEL DE ADMINISTRACIÓN
+         ═══════════════════════════════════════════════════════════════ -->
+    <script>
+        const AUTH_USER = "triops";
+        const AUTH_PASS = "Amiga500@";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0CRcBdoV2YnxtpNn7WtCv79znsB7f_4PXSA_lkFZBjwLvSJc2AHjEUJxQZOn9NJkAHQ/exec";
+
+        let validEmailsList = [];
+
+        function logConsole(msg, type = 'info') {
+            const out = document.getElementById('console-output');
+            if (!out) return;
+            const p = document.createElement('p');
+            const time = new Date().toLocaleTimeString();
+            let color = 'text-slate-300';
+            let prefix = '[INFO]';
+            if (type === 'success') { color = 'text-emerald-400 font-bold'; prefix = '[✓]'; }
+            if (type === 'error') { color = 'text-red-400 font-bold'; prefix = '[✗]'; }
+            if (type === 'warn') { color = 'text-amber-400'; prefix = '[!]'; }
+
+            p.className = `${color} leading-tight`;
+            p.innerText = `${prefix} [${time}] ${msg}`;
+            out.appendChild(p);
+            out.scrollTop = out.scrollHeight;
+            console.log(`[DEBUG][AdminTesters] ${msg}`);
+        }
+
+        function clearConsoleLog() {
+            const out = document.getElementById('console-output');
+            if (out) out.innerHTML = '<p class="text-slate-500">[SISTEMA] Log reiniciado.</p>';
+        }
+
+        // CONTROL DE SESIÓN
+        function checkSession() {
+            const auth = sessionStorage.getItem('admin_authenticated');
+            if (auth === 'true') {
+                document.getElementById('login-container').classList.add('hidden');
+                document.getElementById('dashboard-container').classList.remove('hidden');
+                document.getElementById('logout-btn').classList.remove('hidden');
+                logConsole('Sesión de administrador activa.', 'success');
+            } else {
+                document.getElementById('login-container').classList.remove('hidden');
+                document.getElementById('dashboard-container').classList.add('hidden');
+                document.getElementById('logout-btn').classList.add('hidden');
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('admin-user').value.trim();
+            const pass = document.getElementById('admin-pass').value.trim();
+            const errorBox = document.getElementById('login-error');
+
+            if (user === AUTH_USER && pass === AUTH_PASS) {
+                sessionStorage.setItem('admin_authenticated', 'true');
+                if (errorBox) errorBox.classList.add('hidden');
+                checkSession();
+            } else {
+                if (errorBox) errorBox.classList.remove('hidden');
+                logConsole('Intento fallido de inicio de sesión.', 'error');
+            }
+        }
+
+        function logoutAdmin() {
+            sessionStorage.removeItem('admin_authenticated');
+            checkSession();
+            logConsole('Sesión cerrada por el usuario.', 'info');
+        }
+
+        // PARSER Y FILTRADO DE EMAILS
+        function processEmailsInput() {
+            const input = document.getElementById('emails-input').value;
+            const counter = document.getElementById('emails-counter');
+            const chips = document.getElementById('chips-container');
+            const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+
+            const matches = input.match(emailRegex) || [];
+            // Filtro de duplicados
+            const unique = [...new Set(matches.map(m => m.toLowerCase().trim()))];
+            validEmailsList = unique;
+
+            if (counter) {
+                counter.innerText = `${unique.length} correo${unique.length === 1 ? '' : 's'} válido${unique.length === 1 ? '' : 's'}`;
+                if (unique.length > 0) {
+                    counter.className = 'text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300';
+                } else {
+                    counter.className = 'text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200';
+                }
+            }
+
+            // Renderizar chips
+            if (chips) {
+                if (unique.length > 0) {
+                    chips.classList.remove('hidden');
+                    chips.innerHTML = unique.map(email => `
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-300 text-[11px] font-mono text-slate-800 shadow-sm">
+                            <span>📧</span> ${email}
+                        </span>
+                    `).join('');
+                } else {
+                    chips.classList.add('hidden');
+                    chips.innerHTML = '';
+                }
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('emails-input').value = '';
+            processEmailsInput();
+            logConsole('Formulario reseteado.', 'info');
+        }
+
+        // MODAL PREVIEW
+        function openPreviewModal() {
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+        function closePreviewModal() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        // ENVÍO DE CORREOS VÍA GOOGLE APPS SCRIPT
+        async function sendTesterInvitations() {
+            if (validEmailsList.length === 0) {
+                alert('Por favor, introduce al menos un correo electrónico válido.');
+                return;
+            }
+
+            const subject = document.getElementById('email-subject').value.trim();
+            if (!subject) {
+                alert('El asunto del correo no puede estar vacío.');
+                return;
+            }
+
+            const confirmSend = confirm(`¿Confirmas el envío de invitaciones a los ${validEmailsList.length} testers de la lista?`);
+            if (!confirmSend) return;
+
+            const sendBtn = document.getElementById('send-emails-btn');
+            const btnText = document.getElementById('send-btn-text');
+            const btnIcon = document.getElementById('send-btn-icon');
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const progressStatus = document.getElementById('progress-status');
+            const progressPercentage = document.getElementById('progress-percentage');
+
+            sendBtn.disabled = true;
+            btnText.innerText = 'Enviando invitaciones...';
+            btnIcon.innerText = '⏳';
+            progressContainer.classList.remove('hidden');
+            progressBar.style.width = '15%';
+            progressPercentage.innerText = '15%';
+            progressStatus.innerText = `Conectando con Google Apps Script (${validEmailsList.length} correos)...`;
+
+            logConsole(`Iniciando envío a lote de ${validEmailsList.length} testers...`, 'info');
+
+            try {
+                const payload = new URLSearchParams();
+                payload.append('action', 'send_tester_invites');
+                payload.append('user', AUTH_USER);
+                payload.append('pass', AUTH_PASS);
+                payload.append('subject', subject);
+                payload.append('emails', JSON.stringify(validEmailsList));
+
+                progressBar.style.width = '50%';
+                progressPercentage.innerText = '50%';
+                progressStatus.innerText = 'Despachando correos desde tu Gmail...';
+
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: payload.toString()
+                });
+
+                progressBar.style.width = '100%';
+                progressPercentage.innerText = '100%';
+                progressStatus.innerText = '¡Envío finalizado con éxito!';
+
+                logConsole(`Petición procesada con código HTTP ${response.status}.`, 'success');
+                validEmailsList.forEach(email => {
+                    logConsole(`Invitación enviada a: ${email}`, 'success');
+                });
+                logConsole(`Notificación enviada a la instancia de Ntfy en Oracle Compute.`, 'success');
+
+                alert(`¡Éxito! Se han enviado ${validEmailsList.length} invitaciones preestablecidas a los testers.`);
+                clearForm();
+
+            } catch (err) {
+                console.error('[DEBUG][AdminTesters] Error en envío:', err);
+                logConsole(`Error en la conexión con Apps Script: ${err.message}`, 'error');
+                alert('Ocurrió un error al contactar con el backend. Revisa la consola de auditoría.');
+            } finally {
+                sendBtn.disabled = false;
+                btnText.innerText = 'Enviar Notificación a Testers';
+                btnIcon.innerText = '🚀';
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                    progressBar.style.width = '0%';
+                }, 4000);
+            }
+        }
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', () => {
+            checkSession();
+        });
+    </script>
+</body>
+
+</html>
