@@ -308,8 +308,6 @@
          LÓGICA JAVASCRIPT DEL PANEL DE ADMINISTRACIÓN
          ═══════════════════════════════════════════════════════════════ -->
     <script>
-        const AUTH_USER = "triops";
-        const AUTH_PASS = "Amiga500@";
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjz1JU0ilHhxL0WzU9LbbJeJ09yWkyr_rYKs_dctMgDqGwG2_wuN3FiKgLs5HoIUT0BQ/exec";
         let storedScriptUrl = localStorage.getItem('custom_apps_script_url');
         if (storedScriptUrl && storedScriptUrl.includes('AKfycby0')) {
@@ -364,18 +362,27 @@
             const pass = document.getElementById('admin-pass').value.trim();
             const errorBox = document.getElementById('login-error');
 
-            if (user === AUTH_USER && pass === AUTH_PASS) {
-                sessionStorage.setItem('admin_authenticated', 'true');
-                if (errorBox) errorBox.classList.add('hidden');
-                checkSession();
-            } else {
-                if (errorBox) errorBox.classList.remove('hidden');
-                logConsole('Intento fallido de inicio de sesión.', 'error');
+            if (!user || !pass) {
+                if (errorBox) {
+                    errorBox.innerText = 'Por favor, introduce usuario y clave.';
+                    errorBox.classList.remove('hidden');
+                }
+                logConsole('Campos de inicio de sesión incompletos.', 'warn');
+                return;
             }
+
+            // Credenciales almacenadas únicamente en memoria de sesión volátil del navegador
+            sessionStorage.setItem('admin_user', user);
+            sessionStorage.setItem('admin_pass', pass);
+            sessionStorage.setItem('admin_authenticated', 'true');
+            if (errorBox) errorBox.classList.add('hidden');
+            checkSession();
         }
 
         function logoutAdmin() {
             sessionStorage.removeItem('admin_authenticated');
+            sessionStorage.removeItem('admin_user');
+            sessionStorage.removeItem('admin_pass');
             checkSession();
             logConsole('Sesión cerrada por el usuario.', 'info');
         }
@@ -538,8 +545,8 @@
             try {
                 const payload = new URLSearchParams();
                 payload.append('action', 'send_tester_invites');
-                payload.append('user', AUTH_USER);
-                payload.append('pass', AUTH_PASS);
+                payload.append('user', sessionStorage.getItem('admin_user') || '');
+                payload.append('pass', sessionStorage.getItem('admin_pass') || '');
                 payload.append('subject', subject);
                 payload.append('emails', JSON.stringify(validEmailsList));
 
