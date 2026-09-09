@@ -29,12 +29,12 @@
 
 > [!IMPORTANT]
 > **How to participate in the Google Play closed testing track?**  
-> Because the app is currently in **Internal / Closed Testing**, Google Play requires your Google account (Gmail) to be pre-authorized in the official testers list. You have direct access to both steps:
+> Because the app is currently in **Internal / Closed Testing**, Google Play requires your Google account (Gmail) to be pre-authorized in Google Play Console. Requests are processed manually within a few hours (up to 24h). The flow is as follows:
 
 | Step | Action | Direct Link | Purpose |
 | :---: | :--- | :--- | :--- |
-| **Step 1** | **Sign Up as a Tester** | [👉 **Open Tester Registration Form**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Mandatory initial step.** Submit your Google Play / Gmail address to be immediately added to the authorized Google Play Console testers list. |
-| **Step 2** | **Download the App** | [📲 **Download on Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Once authorized, access the official private testing listing on Google Play Store to install the app on your Android device. |
+| **Step 1** | **Sign Up as a Tester** | [👉 **Open Tester Registration Form**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Mandatory initial step.** Submit your Google Play / Gmail address. We review and add your account manually; you will receive activation within a few hours or the next day. |
+| **Step 2** | **Download the App** | [📲 **Download on Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Once your account has been authorized in Google Play Console, open the official testing track listing to install the app on your Android device. |
 
 ---
 

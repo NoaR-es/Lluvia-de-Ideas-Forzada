@@ -29,12 +29,12 @@
 
 > [!IMPORTANT]
 > **¿Cómo participar en las pruebas de la app en Google Play?**  
-> Al encontrarse actualmente en fase de **Pruebas Internas / Cerradas**, Google Play Store requiere que tu cuenta de Google (Gmail) esté autorizada previamente en la lista de probadores. Tienes a tu disposición ambos accesos directos:
+> Al encontrarse actualmente en fase de **Pruebas Internas / Cerradas**, Google Play Store requiere que tu cuenta de Google (Gmail) esté autorizada previamente en la consola. Las solicitudes se tramitan manualmente en un plazo habitual de unas horas (máximo 24h). El flujo es el siguiente:
 
 | Paso | Acción | Enlace de Acceso | Finalidad |
 | :---: | :--- | :--- | :--- |
-| **Paso 1** | **Apuntarse como Tester** | [👉 **Abrir Formulario de Alta de Testers**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Paso previo necesario.** Introduce tu correo Gmail de Google Play para darte de alta de inmediato en la lista autorizada de Google Play Console. |
-| **Paso 2** | **Descargar la App** | [📲 **Descargar en Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Una vez registrado, accede a la ficha oficial de pruebas en Google Play Store para instalar la app en tu teléfono Android. |
+| **Paso 1** | **Apuntarse como Tester** | [👉 **Abrir Formulario de Alta de Testers**](https://noar-es.github.io/Lluvia-de-Ideas-Forzada/#tester) | **Paso previo necesario.** Introduce tu correo Gmail de Google Play. Revisamos y añadimos tu cuenta manualmente; en unas horas o al día siguiente recibirás el aviso de activación. |
+| **Paso 2** | **Descargar la App** | [📲 **Descargar en Google Play (Internal Test)**](https://play.google.com/apps/internaltest/4701515406502658173) | Una vez que tu cuenta haya sido dada de alta y autorizada en Google Play Console, podrás abrir la ficha de pruebas e instalar la app en tu teléfono Android. |
 
 ---
 
