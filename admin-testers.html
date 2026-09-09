@@ -577,8 +577,8 @@
                     console.log('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
                 }
 
-                // VALIDACIÓN ESTRICTA: SOLO SE CONSIDERA ENVIADO SI EL JSON CONTIENE status === 'success'
-                if (resultData && resultData.status === 'success') {
+                // VALIDACIÓN ESTRICTA: SOLO SE CONSIDERA ENVIADO SI EL JSON CONTIENE status === 'success' Y sentCount > 0
+                if (resultData && resultData.status === 'success' && resultData.sentCount > 0) {
                     progressBar.style.width = '100%';
                     progressPercentage.innerText = '100%';
                     progressBar.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500';
@@ -603,7 +603,7 @@
                     );
                     clearForm();
                 } else {
-                    // CUALQUIER OTRA RESPUESTA O FALLO SE TRATA COMO ERROR ESTRICTO (NO FALSOS POSITIVOS)
+                    // CUALQUIER OTRA RESPUESTA O SI sentCount === 0 SE TRATA COMO ERROR ESTRICTO (NO FALSOS POSITIVOS)
                     progressBar.style.width = '100%';
                     progressPercentage.innerText = '100%';
                     progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
@@ -611,7 +611,17 @@
                     progressStatus.innerText = 'Fallo en la ejecución: no se envió ningún correo.';
 
                     let errorHtml = '';
-                    if (response.status === 403 || rawText.includes('Necesitas acceso') || rawText.includes('accounts.google.com')) {
+                    if (resultData && resultData.failedList && resultData.failedList.length > 0) {
+                        const primerFallo = resultData.failedList[0];
+                        errorHtml = `<p class="font-bold text-red-700">Fallo en el servicio de correo de Google:</p>
+                        <p class="mt-2 text-xs text-slate-800">No se pudo enviar a <strong>${primerFallo.email}</strong>:</p>
+                        <p class="mt-1 font-mono text-xs bg-red-50 p-2 rounded-lg text-red-900 border border-red-200">${primerFallo.error}</p>`;
+                        logConsole(`Fallo de envío en Apps Script: ${primerFallo.error}`, 'error');
+                    } else if (resultData && resultData.message) {
+                        errorHtml = `<p class="font-bold text-red-700">Google Apps Script reportó un error:</p>
+                        <p class="mt-2 font-mono text-xs bg-slate-100 p-2 rounded-lg text-slate-800">${resultData.message}</p>`;
+                        logConsole(`Error en Apps Script: ${resultData.message}`, 'error');
+                    } else if (response.status === 403 || rawText.includes('Necesitas acceso') || rawText.includes('accounts.google.com')) {
                         errorHtml = `<p class="font-bold text-red-700">Error 403: Acceso Denegado por Google Apps Script.</p>
                         <p class="mt-2 text-xs text-slate-700">Google bloqueó la llamada porque la Web App está en modo privado (<em>"Solo yo"</em>) en lugar de pública.</p>
                         <div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl text-xs space-y-1 text-slate-800">
@@ -625,10 +635,6 @@
                             </ol>
                         </div>`;
                         logConsole('Error 403: Google Apps Script requiere acceso "Cualquier persona".', 'error');
-                    } else if (resultData && resultData.message) {
-                        errorHtml = `<p class="font-bold text-red-700">Google Apps Script reportó un error:</p>
-                        <p class="mt-2 font-mono text-xs bg-slate-100 p-2 rounded-lg text-slate-800">${resultData.message}</p>`;
-                        logConsole(`Error en Apps Script: ${resultData.message}`, 'error');
                     } else {
                         errorHtml = `<p class="font-bold text-red-700">Respuesta inesperada del servidor (HTTP ${response.status}).</p>
                         <p class="mt-2 text-xs text-slate-600">No se pudo procesar la respuesta. Revisa la consola para más información técnica.</p>`;
