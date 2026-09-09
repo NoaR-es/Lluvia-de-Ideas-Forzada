@@ -249,6 +249,62 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
+         MODAL DE ALERTA / NOTIFICACIÓN INTEGRADO (CSS BOTÁNICO)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="app-alert-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left">
+            <div class="flex items-center gap-3 mb-4">
+                <div id="alert-icon-container" class="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800">
+                    <span id="alert-modal-icon">🌿</span>
+                </div>
+                <div>
+                    <h3 id="alert-modal-title" class="text-base font-black text-slate-900 leading-tight">Notificación</h3>
+                    <p id="alert-modal-subtitle" class="text-xs text-slate-500 font-medium">Panel de Testers · Google Play</p>
+                </div>
+            </div>
+            <div id="alert-modal-body" class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 space-y-2">
+                <!-- Contenido dinámico -->
+            </div>
+            <div class="flex justify-end">
+                <button id="alert-modal-btn" onclick="closeAppAlert()" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition shadow-sm">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL DE CONFIRMACIÓN INTEGRADO (CSS BOTÁNICO)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="app-confirm-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800">
+                    <span>📨</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 leading-tight">Confirmar Despacho Masivo</h3>
+                    <p class="text-xs text-slate-500 font-medium">Lluvia de Ideas Forzada · Google Play</p>
+                </div>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 space-y-3">
+                <p>¿Estás seguro de enviar la invitación por correo a los <strong id="confirm-modal-count" class="text-emerald-800 font-black">0</strong> testers de la lista?</p>
+                <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-950 font-medium">
+                    Cada tester recibirá la plantilla oficial con el botón directo de acceso al Internal Test en Google Play.
+                </div>
+            </div>
+            <div class="flex items-center justify-end gap-3">
+                <button onclick="closeAppConfirm(false)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition">
+                    Cancelar
+                </button>
+                <button onclick="closeAppConfirm(true)" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition shadow-md">
+                    Confirmar y Despachar ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
          LÓGICA JAVASCRIPT DEL PANEL DE ADMINISTRACIÓN
          ═══════════════════════════════════════════════════════════════ -->
     <script>
@@ -375,21 +431,89 @@
             document.getElementById('preview-modal').classList.add('hidden');
         }
 
-        // ENVÍO DE CORREOS VÍA GOOGLE APPS SCRIPT
+        // SISTEMA DE MODALES DE LA APLICACIÓN (SIN USAR ALERT O CONFIRM DEL NAVEGADOR)
+        let alertModalCallback = null;
+        function showAppAlert(title, messageHtml, type = 'info', onConfirm = null) {
+            const modal = document.getElementById('app-alert-modal');
+            const titleEl = document.getElementById('alert-modal-title');
+            const bodyEl = document.getElementById('alert-modal-body');
+            const iconEl = document.getElementById('alert-modal-icon');
+            const iconContainer = document.getElementById('alert-icon-container');
+            const btn = document.getElementById('alert-modal-btn');
+
+            alertModalCallback = onConfirm;
+            titleEl.innerText = title;
+            bodyEl.innerHTML = typeof messageHtml === 'string' && !messageHtml.includes('<') ? `<p>${messageHtml}</p>` : messageHtml;
+
+            if (type === 'error') {
+                iconEl.innerText = '❌';
+                iconContainer.className = 'w-10 h-10 rounded-2xl bg-red-100 flex items-center justify-center text-xl flex-shrink-0 text-red-700';
+                btn.className = 'px-6 py-2.5 rounded-xl bg-red-100 hover:bg-red-200 text-red-950 font-black text-xs transition shadow-sm border border-red-300';
+            } else if (type === 'success') {
+                iconEl.innerText = '✅';
+                iconContainer.className = 'w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800';
+                btn.className = 'px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition shadow-sm';
+            } else if (type === 'warn') {
+                iconEl.innerText = '⚠️';
+                iconContainer.className = 'w-10 h-10 rounded-2xl bg-amber-100 flex items-center justify-center text-xl flex-shrink-0 text-amber-800';
+                btn.className = 'px-6 py-2.5 rounded-xl bg-amber-300 hover:bg-amber-400 text-amber-950 font-black text-xs transition shadow-sm';
+            } else {
+                iconEl.innerText = '🌿';
+                iconContainer.className = 'w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800';
+                btn.className = 'px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition shadow-sm';
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeAppAlert() {
+            const modal = document.getElementById('app-alert-modal');
+            if (modal) modal.classList.add('hidden');
+            if (typeof alertModalCallback === 'function') {
+                const cb = alertModalCallback;
+                alertModalCallback = null;
+                cb();
+            }
+        }
+
+        let confirmModalResolve = null;
+        function showAppConfirm(count) {
+            return new Promise((resolve) => {
+                confirmModalResolve = resolve;
+                const countEl = document.getElementById('confirm-modal-count');
+                if (countEl) countEl.innerText = count;
+                const modal = document.getElementById('app-confirm-modal');
+                if (modal) modal.classList.remove('hidden');
+            });
+        }
+
+        function closeAppConfirm(confirmed) {
+            const modal = document.getElementById('app-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+            if (confirmModalResolve) {
+                confirmModalResolve(confirmed);
+                confirmModalResolve = null;
+            }
+        }
+
+        // ENVÍO DE CORREOS VÍA GOOGLE APPS SCRIPT (VALIDACIÓN ESTRICTA)
         async function sendTesterInvitations() {
             if (validEmailsList.length === 0) {
-                alert('Por favor, introduce al menos un correo electrónico válido.');
+                showAppAlert('Sin Destinatarios', 'Por favor, introduce al menos un correo electrónico válido antes de enviar.', 'warn');
                 return;
             }
 
             const subject = document.getElementById('email-subject').value.trim();
             if (!subject) {
-                alert('El asunto del correo no puede estar vacío.');
+                showAppAlert('Asunto Requerido', 'El asunto del correo no puede estar vacío. Por favor, escribe un asunto para el mensaje.', 'warn');
                 return;
             }
 
-            const confirmSend = confirm(`¿Confirmas el envío de invitaciones a los ${validEmailsList.length} testers de la lista?`);
-            if (!confirmSend) return;
+            const confirmed = await showAppConfirm(validEmailsList.length);
+            if (!confirmed) {
+                logConsole('Envío masivo cancelado por el administrador.', 'info');
+                return;
+            }
 
             const sendBtn = document.getElementById('send-emails-btn');
             const btnText = document.getElementById('send-btn-text');
@@ -403,8 +527,10 @@
             btnText.innerText = 'Enviando invitaciones...';
             btnIcon.innerText = '⏳';
             progressContainer.classList.remove('hidden');
-            progressBar.style.width = '15%';
-            progressPercentage.innerText = '15%';
+            progressBar.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500';
+            progressBar.style.width = '20%';
+            progressPercentage.innerText = '20%';
+            progressStatus.className = 'text-xs font-semibold text-slate-600';
             progressStatus.innerText = `Conectando con Google Apps Script (${validEmailsList.length} correos)...`;
 
             logConsole(`Iniciando envío a lote de ${validEmailsList.length} testers...`, 'info');
@@ -417,9 +543,9 @@
                 payload.append('subject', subject);
                 payload.append('emails', JSON.stringify(validEmailsList));
 
-                progressBar.style.width = '50%';
-                progressPercentage.innerText = '50%';
-                progressStatus.innerText = 'Despachando correos desde tu Gmail...';
+                progressBar.style.width = '60%';
+                progressPercentage.innerText = '60%';
+                progressStatus.innerText = 'Despachando correos desde tu cuenta de Gmail...';
 
                 const response = await fetch(currentAppsScriptUrl, {
                     method: 'POST',
@@ -437,11 +563,14 @@
                     console.log('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
                 }
 
-                progressBar.style.width = '100%';
-                progressPercentage.innerText = '100%';
-
+                // VALIDACIÓN ESTRICTA: SOLO SE CONSIDERA ENVIADO SI EL JSON CONTIENE status === 'success'
                 if (resultData && resultData.status === 'success') {
+                    progressBar.style.width = '100%';
+                    progressPercentage.innerText = '100%';
+                    progressBar.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-500';
+                    progressStatus.className = 'text-xs font-bold text-emerald-700';
                     progressStatus.innerText = `¡Éxito! ${resultData.sentCount} invitaciones enviadas.`;
+
                     logConsole(`Petición procesada con éxito por Apps Script. Enviados: ${resultData.sentCount}`, 'success');
                     if (resultData.failedCount > 0) {
                         logConsole(`Fallaron ${resultData.failedCount} envíos. Detalles en consola.`, 'warn');
@@ -451,31 +580,70 @@
                         logConsole(`[✓] Correo despachado a: ${email}`, 'success');
                     });
                     logConsole(`Notificación enviada a la instancia de Ntfy en Oracle Compute.`, 'success');
-                    alert(`¡Éxito! Se han enviado ${resultData.sentCount} invitaciones preestablecidas a los testers.`);
+
+                    showAppAlert(
+                        '¡Invitaciones Enviadas con Éxito!',
+                        `<p>Se han enviado correctamente <strong>${resultData.sentCount} invitaciones</strong> a los testers desde tu cuenta de Gmail.</p>
+                         <p class="text-xs text-slate-500 mt-2">Cada tester ya dispone del enlace oficial para unirse al programa en Google Play Store.</p>`,
+                        'success'
+                    );
                     clearForm();
-                } else if (resultData && resultData.status === 'error') {
-                    progressStatus.innerText = 'Error en backend de Apps Script.';
-                    logConsole(`Apps Script respondió con error: ${resultData.message}`, 'error');
-                    alert(`Error reportado por Google Apps Script:\n${resultData.message}`);
                 } else {
-                    progressStatus.innerText = 'Petición enviada (respuesta recibida).';
-                    logConsole(`Respuesta recibida: ${rawText.slice(0, 150)}...`, 'info');
-                    alert(`Petición completada con estado ${response.status}. Revisa si llegó a tu bandeja o la pestaña Ejecuciones en Apps Script.`);
-                    clearForm();
+                    // CUALQUIER OTRA RESPUESTA O FALLO SE TRATA COMO ERROR ESTRICTO (NO FALSOS POSITIVOS)
+                    progressBar.style.width = '100%';
+                    progressPercentage.innerText = '100%';
+                    progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
+                    progressStatus.className = 'text-xs font-bold text-red-600';
+                    progressStatus.innerText = 'Fallo en la ejecución: no se envió ningún correo.';
+
+                    let errorHtml = '';
+                    if (response.status === 403 || rawText.includes('Necesitas acceso') || rawText.includes('accounts.google.com')) {
+                        errorHtml = `<p class="font-bold text-red-700">Error 403: Acceso Denegado por Google Apps Script.</p>
+                        <p class="mt-2 text-xs text-slate-700">Google bloqueó la llamada porque la Web App está en modo privado (<em>"Solo yo"</em>) en lugar de pública.</p>
+                        <div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl text-xs space-y-1 text-slate-800">
+                            <p class="font-bold text-slate-900">Pasos para solucionarlo:</p>
+                            <ol class="list-decimal list-inside space-y-0.5">
+                                <li>Abre tu script en Google Apps Script.</li>
+                                <li>Pulsa en <strong>Implementar ➔ Gestionar implementaciones</strong>.</li>
+                                <li>Pulsa el icono del <strong>Lápiz (Editar)</strong>.</li>
+                                <li>Cambia <em>"Quién tiene acceso"</em> a <strong>"Cualquier persona" (Anyone)</strong>.</li>
+                                <li>Guarda e implementa la nueva versión.</li>
+                            </ol>
+                        </div>`;
+                        logConsole('Error 403: Google Apps Script requiere acceso "Cualquier persona".', 'error');
+                    } else if (resultData && resultData.message) {
+                        errorHtml = `<p class="font-bold text-red-700">Google Apps Script reportó un error:</p>
+                        <p class="mt-2 font-mono text-xs bg-slate-100 p-2 rounded-lg text-slate-800">${resultData.message}</p>`;
+                        logConsole(`Error en Apps Script: ${resultData.message}`, 'error');
+                    } else {
+                        errorHtml = `<p class="font-bold text-red-700">Respuesta inesperada del servidor (HTTP ${response.status}).</p>
+                        <p class="mt-2 text-xs text-slate-600">No se pudo procesar la respuesta. Revisa la consola para más información técnica.</p>`;
+                        logConsole(`Respuesta inesperada: ${rawText.slice(0, 200)}`, 'error');
+                    }
+
+                    showAppAlert('Fallo en el Envío', errorHtml, 'error');
                 }
 
             } catch (err) {
                 console.error('[DEBUG][AdminTesters] Error en envío:', err);
-                logConsole(`Error en la conexión con Apps Script: ${err.message}`, 'error');
-                alert(`Ocurrió un error al contactar con el backend: ${err.message}`);
+                progressBar.style.width = '100%';
+                progressPercentage.innerText = '100%';
+                progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
+                progressStatus.className = 'text-xs font-bold text-red-600';
+                progressStatus.innerText = 'Error de conexión con Apps Script.';
+
+                logConsole(`Error de red al conectar con Google Apps Script: ${err.message}`, 'error');
+                showAppAlert(
+                    'Error de Red o Conexión',
+                    `<p>No se pudo conectar con el endpoint de Google Apps Script.</p>
+                     <p class="text-xs text-red-700 font-mono mt-2 bg-red-50 p-2 rounded-lg">${err.message}</p>
+                     <p class="text-xs text-slate-500 mt-2">Asegúrate de que la URL del script sea accesible públicamente.</p>`,
+                    'error'
+                );
             } finally {
                 sendBtn.disabled = false;
                 btnText.innerText = 'Enviar Notificación a Testers';
                 btnIcon.innerText = '🚀';
-                setTimeout(() => {
-                    progressContainer.classList.add('hidden');
-                    progressBar.style.width = '0%';
-                }, 4000);
             }
         }
 
