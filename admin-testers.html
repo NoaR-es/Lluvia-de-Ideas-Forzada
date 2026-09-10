@@ -575,10 +575,12 @@
                 return;
             }
 
-            const subject = document.getElementById('email-subject').value.trim();
+            let subject = document.getElementById('email-subject').value.trim();
+            // Sanitizar en cliente cualquier rombo (\uFFFD), interrogaciones múltiples o emojis que puedan venir de cachés antiguas
+            subject = subject.replace(/\uFFFD+/g, '').replace(/\?{2,}/g, '').trim();
+            subject = subject.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
             if (!subject) {
-                showAppAlert('Asunto Requerido', 'El asunto del correo no puede estar vacío. Por favor, escribe un asunto para el mensaje.', 'warn');
-                return;
+                subject = "Tu acceso a Lluvia de Ideas Forzada ya esta activo en Google Play";
             }
 
             const confirmed = await showAppConfirm(validEmailsList.length);
