@@ -109,7 +109,7 @@ Lluvia-de-Ideas-Forzada/
 ## 👤 Author
 
 * **Lead Developer:** **Raúl Navas Montero**
-* **Handle / GitHub:** [Noar-es](https://github.com/noar-es)
+* **Handle / GitHub:** [NoaR-es](https://github.com/noar-es)
 * **Project:** Lluvia de Ideas Forzada
 
 ---
