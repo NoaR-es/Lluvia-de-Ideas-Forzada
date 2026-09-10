@@ -34,57 +34,13 @@
             <a href="index.html" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition border border-slate-700">
                 ← Volver a la Web
             </a>
-            <button id="logout-btn" onclick="logoutAdmin()" class="hidden px-3 py-1.5 rounded-xl bg-red-950/60 hover:bg-red-900/80 text-red-200 text-xs font-semibold transition border border-red-800/50">
-                Cerrar Sesión
-            </button>
         </div>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         PANTALLA 1: ACCESO DE SEGURIDAD (LOGIN PRIVADO)
+         PANEL DE ADMINISTRACIÓN Y ENVÍO DIRECTO A TESTERS
          ═══════════════════════════════════════════════════════════════ -->
-    <div id="login-container" class="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 my-auto animate-fade-in">
-        <div class="text-center mb-6">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-3 text-2xl font-bold border border-emerald-300">
-                🔒
-            </div>
-            <h2 class="text-2xl font-black text-slate-900">Acceso Restringido</h2>
-            <p class="text-xs text-slate-600 mt-1">Introduce tus credenciales para gestionar el envío a testers.</p>
-        </div>
-
-        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
-            <div>
-                <label for="admin-user" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                    Usuario
-                </label>
-                <input type="text" id="admin-user" required autocomplete="username" placeholder="Usuario"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
-            </div>
-
-            <div>
-                <label for="admin-pass" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                    Contraseña
-                </label>
-                <input type="password" id="admin-pass" required autocomplete="current-password" placeholder="••••••••"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
-            </div>
-
-            <div id="login-error" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 font-bold leading-relaxed text-center">
-                Credenciales incorrectas. Acceso denegado.
-            </div>
-
-            <button type="submit" id="login-submit-btn"
-                class="w-full py-3.5 px-6 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none">
-                <span id="login-btn-spinner" class="hidden animate-spin">⏳</span>
-                <span id="login-btn-text">Desbloquear Panel</span>
-            </button>
-        </form>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         PANTALLA 2: PANEL DE ADMINISTRACIÓN Y ENVÍO MASIVO
-         ═══════════════════════════════════════════════════════════════ -->
-    <main id="dashboard-container" class="hidden w-full max-w-5xl space-y-6">
+    <main id="dashboard-container" class="w-full max-w-5xl space-y-6 animate-fade-in">
 
         <!-- TARJETA DE ACCIÓN: LISTA DE EMAILS Y ENVÍO -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
@@ -349,109 +305,6 @@
             if (out) out.innerHTML = '<p class="text-slate-500">[SISTEMA] Log reiniciado.</p>';
         }
 
-        // CONTROL DE SESIÓN
-        function checkSession() {
-            const auth = sessionStorage.getItem('admin_authenticated');
-            if (auth === 'true') {
-                document.getElementById('login-container').classList.add('hidden');
-                document.getElementById('dashboard-container').classList.remove('hidden');
-                document.getElementById('logout-btn').classList.remove('hidden');
-                logConsole('Sesión de administrador activa.', 'success');
-            } else {
-                document.getElementById('login-container').classList.remove('hidden');
-                document.getElementById('dashboard-container').classList.add('hidden');
-                document.getElementById('logout-btn').classList.add('hidden');
-            }
-        }
-
-        async function handleLogin(e) {
-            e.preventDefault();
-            const user = document.getElementById('admin-user').value.trim();
-            const pass = document.getElementById('admin-pass').value.trim();
-            const errorBox = document.getElementById('login-error');
-            const submitBtn = document.getElementById('login-submit-btn');
-            const btnText = document.getElementById('login-btn-text');
-            const btnSpinner = document.getElementById('login-btn-spinner');
-
-            if (!user || !pass) {
-                if (errorBox) {
-                    errorBox.innerText = 'Por favor, introduce usuario y clave.';
-                    errorBox.classList.remove('hidden');
-                }
-                logConsole('Campos de inicio de sesión incompletos.', 'warn');
-                return;
-            }
-
-            // Bloquear botón y mostrar spinner de verificación remota
-            if (submitBtn) submitBtn.disabled = true;
-            if (btnText) btnText.innerText = 'Verificando con Apps Script...';
-            if (btnSpinner) btnSpinner.classList.remove('hidden');
-            if (errorBox) errorBox.classList.add('hidden');
-
-            logConsole(`Verificando credenciales de "${user}" con Google Apps Script...`, 'info');
-
-            try {
-                const payloadData = {
-                    action: 'verify_admin',
-                    user: user,
-                    pass: pass
-                };
-
-                const response = await fetch(currentAppsScriptUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8'
-                    },
-                    body: JSON.stringify(payloadData)
-                });
-
-                const rawText = await response.text();
-                let resultData = null;
-                try {
-                    resultData = JSON.parse(rawText);
-                } catch (parseErr) {
-                    console.warn('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
-                }
-
-                if (resultData && resultData.status === 'success' && resultData.authenticated === true) {
-                    // Credenciales verificadas y aprobadas por Google Apps Script
-                    sessionStorage.setItem('admin_user', user);
-                    sessionStorage.setItem('admin_pass', pass);
-                    sessionStorage.setItem('admin_authenticated', 'true');
-                    if (errorBox) errorBox.classList.add('hidden');
-                    logConsole(`Credenciales validadas con éxito por Google Apps Script.`, 'success');
-                    checkSession();
-                } else {
-                    // Credenciales rechazadas por el backend
-                    const msg = (resultData && resultData.message) ? resultData.message : 'Credenciales incorrectas. Acceso denegado.';
-                    if (errorBox) {
-                        errorBox.innerText = msg;
-                        errorBox.classList.remove('hidden');
-                    }
-                    logConsole(`Acceso denegado por Google Apps Script: ${msg}`, 'error');
-                }
-            } catch (networkErr) {
-                console.error('[DEBUG][AdminTesters] Error al conectar con Apps Script para login:', networkErr);
-                if (errorBox) {
-                    errorBox.innerText = 'Error al contactar con Google Apps Script: ' + networkErr.message;
-                    errorBox.classList.remove('hidden');
-                }
-                logConsole(`Error de red verificando credenciales: ${networkErr.message}`, 'error');
-            } finally {
-                if (submitBtn) submitBtn.disabled = false;
-                if (btnText) btnText.innerText = 'Desbloquear Panel';
-                if (btnSpinner) btnSpinner.classList.add('hidden');
-            }
-        }
-
-        function logoutAdmin() {
-            sessionStorage.removeItem('admin_authenticated');
-            sessionStorage.removeItem('admin_user');
-            sessionStorage.removeItem('admin_pass');
-            checkSession();
-            logConsole('Sesión cerrada por el usuario.', 'info');
-        }
-
         // PARSER Y FILTRADO DE EMAILS
         function processEmailsInput() {
             const input = document.getElementById('emails-input').value;
@@ -616,8 +469,6 @@
             try {
                 const payloadData = {
                     action: 'send_tester_invites',
-                    user: sessionStorage.getItem('admin_user') || '',
-                    pass: sessionStorage.getItem('admin_pass') || '',
                     subject: subject,
                     emails: validEmailsList
                 };
@@ -658,7 +509,7 @@
                     validEmailsList.forEach(email => {
                         logConsole(`[✓] Correo despachado a: ${email}`, 'success');
                     });
-                    logConsole(`Notificación enviada a la instancia de Ntfy en Oracle Compute.`, 'success');
+                    logConsole(`Notificaciones individuales enviadas a Ntfy.`, 'success');
 
                     showAppAlert(
                         '¡Invitaciones Enviadas con Éxito!',
@@ -673,44 +524,20 @@
                     progressPercentage.innerText = '100%';
                     progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
                     progressStatus.className = 'text-xs font-bold text-red-600';
-                    progressStatus.innerText = 'Fallo en la ejecución: no se envió ningún correo.';
+                    const errMsg = (resultData && resultData.message) ? resultData.message : 'Error al procesar el lote en Apps Script.';
+                    progressStatus.innerText = `Error: ${errMsg}`;
+                    logConsole(`Error en la ejecución de Apps Script: ${errMsg}`, 'error');
 
-                    let errorHtml = '';
-                    if (resultData && resultData.failedList && resultData.failedList.length > 0) {
-                        const primerFallo = resultData.failedList[0];
-                        errorHtml = `<p class="font-bold text-red-700">Fallo en el servicio de correo de Google:</p>
-                        <p class="mt-2 text-xs text-slate-800">No se pudo enviar a <strong>${primerFallo.email}</strong>:</p>
-                        <p class="mt-1 font-mono text-xs bg-red-50 p-2 rounded-lg text-red-900 border border-red-200">${primerFallo.error}</p>`;
-                        logConsole(`Fallo de envío en Apps Script: ${primerFallo.error}`, 'error');
-                    } else if (resultData && resultData.message) {
-                        errorHtml = `<p class="font-bold text-red-700">Google Apps Script reportó un error:</p>
-                        <p class="mt-2 font-mono text-xs bg-slate-100 p-2 rounded-lg text-slate-800">${resultData.message}</p>`;
-                        logConsole(`Error en Apps Script: ${resultData.message}`, 'error');
-                    } else if (response.status === 403 || rawText.includes('Necesitas acceso') || rawText.includes('accounts.google.com')) {
-                        errorHtml = `<p class="font-bold text-red-700">Error 403: Acceso Denegado por Google Apps Script.</p>
-                        <p class="mt-2 text-xs text-slate-700">Google bloqueó la llamada porque la Web App está en modo privado (<em>"Solo yo"</em>) en lugar de pública.</p>
-                        <div class="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl text-xs space-y-1 text-slate-800">
-                            <p class="font-bold text-slate-900">Pasos para solucionarlo:</p>
-                            <ol class="list-decimal list-inside space-y-0.5">
-                                <li>Abre tu script en Google Apps Script.</li>
-                                <li>Pulsa en <strong>Implementar ➔ Gestionar implementaciones</strong>.</li>
-                                <li>Pulsa el icono del <strong>Lápiz (Editar)</strong>.</li>
-                                <li>Cambia <em>"Quién tiene acceso"</em> a <strong>"Cualquier persona" (Anyone)</strong>.</li>
-                                <li>Guarda e implementa la nueva versión.</li>
-                            </ol>
-                        </div>`;
-                        logConsole('Error 403: Google Apps Script requiere acceso "Cualquier persona".', 'error');
-                    } else {
-                        errorHtml = `<p class="font-bold text-red-700">Respuesta inesperada del servidor (HTTP ${response.status}).</p>
-                        <p class="mt-2 text-xs text-slate-600">No se pudo procesar la respuesta. Revisa la consola para más información técnica.</p>`;
-                        logConsole(`Respuesta inesperada: ${rawText.slice(0, 200)}`, 'error');
-                    }
-
-                    showAppAlert('Fallo en el Envío', errorHtml, 'error');
+                    showAppAlert(
+                        'Error en el Envío',
+                        `<p>Google Apps Script no pudo procesar las invitaciones.</p>
+                         <p class="text-xs text-red-700 font-mono mt-2 bg-red-50 p-2 rounded-lg">${errMsg}</p>`,
+                        'error'
+                    );
                 }
 
             } catch (err) {
-                console.error('[DEBUG][AdminTesters] Error en envío:', err);
+                console.error('[DEBUG][AdminTesters] Error en el envío:', err);
                 progressBar.style.width = '100%';
                 progressPercentage.innerText = '100%';
                 progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
@@ -732,9 +559,9 @@
             }
         }
 
-        // INICIALIZACIÓN
+        // INICIALIZACIÓN DIRECTA
         document.addEventListener('DOMContentLoaded', () => {
-            checkSession();
+            logConsole('Panel inicializado con conexión directa a Apps Script.', 'info');
         });
     </script>
 </body>
