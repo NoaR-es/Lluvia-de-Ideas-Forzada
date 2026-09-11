@@ -17,7 +17,7 @@
 <body class="bg-slate-950 text-slate-900 font-sans min-h-screen flex flex-col items-center justify-start p-4 sm:p-8">
 
     <!-- CABECERA SUPERIOR -->
-    <header class="w-full max-w-5xl flex items-center justify-between py-4 border-b border-slate-800/80 mb-8">
+    <header class="w-full max-w-6xl flex items-center justify-between py-4 border-b border-slate-800/80 mb-8">
         <div class="flex items-center gap-3">
             <img src="logo.jpg" alt="Logo Lluvia de Ideas" class="w-10 h-10 rounded-full border border-emerald-500/40 shadow-md">
             <div>
@@ -27,10 +27,14 @@
                         Admin Testers
                     </span>
                 </h1>
-                <p class="text-xs text-slate-400">Gestor oficial de notificaciones y activación en Google Play</p>
+                <p class="text-xs text-slate-400">Gestor oficial de evaluadores en Google Sheets y Google Play</p>
             </div>
         </div>
         <div class="flex items-center gap-3">
+            <a href="https://docs.google.com/spreadsheets/d/1pizg-BTpz5rfRWtvpw_PSOx6dm48gXJjjx5FQFQWZqI/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
+               class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 text-xs font-bold transition border border-emerald-700/60">
+                <span>📊</span> <span>Abrir Google Sheets</span>
+            </a>
             <a href="index.html" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition border border-slate-700">
                 ← Volver a la Web
             </a>
@@ -38,11 +42,133 @@
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         PANEL DE ADMINISTRACIÓN Y ENVÍO DIRECTO A TESTERS
+         PANEL DE ADMINISTRACIÓN: GOOGLE SHEETS + DESPACHO
          ═══════════════════════════════════════════════════════════════ -->
-    <main id="dashboard-container" class="w-full max-w-5xl space-y-6 animate-fade-in">
+    <main id="dashboard-container" class="w-full max-w-6xl space-y-8 animate-fade-in">
 
-        <!-- TARJETA DE ACCIÓN: LISTA DE EMAILS Y ENVÍO -->
+        <!-- ═══════════════════════════════════════════════════════════
+             1. GESTOR DE EVALUADORES EN GOOGLE SHEETS (BASE DE DATOS VIVA)
+             ═══════════════════════════════════════════════════════════ -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
+            
+            <!-- Encabezado de la Base de Datos -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-slate-100 gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                            <span>📊</span> <span>Base de Datos Oficial</span>
+                        </span>
+                        <span class="text-[11px] font-mono text-slate-500">ID: 1pizg-BTpz5rfRW...</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-slate-900 mt-2">
+                        Evaluadores Registrados en Google Sheets
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                        Cada persona que solicita acceso desde la web queda guardada aquí con fecha, estado y control de versiones.
+                    </p>
+                </div>
+                
+                <!-- Acciones Principales de la Hoja -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button id="btn-sync-sheets" onclick="loadTestersFromSheet()" 
+                        class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-extrabold transition border border-slate-300 flex items-center gap-2 cursor-pointer shadow-sm">
+                        <span id="sync-icon">🔄</span> <span id="sync-text">Sincronizar con Sheets</span>
+                    </button>
+                    <button id="btn-copy-pending" onclick="copyPendingTesters()" 
+                        class="px-4 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-extrabold transition border border-amber-300 flex items-center gap-2 cursor-pointer shadow-sm">
+                        <span>📋</span> <span>Copiar Pendientes Play Console</span>
+                    </button>
+                    <button id="btn-add-tester-modal" onclick="openAddTesterModal()" 
+                        class="px-4 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 text-xs font-black transition shadow-sm border border-emerald-500/50 flex items-center gap-2 cursor-pointer">
+                        <span>➕</span> <span>Añadir Tester</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Métricas Clave de la Hoja -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Evaluadores</p>
+                        <p id="stat-total-testers" class="text-2xl font-black text-slate-900 mt-0.5">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-lg text-slate-700">
+                        👥
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-amber-800">Pendientes en Play Console</p>
+                        <p id="stat-pending-testers" class="text-2xl font-black text-amber-950 mt-0.5">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-200/80 flex items-center justify-center text-lg text-amber-800">
+                        ⏳
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Notificados con Éxito</p>
+                        <p id="stat-notified-testers" class="text-2xl font-black text-emerald-950 mt-0.5">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-emerald-200/80 flex items-center justify-center text-lg text-emerald-800">
+                        ✅
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buscador y Filtro Rápido -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+                <div class="relative w-full sm:w-80">
+                    <input type="text" id="testers-search-input" oninput="filterTestersTable()" placeholder="Buscar por correo o ID..."
+                        class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none transition">
+                    <span class="absolute left-3 top-2.5 text-xs text-slate-400">🔍</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold text-slate-600 self-end sm:self-auto">
+                    <span>Filtrar:</span>
+                    <button onclick="setTableFilter('all')" class="filter-btn px-2.5 py-1 rounded-lg bg-emerald-200 text-emerald-950 border border-emerald-400 font-extrabold" data-filter="all">Todos</button>
+                    <button onclick="setTableFilter('pending')" class="filter-btn px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200" data-filter="pending">Pendientes</button>
+                    <button onclick="setTableFilter('active')" class="filter-btn px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200" data-filter="active">Dados de Alta</button>
+                </div>
+            </div>
+
+            <!-- Tabla Dinámica de Evaluadores -->
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-inner max-h-96">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 font-extrabold uppercase tracking-wider text-[10px] sticky top-0 z-10 border-b border-slate-200">
+                            <th class="p-3">ID</th>
+                            <th class="p-3">Fecha Registro</th>
+                            <th class="p-3">Email Google Play</th>
+                            <th class="p-3 text-center">Ntfy</th>
+                            <th class="p-3 text-center">Play Console</th>
+                            <th class="p-3 text-center">Email Descarga</th>
+                            <th class="p-3 text-right">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testers-table-body" class="divide-y divide-slate-100 bg-white">
+                        <tr>
+                            <td colspan="7" class="p-8 text-center text-slate-500 font-medium">
+                                <div class="flex flex-col items-center justify-center gap-2">
+                                    <span class="text-2xl animate-spin">⏳</span>
+                                    <span>Conectando con Google Sheets para cargar evaluadores...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <p>💡 Pulsa en el estado de Play Console de cualquier evaluador para alternarlo entre <em>Pendiente</em> y <em>Dado de Alta</em>.</p>
+                <button onclick="loadPendingIntoDispatchBox()" class="text-emerald-800 font-bold hover:underline">
+                    📥 Cargar todos los pendientes en la caja de despacho ↓
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             2. DESPACHO MASIVO DE CORREOS DE ACTIVACIÓN
+             ═══════════════════════════════════════════════════════════ -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-slate-100 gap-4">
                 <div>
@@ -84,11 +210,11 @@
                             0 correos válidos
                         </span>
                     </div>
-                    <textarea id="emails-input" rows="7" oninput="processEmailsInput()"
+                    <textarea id="emails-input" rows="5" oninput="processEmailsInput()"
                         placeholder="pega.aqui@gmail.com&#10;otro.usuario@gmail.com&#10;tercer.tester@gmail.com"
                         class="w-full px-4 py-3 rounded-2xl border border-slate-300 bg-slate-50 text-slate-900 font-mono text-xs sm:text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition leading-relaxed"></textarea>
                     <p class="text-[11px] text-slate-500 mt-1">
-                        💡 Puedes separar los correos con saltos de línea, comas o espacios. Los duplicados y formatos incorrectos se filtran automáticamente.
+                        💡 Al enviar, Apps Script actualizará automáticamente cada tester en Google Sheets a estado <strong>"Dado de Alta"</strong> y <strong>"Enviado"</strong>.
                     </p>
                 </div>
 
@@ -121,24 +247,175 @@
             </div>
         </div>
 
-        <!-- CONSOLA DE REGISTRO EN TIEMPO REAL (TERMINAL) -->
+        <!-- ═══════════════════════════════════════════════════════════
+             3. CONSOLA DE AUDITORÍA Y SALIDA (TERMINAL EN VIVO)
+             ═══════════════════════════════════════════════════════════ -->
         <div class="bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-800 text-slate-200 font-mono text-xs">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-slate-400">
                 <span class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Consola de Auditoría y Salida (Apps Script / Ntfy)</span>
+                    <span>Consola de Auditoría y Salida (Apps Script / Ntfy canal testers-lluvia)</span>
                 </span>
                 <button onclick="clearConsoleLog()" class="hover:text-slate-200 transition text-[11px]">
                     Limpiar Log
                 </button>
             </div>
             <div id="console-output" class="mt-3 space-y-1 max-h-56 overflow-y-auto leading-relaxed text-slate-300">
-                <p class="text-slate-500">[SISTEMA] Panel inicializado y conectado a Google Apps Script.</p>
-                <p class="text-slate-500">[SISTEMA] En espera de listado de testers autorizados.</p>
+                <p class="text-slate-500">[SISTEMA] Panel inicializado y conectado a Google Apps Script y Google Sheets.</p>
+                <p class="text-slate-500">[SISTEMA] En espera de acciones.</p>
             </div>
         </div>
 
     </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL: AÑADIR EVALUADOR MANUALMENTE
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="add-tester-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 text-left animate-modal-in" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
+                    <span>➕</span> <span>Añadir Evaluador a Google Sheets</span>
+                </h3>
+                <button onclick="closeAddTesterModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+            <form onsubmit="submitAddTesterForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo de Google Play (Gmail)</label>
+                    <input type="email" id="add-tester-email" required placeholder="nuevo.tester@gmail.com"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estado Inicial en Play Console</label>
+                    <select id="add-tester-play-status" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
+                        <option value="Pendiente">Pendiente de alta en Play Console</option>
+                        <option value="Dado de Alta">Dado de Alta en Play Console</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeAddTesterModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="btn-save-new-tester" class="px-5 py-2 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 text-xs font-black transition shadow-sm">
+                        Guardar en Google Sheets
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL: EDITAR EVALUADOR Y REGISTRAR VERSIÓN
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="edit-tester-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 text-left animate-modal-in" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <div>
+                    <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
+                        <span>✏️</span> <span>Editar Evaluador</span>
+                    </h3>
+                    <p id="edit-tester-id-label" class="text-xs text-slate-500 font-mono">ID: TST-...</p>
+                </div>
+                <button onclick="closeEditTesterModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+            <form onsubmit="submitEditTesterForm(event)" class="space-y-4">
+                <input type="hidden" id="edit-tester-id">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo Electrónico</label>
+                    <input type="email" id="edit-tester-email" required
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Play Console</label>
+                        <select id="edit-tester-play-status" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Dado de Alta">Dado de Alta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Descarga</label>
+                        <select id="edit-tester-email-status" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Enviado">Enviado</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Motivo / Nota de Cambio (Control de Versiones)</label>
+                    <input type="text" id="edit-tester-note" placeholder="Ej: Corrección tipográfica de email"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none">
+                </div>
+                <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeEditTesterModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="btn-save-edit-tester" class="px-5 py-2 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 text-xs font-black transition shadow-sm">
+                        Guardar Versión
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL: HISTORIAL DE VERSIONES DEL EVALUADOR
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="versions-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-200 text-left animate-modal-in" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+                <div>
+                    <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
+                        <span>📜</span> <span>Historial de Versiones</span>
+                    </h3>
+                    <p id="versions-tester-email" class="text-xs text-slate-500 font-mono">evaluador@gmail.com</p>
+                </div>
+                <button onclick="closeVersionsModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+            <div id="versions-list-container" class="space-y-2.5 max-h-72 overflow-y-auto pr-1">
+                <!-- Lista de versiones generada dinamicamente -->
+            </div>
+            <div class="flex justify-end pt-4 border-t border-slate-100 mt-4">
+                <button onclick="closeVersionsModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-slate-200 hover:bg-slate-800 text-xs font-bold transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MODAL: CONFIRMACIÓN DE ELIMINACIÓN DE EVALUADOR
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="delete-confirm-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 text-left animate-modal-in" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-2xl bg-red-100 flex items-center justify-center text-xl flex-shrink-0 text-red-700">
+                    <span>🗑️</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 leading-tight">Confirmar Eliminación</h3>
+                    <p class="text-xs text-slate-500 font-medium">Esta acción eliminará el registro de Google Sheets</p>
+                </div>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6">
+                ¿Estás seguro de que deseas eliminar permanentemente al evaluador con correo <strong id="delete-tester-email-label" class="font-black text-red-950 font-mono">...</strong>?
+            </p>
+            <div class="flex items-center justify-end gap-2">
+                <button onclick="closeDeleteTesterModal(false)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                    Cancelar
+                </button>
+                <button onclick="closeDeleteTesterModal(true)" id="btn-confirm-delete" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-slate-100 text-xs font-black transition shadow-sm">
+                    Eliminar Definitivamente
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
          MODAL: PREVISUALIZACIÓN DE LA PLANTILLA OFICIAL DE EMAIL
@@ -216,7 +493,7 @@
          MODAL DE ALERTA / NOTIFICACIÓN INTEGRADO (CSS BOTÁNICO)
          ═══════════════════════════════════════════════════════════════ -->
     <div id="app-alert-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left animate-modal-in">
             <div class="flex items-center gap-3 mb-4">
                 <div id="alert-icon-container" class="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800">
                     <span id="alert-modal-icon">🌿</span>
@@ -238,10 +515,10 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         MODAL DE CONFIRMACIÓN INTEGRADO (CSS BOTÁNICO)
+         MODAL DE CONFIRMACIÓN DE DESPACHO MASIVO
          ═══════════════════════════════════════════════════════════════ -->
     <div id="app-confirm-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 transform transition-all text-left animate-modal-in">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl flex-shrink-0 text-emerald-800">
                     <span>📨</span>
@@ -254,7 +531,7 @@
             <div class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 space-y-3">
                 <p>¿Estás seguro de enviar la invitación por correo a los <strong id="confirm-modal-count" class="text-emerald-800 font-black">0</strong> testers de la lista?</p>
                 <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-950 font-medium">
-                    Cada tester recibirá la plantilla oficial con el botón directo de acceso al Internal Test en Google Play.
+                    Cada tester recibirá la plantilla oficial con el botón directo de acceso al Internal Test en Google Play y quedará actualizado en Google Sheets.
                 </div>
             </div>
             <div class="flex items-center justify-end gap-3">
@@ -280,6 +557,9 @@
         }
         let currentAppsScriptUrl = storedScriptUrl || APPS_SCRIPT_URL;
 
+        // Estado local de la base de datos de evaluadores
+        let loadedTesters = [];
+        let currentFilter = 'all';
         let validEmailsList = [];
 
         function logConsole(msg, type = 'info') {
@@ -305,7 +585,503 @@
             if (out) out.innerHTML = '<p class="text-slate-500">[SISTEMA] Log reiniciado.</p>';
         }
 
-        // PARSER Y FILTRADO DE EMAILS
+        // ═══════════════════════════════════════════════════════════════
+        // LECTURA Y RENDERIZADO DE GOOGLE SHEETS
+        // ═══════════════════════════════════════════════════════════════
+        async function loadTestersFromSheet() {
+            const syncIcon = document.getElementById('sync-icon');
+            const syncText = document.getElementById('sync-text');
+            const tbody = document.getElementById('testers-table-body');
+
+            if (syncIcon) syncIcon.className = 'inline-block animate-spin';
+            if (syncText) syncText.innerText = 'Cargando...';
+            logConsole('Consultando Google Sheets vía Apps Script...', 'info');
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: 'get_testers' })
+                });
+
+                const res = await response.json();
+                console.log('[DEBUG][AdminTesters] Respuesta recibida de get_testers:', res);
+
+                if (res && res.status === 'success') {
+                    loadedTesters = res.testers || [];
+                    logConsole(`Google Sheets sincronizado exitosamente: ${loadedTesters.length} evaluadores encontrados.`, 'success');
+                    updateMetrics();
+                    renderTestersTable();
+                } else {
+                    const err = res.message || 'Respuesta inválida de Google Sheets';
+                    logConsole(`Error al sincronizar Google Sheets: ${err}`, 'error');
+                    if (tbody) {
+                        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-red-600 font-bold">Error: ${err}</td></tr>`;
+                    }
+                }
+            } catch (netErr) {
+                console.error('[DEBUG][AdminTesters] Error de red en get_testers:', netErr);
+                logConsole(`Fallo de conexión al cargar Google Sheets: ${netErr.message}`, 'error');
+                if (tbody) {
+                    tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-red-600 font-bold">Error de conexión: ${netErr.message}</td></tr>`;
+                }
+            } finally {
+                if (syncIcon) syncIcon.className = '';
+                if (syncText) syncText.innerText = 'Sincronizar con Sheets';
+            }
+        }
+
+        function updateMetrics() {
+            const totalEl = document.getElementById('stat-total-testers');
+            const pendingEl = document.getElementById('stat-pending-testers');
+            const notifiedEl = document.getElementById('stat-notified-testers');
+
+            const total = loadedTesters.length;
+            const pending = loadedTesters.filter(t => (t.playConsoleStatus || '').toLowerCase().includes('pendiente')).length;
+            const notified = loadedTesters.filter(t => (t.emailNotificationStatus || '').toLowerCase().includes('enviado')).length;
+
+            if (totalEl) totalEl.innerText = total;
+            if (pendingEl) pendingEl.innerText = pending;
+            if (notifiedEl) notifiedEl.innerText = notified;
+        }
+
+        function renderTestersTable() {
+            const tbody = document.getElementById('testers-table-body');
+            if (!tbody) return;
+
+            const search = (document.getElementById('testers-search-input')?.value || '').toLowerCase().trim();
+
+            let list = loadedTesters.filter(t => {
+                if (search && !t.email.toLowerCase().includes(search) && !t.id.toLowerCase().includes(search)) {
+                    return false;
+                }
+                if (currentFilter === 'pending') {
+                    return (t.playConsoleStatus || '').toLowerCase().includes('pendiente');
+                }
+                if (currentFilter === 'active') {
+                    return (t.playConsoleStatus || '').toLowerCase().includes('alta');
+                }
+                return true;
+            });
+
+            if (list.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-slate-500 font-medium">
+                            No se encontraron evaluadores con los filtros seleccionados.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = list.map(t => {
+                const isPlayPending = (t.playConsoleStatus || '').toLowerCase().includes('pendiente');
+                const isEmailSent = (t.emailNotificationStatus || '').toLowerCase().includes('enviado');
+                const isNtfyOk = (t.ntfyStatus || '').toLowerCase().includes('enviada');
+
+                const playBadgeClass = isPlayPending 
+                    ? 'bg-amber-100 text-amber-950 border-amber-300 hover:bg-amber-200' 
+                    : 'bg-emerald-100 text-emerald-950 border-emerald-300 hover:bg-emerald-200';
+
+                const emailBadgeClass = isEmailSent 
+                    ? 'bg-emerald-100 text-emerald-950 border-emerald-300' 
+                    : 'bg-slate-100 text-slate-700 border-slate-200';
+
+                let formattedDate = 'Reciente';
+                try {
+                    if (t.fechaRegistro) {
+                        const d = new Date(t.fechaRegistro);
+                        formattedDate = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    }
+                } catch(e){}
+
+                return `
+                    <tr class="hover:bg-slate-50/80 transition">
+                        <td class="p-3 font-mono font-bold text-slate-700">${t.id}</td>
+                        <td class="p-3 text-slate-600 whitespace-nowrap">${formattedDate}</td>
+                        <td class="p-3 font-mono text-slate-900 font-semibold select-all">${t.email}</td>
+                        <td class="p-3 text-center">
+                            <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${isNtfyOk ? 'bg-emerald-100 text-emerald-950 border border-emerald-300' : 'bg-slate-100 text-slate-700 border border-slate-200'}">
+                                ${isNtfyOk ? '✓ Enviada' : 'Pendiente'}
+                            </span>
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="togglePlayStatus('${t.id}')" title="Clic para alternar estado"
+                                class="cursor-pointer inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-extrabold border transition ${playBadgeClass}">
+                                <span>${isPlayPending ? '⏳' : '✅'}</span>
+                                <span>${t.playConsoleStatus || 'Pendiente'}</span>
+                            </button>
+                        </td>
+                        <td class="p-3 text-center">
+                            <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-bold border ${emailBadgeClass}">
+                                ${isEmailSent ? '✉️ Enviado' : '⏳ Pendiente'}
+                            </span>
+                        </td>
+                        <td class="p-3 text-right whitespace-nowrap">
+                            <div class="flex items-center justify-end gap-1.5">
+                                <button onclick="sendDirectInviteToEmail('${t.email}')" title="Despachar email ahora" class="p-1.5 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-950 transition">
+                                    🚀
+                                </button>
+                                <button onclick="openEditTesterModal('${t.id}')" title="Editar datos" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition">
+                                    ✏️
+                                </button>
+                                <button onclick="cloneTester('${t.id}')" title="Clonar registro" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition">
+                                    📑
+                                </button>
+                                <button onclick="openVersionsModal('${t.id}')" title="Ver historial de versiones" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition">
+                                    📜
+                                </button>
+                                <button onclick="openDeleteTesterModal('${t.id}')" title="Eliminar evaluador" class="p-1.5 rounded-lg bg-red-100 hover:bg-red-200 text-red-900 transition">
+                                    🗑️
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function setTableFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.className = 'filter-btn px-2.5 py-1 rounded-lg bg-emerald-200 text-emerald-950 border border-emerald-400 font-extrabold';
+                } else {
+                    btn.className = 'filter-btn px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 font-bold';
+                }
+            });
+            renderTestersTable();
+        }
+
+        function filterTestersTable() {
+            renderTestersTable();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // ACCIONES RÁPIDAS (COPIAR PENDIENTES, DESPACHO DIRECTO)
+        // ═══════════════════════════════════════════════════════════
+        function copyPendingTesters() {
+            const pendingList = loadedTesters
+                .filter(t => (t.playConsoleStatus || '').toLowerCase().includes('pendiente'))
+                .map(t => t.email.trim());
+
+            if (pendingList.length === 0) {
+                showAppAlert('Sin Pendientes', '¡Genial! No hay evaluadores pendientes de dar de alta en Google Play Console.', 'info');
+                return;
+            }
+
+            const textToCopy = pendingList.join('\n');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                logConsole(`Copiados al portapapeles ${pendingList.length} correos pendientes para Play Console.`, 'success');
+                showAppAlert(
+                    'Correos Copiados al Portapapeles',
+                    `<p>Se han copiado <strong>${pendingList.length} correos</strong> pendientes listos para pegar en Google Play Console:</p>
+                     <div class="max-h-36 overflow-y-auto p-2.5 bg-slate-100 rounded-xl font-mono text-xs text-slate-800 my-2">${pendingList.join('<br>')}</div>
+                     <p class="text-xs text-slate-600">Ahora ve a Play Console -> Testers y pégalos en la lista.</p>`,
+                    'success'
+                );
+            }).catch(err => {
+                logConsole('Error copiando al portapapeles: ' + err, 'error');
+            });
+        }
+
+        function loadPendingIntoDispatchBox() {
+            const pendingList = loadedTesters
+                .filter(t => !(t.emailNotificationStatus || '').toLowerCase().includes('enviado'))
+                .map(t => t.email.trim());
+
+            if (pendingList.length === 0) {
+                showAppAlert('Sin Pendientes de Notificación', 'Todos los evaluadores ya han recibido su correo de activación.', 'info');
+                return;
+            }
+
+            const input = document.getElementById('emails-input');
+            if (input) {
+                input.value = pendingList.join('\n');
+                processEmailsInput();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                logConsole(`Cargados ${pendingList.length} correos pendientes en la caja de despacho.`, 'info');
+            }
+        }
+
+        function sendDirectInviteToEmail(email) {
+            const input = document.getElementById('emails-input');
+            if (input) {
+                input.value = email;
+                processEmailsInput();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                showAppAlert('Evaluador Seleccionado', `Se ha cargado <strong>${email}</strong> en la caja de despacho. Pulsa "Enviar Notificación" abajo para despacharlo.`, 'info');
+            }
+        }
+
+        async function togglePlayStatus(id) {
+            const tester = loadedTesters.find(t => t.id === id);
+            if (!tester) return;
+
+            const isPending = (tester.playConsoleStatus || '').toLowerCase().includes('pendiente');
+            const newStatus = isPending ? 'Dado de Alta' : 'Pendiente';
+
+            logConsole(`Cambiando estado en Play Console para ${tester.email} a: ${newStatus}...`, 'info');
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'update_tester',
+                        id: id,
+                        playConsoleStatus: newStatus,
+                        note: `Cambio rapido de estado a ${newStatus}`
+                    })
+                });
+
+                const res = await response.json();
+                if (res && res.status === 'success') {
+                    tester.playConsoleStatus = newStatus;
+                    updateMetrics();
+                    renderTestersTable();
+                    logConsole(`Estado actualizado en Sheets para ${tester.email}.`, 'success');
+                } else {
+                    showAppAlert('Error al Actualizar', res.message || 'No se pudo actualizar en Sheets.', 'error');
+                }
+            } catch (err) {
+                logConsole('Error alternando estado: ' + err.message, 'error');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN CRUD: AÑADIR EVALUADOR
+        // ═══════════════════════════════════════════════════════════════
+        function openAddTesterModal() {
+            const modal = document.getElementById('add-tester-modal');
+            const input = document.getElementById('add-tester-email');
+            if (input) input.value = '';
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeAddTesterModal() {
+            const modal = document.getElementById('add-tester-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        async function submitAddTesterForm(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('add-tester-email');
+            const statusSelect = document.getElementById('add-tester-play-status');
+            const email = emailInput?.value.trim();
+            const playStatus = statusSelect?.value || 'Pendiente';
+
+            if (!email) return;
+
+            logConsole(`Guardando nuevo evaluador manual: ${email}...`, 'info');
+            closeAddTesterModal();
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                    body: `email=${encodeURIComponent(email)}`
+                });
+                const res = await response.json();
+                if (res && res.status === 'success') {
+                    logConsole(`Nuevo evaluador guardado en Google Sheets y notificado a Ntfy.`, 'success');
+                    showAppAlert('Evaluador Añadido', `El correo <strong>${email}</strong> ha sido guardado exitosamente en Google Sheets y notificado en Ntfy.`, 'success');
+                    await loadTestersFromSheet();
+                } else {
+                    showAppAlert('Error al Guardar', res.message || 'Error en Apps Script.', 'error');
+                }
+            } catch (err) {
+                logConsole('Error al añadir evaluador: ' + err.message, 'error');
+                showAppAlert('Error de Red', err.message, 'error');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN CRUD: EDITAR EVALUADOR CON CONTROL DE VERSIONES
+        // ═══════════════════════════════════════════════════════════════
+        function openEditTesterModal(id) {
+            const tester = loadedTesters.find(t => t.id === id);
+            if (!tester) return;
+
+            document.getElementById('edit-tester-id').value = tester.id;
+            document.getElementById('edit-tester-id-label').innerText = `ID: ${tester.id}`;
+            document.getElementById('edit-tester-email').value = tester.email;
+            document.getElementById('edit-tester-play-status').value = tester.playConsoleStatus || 'Pendiente';
+            document.getElementById('edit-tester-email-status').value = tester.emailNotificationStatus || 'Pendiente';
+            document.getElementById('edit-tester-note').value = '';
+
+            const modal = document.getElementById('edit-tester-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeEditTesterModal() {
+            const modal = document.getElementById('edit-tester-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        async function submitEditTesterForm(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-tester-id')?.value;
+            const email = document.getElementById('edit-tester-email')?.value.trim();
+            const playStatus = document.getElementById('edit-tester-play-status')?.value;
+            const emailStatus = document.getElementById('edit-tester-email-status')?.value;
+            const note = document.getElementById('edit-tester-note')?.value.trim() || 'Modificación manual';
+
+            if (!id || !email) return;
+
+            closeEditTesterModal();
+            logConsole(`Actualizando evaluador ${id} en Google Sheets...`, 'info');
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'update_tester',
+                        id: id,
+                        email: email,
+                        playConsoleStatus: playStatus,
+                        emailNotificationStatus: emailStatus,
+                        note: note
+                    })
+                });
+                const res = await response.json();
+                if (res && res.status === 'success') {
+                    logConsole(`Evaluador ${id} actualizado con versión guardada en Google Sheets.`, 'success');
+                    showAppAlert('Versión Guardada', `Los datos de <strong>${email}</strong> han sido actualizados y la versión anterior fue registrada en el historial.`, 'success');
+                    await loadTestersFromSheet();
+                } else {
+                    showAppAlert('Error al Actualizar', res.message || 'Error en Apps Script.', 'error');
+                }
+            } catch (err) {
+                logConsole('Error en actualización: ' + err.message, 'error');
+                showAppAlert('Error de Red', err.message, 'error');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN CRUD: CLONAR EVALUADOR
+        // ═══════════════════════════════════════════════════════════════
+        async function cloneTester(id) {
+            const tester = loadedTesters.find(t => t.id === id);
+            if (!tester) return;
+
+            logConsole(`Clonando evaluador ${id} en Google Sheets...`, 'info');
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: 'clone_tester', id: id })
+                });
+                const res = await response.json();
+                if (res && res.status === 'success') {
+                    logConsole(`Evaluador clonado exitosamente: ${res.cloned.id}`, 'success');
+                    showAppAlert('Evaluador Clonado', `Se ha generado un nuevo registro clon con ID <strong>${res.cloned.id}</strong> para ${res.cloned.email}.`, 'success');
+                    await loadTestersFromSheet();
+                } else {
+                    showAppAlert('Error al Clonar', res.message || 'Error en Apps Script.', 'error');
+                }
+            } catch (err) {
+                logConsole('Error al clonar: ' + err.message, 'error');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN CRUD: HISTORIAL DE VERSIONES
+        // ═══════════════════════════════════════════════════════════════
+        function openVersionsModal(id) {
+            const tester = loadedTesters.find(t => t.id === id);
+            if (!tester) return;
+
+            document.getElementById('versions-tester-email').innerText = `${tester.id} · ${tester.email}`;
+            const container = document.getElementById('versions-list-container');
+            const versions = tester.versions || [];
+
+            if (versions.length === 0) {
+                container.innerHTML = `
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-500 text-center">
+                        No hay versiones previas registradas para este evaluador.
+                    </div>
+                `;
+            } else {
+                container.innerHTML = versions.map((v, idx) => {
+                    let dStr = 'Fecha no registrada';
+                    try { if (v.timestamp) dStr = new Date(v.timestamp).toLocaleString(); } catch(e){}
+                    return `
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1">
+                            <div class="flex items-center justify-between text-slate-700 font-bold">
+                                <span>Versión #${idx + 1}</span>
+                                <span class="text-[10px] text-slate-500">${dStr}</span>
+                            </div>
+                            <p class="text-slate-800 font-semibold">${v.action || v.note || 'Modificación'}</p>
+                            ${v.previous ? `<p class="text-[11px] text-slate-500 font-mono">Estado previo: Play=${v.previous.playConsoleStatus || '-'}, Email=${v.previous.emailNotificationStatus || '-'}</p>` : ''}
+                        </div>
+                    `;
+                }).reverse().join('');
+            }
+
+            const modal = document.getElementById('versions-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeVersionsModal() {
+            const modal = document.getElementById('versions-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GESTIÓN CRUD: ELIMINACIÓN CON CONFIRMACIÓN OBLIGATORIA
+        // ═══════════════════════════════════════════════════════════════
+        let testerIdToDelete = null;
+
+        function openDeleteTesterModal(id) {
+            const tester = loadedTesters.find(t => t.id === id);
+            if (!tester) return;
+
+            testerIdToDelete = id;
+            document.getElementById('delete-tester-email-label').innerText = `${tester.email} (${tester.id})`;
+            const modal = document.getElementById('delete-confirm-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        async function closeDeleteTesterModal(confirmed) {
+            const modal = document.getElementById('delete-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+
+            if (!confirmed || !testerIdToDelete) {
+                testerIdToDelete = null;
+                return;
+            }
+
+            const id = testerIdToDelete;
+            testerIdToDelete = null;
+            logConsole(`Eliminando evaluador ${id} de Google Sheets...`, 'warn');
+
+            try {
+                const response = await fetch(currentAppsScriptUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: 'delete_tester', id: id })
+                });
+                const res = await response.json();
+                if (res && res.status === 'success') {
+                    logConsole(`Evaluador ${id} eliminado de Google Sheets.`, 'success');
+                    showAppAlert('Evaluador Eliminado', `El registro con ID <strong>${id}</strong> ha sido eliminado de Google Sheets.`, 'success');
+                    await loadTestersFromSheet();
+                } else {
+                    showAppAlert('Error al Eliminar', res.message || 'Error en Apps Script.', 'error');
+                }
+            } catch (err) {
+                logConsole('Error en eliminación: ' + err.message, 'error');
+                showAppAlert('Error de Red', err.message, 'error');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // PARSER Y FILTRADO DE EMAILS DEL DESPACHADOR
+        // ═══════════════════════════════════════════════════════════════
         function processEmailsInput() {
             const input = document.getElementById('emails-input').value;
             const counter = document.getElementById('emails-counter');
@@ -313,7 +1089,6 @@
             const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
 
             const matches = input.match(emailRegex) || [];
-            // Filtro de duplicados
             const unique = [...new Set(matches.map(m => m.toLowerCase().trim()))];
             validEmailsList = unique;
 
@@ -326,7 +1101,6 @@
                 }
             }
 
-            // Renderizar chips
             if (chips) {
                 if (unique.length > 0) {
                     chips.classList.remove('hidden');
@@ -348,7 +1122,9 @@
             logConsole('Formulario reseteado.', 'info');
         }
 
-        // MODAL PREVIEW
+        // ═══════════════════════════════════════════════════════════════
+        // MODALES NATIVOS DE LA APLICACIÓN (SIN ALERT/CONFIRM DE NAVEGADOR)
+        // ═══════════════════════════════════════════════════════════════
         function openPreviewModal() {
             document.getElementById('preview-modal').classList.remove('hidden');
         }
@@ -356,7 +1132,6 @@
             document.getElementById('preview-modal').classList.add('hidden');
         }
 
-        // SISTEMA DE MODALES DE LA APLICACIÓN (SIN USAR ALERT O CONFIRM DEL NAVEGADOR)
         let alertModalCallback = null;
         function showAppAlert(title, messageHtml, type = 'info', onConfirm = null) {
             const modal = document.getElementById('app-alert-modal');
@@ -421,7 +1196,9 @@
             }
         }
 
-        // ENVÍO DE CORREOS VÍA GOOGLE APPS SCRIPT (VALIDACIÓN ESTRICTA)
+        // ═══════════════════════════════════════════════════════════════
+        // ENVÍO DE CORREOS VÍA GOOGLE APPS SCRIPT (CON ACTUALIZACIÓN SHEETS)
+        // ═══════════════════════════════════════════════════════════════
         async function sendTesterInvitations() {
             if (validEmailsList.length === 0) {
                 showAppAlert('Sin Destinatarios', 'Por favor, introduce al menos un correo electrónico válido antes de enviar.', 'warn');
@@ -429,7 +1206,6 @@
             }
 
             let subject = document.getElementById('email-subject').value.trim();
-            // Sanitizar en cliente cualquier rombo (\uFFFD), interrogaciones múltiples, emojis o caracteres incompatibles
             subject = subject.replace(/=\?UTF-8\?[BQ]\?[^?]+\?=/gi, '');
             subject = subject.replace(/\uFFFD+/g, '').replace(/\?{2,}/g, '');
             subject = subject.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
@@ -475,25 +1251,18 @@
 
                 progressBar.style.width = '60%';
                 progressPercentage.innerText = '60%';
-                progressStatus.innerText = 'Despachando correos desde tu cuenta de Gmail...';
+                progressStatus.innerText = 'Despachando correos y actualizando Google Sheets...';
 
                 const response = await fetch(currentAppsScriptUrl, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8'
-                    },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(payloadData)
                 });
 
                 const rawText = await response.text();
                 let resultData = null;
-                try {
-                    resultData = JSON.parse(rawText);
-                } catch (e) {
-                    console.log('[DEBUG][AdminTesters] Respuesta no es JSON directo:', rawText);
-                }
+                try { resultData = JSON.parse(rawText); } catch (e) {}
 
-                // VALIDACIÓN ESTRICTA: SOLO SE CONSIDERA ENVIADO SI EL JSON CONTIENE status === 'success' Y sentCount > 0
                 if (resultData && resultData.status === 'success' && resultData.sentCount > 0) {
                     progressBar.style.width = '100%';
                     progressPercentage.innerText = '100%';
@@ -504,22 +1273,21 @@
                     logConsole(`Petición procesada con éxito por Apps Script. Enviados: ${resultData.sentCount}`, 'success');
                     if (resultData.failedCount > 0) {
                         logConsole(`Fallaron ${resultData.failedCount} envíos. Detalles en consola.`, 'warn');
-                        console.warn('[DEBUG][AdminTesters] Fallidos:', resultData.failedList);
                     }
                     validEmailsList.forEach(email => {
                         logConsole(`[✓] Correo despachado a: ${email}`, 'success');
                     });
-                    logConsole(`Notificaciones individuales enviadas a Ntfy.`, 'success');
+                    logConsole(`Google Sheets actualizado y notificaciones enviadas a Ntfy canal testers-lluvia.`, 'success');
 
                     showAppAlert(
                         '¡Invitaciones Enviadas con Éxito!',
-                        `<p>Se han enviado correctamente <strong>${resultData.sentCount} invitaciones</strong> a los testers desde tu cuenta de Gmail.</p>
-                         <p class="text-xs text-slate-500 mt-2">Cada tester ya dispone del enlace oficial para unirse al programa en Google Play Store.</p>`,
+                        `<p>Se han enviado correctamente <strong>${resultData.sentCount} invitaciones</strong> desde tu cuenta de Gmail.</p>
+                         <p class="text-xs text-slate-600 mt-2">La hoja de Google Sheets ha sido actualizada y los estados marcados como "Enviado".</p>`,
                         'success'
                     );
                     clearForm();
+                    await loadTestersFromSheet();
                 } else {
-                    // CUALQUIER OTRA RESPUESTA O SI sentCount === 0 SE TRATA COMO ERROR ESTRICTO (NO FALSOS POSITIVOS)
                     progressBar.style.width = '100%';
                     progressPercentage.innerText = '100%';
                     progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
@@ -528,30 +1296,18 @@
                     progressStatus.innerText = `Error: ${errMsg}`;
                     logConsole(`Error en la ejecución de Apps Script: ${errMsg}`, 'error');
 
-                    showAppAlert(
-                        'Error en el Envío',
-                        `<p>Google Apps Script no pudo procesar las invitaciones.</p>
-                         <p class="text-xs text-red-700 font-mono mt-2 bg-red-50 p-2 rounded-lg">${errMsg}</p>`,
-                        'error'
-                    );
+                    showAppAlert('Error en el Envío', `<p class="text-xs text-red-700 font-mono bg-red-50 p-2 rounded-lg">${errMsg}</p>`, 'error');
                 }
 
             } catch (err) {
                 console.error('[DEBUG][AdminTesters] Error en el envío:', err);
                 progressBar.style.width = '100%';
-                progressPercentage.innerText = '100%';
-                progressBar.className = 'h-full bg-red-500 rounded-full transition-all duration-500';
+                progressBar.className = 'h-full bg-red-500 rounded-full';
                 progressStatus.className = 'text-xs font-bold text-red-600';
                 progressStatus.innerText = 'Error de conexión con Apps Script.';
 
                 logConsole(`Error de red al conectar con Google Apps Script: ${err.message}`, 'error');
-                showAppAlert(
-                    'Error de Red o Conexión',
-                    `<p>No se pudo conectar con el endpoint de Google Apps Script.</p>
-                     <p class="text-xs text-red-700 font-mono mt-2 bg-red-50 p-2 rounded-lg">${err.message}</p>
-                     <p class="text-xs text-slate-500 mt-2">Asegúrate de que la URL del script sea accesible públicamente.</p>`,
-                    'error'
-                );
+                showAppAlert('Error de Red o Conexión', `<p class="text-xs text-red-700 font-mono bg-red-50 p-2 rounded-lg">${err.message}</p>`, 'error');
             } finally {
                 sendBtn.disabled = false;
                 btnText.innerText = 'Enviar Notificación a Testers';
@@ -559,9 +1315,12 @@
             }
         }
 
-        // INICIALIZACIÓN DIRECTA
+        // ═══════════════════════════════════════════════════════════════
+        // INICIALIZACIÓN AUTOMÁTICA AL CARGAR EL PANEL
+        // ═══════════════════════════════════════════════════════════════
         document.addEventListener('DOMContentLoaded', () => {
-            logConsole('Panel inicializado con conexión directa a Apps Script.', 'info');
+            logConsole('Panel inicializado con conexión directa a Apps Script y Google Sheets.', 'info');
+            loadTestersFromSheet();
         });
     </script>
 </body>
