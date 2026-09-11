@@ -283,16 +283,32 @@
             </div>
             <form onsubmit="submitAddTesterForm(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo de Google Play (Gmail)</label>
-                    <input type="email" id="add-tester-email" required placeholder="nuevo.tester@gmail.com"
-                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo(s) de Google Play (Gmail)</label>
+                    <textarea id="add-tester-email" required rows="2" placeholder="ejemplo1@gmail.com&#10;ejemplo2@gmail.com"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:bg-white focus:border-emerald-500 focus:outline-none"></textarea>
+                    <p class="text-[11px] text-slate-500 mt-1 font-medium">Puedes escribir un correo individual o pegar varios separados por comas o saltos de línea.</p>
                 </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estado Inicial en Play Console</label>
-                    <select id="add-tester-play-status" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
-                        <option value="Pendiente">Pendiente de alta en Play Console</option>
-                        <option value="Dado de Alta">Dado de Alta en Play Console</option>
-                    </select>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Play Console</label>
+                        <select id="add-tester-play-status" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
+                            <option value="Dado de Alta">Dado de Alta</option>
+                            <option value="Pendiente">Pendiente de Alta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Notificación Email</label>
+                        <select id="add-tester-email-status" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-semibold focus:outline-none">
+                            <option value="Enviado">Enviado (Notificado)</option>
+                            <option value="Pendiente">Pendiente de Envío</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 pt-1">
+                    <input type="checkbox" id="add-tester-notify-ntfy" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300">
+                    <label for="add-tester-notify-ntfy" class="text-xs font-bold text-slate-700 cursor-pointer">
+                        Enviar aviso por Ntfy (testers-lluvia)
+                    </label>
                 </div>
                 <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
                     <button type="button" onclick="closeAddTesterModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
@@ -856,7 +872,14 @@
         function openAddTesterModal() {
             const modal = document.getElementById('add-tester-modal');
             const input = document.getElementById('add-tester-email');
+            const playSelect = document.getElementById('add-tester-play-status');
+            const emailSelect = document.getElementById('add-tester-email-status');
+            const ntfyBox = document.getElementById('add-tester-notify-ntfy');
+
             if (input) input.value = '';
+            if (playSelect) playSelect.value = 'Dado de Alta';
+            if (emailSelect) emailSelect.value = 'Enviado';
+            if (ntfyBox) ntfyBox.checked = false;
             if (modal) modal.classList.remove('hidden');
         }
 
@@ -868,25 +891,37 @@
         async function submitAddTesterForm(e) {
             e.preventDefault();
             const emailInput = document.getElementById('add-tester-email');
-            const statusSelect = document.getElementById('add-tester-play-status');
-            const email = emailInput?.value.trim();
-            const playStatus = statusSelect?.value || 'Pendiente';
+            const playSelect = document.getElementById('add-tester-play-status');
+            const emailSelect = document.getElementById('add-tester-email-status');
+            const ntfyBox = document.getElementById('add-tester-notify-ntfy');
 
-            if (!email) return;
+            const emailText = emailInput?.value.trim();
+            const playStatus = playSelect?.value || 'Dado de Alta';
+            const emailStatus = emailSelect?.value || 'Enviado';
+            const notifyNtfy = ntfyBox ? ntfyBox.checked : false;
 
-            logConsole(`Guardando nuevo evaluador manual: ${email}...`, 'info');
+            if (!emailText) return;
+
+            logConsole(`Guardando evaluador(es) en Google Sheets (Play: ${playStatus}, Email: ${emailStatus})...`, 'info');
             closeAddTesterModal();
 
             try {
                 const response = await fetch(currentAppsScriptUrl, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-                    body: `email=${encodeURIComponent(email)}`
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'add_tester',
+                        emails: emailText,
+                        playConsoleStatus: playStatus,
+                        emailNotificationStatus: emailStatus,
+                        notifyNtfy: notifyNtfy
+                    })
                 });
                 const res = await response.json();
                 if (res && res.status === 'success') {
-                    logConsole(`Nuevo evaluador guardado en Google Sheets y notificado a Ntfy.`, 'success');
-                    showAppAlert('Evaluador Añadido', `El correo <strong>${email}</strong> ha sido guardado exitosamente en Google Sheets y notificado en Ntfy.`, 'success');
+                    const count = res.count || 1;
+                    logConsole(`Guardado en Google Sheets con éxito: ${count} evaluador(es) registrados.`, 'success');
+                    showAppAlert('Guardado en Google Sheets', `Se han registrado exitosamente los datos en Google Sheets.<br><span class="text-xs text-slate-600 mt-1 block">Play Console: <strong>${playStatus}</strong> | Notificación Email: <strong>${emailStatus}</strong></span>`, 'success');
                     await loadTestersFromSheet();
                 } else {
                     showAppAlert('Error al Guardar', res.message || 'Error en Apps Script.', 'error');
