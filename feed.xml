@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 10:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 11:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Grafos de Estado Cíclicos vs Pipelines Lineales: Arquitectura LangGraph y BDI para Ideación Continua</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/grafos-estado-ciclicos-langgraph-bdi-agentes.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/grafos-estado-ciclicos-langgraph-bdi-agentes.html</guid>
+      <description>Por qué los pipelines secuenciales (DAGs) fracasan ante problemas creativos complejos y cómo diseñar bucles deliberativos con persistencia de estado, time-travel y el modelo BDI en LangGraph.</description>
+      <pubDate>Sat, 12 Sep 2026 11:00:00 GMT</pubDate>
     </item>
 
     <item>
