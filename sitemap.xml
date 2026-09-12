@@ -25,6 +25,12 @@
          ARTÍCULOS PILAR DE METODOLOGÍAS Y GUÍAS TÉCNICAS
          ═══════════════════════════════════════════════════════════════ -->
     <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/motores-inferencia-local-llamacpp-vllm-mlc-ollama.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
         <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html</loc>
         <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>

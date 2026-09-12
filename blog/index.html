@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (37)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (38)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (17)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (18)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">37</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">38</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 37 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 38 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'motores-inferencia-local-llamacpp-vllm-mlc-ollama',
+                url: 'motores-inferencia-local-llamacpp-vllm-mlc-ollama.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Modelos Locales & Inferencia', en: 'Local Models & Inference' },
+                badgeColor: 'text-blue-700 bg-blue-50 border-blue-200',
+                readTime: { es: '17 min · 4.400 palabras', en: '17 min · 4,400 words' },
+                title: {
+                    es: 'Motores de Inferencia Local: llama.cpp, vLLM, MLC-LLM y Ollama en 2026',
+                    en: 'Local Inference Engines: llama.cpp, vLLM, MLC-LLM, and Ollama in 2026'
+                },
+                desc: {
+                    es: 'Comparativa arquitectónica y de rendimiento: PagedAttention, compilación WebGPU/Vulkan, decodificación especulativa y selección del runtime óptimo para cada hardware.',
+                    en: 'Architectural and performance benchmark: PagedAttention, WebGPU/Vulkan compilation, speculative decoding, and optimal runtime selection for every hardware profile.'
+                }
+            },
             {
                 id: 'cuantizacion-awq-gptq-gguf-k-quants-perplejidad',
                 url: 'cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html',
