@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (26)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (27)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (6)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (7)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">26</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">27</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 26 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 27 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'model-context-protocol-mcp-arquitectura-agentes',
+                url: 'model-context-protocol-mcp-arquitectura-agentes.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Estándares de IA', en: 'AI Standards' },
+                badgeColor: 'text-blue-700 bg-blue-50 border-blue-200',
+                readTime: { es: '19 min · 4.800 palabras', en: '19 min · 4,800 words' },
+                title: {
+                    es: 'Model Context Protocol (MCP): Arquitectura y Conexión Universal de Agentes con el Mundo Real',
+                    en: 'Model Context Protocol (MCP): Architecture and Universal Connection of AI Agents to Tools'
+                },
+                desc: {
+                    es: 'Análisis exhaustivo del estándar abierto en 2026: transportes stdio vs SSE, primitivas de Recursos, Herramientas y Prompts, y creación de servidores MCP con FastMCP.',
+                    en: 'Comprehensive analysis of the 2026 open standard: stdio vs SSE transports, Resources-Tools-Prompts primitives, and building production MCP servers with FastMCP.'
+                }
+            },
             {
                 id: 'orquestacion-multiagente-ideacion-comites-ia',
                 url: 'orquestacion-multiagente-ideacion-comites-ia.html',
