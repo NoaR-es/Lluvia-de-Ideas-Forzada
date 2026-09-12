@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 13:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 14:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Agentic RAG y Query Routing Dinámico: Más Allá de la Búsqueda Vectorial Simple</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/agentic-rag-query-routing-dinamico-agentes.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/agentic-rag-query-routing-dinamico-agentes.html</guid>
+      <description>Por qué inyectar los top-k fragmentos por similitud coseno es insuficiente y cómo diseñar agentes que deciden cuándo buscar, enrutan dinámicamente y corrigen su contexto.</description>
+      <pubDate>Sat, 12 Sep 2026 14:00:00 GMT</pubDate>
     </item>
 
     <item>
