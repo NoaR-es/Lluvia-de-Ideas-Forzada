@@ -1,6 +1,6 @@
 # ===================================================================
 # ROBOTS.TXT - LLUVIA DE IDEAS FORZADA
-# Configuración oficial para motores de búsqueda (Googlebot, Bingbot, etc.)
+# Configuracion oficial para motores de busqueda (Googlebot, Bingbot, etc.)
 # ===================================================================
 
 User-agent: *
@@ -9,7 +9,7 @@ Allow: /
 # Desactivar rastreo de archivos temporales o copias de seguridad si las hubiera
 Disallow: /*_bak*
 
-# Ubicaciones canónicas de los mapas del sitio (XML, Texto plano y Feed RSS según Google Developers)
+# Ubicaciones canonicas de los mapas del sitio (XML, Texto plano y Feed RSS segun Google Developers)
 Sitemap: https://noar-es.github.io/Lluvia-de-Ideas-Forzada/sitemap.xml
 Sitemap: https://noar-es.github.io/Lluvia-de-Ideas-Forzada/sitemap.txt
 Sitemap: https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml
