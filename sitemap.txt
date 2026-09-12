@@ -1,5 +1,6 @@
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/
+https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/inferencia-hibrida-local-cloud-enrutamiento-dinamico.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/motores-inferencia-local-llamacpp-vllm-mlc-ollama.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/slm-modelos-locales-gemma-phi-llama-gemini-nano.html

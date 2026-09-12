@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (38)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (39)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (18)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (19)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">38</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">39</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -237,7 +237,7 @@
                 No hay resultados que coincidan con los criterios de búsqueda. Intenta con otros términos o limpia el filtro.
             </p>
             <button onclick="resetFilters()"
-                class="px-5 py-2.5 rounded-xl bg-brand-600 text-white font-bold text-xs shadow-md hover:bg-brand-700 transition">
+                class="px-5 py-2.5 rounded-xl bg-emerald-100 text-emerald-950 font-bold text-xs border border-emerald-300 shadow-sm hover:bg-emerald-200 transition">
                 Restablecer Búsqueda
             </button>
         </div>
@@ -249,16 +249,16 @@
     <section class="py-16 bg-white border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
             <div
-                class="p-10 sm:p-14 rounded-[36px] bg-gradient-to-tr from-brand-600 to-indigo-700 text-white shadow-2xl shadow-indigo-500/20 relative overflow-hidden">
+                class="p-10 sm:p-14 rounded-[36px] bg-gradient-to-tr from-emerald-50 via-teal-50 to-emerald-100 border border-emerald-200 text-slate-900 shadow-xl relative overflow-hidden">
                 <div class="relative z-10">
                     <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white font-bold text-xs mb-6">
+                        class="inline-block px-4 py-1.5 rounded-full bg-emerald-200/80 border border-emerald-300 text-emerald-950 font-bold text-xs mb-6">
                         Herramienta Móvil Android
                     </span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
                         Aplica Todas Estas Técnicas en tu Teléfono
                     </h2>
-                    <p class="mt-4 text-indigo-100 text-base max-w-xl mx-auto">
+                    <p class="mt-4 text-slate-700 text-base max-w-xl mx-auto">
                         Genera lluvia de ideas con IA on-device, carga tus documentos PDF para RAG local y clasifica tus resultados en Semillas, Brotes y Árboles. Próximo Lanzamiento. Por ahora puedes testearla en Google Play.
                     </p>
                     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 38 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 39 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'inferencia-hibrida-local-cloud-enrutamiento-dinamico',
+                url: 'inferencia-hibrida-local-cloud-enrutamiento-dinamico.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Inferencia Híbrida & Arquitectura', en: 'Hybrid Inference & Architecture' },
+                badgeColor: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+                readTime: { es: '16 min · 4.200 palabras', en: '16 min · 4,200 words' },
+                title: {
+                    es: 'Inferencia Híbrida Inteligente: Enrutamiento Dinámico Local vs Cloud por Complejidad y Coste en 2026',
+                    en: 'Intelligent Hybrid Inference: Dynamic Local vs Cloud Routing by Complexity and Cost in 2026'
+                },
+                desc: {
+                    es: 'Cómo diseñar un router cognitivo que resuelve el 70% de las tareas en local (0 € de coste, 35 ms) y escala a modelos frontera en la nube por incertidumbre semántica.',
+                    en: 'How to design a cognitive router that resolves 70% of tasks locally (0 cost, 35 ms) and scales to cloud frontier models based on semantic uncertainty.'
+                }
+            },
             {
                 id: 'motores-inferencia-local-llamacpp-vllm-mlc-ollama',
                 url: 'motores-inferencia-local-llamacpp-vllm-mlc-ollama.html',
@@ -1094,19 +1110,19 @@
                     document.querySelector('[data-i18n="hub_title"]').textContent = "Brainstorming Hub: Advanced Frameworks & Real Case Studies";
                     document.querySelector('[data-i18n="hub_subtitle"]').textContent = "In-depth guides, timed step-by-step protocols, and industry case studies to turn complex problems into high-impact solutions with lateral thinking and on-device AI.";
                     document.getElementById('search-input').placeholder = "Search technique, case study, author, or keyword...";
-                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 All Articles (25)";
+                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 All Articles (39)";
                     document.querySelector('[data-i18n="cat_techniques"]').textContent = "🧠 Brainstorming Frameworks (13)";
                     document.querySelector('[data-i18n="cat_cases"]').textContent = "🎯 Real Case Studies (10)";
-                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 Local AI & Methods (5)";
+                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 Local AI & Agents (19)";
                 } else {
                     document.querySelector('[data-i18n="app_title"]').textContent = "Lluvia de Ideas Forzada";
                     document.querySelector('[data-i18n="hub_title"]').textContent = "Hub de Lluvia de Ideas: Técnicas Avanzadas y Casos de Uso";
                     document.querySelector('[data-i18n="hub_subtitle"]').textContent = "Guías exhaustivas, protocolos cronometrados paso a paso y análisis de casos reales para transformar problemas complejos en soluciones de alto impacto con pensamiento divergente e IA local.";
                     document.getElementById('search-input').placeholder = "Buscar técnica, caso de uso, autor o palabra clave...";
-                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 Todos los Artículos (25)";
+                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 Todos los Artículos (39)";
                     document.querySelector('[data-i18n="cat_techniques"]').textContent = "🧠 Técnicas de Lluvia de Ideas (13)";
                     document.querySelector('[data-i18n="cat_cases"]').textContent = "🎯 Casos de Uso Reales (10)";
-                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 IA Local & Metodología (5)";
+                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 IA Local & Agentes (19)";
                 }
 
                 renderArticles();

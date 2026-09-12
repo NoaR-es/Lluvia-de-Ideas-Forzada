@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 21:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 22:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Inferencia Híbrida Inteligente: Enrutamiento Dinámico Local vs Cloud por Complejidad y Coste en 2026</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/inferencia-hibrida-local-cloud-enrutamiento-dinamico.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/inferencia-hibrida-local-cloud-enrutamiento-dinamico.html</guid>
+      <description>Cómo diseñar un router cognitivo que resuelve el 70% de las tareas en local (0 € de coste, 35 ms) y escala a modelos frontera en la nube por incertidumbre semántica.</description>
+      <pubDate>Sat, 12 Sep 2026 22:00:00 GMT</pubDate>
     </item>
 
     <item>
