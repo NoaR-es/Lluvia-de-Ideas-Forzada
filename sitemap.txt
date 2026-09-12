@@ -1,5 +1,6 @@
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/
+https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/slm-modelos-locales-gemma-phi-llama-gemini-nano.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/graph-rag-memorias-asociativas-grafos-conocimiento.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/reranking-busqueda-hibrida-rrf-dense-sparse.html

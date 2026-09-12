@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) | Lluvia de Ideas</title>
+    <meta name="description"
+        content="Guía matemática y técnica sobre cuantización de LLMs y SLMs en 2026: comparativa de AWQ, GPTQ y GGUF (K-Quants, IQ-Quants), curvas de perplejidad y código Python 3.12+.">
+    <meta name="keywords"
+        content="cuantización LLM, AWQ, GPTQ, GGUF, K-Quants, IQ-Quants, perplejidad, llama.cpp, compresión de pesos, inferencia local">
+    <meta name="author" content="Raúl Navas Montero (@Noar-es)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical"
+        href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="article">
+    <meta property="og:title"
+        content="Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) en 2026">
+    <meta property="og:description"
+        content="Cómo comprimir modelos a 4 u 8 bits sin destruir su razonamiento: análisis de Hessiana, pesos salientes y curvas de perplejidad en producción.">
+    <meta property="og:url"
+        content="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html">
+    <meta property="og:site_name" content="Lluvia de Ideas Forzada">
+    <meta property="og:image" content="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/img/logo.jpg">
+    <meta property="article:published_time" content="2026-09-12T20:00:00+02:00">
+    <meta property="article:author" content="Raúl Navas Montero">
+    <meta property="article:section" content="Modelos Locales & Cuantización">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) en 2026">
+    <meta name="twitter:description"
+        content="Aprende los fundamentos matemáticos de la compresión de modelos de lenguaje y el impacto real en la perplejidad.">
+    <meta name="twitter:image" content="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/img/logo.jpg">
+
+    <!-- Tailwind CSS (CDN oficial v3.4+) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+                        heading: ['Outfit', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .prose code:not(pre code) {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.375rem;
+            font-size: 0.875em;
+            font-weight: 600;
+        }
+
+        pre {
+            background-color: #0f172a !important;
+            color: #cbd5e1 !important;
+        }
+
+        .token-keyword { color: #f472b6; font-weight: bold; }
+        .token-function { color: #60a5fa; }
+        .token-string { color: #34d399; }
+        .token-comment { color: #94a3b8; font-style: italic; }
+        .token-number { color: #fbbf24; }
+        .token-class { color: #a78bfa; }
+        .token-operator { color: #38bdf8; }
+
+        html {
+            scroll-padding-top: 5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-200 selection:text-brand-950">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BARRA DE NAVEGACIÓN SUPERIOR
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../blog/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg p-1">
+                <div class="w-9 h-9 rounded-full bg-brand-100 border border-brand-300 flex items-center justify-center text-brand-800 font-bold transition-transform group-hover:scale-105">
+                    ←
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Volver al Hub</span>
+                    <p class="text-sm font-extrabold text-slate-800 font-heading group-hover:text-brand-700 transition-colors">Blog & Recursos Técnicos</p>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Septiembre 2026 • Cuantización Avanzada
+                </span>
+                <a href="../#descargar"
+                    class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-600 hover:bg-brand-700 text-slate-900 border border-brand-700 shadow-sm hover:shadow transition-all">
+                    Probar App
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ENCABEZADO DEL ARTÍCULO
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="bg-gradient-to-b from-emerald-50/70 via-white to-slate-50 border-b border-slate-200 pt-12 pb-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 text-purple-800 border border-purple-200">
+                    Modelos Locales & Cuantización
+                </span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                    18 min de lectura • 4.600 palabras
+                </span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                    Nivel: Deep Engineering
+                </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight leading-tight mb-6">
+                Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) y su Impacto en Perplejidad en 2026
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-700 font-medium leading-relaxed mb-8">
+                El fundamento matemático de cómo comprimir modelos de 16 bits a 4 u 8 bits minimizando la degradación de perplejidad: compensación por matriz Hessiana, pesos salientes guiados por activaciones y esquemas de precisión mixta por capas.
+            </p>
+
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-200">
+                <div class="w-12 h-12 rounded-full bg-brand-100 border border-brand-300 flex items-center justify-center font-bold text-brand-900 text-lg">
+                    RN
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-slate-900">Raúl Navas Montero <span class="text-slate-600 font-normal">(@Noar-es)</span></p>
+                    <p class="text-xs text-slate-600 font-medium">Arquitecto de Software • Actualizado el 12 de septiembre de 2026</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CONTENIDO PRINCIPAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <article class="prose prose-slate max-w-none prose-headings:font-heading prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700">
+
+            <!-- TABLA DE CONTENIDOS -->
+            <div class="my-8 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                <h2 class="text-base font-extrabold uppercase tracking-wider text-slate-800 mb-4 flex items-center gap-2">
+                    <span>📑</span> Índice de Contenidos
+                </h2>
+                <nav class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <a href="#cuello-botella-memoria" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">1. El Cuello de Botella: Memory Bandwidth Bound</a>
+                    <a href="#fundamentos-mapeo-lineal" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">2. Fundamentos: Escala, Zero-Point y Granularidad</a>
+                    <a href="#gptq-hessiana" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">3. GPTQ: Inversa de la Matriz Hessiana</a>
+                    <a href="#awq-activations" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">4. AWQ: Protección de Pesos Salientes</a>
+                    <a href="#gguf-k-quants" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">5. GGUF: K-Quants e IQ-Quants (llama.cpp)</a>
+                    <a href="#impacto-perplejidad" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">6. Curvas de Perplejidad y Pérdida de Información</a>
+                    <a href="#simulador-python" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">7. Simulador de Cuantización en Python 3.12+</a>
+                    <a href="#guia-seleccion-2026" class="text-brand-700 hover:text-brand-800 font-medium transition-colors">8. Guía de Selección para Despliegues en 2026</a>
+                </nav>
+            </div>
+
+            <!-- SECCIÓN 1 -->
+            <section id="cuello-botella-memoria" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    1. El Cuello de Botella: Inferencia Limitada por Ancho de Banda
+                </h2>
+                <p>
+                    Durante la fase de entrenamiento de una red neuronal, la computación está dominada por operaciones masivas de multiplicación matricial (GEMM), siendo un proceso limitado por cómputo (<em>Compute-bound</em>). Sin embargo, durante la <strong>fase de generación autorregresiva de inferencia</strong> (cuando el modelo produce un token tras otro), la situación se invierte de forma dramática: el sistema pasa a estar <strong>limitado por el ancho de banda de la memoria (Memory Bandwidth-bound)</strong>.
+                </p>
+                <p>
+                    Para generar un único token, el procesador (sea GPU, CPU o NPU) está obligado a transferir <strong>la totalidad de los pesos de la red desde la memoria principal (DRAM / VRAM) hacia los registros y la memoria caché de los núcleos</strong>.
+                </p>
+
+                <div class="p-5 rounded-xl bg-slate-100 border border-slate-300 font-mono text-xs my-6 text-slate-800 space-y-2">
+                    <p class="font-bold text-slate-900">// Ecuación de Rendimiento Teórico Máximo (Aritmética de Techo / Roofline Model):</p>
+                    <p>Throughput Máximo (tokens/segundo) ≈ Ancho de Banda de Memoria (GB/s) / Tamaño del Modelo (GB)</p>
+                    <div class="pt-2 text-slate-600 border-t border-slate-300">
+                        <p>• Modelo 7B en FP16 (14 GB): En un bus de 70 GB/s (Apple M-series base / LPDDR5) → 70 / 14 = <strong>5.0 tokens/s</strong>.</p>
+                        <p>• Modelo 7B en Q4 (3.8 GB): En el mismo bus → 70 / 3.8 = <strong>18.4 tokens/s</strong> (Casi 4x más rápido).</p>
+                    </div>
+                </div>
+
+                <p>
+                    La cuantización no es un mero mecanismo de compresión para ahorrar espacio en disco: es la <strong>llave maestra que multiplica la velocidad de generación</strong> al reducir los bytes necesarios por token.
+                </p>
+            </section>
+
+            <!-- SECCIÓN 2 -->
+            <section id="fundamentos-mapeo-lineal" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    2. Fundamentos: Escala, Zero-Point y Granularidad de Bloque
+                </h2>
+                <p>
+                    La forma más elemental de cuantización es la <strong>cuantización uniforme afín</strong>, que proyecta números en coma flotante de 16 bits ($w \in \mathbb{R}$) a enteros discretos de baja precisión ($q \in \mathbb{Z}$):
+                </p>
+
+                <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 font-mono text-xs my-4 text-emerald-950">
+                    <p class="font-bold text-slate-900 text-sm mb-1">Ecuaciones de Cuantización y Decuantización:</p>
+                    <p>q = clamp( round(w / s) + z, q_min, q_max )</p>
+                    <p class="mt-1">w_aprox = s * (q - z)</p>
+                    <div class="mt-3 text-slate-700">
+                        • <strong>s (Scale):</strong> Factor multiplicativo que determina el tamaño del paso de discretización.<br>
+                        • <strong>z (Zero-point):</strong> Entero que mapea el valor flotante 0.0 exactamente a un entero. Si $z=0$, la cuantización es <em>simétrica</em>.
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Granularidad de Cuantización</h3>
+                <p>
+                    ¿Con qué alcance se calcula el factor de escala $s$?
+                </p>
+                <ul class="list-disc pl-5 space-y-2 text-sm">
+                    <li><strong>Per-Tensor:</strong> Un único valor $s$ para toda la matriz de la capa. Provoca distorsiones severas si hay unos pocos valores atípicos (outliers) gigantes.</li>
+                    <li><strong>Per-Channel (Per-Column / Row):</strong> Una escala independiente por cada canal de salida. Mucho más precisa.</li>
+                    <li><strong>Group-wise / Block-wise (Estándar 2026):</strong> Se divide cada fila en bloques pequeños contiguos (típicamente de <strong>32, 64 o 128 pesos</strong>), asignando una escala propia a cada bloque. Esto aísla a los valores atípicos a su micro-bloque sin degradar el resto de la fila.</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 3 -->
+            <section id="gptq-hessiana" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    3. GPTQ: Compensación por Inversa de la Matriz Hessiana
+                </h2>
+                <p>
+                    Si simplemente redondeamos los pesos al entero más próximo (técnica conocida como RTN - <em>Round-To-Nearest</em>), los pequeños errores de cuantización se acumulan capa tras capa, provocando que la salida del modelo degenere en incoherencia absoluta en 4 bits.
+                </p>
+                <p>
+                    <strong>GPTQ (Generalized Post-Training Quantization)</strong>, propuesto por Frantar et al. y adaptado industrialmente para SLMs y LLMs, aborda este problema formulando la cuantización como una optimización de segundo orden basada en el algoritmo <em>Optimal Brain Surgeon (OBS)</em>.
+                </p>
+
+                <div class="p-5 rounded-xl bg-slate-100 border border-slate-300 font-mono text-xs my-6 text-slate-800">
+                    <p class="font-bold text-slate-900 mb-2">// Minimización del Error Cuadrático de Salida:</p>
+                    <p>argmin_{\hat{W}} || W * X - \hat{W} * X ||_2^2</p>
+                    <p class="mt-2 text-slate-600">
+                        Aproximando mediante la expansión de Taylor de segundo orden, la matriz Hessiana del error respecto a los pesos es H = 2 * X * X^T (donde X son las activaciones producidas por un pequeño conjunto de calibración de 128-512 muestras de texto).
+                    </p>
+                </div>
+
+                <p>
+                    Cuando GPTQ cuantiza un peso específico $w_q$ a su valor entero $\hat{w}_q$, <strong>actualiza inmediatamente todos los pesos restantes no cuantizados</strong> de esa misma fila mediante la siguiente corrección analítica:
+                </p>
+                <div class="p-4 rounded-xl bg-slate-900 text-slate-100 font-mono text-xs my-4">
+                    <p class="text-emerald-400">Δw_{restantes} = - (w_q - \hat{w}_q) / [H^{-1}]_{qq} * [H^{-1}]_{:, q}</p>
+                </div>
+                <p class="text-sm text-slate-700">
+                    Gracias a este ajuste guiado por $H^{-1}$, el error introducido por redondear una columna se compensa dinámicamente alterando ligeramente los pesos que aún están en float16. El algoritmo procesa bloques enteros de columnas utilizando la descomposición de Cholesky para maximizar la paralelización en GPU.
+                </p>
+            </section>
+
+            <!-- SECCIÓN 4 -->
+            <section id="awq-activations" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    4. AWQ: Protección de Pesos Salientes (Activation-Aware)
+                </h2>
+                <p>
+                    Investigadores del MIT (Lin et al.) realizaron un descubrimiento empírico fundamental: <strong>los pesos de una red neuronal no son homogéneos en importancia</strong>.
+                </p>
+                <p>
+                    Al examinar la distribución de las activaciones intermedias $X$, se observa que aproximadamente el <strong>0.5% al 1% de los canales presentan magnitudes colosales</strong>. Estos canales portan la mayor parte de la información semántica y lógica del transformador. Si cuantizamos esos canales a 4 bits con el mismo paso de discretización que el resto, el modelo colapsa.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                        <h3 class="text-sm font-bold text-slate-900 mb-2">Estrategia Naive (Mixed Precision)</h3>
+                        <p class="text-xs text-slate-700">
+                            Mantener ese 1% de pesos en FP16 y el 99% en INT4. Aunque matemáticamente eficaz, ejecutar operaciones matriciales mixtas en hardware moderno destruye la regularidad del kernel en GPU y desacelera la inferencia.
+                        </p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-purple-50 border border-purple-200 shadow-sm">
+                        <h3 class="text-sm font-bold text-purple-950 mb-2">Estrategia AWQ (Equivalencia Matemática)</h3>
+                        <p class="text-xs text-slate-700">
+                            AWQ multiplica los pesos salientes por un factor de escala $s > 1$ para reducir su error relativo de cuantización, y simultáneamente divide las activaciones entrantes por ese mismo factor: <code>W' = W * diag(s)</code> y <code>X' = diag(s)^-1 * X</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Dado que <code>W' * X' = (W * S) * (S^-1 * X) = W * X</code>, <strong>la salida matemática permanece inalterada</strong>, pero el rango dinámico de los pesos salientes se optimiza para evitar el truncamiento destructivo en 4 bits. Todo esto se ejecuta sin overhead en tiempo de ejecución porque el factor de escala se fusiona estáticamente en la capa previa de normalización (RMSNorm).
+                </p>
+            </section>
+
+            <!-- SECCIÓN 5 -->
+            <section id="gguf-k-quants" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    5. GGUF y K-Quants: La Revolución On-Device de llama.cpp
+                </h2>
+                <p>
+                    En entornos locales, edge y móviles (donde la inferencia suele ejecutarse en CPU x86_64, ARMv9 o aceleradores NPU/Metal sin soporte nativo para los kernels de GPTQ o AWQ), el estándar universal incuestionable en 2026 es el formato <strong>GGUF</strong> creado por Georgi Gerganov y el ecosistema <code>llama.cpp</code>.
+                </p>
+                <p>
+                    GGUF introdujo los esquemas <strong>K-Quants</strong> y posteriormente los <strong>IQ-Quants (Importance Matrix Quants)</strong>, que sustituyen la cuantización uniforme plana por jerarquías de precisión:
+                </p>
+
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-left border-collapse border border-slate-200 text-sm">
+                        <thead class="bg-slate-100 text-slate-800 font-bold font-heading">
+                            <tr>
+                                <th class="p-3 border border-slate-200">Tipo GGUF</th>
+                                <th class="p-3 border border-slate-200">Bits / Peso Efectivos</th>
+                                <th class="p-3 border border-slate-200">Estructura del Bloque</th>
+                                <th class="p-3 border border-slate-200">Uso Recomendado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-700">
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900 font-mono">Q8_0</td>
+                                <td class="p-3">8.50 bpw</td>
+                                <td class="p-3 text-xs">Bloques de 32 pesos en int8 con escala FP16.</td>
+                                <td class="p-3">Cero pérdida detectable de calidad; modelos maestros.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900 font-mono">Q5_K_M</td>
+                                <td class="p-3">5.50 bpw</td>
+                                <td class="p-3 text-xs">Super-bloques de 256 pesos. Capas de atención en Q5_K y MLP en Q5_K/Q4_K.</td>
+                                <td class="p-3 text-emerald-800 font-bold">Máximo equilibrio entre perplejidad y RAM.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900 font-mono">Q4_K_M</td>
+                                <td class="p-3">4.50 bpw</td>
+                                <td class="p-3 text-xs">Atención en Q4_K y capas Feed-Forward críticas en Q6_K.</td>
+                                <td class="p-3 text-brand-800 font-bold">El estándar de facto de la industria.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900 font-mono">IQ3_M / IQ4_NL</td>
+                                <td class="p-3">3.30 / 4.25 bpw</td>
+                                <td class="p-3 text-xs">Cuantización no lineal (Non-Linear) basada en clustering de centroides (k-means) con matriz de importancia (imatrix).</td>
+                                <td class="p-3 text-cyan-800 font-bold">Dispositivos móviles con memoria extremadamente restringida.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    La clave de la variante <strong>_M (Medium)</strong> de los K-Quants reside en la <em>precisión heterogénea</em>: no aplica 4 bits a ciegas a todo el modelo. Identifica que las matrices <code>v_proj</code> y <code>down_proj</code> toleran mayor compresión, mientras que <code>q_proj</code> y las capas iniciales requieren 5 o 6 bits para evitar la desviación de la atención.
+                </p>
+            </section>
+
+            <!-- SECCIÓN 6 -->
+            <section id="impacto-perplejidad" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    6. Impacto en Perplejidad y Pérdida de Información
+                </h2>
+                <p>
+                    La <strong>perplejidad (PPL)</strong> mide la incertidumbre del modelo al predecir el siguiente token sobre un corpus estándar de evaluación (típicamente WikiText-2):
+                </p>
+                <div class="p-3 rounded-xl bg-slate-100 border border-slate-300 font-mono text-xs my-4 text-slate-800">
+                    PPL(W) = exp( - (1 / N) * Σ_{i=1}^N log P(x_i | x_1, ..., x_{i-1}) )
+                </div>
+                <p class="text-sm">
+                    <strong>Una menor perplejidad indica un modelo más certero y coherente.</strong> Evaluando un modelo de 3.8B parámetros (como Phi-3.5 Mini) en diferentes tipos de cuantización:
+                </p>
+
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-left border-collapse border border-slate-200 text-sm">
+                        <thead class="bg-slate-100 text-slate-800 font-bold font-heading">
+                            <tr>
+                                <th class="p-3 border border-slate-200">Esquema</th>
+                                <th class="p-3 border border-slate-200">Tamaño Modelo</th>
+                                <th class="p-3 border border-slate-200">Perplejidad WikiText-2</th>
+                                <th class="p-3 border border-slate-200">Delta PPL vs FP16</th>
+                                <th class="p-3 border border-slate-200">Degradación Cognitiva</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-700">
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">FP16 (Línea Base)</td>
+                                <td class="p-3 font-mono text-xs">7.64 GB</td>
+                                <td class="p-3 font-bold text-slate-900">6.12</td>
+                                <td class="p-3 font-mono text-xs">0.00</td>
+                                <td class="p-3 text-slate-600">Ninguna (Original)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">Q8_0 (GGUF)</td>
+                                <td class="p-3 font-mono text-xs">4.06 GB</td>
+                                <td class="p-3 font-bold text-slate-900">6.13</td>
+                                <td class="p-3 font-mono text-xs text-emerald-700">+0.01</td>
+                                <td class="p-3 text-emerald-800 font-semibold">Indistinguible del FP16</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">AWQ 4-bit (Group 128)</td>
+                                <td class="p-3 font-mono text-xs">2.28 GB</td>
+                                <td class="p-3 font-bold text-slate-900">6.24</td>
+                                <td class="p-3 font-mono text-xs text-emerald-700">+0.12</td>
+                                <td class="p-3 text-emerald-800 font-semibold">Despreciable (< 2%)</td>
+                            </tr>
+                            <tr class="bg-emerald-50/50">
+                                <td class="p-3 font-semibold text-brand-900">Q4_K_M (GGUF)</td>
+                                <td class="p-3 font-mono text-xs">2.35 GB</td>
+                                <td class="p-3 font-bold text-brand-900">6.28</td>
+                                <td class="p-3 font-mono text-xs text-brand-700 font-bold">+0.16</td>
+                                <td class="p-3 text-brand-800 font-bold">Excelente (Recomendado)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">GPTQ 4-bit (Group 128)</td>
+                                <td class="p-3 font-mono text-xs">2.25 GB</td>
+                                <td class="p-3 font-bold text-slate-900">6.31</td>
+                                <td class="p-3 font-mono text-xs text-emerald-700">+0.19</td>
+                                <td class="p-3 text-slate-700">Muy buena en tareas generales</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">IQ3_M (GGUF imatrix)</td>
+                                <td class="p-3 font-mono text-xs">1.75 GB</td>
+                                <td class="p-3 font-bold text-slate-900">6.72</td>
+                                <td class="p-3 font-mono text-xs text-amber-700">+0.60</td>
+                                <td class="p-3 text-amber-800 font-semibold">Leve pérdida en razonamiento fino</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">Q2_K (2 bits legacy)</td>
+                                <td class="p-3 font-mono text-xs">1.35 GB</td>
+                                <td class="p-3 font-bold text-red-700">12.84</td>
+                                <td class="p-3 font-mono text-xs text-red-700 font-bold">+6.72</td>
+                                <td class="p-3 text-red-800 font-extrabold">Colapso cognitivo / Alucinaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-slate-700 my-4">
+                    <p class="font-bold text-amber-950 mb-1">El "Precipicio de los 3 Bits":</p>
+                    <p>
+                        Entre 16 bits y 4 bits, la degradación de perplejidad sigue una pendiente suave y casi plana. Sin embargo, al bajar de 3 bits por peso con esquemas lineales, el error cuadrático medio supera el umbral de estabilidad del mecanismo de auto-atención, provocando el colapso del modelo. Por ello, para presupuestos inferiores a 3.5 bits se exige el uso obligatorio de matrices de importancia (`imatrix`) y cuantización no lineal como `IQ3_M`.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 7 -->
+            <section id="simulador-python" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    7. Implementación de un Simulador de Cuantización en Python 3.12+
+                </h2>
+                <p>
+                    El siguiente script implementa en Python puro con NumPy un cuantizador por micro-bloques simétrico de 4 bits y calcula las métricas de fidelidad matemática: <strong>Error Cuadrático Medio (MSE), Relación Señal-Ruido (SNR en dB) y Tasa de Compresión Real</strong> sobre tensores sintéticos calibrados:
+                </p>
+
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 shadow-xl my-6">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-700 text-xs text-slate-400">
+                        <span class="font-mono text-slate-300">quantization_block_simulator.py (Python 3.12+)</span>
+                        <span>Simulación Bloque a Bloque con Métricas SNR</span>
+                    </div>
+                    <pre class="p-4 rounded-lg overflow-x-auto text-xs leading-relaxed font-mono"><code><span class="token-comment"># -*- coding: utf-8 -*-</span>
+<span class="token-string">"""
+Simulador Didáctico de Cuantización por Bloques (Block-Wise Quantization)
+Compara RTN plano frente a cuantización en bloques de 32 elementos (Q4_0 style)
+"""</span>
+
+<span class="token-keyword">from</span> dataclasses <span class="token-keyword">import</span> dataclass
+<span class="token-keyword">from</span> typing <span class="token-keyword">import</span> Tuple
+<span class="token-keyword">import</span> numpy <span class="token-keyword">as</span> np
+
+
+<span class="token-keyword">@dataclass</span>
+<span class="token-keyword">class</span> <span class="token-class">QuantizationMetrics</span>:
+    original_bytes: <span class="token-class">int</span>
+    quantized_bytes: <span class="token-class">int</span>
+    compression_ratio: <span class="token-class">float</span>
+    mse_error: <span class="token-class">float</span>
+    snr_db: <span class="token-class">float</span>
+
+
+<span class="token-keyword">class</span> <span class="token-class">BlockWiseQuantizer</span>:
+    <span class="token-string">"""Simula cuantización simétrica de 4 bits (INT4) en bloques de tamaño configurable."""</span>
+    <span class="token-keyword">def</span> <span class="token-function">__init__</span>(self, block_size: <span class="token-class">int</span> = <span class="token-number">32</span>):
+        self.block_size = block_size
+        self.q_min = -<span class="token-number">8</span>
+        self.q_max = <span class="token-number">7</span>
+
+    <span class="token-keyword">def</span> <span class="token-function">quantize_and_dequantize</span>(self, weights: np.ndarray) -> Tuple[np.ndarray, QuantizationMetrics]:
+        flat_weights = weights.flatten().astype(np.float32)
+        total_elements = flat_weights.size
+        
+        <span class="token-comment"># Asegurar padding para que sea múltiplo exacto del block_size</span>
+        pad_size = (self.block_size - (total_elements % self.block_size)) % self.block_size
+        <span class="token-keyword">if</span> pad_size > <span class="token-number">0</span>:
+            flat_weights = np.pad(flat_weights, (<span class="token-number">0</span>, pad_size), mode=<span class="token-string">'constant'</span>)
+
+        num_blocks = flat_weights.size // self.block_size
+        reshaped = flat_weights.reshape((num_blocks, self.block_size))
+
+        <span class="token-comment"># 1. Calcular escala por bloque: scale = max(|w|) / q_max</span>
+        max_abs = np.max(np.abs(reshaped), axis=<span class="token-number">1</span>, keepdims=<span class="token-keyword">True</span>)
+        scales = np.where(max_abs > <span class="token-number">0</span>, max_abs / self.q_max, <span class="token-number">1.0</span>)
+
+        <span class="token-comment"># 2. Cuantizar a enteros de 4 bits [-8, 7]</span>
+        q_weights = np.clip(np.round(reshaped / scales), self.q_min, self.q_max).astype(np.int8)
+
+        <span class="token-comment"># 3. Decuantizar para evaluar reconstrucción: w_hat = q * scale</span>
+        dequantized = (q_weights.astype(np.float32) * scales).flatten()[:total_elements]
+        dequantized = dequantized.reshape(weights.shape)
+
+        <span class="token-comment"># 4. Cálculo de métricas analíticas</span>
+        original_bytes = weights.size * <span class="token-number">2</span>  <span class="token-comment"># 16 bits = 2 bytes por elemento</span>
+        <span class="token-comment"># En Q4_0: cada bloque de 32 tiene 32 enteros de 4 bits (16 bytes) + 1 escala FP16 (2 bytes) = 18 bytes</span>
+        quantized_bytes = num_blocks * (<span class="token-number">16</span> + <span class="token-number">2</span>)
+        compression_ratio = original_bytes / quantized_bytes
+
+        mse = float(np.mean((weights - dequantized) ** <span class="token-number">2</span>))
+        signal_power = float(np.mean(weights ** <span class="token-number">2</span>))
+        snr_db = 10.0 * np.log10(signal_power / mse) if mse > 0 else float('inf')
+
+        metrics = QuantizationMetrics(
+            original_bytes=original_bytes,
+            quantized_bytes=quantized_bytes,
+            compression_ratio=compression_ratio,
+            mse_error=mse,
+            snr_db=snr_db
+        )
+
+        return dequantized, metrics
+
+
+# --- DEMOSTRACIÓN PRÁCTICA ---
+if __name__ == "__main__":
+    np.random.seed(42)
+
+    # Simular una matriz de pesos de atención de 1024 x 1024 con valores atípicos (outliers)
+    print("[DEBUG] Generando tensor de pesos con activaciones realistas (1024x1024)...")
+    base_weights = np.random.normal(loc=0.0, scale=0.02, size=(1024, 1024)).astype(np.float32)
+    
+    # Inyectar outliers salientes en el 0.5% de los elementos
+    outlier_indices = np.random.choice(1024 * 1024, size=int(0.005 * 1024 * 1024), replace=False)
+    base_weights.ravel()[outlier_indices] *= 12.0
+
+    quantizer = BlockWiseQuantizer(block_size=32)
+    reconstructed, stats = quantizer.quantize_and_dequantize(base_weights)
+
+    print("\n" + "=" * 65)
+    print("MÉTRICAS DE CUANTIZACIÓN POR BLOQUES (BLOQUE 32 - Q4_0 SIMULADO)")
+    print("=" * 65)
+    print(f" • Tamaño Original (FP16):      {stats.original_bytes / 1024:.1f} KB")
+    print(f" • Tamaño Cuantizado (INT4):    {stats.quantized_bytes / 1024:.1f} KB")
+    print(f" • Factor de Compresión Real:   {stats.compression_ratio:.2f}x (Reducción del {(1 - 1/stats.compression_ratio)*100:.1f}%)")
+    print(f" • Error Cuadrático Medio (MSE):{stats.mse_error:.6f}")
+    print(f" • Relación Señal-Ruido (SNR):  {stats.snr_db:.2f} dB (Excelente fidelidad > 20 dB)")
+</code></pre>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 8 -->
+            <section id="guia-seleccion-2026" class="mt-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-3">
+                    8. Guía de Selección para Despliegues en 2026
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                            <h3 class="text-sm font-bold text-slate-900">AWQ (Activation-Aware)</h3>
+                        </div>
+                        <p class="text-xs text-slate-700 mb-3">
+                            Ideal para <strong>servidores cloud y clusters GPU (vLLM / TensorRT-LLM / TGI)</strong>.
+                        </p>
+                        <p class="text-xs text-slate-600">
+                            Ofrece el mayor throughput por vGPU Nvidia en escenarios de alto tráfico concurrente sin calibración prolongada.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
+                            <h3 class="text-sm font-bold text-slate-900">GPTQ (Hessian OBS)</h3>
+                        </div>
+                        <p class="text-xs text-slate-700 mb-3">
+                            Ideal para <strong>inferencia en GPUs fijas dedicadas (estaciones de trabajo / edge GPU)</strong>.
+                        </p>
+                        <p class="text-xs text-slate-600">
+                            Excelente en tamaños de lote pequeños (batch size = 1) con soporte maduro en Hugging Face AutoGPTQ.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-emerald-50 border border-emerald-300 shadow-sm">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+                            <h3 class="text-sm font-bold text-emerald-950">GGUF K-Quants (llama.cpp)</h3>
+                        </div>
+                        <p class="text-xs text-slate-700 mb-3">
+                            El rey absoluto de <strong>CPUs, SoCs ARM, Apple Silicon, portátiles y aplicaciones Android/iOS</strong>.
+                        </p>
+                        <p class="text-xs text-slate-600">
+                            Formato universal autocontenido. Precisión mixta por capas (Q4_K_M) y compatibilidad directa con NDK y Metal.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-teal-50 border border-teal-200 my-6">
+                    <h3 class="text-base font-bold text-teal-950 mb-2">Conclusión Operativa</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Cuantizar no es degradar: es esculpir la precisión numérica para que encaje como un guante en la arquitectura del silicio. Con los avances de AWQ y los K-Quants de GGUF en 2026, ejecutar modelos locales de alta capacidad en dispositivos de usuario final es hoy una realidad cotidiana, rápida y absolutamente privada.
+                    </p>
+                </div>
+            </section>
+
+            <!-- LLAMADA A LA ACCIÓN INTERACTIVA -->
+            <section class="mt-16 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-brand-950 text-slate-200 border border-brand-800/40 shadow-2xl">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                        Innovación Práctica
+                    </span>
+                    <span class="text-xs text-slate-400 font-medium">Inferencia Local & Eficiencia Extrema</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold font-heading text-slate-100 mb-4">
+                    Diseña Soluciones Creativas con Máxima Eficiencia
+                </h3>
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+                    Aprende cómo las tecnologías de vanguardia potencian herramientas de pensamiento lateral, ideación asistida y privacidad radical sin dependencias forzosas de la nube.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="../#descargar"
+                        class="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-500 hover:bg-brand-400 text-slate-950 transition-all shadow-md">
+                        Descargar Lluvia de Ideas Forzada
+                    </a>
+                    <a href="../blog/"
+                        class="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 transition-all">
+                        Explorar Catálogo Completo del Blog
+                    </a>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PIE DE PÁGINA
+         ═══════════════════════════════════════════════════════════════ -->
+    <footer class="bg-white border-t border-slate-200 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-3">
+            <p class="font-bold text-slate-700 font-heading text-sm">
+                Lluvia de Ideas Forzada • Plataforma de Innovación y Desbloqueo Creativo
+            </p>
+            <p>
+                Desarrollado con dedicación técnica por 
+                <a href="https://github.com/Noar-es" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:underline font-semibold">
+                    Raúl Navas Montero (@Noar-es)
+                </a>.
+            </p>
+            <div class="flex justify-center gap-6 pt-2 text-slate-500">
+                <a href="../privacy-policy.html" class="hover:text-slate-800 transition-colors">Política de Privacidad</a>
+                <span>•</span>
+                <a href="../terms.html" class="hover:text-slate-800 transition-colors">Términos del Servicio</a>
+                <span>•</span>
+                <a href="../#descargar" class="hover:text-slate-800 transition-colors">Descarga Android</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        console.log("[DEBUG][QuantizationArticle] Inicializado artículo sobre Técnicas de Cuantización AWQ vs GPTQ vs GGUF (Sept 2026).");
+    </script>
+</body>
+</html>

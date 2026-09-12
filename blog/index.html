@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (36)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (37)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (16)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (17)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">36</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">37</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 36 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 37 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'cuantizacion-awq-gptq-gguf-k-quants-perplejidad',
+                url: 'cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Modelos Locales & Cuantización', en: 'Local Models & Quantization' },
+                badgeColor: 'text-purple-700 bg-purple-50 border-purple-200',
+                readTime: { es: '18 min · 4.600 palabras', en: '18 min · 4,600 words' },
+                title: {
+                    es: 'Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) y su Impacto en Perplejidad en 2026',
+                    en: 'Quantization Techniques Deep-Dive: AWQ vs GPTQ vs GGUF (K-Quants) and Perplexity Impact in 2026'
+                },
+                desc: {
+                    es: 'Comprende el fundamento matemático para comprimir modelos a 4 u 8 bits sin perder coherencia: Hessiana de segundo orden, pesos salientes y curvas empíricas de perplejidad.',
+                    en: 'Master the mathematical foundations of compressing models to 4 or 8 bits: second-order Hessian, salient weights, and empirical perplexity degradation curves.'
+                }
+            },
             {
                 id: 'slm-modelos-locales-gemma-phi-llama-gemini-nano',
                 url: 'slm-modelos-locales-gemma-phi-llama-gemini-nano.html',

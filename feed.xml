@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 19:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 20:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Técnicas de Cuantización a Fondo: AWQ vs GPTQ vs GGUF (K-Quants) y su Impacto en Perplejidad en 2026</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/cuantizacion-awq-gptq-gguf-k-quants-perplejidad.html</guid>
+      <description>Comprende el fundamento matemático para comprimir modelos a 4 u 8 bits sin perder coherencia: Hessiana de segundo orden, pesos salientes y curvas empíricas de perplejidad.</description>
+      <pubDate>Sat, 12 Sep 2026 20:00:00 GMT</pubDate>
     </item>
 
     <item>
