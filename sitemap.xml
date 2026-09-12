@@ -25,6 +25,12 @@
          ARTÍCULOS PILAR DE METODOLOGÍAS Y GUÍAS TÉCNICAS
          ═══════════════════════════════════════════════════════════════ -->
     <url>
+        <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/reranking-busqueda-hibrida-rrf-dense-sparse.html</loc>
+        <lastmod>2026-09-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
+    </url>
+    <url>
         <loc>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html</loc>
         <lastmod>2026-09-12</lastmod>
         <changefreq>monthly</changefreq>

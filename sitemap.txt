@@ -1,5 +1,6 @@
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/
+https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/reranking-busqueda-hibrida-rrf-dense-sparse.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/chunking-semantico-metadatos-ideacion-lateral.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/agentic-rag-query-routing-dinamico-agentes.html
