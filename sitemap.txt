@@ -1,5 +1,6 @@
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/
+https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/orquestacion-multiagente-ideacion-comites-ia.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/scamper-desbloqueo-tecnico.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/rag-on-device-proteccion-negocio.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/madurez-botanica-priorizar-ideas.html

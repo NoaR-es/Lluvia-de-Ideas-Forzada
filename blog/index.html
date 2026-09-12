@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (25)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (26)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Metodología (5)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (6)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">25</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">26</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,8 +331,26 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 25 ARTÍCULOS (3 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 26 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
+            // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'orquestacion-multiagente-ideacion-comites-ia',
+                url: 'orquestacion-multiagente-ideacion-comites-ia.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Sistemas Multiagente', en: 'Multi-Agent Systems' },
+                badgeColor: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+                readTime: { es: '18 min · 4.400 palabras', en: '18 min · 4,400 words' },
+                title: {
+                    es: 'Orquestación Multiagente para Ideación Compleja: De Prompts Aislados a Comités de IA',
+                    en: 'Multi-Agent Orchestration for Complex Ideation: From Isolated Prompts to AI Committees'
+                },
+                desc: {
+                    es: 'Arquitectura a septiembre de 2026: comités cognitivos con grafos de estado cíclicos, protocolo MCP y debate socrático para erradicar el AI Echo-Chamber y generar innovación técnica de alto impacto.',
+                    en: 'September 2026 architecture: cognitive committees with cyclic state graphs, MCP protocol, and Socratic debate to eradicate AI echo-chambers and spark radical technical innovation.'
+                }
+            },
+
             // ─── BLOQUE 1: ARTÍCULOS EXISTENTES ───────────────────────────
             {
                 id: 'scamper-desbloqueo-tecnico',
