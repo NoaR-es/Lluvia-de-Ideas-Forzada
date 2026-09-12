@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 18:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 19:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>SLMs en Producción: Comparativa Gemma 2, Phi-3.5, Llama 3.2 y Gemini Nano on AICore en 2026</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/slm-modelos-locales-gemma-phi-llama-gemini-nano.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/slm-modelos-locales-gemma-phi-llama-gemini-nano.html</guid>
+      <description>Benchmark empírico de modelos pequeños (1B-4B): RAM/VRAM requerida, tokens/segundo, latencia TTFT y capacidades reales de seguimiento de instrucciones on-device.</description>
+      <pubDate>Sat, 12 Sep 2026 19:00:00 GMT</pubDate>
     </item>
 
     <item>
