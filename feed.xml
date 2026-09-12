@@ -5,7 +5,7 @@
     <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/</link>
     <description>Guías prácticas de creatividad técnica, pensamiento lateral, dinámicas ágiles y casos reales de aplicación con IA.</description>
     <language>es</language>
-    <lastBuildDate>Sat, 12 Sep 2026 15:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 16:00:00 GMT</lastBuildDate>
     <atom:link href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -22,6 +22,14 @@
       <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/</guid>
       <description>Directorio completo de técnicas de ideación ágil, resolución creativa de problemas y casos prácticos reales en startups y empresas.</description>
       <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title>Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026</title>
+      <link>https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html</link>
+      <guid isPermaLink="true">https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html</guid>
+      <description>Comprende a bajo nivel cómo indexar millones de embeddings sin asfixiar la memoria RAM: grafos HNSW, particiones IVF, compresión float32 a int8 y soluciones locales vs cloud.</description>
+      <pubDate>Sat, 12 Sep 2026 16:00:00 GMT</pubDate>
     </item>
 
     <item>

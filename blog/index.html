@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (32)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (33)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (12)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (13)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">32</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">33</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 32 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 33 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector',
+                url: 'bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Almacenamiento Vectorial', en: 'Vector Storage' },
+                badgeColor: 'text-teal-700 bg-teal-50 border-teal-200',
+                readTime: { es: '16 min · 4.200 palabras', en: '16 min · 4,200 words' },
+                title: {
+                    es: 'Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026',
+                    en: 'Vector Databases: HNSW vs IVF Benchmark, Scalar Quantization, and pgvector in 2026'
+                },
+                desc: {
+                    es: 'Comprende a bajo nivel cómo indexar millones de embeddings sin asfixiar la memoria RAM: grafos HNSW, particiones IVF, compresión float32 a int8 y soluciones locales vs cloud.',
+                    en: 'Deep-dive into indexing millions of embeddings without exhausting RAM: HNSW graphs, IVF Voronoi partitions, float32 to int8 compression, and local vs cloud engines.'
+                }
+            },
             {
                 id: 'chunking-semantico-metadatos-ideacion-lateral',
                 url: 'chunking-semantico-metadatos-ideacion-lateral.html',

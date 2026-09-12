@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026 | Lluvia de Ideas Forzada</title>
+  <meta name="description" content="Guía técnica a septiembre de 2026: arquitectura de índices vectoriales ANN, comparativa matemática entre HNSW e IVF, compresión con cuantización escalar y benchmarks en pgvector.">
+  <meta name="keywords" content="Bases de Datos Vectoriales, HNSW, IVF, Cuantización Escalar, pgvector, ANN, Embeddings, SQLite-vec 2026">
+  <meta name="author" content="Raúl Navas Montero (@Noar-es)">
+  <link rel="canonical" href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026">
+  <meta property="og:description" content="Domina la capa de persistencia de tus agentes de IA. Análisis exhaustivo de estructuras de datos ANN, técnicas de compresión y bases de datos locales vs cloud.">
+  <meta property="og:url" content="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html">
+  <meta property="og:site_name" content="Lluvia de Ideas Forzada">
+  <meta property="article:published_time" content="2026-09-12T16:00:00+02:00">
+  <meta property="article:author" content="Raúl Navas Montero">
+  <meta property="article:section" content="Bases de Datos y Persistencia">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bases de Datos Vectoriales: HNSW, IVF y Cuantización">
+  <meta name="twitter:description" content="Ingeniería de índices aproximados (ANN) y optimización de memoria en sistemas de recuperación vectorial en 2026.">
+
+  <link rel="icon" type="image/jpeg" href="../img/logo.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Regla absoluta: Prohibidas las fuentes blancas */
+    body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, button, code {
+      color: #0f172a;
+    }
+    .gradient-header {
+      background: linear-gradient(135deg, #ecfdf5 0%, #ccfbf1 50%, #f0fdf4 100%);
+    }
+    .code-container {
+      background-color: #090d16;
+      border: 1px solid #1e293b;
+    }
+    .callout-box {
+      border-left: 4px solid #0d9488;
+      background-color: #f0fdfa;
+    }
+    .warning-box {
+      border-left: 4px solid #dc2626;
+      background-color: #fef2f2;
+    }
+    .interactive-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .interactive-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -10px rgba(13, 148, 136, 0.25);
+    }
+    .toc-item.active {
+      color: #115e59;
+      font-weight: 700;
+      border-left: 3px solid #0d9488;
+      padding-left: 0.75rem;
+    }
+  </style>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026",
+    "description": "Análisis comparativo de índices vectoriales de vecinos más próximos aproximados (ANN), impacto de la cuantización escalar a 8 bits y arquitectura pgvector v0.8+ para sistemas RAG en producción.",
+    "author": {
+      "@type": "Person",
+      "name": "Raúl Navas Montero",
+      "alternateName": "Noar",
+      "url": "https://github.com/Noar-es"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lluvia de Ideas Forzada",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noar-es.github.io/Lluvia-de-Ideas-Forzada/img/logo.jpg"
+      }
+    },
+    "datePublished": "2026-09-12T16:00:00+02:00",
+    "dateModified": "2026-09-12T16:00:00+02:00",
+    "inLanguage": "es",
+    "mainEntityOfPage": "https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/bases-datos-vectoriales-hnsw-ivf-cuantizacion-pgvector.html",
+    "keywords": ["Bases Vectoriales", "HNSW", "IVF", "Cuantización Escalar", "pgvector", "RAG 2026"]
+  }
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans antialiased selection:bg-teal-200 selection:text-teal-950">
+
+  <!-- Navegación Superior -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-teal-100 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="../" class="flex items-center space-x-2 group">
+          <img src="../img/logo.jpg" alt="Logo Lluvia de Ideas" class="w-9 h-9 rounded-full ring-2 ring-teal-500/30 group-hover:ring-teal-500 transition-all">
+          <span class="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight group-hover:text-teal-800 transition-colors">
+            Lluvia de Ideas <span class="text-brand-700">Forzada</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="../" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Inicio</a>
+        <a href="../#metodologias" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Metodologías</a>
+        <a href="../#tutoriales" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Tutoriales</a>
+        <a href="./" class="text-sm font-semibold text-brand-800 border-b-2 border-brand-600 pb-1">Blog Técnico</a>
+        <a href="../admin-testers.html" class="inline-flex items-center text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-900 px-3 py-1.5 rounded-full border border-brand-300 hover:bg-brand-200 transition-all">
+          Tester Lab
+        </a>
+      </nav>
+
+      <!-- Botón menú móvil -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-800 hover:bg-slate-100 transition-colors" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú desplegable móvil -->
+    <div id="mobile-nav" class="hidden md:hidden bg-white border-b border-teal-100 px-4 pt-2 pb-4 space-y-2">
+      <a href="../" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-teal-50">Inicio</a>
+      <a href="../#metodologias" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-teal-50">Metodologías</a>
+      <a href="./" class="block px-3 py-2 rounded-md text-base font-semibold text-brand-800 bg-teal-50/60">Blog Técnico</a>
+      <a href="../admin-testers.html" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-teal-50">Tester Lab</a>
+    </div>
+  </header>
+
+  <!-- Banner / Breadcrumbs -->
+  <section class="gradient-header py-12 border-b border-teal-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center space-x-2 text-xs font-semibold text-slate-600 mb-4" aria-label="Breadcrumb">
+        <a href="../" class="hover:text-brand-800 transition-colors">Inicio</a>
+        <span class="text-slate-400">/</span>
+        <a href="./" class="hover:text-brand-800 transition-colors">Blog</a>
+        <span class="text-slate-400">/</span>
+        <span class="text-teal-950 font-bold truncate">Bases de Datos Vectoriales: HNSW vs IVF</span>
+      </nav>
+
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="bg-teal-100 text-teal-950 font-mono text-xs font-bold px-2.5 py-1 rounded-full border border-teal-300">
+          ALMACENAMIENTO VECTORIAL
+        </span>
+        <span class="bg-slate-200 text-slate-800 font-mono text-xs font-semibold px-2.5 py-1 rounded-full">
+          Septiembre 2026
+        </span>
+        <span class="bg-emerald-100 text-emerald-950 font-mono text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-300">
+          Lectura: 16 min
+        </span>
+      </div>
+
+      <h1 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight leading-tight mb-4">
+        Bases de Datos Vectoriales: Comparativa HNSW vs IVF, Cuantización Escalar y pgvector en 2026
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-700 font-normal leading-relaxed">
+        Comprende a bajo nivel cómo indexar millones de embeddings sin asfixiar la memoria RAM: grafos de mundo pequeño multicapa (HNSW), particiones Voronoi (IVF), compresión float32 a int8 y soluciones locales vs cloud.
+      </p>
+
+      <div class="mt-6 flex items-center space-x-3 text-xs text-slate-600">
+        <div class="w-8 h-8 rounded-full bg-teal-700 flex items-center justify-center font-bold text-slate-100 shadow-sm">
+          RN
+        </div>
+        <div>
+          <span class="font-bold text-slate-900">Raúl Navas Montero</span>
+          <span class="text-slate-500">(@Noar-es) &middot; Publicado el 12 de septiembre de 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenedor Principal con Layout de 2 Columnas -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Tabla de Contenidos Flotante (Desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 bg-white p-5 rounded-2xl border border-teal-100 shadow-sm">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+            <span class="font-heading font-bold text-sm text-slate-900 tracking-tight">En este artículo</span>
+            <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+          </div>
+          <nav id="desktop-toc" class="space-y-2 text-xs font-medium text-slate-600">
+            <a href="#seccion-1" class="block toc-item hover:text-teal-700 py-1 transition-all">1. El Problema de la Búsqueda Exacta</a>
+            <a href="#seccion-2" class="block toc-item hover:text-teal-700 py-1 transition-all">2. HNSW: Grafos Jerárquicos</a>
+            <a href="#seccion-3" class="block toc-item hover:text-teal-700 py-1 transition-all">3. IVF: Particionado por Centroides</a>
+            <a href="#seccion-4" class="block toc-item hover:text-teal-700 py-1 transition-all">4. Cuantización Escalar (SQ) y Producto (PQ)</a>
+            <a href="#seccion-5" class="block toc-item hover:text-teal-700 py-1 transition-all">5. Estado de pgvector v0.8+</a>
+            <a href="#seccion-6" class="block toc-item hover:text-teal-700 py-1 transition-all">6. Código Python: Cuantización SQ8</a>
+            <a href="#seccion-7" class="block toc-item hover:text-teal-700 py-1 transition-all">7. Persistencia Local vs Servidores Cloud</a>
+          </nav>
+
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="bg-teal-50 rounded-xl p-3 border border-teal-200">
+              <span class="font-bold text-xs text-teal-950 block mb-1">Ahorro de RAM</span>
+              <p class="text-[11px] text-slate-700 leading-normal">
+                La cuantización SQ8 reduce la huella de memoria de 4 bytes a 1 byte por dimensión con menos del 0.8% de pérdida de recall.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Contenido Principal del Artículo -->
+      <article class="lg:col-span-9 bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm space-y-10">
+
+        <!-- SECCIÓN 1 -->
+        <section id="seccion-1" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">01</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Complejidad Algorítmica</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            1. El Problema de la Búsqueda Exacta: Por Qué \( O(N) \) Invalida la Escala
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            La búsqueda por similitud exacta mediante fuerza bruta (k-NN) requiere calcular la distancia coseno o producto escalar entre el vector de consulta y cada uno de los vectores almacenados en la base de datos.
+          </p>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Para un catálogo modesto de 500 ideas, la fuerza bruta toma menos de 2 milisegundos. Sin embargo, para repositorios de conocimiento técnico con 500.000 fragmentos de 1.536 dimensiones en formato <code>float32</code>, una sola consulta exige escanear más de 3 GB de datos en crudo y ejecutar cientos de millones de multiplicaciones de coma flotante, llevando la latencia a más de 800ms.
+          </p>
+
+          <div class="callout-box p-4 rounded-xl my-4 text-xs sm:text-sm text-slate-800">
+            <strong class="font-bold text-teal-950 block mb-1">El Compromiso Fundamental de ANN (Approximate Nearest Neighbors):</strong>
+            Aceptar una pérdida insignificante de precisión exacta (ej. 98% de recall en lugar de 100%) a cambio de reducir la complejidad temporal de lineal \( O(N) \) a logarítmica \( O(\log N) \).
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2 -->
+        <section id="seccion-2" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">02</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Estructura HNSW</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            2. HNSW (Hierarchical Navigable Small World): El Estándar de Oro en Rendimiento
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Inspirado en la teoría de redes de "mundo pequeño" y las Skip Lists de ciencias de la computación, <strong>HNSW</strong> construye una estructura de grafos multicapa interconectados:
+          </p>
+
+          <div class="space-y-3 my-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-sm text-slate-900 mb-1">Capa Superior (Búsqueda Rápida de Largo Alcance)</h4>
+              <p class="text-xs text-slate-600">
+                Contiene muy pocos nodos con conexiones largas entre clusters distantes. Permite al algoritmo saltar rápidamente a la vecindad general correcta del espacio vectorial.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-sm text-slate-900 mb-1">Capas Inferiores (Refinamiento Local de Alta Densidad)</h4>
+              <p class="text-xs text-slate-600">
+                A medida que desciende por las capas, el grafo se vuelve denso hasta llegar a la Capa 0, donde están todos los vectores y se seleccionan los vecinos exactos más cercanos.
+              </p>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-200 rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 font-heading font-bold text-slate-900">
+                <tr>
+                  <th class="p-3 border-b border-slate-200">Parámetro HNSW</th>
+                  <th class="p-3 border-b border-slate-200">Significado</th>
+                  <th class="p-3 border-b border-slate-200">Valor Recomendado en 2026</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-700">
+                <tr>
+                  <td class="p-3 font-mono font-semibold text-slate-900">M</td>
+                  <td class="p-3">Número máximo de conexiones bidireccionales por nodo</td>
+                  <td class="p-3 font-bold text-teal-900">16 a 32 (balance memoria/recall)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-mono font-semibold text-slate-900">efConstruction</td>
+                  <td class="p-3">Tamaño de la lista dinámica durante la creación del índice</td>
+                  <td class="p-3 font-bold text-teal-900">64 a 128</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-mono font-semibold text-slate-900">efSearch</td>
+                  <td class="p-3">Tamaño de la lista dinámica en tiempo de consulta</td>
+                  <td class="p-3 font-bold text-teal-900">40 a 80 (ajustable en runtime)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3 -->
+        <section id="seccion-3" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">03</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Particionado Voronoi</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            3. IVF (Inverted File Index): Eficiencia de Memoria para Datasets Masivos
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            A diferencia de HNSW, que almacena punteros de grafos en memoria RAM para cada vector, <strong>IVF</strong> agrupa los vectores en clusters utilizando k-means (células de Voronoi).
+          </p>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Durante la consulta, el motor solo examina los centroides más cercanos a la pregunta (\( nprobe \)) e ignora el 95% restante del dataset. Su consumo de memoria RAM es drásticamente inferior al de HNSW, aunque requiere reentrenar el índice si la distribución de los nuevos documentos sufre una deriva significativa.
+          </p>
+        </section>
+
+        <!-- SECCIÓN 4 -->
+        <section id="seccion-4" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">04</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Técnicas de Compresión</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            4. Cuantización Escalar (SQ8) y de Producto (PQ): Reduciendo la Huella en un 75%
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Un vector estándar de 1.536 dimensiones en precisión <code>float32</code> consume 6.144 bytes en RAM. En dispositivos móviles o servidores con recursos acotados, almacenar 100.000 vectores exige más de 600 MB solo para la matriz vectorial.
+          </p>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            La <strong>Cuantización Escalar (SQ8)</strong> proyecta linealmente cada número flotante de 32 bits a un entero de 8 bits (<code>int8</code> o <code>uint8</code>, valores de 0 a 255). Esto reduce el tamaño exactamente a la cuarta parte (1.536 bytes) con una degradación típica de precisión inferior al 0.5% en métricas de ranking.
+          </p>
+        </section>
+
+        <!-- SECCIÓN 5 -->
+        <section id="seccion-5" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">05</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">SQL & pgvector</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            5. El Estado de pgvector v0.8+ en Septiembre de 2026
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            La madurez de <strong>pgvector</strong> ha convertido a PostgreSQL en el estándar de facto para la gran mayoría de empresas, eliminando la necesidad de desplegar una base de datos vectorial dedicada separada (Pinecone, Qdrant):
+          </p>
+
+          <div class="code-container rounded-xl p-4 my-4 overflow-x-auto text-xs font-mono text-slate-200">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800 text-slate-400">
+              <span>schema_pgvector_hnsw.sql</span>
+              <span class="text-teal-400">PostgreSQL 17+ / pgvector v0.8+</span>
+            </div>
+<pre><code><span class="text-slate-400">-- 1. Habilitar extensión vectorial</span>
+<span class="text-blue-400">CREATE EXTENSION IF NOT EXISTS</span> vector;
+
+<span class="text-slate-400">-- 2. Tabla de fragmentos de ideas con embeddings reducidos (halfvec fp16)</span>
+<span class="text-blue-400">CREATE TABLE</span> idea_chunks (
+    id <span class="text-emerald-400">BIGSERIAL PRIMARY KEY</span>,
+    project_id <span class="text-emerald-400">VARCHAR(64) NOT NULL</span>,
+    content <span class="text-emerald-400">TEXT NOT NULL</span>,
+    embedding <span class="text-emerald-400">halfvec(768) NOT NULL</span>,
+    created_at <span class="text-emerald-400">TIMESTAMPTZ DEFAULT NOW()</span>
+);
+
+<span class="text-slate-400">-- 3. Crear índice HNSW con métrica de distancia coseno</span>
+<span class="text-blue-400">CREATE INDEX</span> idx_idea_chunks_hnsw 
+<span class="text-blue-400">ON</span> idea_chunks 
+<span class="text-blue-400">USING</span> hnsw (embedding halfvec_cosine_ops)
+<span class="text-blue-400">WITH</span> (m = 16, ef_construction = 64);
+
+<span class="text-slate-400">-- 4. Consulta híbrida: Filtro relacional por proyecto + similitud vectorial sub-5ms</span>
+<span class="text-blue-400">SET</span> hnsw.ef_search = 40;
+
+<span class="text-blue-400">SELECT</span> id, content, (1 - (embedding &lt;=&gt; <span class="text-yellow-300">$1</span>)) <span class="text-blue-400">AS</span> similarity
+<span class="text-blue-400">FROM</span> idea_chunks
+<span class="text-blue-400">WHERE</span> project_id = <span class="text-emerald-300">'proj_disruption_2026'</span>
+<span class="text-blue-400">ORDER BY</span> embedding &lt;=&gt; <span class="text-yellow-300">$1</span>
+<span class="text-blue-400">LIMIT</span> 5;</code></pre>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 6 -->
+        <section id="seccion-6" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">06</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Código de Producción</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            6. Algoritmo de Cuantización Escalar SQ8 en Python 3.12+
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            El siguiente código ilustra cómo comprimir un lote de embeddings flotantes a enteros de 8 bits y calcular la similitud coseno aproximada con una huella mínima de memoria:
+          </p>
+
+          <div class="code-container rounded-xl p-4 my-4 overflow-x-auto text-xs font-mono text-slate-200">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800 text-slate-400">
+              <span>scalar_quantizer.py</span>
+              <span class="text-teal-400">Python 3.12+ / NumPy</span>
+            </div>
+<pre><code><span class="text-purple-400">import</span> numpy <span class="text-purple-400">as</span> np
+<span class="text-purple-400">from</span> typing <span class="text-purple-400">import</span> Tuple
+
+<span class="text-blue-400">class</span> <span class="text-yellow-300">ScalarQuantizer8Bit</span>:
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">__init__</span>(self):
+        self.min_val = 0.0
+        self.max_val = 1.0
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">fit</span>(self, vectors: np.ndarray):
+        <span class="text-slate-400"># Calibrar los límites globales del espacio</span>
+        self.min_val = float(np.min(vectors))
+        self.max_val = float(np.max(vectors))
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">quantize</span>(self, vectors: np.ndarray) -> np.ndarray:
+        <span class="text-slate-400"># Proyectar float32 a uint8 [0, 255]</span>
+        normalized = (vectors - self.min_val) / (self.max_val - self.min_val)
+        quantized = np.clip(normalized * 255.0, 0, 255).astype(np.uint8)
+        <span class="text-purple-400">return</span> quantized
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">dequantize</span>(self, quantized: np.ndarray) -> np.ndarray:
+        <span class="text-slate-400"># Reconstruir aproximación float32</span>
+        float_approx = (quantized.astype(np.float32) / 255.0) * (self.max_val - self.min_val) + self.min_val
+        <span class="text-purple-400">return</span> float_approx
+
+<span class="text-purple-400">if</span> __name__ == <span class="text-emerald-300">"__main__"</span>:
+    np.random.seed(42)
+    <span class="text-slate-400"># 10.000 embeddings de 768 dimensiones</span>
+    raw_data = np.random.randn(10000, 768).astype(np.float32)
+    
+    sq = ScalarQuantizer8Bit()
+    sq.fit(raw_data)
+    compressed = sq.quantize(raw_data)
+
+    mem_raw_mb = raw_data.nbytes / (1024 * 1024)
+    mem_compressed_mb = compressed.nbytes / (1024 * 1024)
+
+    print(f<span class="text-emerald-300">"Memoria Float32 original: {mem_raw_mb:.2f} MB"</span>)
+    print(f<span class="text-emerald-300">"Memoria Cuantizada SQ8:    {mem_compressed_mb:.2f} MB"</span>)
+    print(f<span class="text-emerald-300">"Reducción lograda:         {((1 - mem_compressed_mb/mem_raw_mb)*100):.1f}%"</span>)</code></pre>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 7 -->
+        <section id="seccion-7" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-teal-800">
+            <span class="font-mono font-bold text-xs bg-teal-100 px-2 py-0.5 rounded">07</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Decisión de Arquitectura</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            7. Persistencia Local On-Device vs Servidores Cloud: ¿Cuándo Elegir Cada Una?
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            La decisión técnica no es binaria, sino que depende de la sensibilidad de la propiedad intelectual y de la escala del catálogo:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-xs">
+              <h4 class="font-heading font-bold text-sm text-teal-950 mb-1">Entornos Locales / On-Device (SQLite-vec / Room)</h4>
+              <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4 mt-2">
+                <li>Privacidad incondicional: ningún vector ni fragmento sale del hardware del usuario.</li>
+                <li>Excelente para catálogos personales o de equipo reducido (&lt; 20.000 ideas).</li>
+                <li>Latencia de consulta sub-10ms con cuantización escalar sin coste de red.</li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-xs">
+              <h4 class="font-heading font-bold text-sm text-teal-950 mb-1">Entornos Cloud Distribuidos (pgvector / Clúster)</h4>
+              <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4 mt-2">
+                <li>Adecuado para bases de conocimiento corporativas de millones de documentos.</li>
+                <li>Soporte de transacciones ACID combinadas con joins SQL relacionales complejos.</li>
+                <li>Permite reindexar en segundo plano sin drenar batería ni ciclos del cliente móvil.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Conclusión y CTA -->
+        <div class="mt-12 pt-8 border-t border-slate-200 bg-teal-50/50 rounded-2xl p-6 border border-teal-100">
+          <h3 class="font-heading font-extrabold text-lg text-slate-900 mb-2">
+            La Eficiencia de Memoria Define la Viabilidad del Sistema
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed mb-4">
+            Construir agentes rápidos, económicos y privados en 2026 requiere dominar el diseño de índices vectoriales. Combinar la velocidad logarítmica de HNSW con la compresión matemática de la cuantización escalar permite desplegar memoria semántica de alta fidelidad tanto en el teléfono del usuario como en clústeres corporativos.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="./chunking-semantico-metadatos-ideacion-lateral.html" class="inline-flex items-center text-xs font-bold bg-teal-700 text-slate-100 px-4 py-2.5 rounded-xl hover:bg-teal-600 transition-colors shadow-xs">
+              &larr; Leer: Chunking Semántico
+            </a>
+            <a href="./agentic-rag-query-routing-dinamico-agentes.html" class="inline-flex items-center text-xs font-bold bg-white text-teal-900 px-4 py-2.5 rounded-xl border border-teal-300 hover:bg-teal-50 transition-colors shadow-xs">
+              Leer: Agentic RAG &rarr;
+            </a>
+            <a href="./" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-teal-800 transition-colors ml-auto">
+              Volver al Índice de Artículos
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="bg-slate-900 text-slate-300 mt-20 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        <div class="flex items-center space-x-3">
+          <img src="../img/logo.jpg" alt="Logo Lluvia de Ideas" class="w-8 h-8 rounded-full ring-1 ring-teal-500/50">
+          <span class="font-heading font-bold text-base text-slate-100">
+            Lluvia de Ideas <span class="text-brand-400">Forzada</span>
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400">
+          <a href="../privacy-policy.html" class="hover:text-brand-400 transition-colors">Privacidad</a>
+          <a href="../terms.html" class="hover:text-brand-400 transition-colors">Términos</a>
+          <a href="../sitemap.xml" class="hover:text-brand-400 transition-colors">Sitemap XML</a>
+          <a href="../feed.xml" class="hover:text-brand-400 transition-colors">RSS Feed</a>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Raúl Navas Montero (@Noar-es). Todos los derechos reservados.</p>
+        <p class="text-slate-400 font-mono text-[11px]">Septiembre 2026 &middot; Edición Técnica Avanzada</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script interactivo para navegación y TOC activo -->
+  <script>
+    console.log('[DEBUG][Vector-DB] Inicializando vista de artículo técnico...');
+
+    // Control del menú móvil
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileNav) {
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('hidden');
+      });
+    }
+
+    // Intersection Observer para actualizar el TOC de forma reactiva
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const tocLinks = document.querySelectorAll('#desktop-toc a');
+    const sections = document.querySelectorAll('article section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+    console.log('[DEBUG][Vector-DB] Observer de secciones activo. Total secciones:', sections.length);
+  </script>
+</body>
+</html>
