@@ -1486,12 +1486,12 @@
             <div class="flex items-start justify-between pb-4 border-b border-slate-100">
                 <div class="pr-4">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">
-                        <span>🧪</span> <span>Google Play Console</span>
+                        <span>🧪</span> <span data-i18n="tester_modal_tag">Google Play Console</span>
                     </span>
-                    <h3 id="tester-modal-title" class="text-xl sm:text-2xl font-black text-slate-900 mt-2 leading-tight">
+                    <h3 id="tester-modal-title" data-i18n="tester_modal_title" class="text-xl sm:text-2xl font-black text-slate-900 mt-2 leading-tight">
                         Únete a las Pruebas de la App
                     </h3>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal">
+                    <p data-i18n="tester_modal_subtitle" class="text-xs sm:text-sm text-slate-600 mt-1 font-normal">
                         Para acceder a la versión de prueba en Google Play, necesitamos dar de alta tu correo en nuestra lista de testers.
                     </p>
                 </div>
@@ -1504,11 +1504,11 @@
             <form id="tester-form" onsubmit="submitTesterForm(event)" class="mt-5 space-y-4">
                 <div>
                     <label for="tester-email" class="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
-                        Tu cuenta de Google / Gmail <span class="text-emerald-700">*</span>
+                        <span data-i18n="tester_email_label">Tu cuenta de Google / Gmail</span> <span class="text-emerald-700">*</span>
                     </label>
                     <input type="email" id="tester-email" required placeholder="tu.cuenta@gmail.com"
                         class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 font-medium text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition" />
-                    <p class="text-[11px] text-slate-500 mt-1.5 leading-snug">
+                    <p data-i18n="tester_email_hint" class="text-[11px] text-slate-500 mt-1.5 leading-snug">
                         ⚠️ Debe ser el mismo correo de Google que utilizas en tu teléfono Android para Google Play Store.
                     </p>
                 </div>
@@ -1517,7 +1517,7 @@
                     <label class="flex items-start gap-2.5 cursor-pointer">
                         <input type="checkbox" id="tester-consent" required
                             class="mt-0.5 w-4 h-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer" />
-                        <span class="text-[11px] text-slate-700 leading-relaxed">
+                        <span data-i18n="tester_consent_text" class="text-[11px] text-slate-700 leading-relaxed">
                             Autorizo el tratamiento de mi correo para ser añadido a la lista oficial de testers en Google Play Console (pruebas internas y fase cerrada de 14 días) y recibir las instrucciones de acceso.
                         </span>
                     </label>
@@ -1529,7 +1529,7 @@
                 <!-- Botón de Envío -->
                 <button type="submit" id="tester-submit-btn"
                     class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold text-sm transition shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 cursor-pointer">
-                    <span id="tester-btn-text">Solicitar Acceso como Tester</span>
+                    <span id="tester-btn-text" data-i18n="tester_btn_text">Solicitar Acceso como Tester</span>
                     <span id="tester-btn-spinner" class="hidden animate-spin">⏳</span>
                 </button>
             </form>
@@ -1539,18 +1539,18 @@
                 <div class="w-12 h-12 rounded-full bg-emerald-200 text-emerald-900 flex items-center justify-center text-2xl font-bold mx-auto mb-3">
                     ✓
                 </div>
-                <h4 class="text-lg font-black text-emerald-950">¡Solicitud Registrada con Éxito!</h4>
-                <p class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
+                <h4 data-i18n="tester_success_title" class="text-lg font-black text-emerald-950">¡Solicitud Registrada con Éxito!</h4>
+                <p data-i18n="tester_success_desc" class="text-xs sm:text-sm text-slate-700 mt-2 leading-relaxed">
                     Hemos recibido tu correo correctamente. En cuanto tu cuenta esté activa en Google Play Console, te llegará la confirmación a tu móvil.
                 </p>
                 <div class="mt-5 flex flex-col sm:flex-row gap-2.5 justify-center">
                     <a href="https://play.google.com/apps/internaltest/4701515406502658173" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-emerald-300 hover:bg-slate-800 text-xs font-bold transition">
-                        <span>Abrir Ficha de Prueba</span> ➔
+                        <span data-i18n="tester_btn_sheet">Abrir Ficha de Prueba</span> ➔
                     </a>
                     <button type="button" onclick="closeTesterModal()"
                         class="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition cursor-pointer">
-                        Cerrar
+                        <span data-i18n="tester_btn_close">Cerrar</span>
                     </button>
                 </div>
             </div>
@@ -1780,7 +1780,19 @@
                 tut_step_of: "Paso {current} de {total}",
                 tut_zoom_hint: "Pantalla Completa",
                 tut_lightbox_close: "Cerrar (Esc)",
-                tut_lightbox_hint: "💡 Haz clic fuera de la imagen o pulsa Esc para volver al tutorial"
+                tut_lightbox_hint: "💡 Haz clic fuera de la imagen o pulsa Esc para volver al tutorial",
+                // Modal de Testers (Google Play Console)
+                tester_modal_tag: "Google Play Console",
+                tester_modal_title: "Únete a las Pruebas de la App",
+                tester_modal_subtitle: "Para acceder a la versión de prueba en Google Play, necesitamos dar de alta tu correo en nuestra lista de testers.",
+                tester_email_label: "Tu cuenta de Google / Gmail",
+                tester_email_hint: "⚠️ Debe ser el mismo correo de Google que utilizas en tu teléfono Android para Google Play Store.",
+                tester_consent_text: "Autorizo el tratamiento de mi correo para ser añadido a la lista oficial de testers en Google Play Console (pruebas internas y fase cerrada de 14 días) y recibir las instrucciones de acceso.",
+                tester_btn_text: "Solicitar Acceso como Tester",
+                tester_success_title: "¡Solicitud Registrada con Éxito!",
+                tester_success_desc: "Hemos recibido tu correo correctamente. En cuanto tu cuenta esté activa en Google Play Console, te llegará la confirmación a tu móvil.",
+                tester_btn_sheet: "Abrir Ficha de Prueba",
+                tester_btn_close: "Cerrar"
             },
             en: {
                 app_title: "Forced Brainstorming",
@@ -1905,7 +1917,19 @@
                 tut_step_of: "Step {current} of {total}",
                 tut_zoom_hint: "Full Screen",
                 tut_lightbox_close: "Close (Esc)",
-                tut_lightbox_hint: "💡 Click outside the image or press Esc to return to the guide"
+                tut_lightbox_hint: "💡 Click outside the image or press Esc to return to the guide",
+                // Tester Modal (Google Play Console)
+                tester_modal_tag: "Google Play Console",
+                tester_modal_title: "Join the App Testing Track",
+                tester_modal_subtitle: "To access the Google Play test build, we need to register your Google email on our verified testers list.",
+                tester_email_label: "Your Google / Gmail Account",
+                tester_email_hint: "⚠️ Must be the Google account you use on your Android phone for the Google Play Store.",
+                tester_consent_text: "I authorize the use of my email to be added to the official Google Play Console tester list (internal test & 14-day closed track) and receive access instructions.",
+                tester_btn_text: "Request Tester Access",
+                tester_success_title: "Application Successfully Received!",
+                tester_success_desc: "We received your email. As soon as your account is activated in Google Play Console, you will receive an invitation email on your device.",
+                tester_btn_sheet: "Open Play Console Test Track",
+                tester_btn_close: "Close"
             }
         };
 
@@ -2440,7 +2464,17 @@
 
         function checkUrlForTester() {
             const hash = window.location.hash.toLowerCase();
-            if (hash === '#tester' || hash === '#testers' || hash === '#registro-tester' || hash === '#unete-tester') {
+            const isTesterHash = (
+                hash === '#tester' || 
+                hash === '#testers' || 
+                hash === '#internal-test' || 
+                hash === '#join-test' || 
+                hash === '#join-tester' || 
+                hash === '#beta-tester' || 
+                hash === '#registro-tester' || 
+                hash === '#unete-tester'
+            );
+            if (isTesterHash) {
                 console.log('[DEBUG][TesterModal] Detectado hash de registro de tester en URL:', hash);
                 openTesterModal();
             }
@@ -2448,11 +2482,21 @@
 
         // EVENT LISTENERS GLOBALES
         window.addEventListener('hashchange', () => {
-            if (window.location.hash.startsWith('#articulo=')) {
+            const hash = window.location.hash.toLowerCase();
+            if (hash.startsWith('#articulo=')) {
                 checkUrlForArticle();
-            } else if (window.location.hash.startsWith('#guia=')) {
+            } else if (hash.startsWith('#guia=')) {
                 checkUrlForTutorial();
-            } else if (window.location.hash === '#tester' || window.location.hash === '#testers') {
+            } else if (
+                hash === '#tester' || 
+                hash === '#testers' || 
+                hash === '#internal-test' || 
+                hash === '#join-test' || 
+                hash === '#join-tester' || 
+                hash === '#beta-tester' || 
+                hash === '#registro-tester' || 
+                hash === '#unete-tester'
+            ) {
                 checkUrlForTester();
             } else {
                 const articleModal = document.getElementById('article-modal');
@@ -2535,6 +2579,25 @@
             modal.classList.add('hidden');
             document.body.classList.remove('article-modal-active');
             console.log('[DEBUG][TesterModal] Modal de tester cerrado.');
+
+            // Limpiar hash de tester en la barra de direcciones de forma limpia
+            const hash = window.location.hash.toLowerCase();
+            if (
+                hash === '#tester' || 
+                hash === '#testers' || 
+                hash === '#internal-test' || 
+                hash === '#join-test' || 
+                hash === '#join-tester' || 
+                hash === '#beta-tester' || 
+                hash === '#registro-tester' || 
+                hash === '#unete-tester'
+            ) {
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+                } else {
+                    window.location.hash = '';
+                }
+            }
         }
 
         async function submitTesterForm(event) {
@@ -2550,10 +2613,13 @@
 
             if (!emailInput || !consentCheck) return;
 
+            const isEn = currentLanguage === 'en';
             const email = emailInput.value.trim();
             if (!email) {
                 if (errorBox) {
-                    errorBox.innerText = 'Por favor, introduce tu dirección de correo de Google Play / Gmail.';
+                    errorBox.innerText = isEn 
+                        ? 'Please enter your Google Play / Gmail account address.' 
+                        : 'Por favor, introduce tu dirección de correo de Google Play / Gmail.';
                     errorBox.classList.remove('hidden');
                 }
                 return;
@@ -2561,7 +2627,9 @@
 
             if (!consentCheck.checked) {
                 if (errorBox) {
-                    errorBox.innerText = 'Debes aceptar la autorización para añadir tu cuenta a la lista de testers.';
+                    errorBox.innerText = isEn 
+                        ? 'You must accept the authorization to add your account to the testers list.' 
+                        : 'Debes aceptar la autorización para añadir tu cuenta a la lista de testers.';
                     errorBox.classList.remove('hidden');
                 }
                 return;
@@ -2570,7 +2638,7 @@
             // Estado de carga y bloqueo de doble submit
             if (errorBox) { errorBox.classList.add('hidden'); errorBox.innerText = ''; }
             if (submitBtn) submitBtn.disabled = true;
-            if (btnText) btnText.innerText = 'Enviando solicitud...';
+            if (btnText) btnText.innerText = isEn ? 'Submitting request...' : 'Enviando solicitud...';
             if (btnSpinner) btnSpinner.classList.remove('hidden');
 
             console.log('[DEBUG][TesterModal] Iniciando envío de tester para:', email);
@@ -2602,7 +2670,7 @@
                 if (successBox) successBox.classList.remove('hidden');
             } finally {
                 if (submitBtn) submitBtn.disabled = false;
-                if (btnText) btnText.innerText = 'Solicitar Acceso como Tester';
+                if (btnText) btnText.innerText = isEn ? 'Request Tester Access' : 'Solicitar Acceso como Tester';
                 if (btnSpinner) btnSpinner.classList.add('hidden');
             }
         }
@@ -2634,9 +2702,16 @@
 
         // INICIALIZACIÓN AL CARGAR LA PÁGINA
         document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryLang = urlParams.get('lang')?.toLowerCase();
             const browserLang = (navigator.language || navigator.userLanguage || 'es').slice(0, 2).toLowerCase();
             const savedLang = localStorage.getItem('pref_lang') || browserLang;
-            const initialLang = savedLang === 'en' ? 'en' : 'es';
+            
+            let initialLang = savedLang === 'en' ? 'en' : 'es';
+            if (queryLang === 'en' || queryLang === 'es') {
+                initialLang = queryLang;
+                localStorage.setItem('pref_lang', queryLang);
+            }
 
             selectLanguage(initialLang);
             checkUrlForArticle();
