@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (39)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (40)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (19)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (20)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">39</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">40</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 39 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 40 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'slm-on-device-android-gemini-nano-aicore-kotlin',
+                url: 'slm-on-device-android-gemini-nano-aicore-kotlin.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Modelos Locales & Mobile Engineering', en: 'On-Device Models & Mobile Engineering' },
+                badgeColor: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+                readTime: { es: '18 min · 4.650 palabras', en: '18 min · 4,650 words' },
+                title: {
+                    es: 'SLMs On-Device en Android: Gemini Nano con AICore y Llama.cpp NDK en Kotlin en 2026',
+                    en: 'On-Device SLMs in Android: Gemini Nano with AICore and Llama.cpp NDK in Kotlin in 2026'
+                },
+                desc: {
+                    es: 'Guía de ingeniería avanzada para ejecutar modelos pequeños en el silicio móvil: arquitectura dual con Google AICore (NPU) y llama.cpp nativo en C++ con persistencia Room (SQLite).',
+                    en: 'Advanced engineering guide to running SLMs on mobile silicon: dual architecture with Google AICore (NPU) and native C++ llama.cpp with Room persistence.'
+                }
+            },
             {
                 id: 'inferencia-hibrida-local-cloud-enrutamiento-dinamico',
                 url: 'inferencia-hibrida-local-cloud-enrutamiento-dinamico.html',
@@ -1110,19 +1126,19 @@
                     document.querySelector('[data-i18n="hub_title"]').textContent = "Brainstorming Hub: Advanced Frameworks & Real Case Studies";
                     document.querySelector('[data-i18n="hub_subtitle"]').textContent = "In-depth guides, timed step-by-step protocols, and industry case studies to turn complex problems into high-impact solutions with lateral thinking and on-device AI.";
                     document.getElementById('search-input').placeholder = "Search technique, case study, author, or keyword...";
-                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 All Articles (39)";
+                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 All Articles (40)";
                     document.querySelector('[data-i18n="cat_techniques"]').textContent = "🧠 Brainstorming Frameworks (13)";
                     document.querySelector('[data-i18n="cat_cases"]').textContent = "🎯 Real Case Studies (10)";
-                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 Local AI & Agents (19)";
+                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 Local AI & Agents (20)";
                 } else {
                     document.querySelector('[data-i18n="app_title"]').textContent = "Lluvia de Ideas Forzada";
                     document.querySelector('[data-i18n="hub_title"]').textContent = "Hub de Lluvia de Ideas: Técnicas Avanzadas y Casos de Uso";
                     document.querySelector('[data-i18n="hub_subtitle"]').textContent = "Guías exhaustivas, protocolos cronometrados paso a paso y análisis de casos reales para transformar problemas complejos en soluciones de alto impacto con pensamiento divergente e IA local.";
                     document.getElementById('search-input').placeholder = "Buscar técnica, caso de uso, autor o palabra clave...";
-                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 Todos los Artículos (39)";
+                    document.querySelector('[data-i18n="cat_all"]').textContent = "🌟 Todos los Artículos (40)";
                     document.querySelector('[data-i18n="cat_techniques"]').textContent = "🧠 Técnicas de Lluvia de Ideas (13)";
                     document.querySelector('[data-i18n="cat_cases"]').textContent = "🎯 Casos de Uso Reales (10)";
-                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 IA Local & Agentes (19)";
+                    document.querySelector('[data-i18n="cat_ai"]').textContent = "🔒 IA Local & Agentes (20)";
                 }
 
                 renderArticles();
