@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (28)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (29)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (8)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (9)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">28</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">29</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 28 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 29 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'guardrails-cognitivos-prevencion-alucinaciones-agentes',
+                url: 'guardrails-cognitivos-prevencion-alucinaciones-agentes.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Fiabilidad & Guardrails', en: 'Reliability & Guardrails' },
+                badgeColor: 'text-sky-700 bg-sky-50 border-sky-200',
+                readTime: { es: '16 min · 4.200 palabras', en: '16 min · 4,200 words' },
+                title: {
+                    es: 'Guardrails Cognitivos y Prevención de Alucinaciones en Agentes Autónomos: Validación Sintáctica, Semántica y Heurística',
+                    en: 'Cognitive Guardrails and Hallucination Prevention in Autonomous Agents: Syntactic, Semantic, and Heuristic Validation'
+                },
+                desc: {
+                    es: 'Cómo transitar de la fe ciega en las salidas de un modelo a un esquema de ingeniería determinista con esquemas Pydantic v2, Colang 2.0 y circuitos de verificación fáctica en tiempo real.',
+                    en: 'Transition from blind trust in model outputs to deterministic engineering with Pydantic v2 schemas, Colang 2.0 rails, and real-time factual verification circuits.'
+                }
+            },
             {
                 id: 'grafos-estado-ciclicos-langgraph-bdi-agentes',
                 url: 'grafos-estado-ciclicos-langgraph-bdi-agentes.html',
