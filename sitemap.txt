@@ -1,5 +1,6 @@
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/
+https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/chunking-semantico-metadatos-ideacion-lateral.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/agentic-rag-query-routing-dinamico-agentes.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/evaluacion-benchmarking-sistemas-multiagente-consenso-deriva.html
 https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/guardrails-cognitivos-prevencion-alucinaciones-agentes.html

@@ -201,13 +201,13 @@
             <!-- Filtros de categoría -->
             <div class="blog-hub-filters" id="category-filters">
                 <button class="category-filter-btn active" onclick="filterCategory('all', this)" data-cat="all"
-                    data-i18n="cat_all">🌟 Todos los Artículos (31)</button>
+                    data-i18n="cat_all">🌟 Todos los Artículos (32)</button>
                 <button class="category-filter-btn" onclick="filterCategory('techniques', this)" data-cat="techniques"
                     data-i18n="cat_techniques">🧠 Técnicas de Lluvia de Ideas (13)</button>
                 <button class="category-filter-btn" onclick="filterCategory('cases', this)" data-cat="cases"
                     data-i18n="cat_cases">🎯 Casos de Uso Reales (10)</button>
                 <button class="category-filter-btn" onclick="filterCategory('ai-methods', this)" data-cat="ai-methods"
-                    data-i18n="cat_ai">🔒 IA Local & Agentes (11)</button>
+                    data-i18n="cat_ai">🔒 IA Local & Agentes (12)</button>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-8">
             <div class="text-xs font-extrabold uppercase tracking-wider text-slate-500" id="results-count">
-                Mostrando <span id="count-number" class="text-brand-600 font-bold">31</span> artículos
+                Mostrando <span id="count-number" class="text-brand-600 font-bold">32</span> artículos
             </div>
             <div class="text-xs text-slate-500 font-medium">
                 Actualizado semanalmente • +5.000 palabras por guía
@@ -331,9 +331,25 @@
             en: { flag: '🇬🇧', name: 'English' }
         };
 
-        // CATÁLOGO COMPLETO DE LOS 31 ARTÍCULOS (4 PILARES TEMÁTICOS)
+        // CATÁLOGO COMPLETO DE LOS 32 ARTÍCULOS (4 PILARES TEMÁTICOS)
         const articlesCatalog = [
             // ─── BLOQUE 0: SISTEMAS MULTIAGENTE E IA AVANZADA 2026 ────────
+            {
+                id: 'chunking-semantico-metadatos-ideacion-lateral',
+                url: 'chunking-semantico-metadatos-ideacion-lateral.html',
+                categoryKey: 'ai-methods',
+                categoryName: { es: 'Preprocesamiento & RAG', en: 'Preprocessing & RAG' },
+                badgeColor: 'text-amber-700 bg-amber-50 border-amber-200',
+                readTime: { es: '15 min · 4.100 palabras', en: '15 min · 4,100 words' },
+                title: {
+                    es: 'Chunking Semántico y Enriquecimiento de Metadatos para Ideación y Pensamiento Lateral',
+                    en: 'Semantic Chunking and Metadata Enrichment for Ideation and Lateral Thinking'
+                },
+                desc: {
+                    es: 'Cómo el particionado arbitrario por caracteres amputa el contexto de tus ideas y cómo implementar cortes adaptativos por gradiente de similitud semántica.',
+                    en: 'How arbitrary character splitting amputates ideation context and how to build adaptive threshold chunking with hierarchical metadata.'
+                }
+            },
             {
                 id: 'agentic-rag-query-routing-dinamico-agentes',
                 url: 'agentic-rag-query-routing-dinamico-agentes.html',

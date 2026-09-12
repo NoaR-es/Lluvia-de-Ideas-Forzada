@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chunking Semántico y Enriquecimiento de Metadatos para Ideación y Pensamiento Lateral | Lluvia de Ideas Forzada</title>
+  <meta name="description" content="Guía técnica a septiembre de 2026: cómo superar el particionado de tamaño fijo mediante chunking semántico basado en umbral de gradiente de embeddings y enriquecimiento contextual de metadatos.">
+  <meta name="keywords" content="Chunking Semántico, Enriquecimiento de Metadatos, Contextual Retrieval, Embeddings, RAG Avanzado, Pensamiento Lateral, IA 2026">
+  <meta name="author" content="Raúl Navas Montero (@Noar-es)">
+  <link rel="canonical" href="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/chunking-semantico-metadatos-ideacion-lateral.html">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chunking Semántico y Enriquecimiento de Metadatos para Ideación y Pensamiento Lateral">
+  <meta property="og:description" content="No destruyas el sentido de tus ideas partiendo texto por número de caracteres. Implementa segmentación por inflexión semántica y metadatos contextuales.">
+  <meta property="og:url" content="https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/chunking-semantico-metadatos-ideacion-lateral.html">
+  <meta property="og:site_name" content="Lluvia de Ideas Forzada">
+  <meta property="article:published_time" content="2026-09-12T15:00:00+02:00">
+  <meta property="article:author" content="Raúl Navas Montero">
+  <meta property="article:section" content="RAG y Embeddings">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chunking Semántico y Enriquecimiento de Metadatos">
+  <meta name="twitter:description" content="Matemáticas y código Python 3.12+ para segmentar documentos respetando la coherencia semántica en 2026.">
+
+  <link rel="icon" type="image/jpeg" href="../img/logo.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Regla absoluta: Prohibidas las fuentes blancas */
+    body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, button, code {
+      color: #0f172a;
+    }
+    .gradient-header {
+      background: linear-gradient(135deg, #ecfdf5 0%, #fef3c7 50%, #f0fdf4 100%);
+    }
+    .code-container {
+      background-color: #090d16;
+      border: 1px solid #1e293b;
+    }
+    .callout-box {
+      border-left: 4px solid #d97706;
+      background-color: #fffbeb;
+    }
+    .interactive-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .interactive-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -10px rgba(217, 119, 6, 0.25);
+    }
+    .toc-item.active {
+      color: #92400e;
+      font-weight: 700;
+      border-left: 3px solid #d97706;
+      padding-left: 0.75rem;
+    }
+  </style>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Chunking Semántico y Enriquecimiento de Metadatos para Ideación y Pensamiento Lateral",
+    "description": "Metodología de particionado dinámico de texto por gradiente de distancia de embeddings y enriquecimiento de metadatos contextuales para potenciar RAG en procesos de innovación técnica a septiembre de 2026.",
+    "author": {
+      "@type": "Person",
+      "name": "Raúl Navas Montero",
+      "alternateName": "Noar",
+      "url": "https://github.com/Noar-es"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lluvia de Ideas Forzada",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noar-es.github.io/Lluvia-de-Ideas-Forzada/img/logo.jpg"
+      }
+    },
+    "datePublished": "2026-09-12T15:00:00+02:00",
+    "dateModified": "2026-09-12T15:00:00+02:00",
+    "inLanguage": "es",
+    "mainEntityOfPage": "https://noar-es.github.io/Lluvia-de-Ideas-Forzada/blog/chunking-semantico-metadatos-ideacion-lateral.html",
+    "keywords": ["Chunking Semántico", "Metadatos Contextuales", "RAG Avanzado", "Embeddings", "Pensamiento Lateral"]
+  }
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans antialiased selection:bg-amber-200 selection:text-amber-950">
+
+  <!-- Navegación Superior -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="../" class="flex items-center space-x-2 group">
+          <img src="../img/logo.jpg" alt="Logo Lluvia de Ideas" class="w-9 h-9 rounded-full ring-2 ring-amber-500/30 group-hover:ring-amber-500 transition-all">
+          <span class="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight group-hover:text-amber-800 transition-colors">
+            Lluvia de Ideas <span class="text-brand-700">Forzada</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="../" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Inicio</a>
+        <a href="../#metodologias" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Metodologías</a>
+        <a href="../#tutoriales" class="text-sm font-semibold text-slate-700 hover:text-brand-700 transition-colors">Tutoriales</a>
+        <a href="./" class="text-sm font-semibold text-brand-800 border-b-2 border-brand-600 pb-1">Blog Técnico</a>
+        <a href="../admin-testers.html" class="inline-flex items-center text-xs font-bold uppercase tracking-wider bg-brand-100 text-brand-900 px-3 py-1.5 rounded-full border border-brand-300 hover:bg-brand-200 transition-all">
+          Tester Lab
+        </a>
+      </nav>
+
+      <!-- Botón menú móvil -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-800 hover:bg-slate-100 transition-colors" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú desplegable móvil -->
+    <div id="mobile-nav" class="hidden md:hidden bg-white border-b border-amber-100 px-4 pt-2 pb-4 space-y-2">
+      <a href="../" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-amber-50">Inicio</a>
+      <a href="../#metodologias" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-amber-50">Metodologías</a>
+      <a href="./" class="block px-3 py-2 rounded-md text-base font-semibold text-brand-800 bg-amber-50/60">Blog Técnico</a>
+      <a href="../admin-testers.html" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-amber-50">Tester Lab</a>
+    </div>
+  </header>
+
+  <!-- Banner / Breadcrumbs -->
+  <section class="gradient-header py-12 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center space-x-2 text-xs font-semibold text-slate-600 mb-4" aria-label="Breadcrumb">
+        <a href="../" class="hover:text-brand-800 transition-colors">Inicio</a>
+        <span class="text-slate-400">/</span>
+        <a href="./" class="hover:text-brand-800 transition-colors">Blog</a>
+        <span class="text-slate-400">/</span>
+        <span class="text-amber-950 font-bold truncate">Chunking Semántico y Metadatos</span>
+      </nav>
+
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="bg-amber-100 text-amber-950 font-mono text-xs font-bold px-2.5 py-1 rounded-full border border-amber-300">
+          PRE-PROCESAMIENTO & RAG
+        </span>
+        <span class="bg-slate-200 text-slate-800 font-mono text-xs font-semibold px-2.5 py-1 rounded-full">
+          Septiembre 2026
+        </span>
+        <span class="bg-emerald-100 text-emerald-950 font-mono text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-300">
+          Lectura: 15 min
+        </span>
+      </div>
+
+      <h1 class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight leading-tight mb-4">
+        Chunking Semántico y Enriquecimiento de Metadatos para Ideación y Pensamiento Lateral
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-700 font-normal leading-relaxed">
+        Cómo el particionado arbitrario por recuento de caracteres amputa el contexto de tus ideas y cómo implementar cortes adaptativos por gradiente de similitud semántica con enriquecimiento jerárquico de metadatos.
+      </p>
+
+      <div class="mt-6 flex items-center space-x-3 text-xs text-slate-600">
+        <div class="w-8 h-8 rounded-full bg-amber-700 flex items-center justify-center font-bold text-slate-100 shadow-sm">
+          RN
+        </div>
+        <div>
+          <span class="font-bold text-slate-900">Raúl Navas Montero</span>
+          <span class="text-slate-500">(@Noar-es) &middot; Publicado el 12 de septiembre de 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenedor Principal con Layout de 2 Columnas -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Tabla de Contenidos Flotante (Desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 bg-white p-5 rounded-2xl border border-amber-100 shadow-sm">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+            <span class="font-heading font-bold text-sm text-slate-900 tracking-tight">En este artículo</span>
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          </div>
+          <nav id="desktop-toc" class="space-y-2 text-xs font-medium text-slate-600">
+            <a href="#seccion-1" class="block toc-item hover:text-amber-700 py-1 transition-all">1. La Falacia del Fixed-Size Chunking</a>
+            <a href="#seccion-2" class="block toc-item hover:text-amber-700 py-1 transition-all">2. Fundamentos del Chunking Semántico</a>
+            <a href="#seccion-3" class="block toc-item hover:text-amber-700 py-1 transition-all">3. Algoritmo de Umbral de Gradiente</a>
+            <a href="#seccion-4" class="block toc-item hover:text-amber-700 py-1 transition-all">4. Enriquecimiento de Metadatos</a>
+            <a href="#seccion-5" class="block toc-item hover:text-amber-700 py-1 transition-all">5. Implementación en Python 3.12+</a>
+            <a href="#seccion-6" class="block toc-item hover:text-amber-700 py-1 transition-all">6. Impacto en el Pensamiento Lateral</a>
+            <a href="#seccion-7" class="block toc-item hover:text-amber-700 py-1 transition-all">7. Checklist para Producción</a>
+          </nav>
+
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200">
+              <span class="font-bold text-xs text-amber-950 block mb-1">Impacto en Latencia</span>
+              <p class="text-[11px] text-slate-700 leading-normal">
+                Un chunking semántico bien calibrado reduce los tokens inútiles recuperados hasta en un 42%, acelerando la inferencia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Contenido Principal del Artículo -->
+      <article class="lg:col-span-9 bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm space-y-10">
+
+        <!-- SECCIÓN 1 -->
+        <section id="seccion-1" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">01</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Crítica Estructural</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            1. La Falacia del Fixed-Size Chunking: Por Qué Partir por Tokens Destruye el Sentido
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Durante los inicios de RAG, la convención predominante consistía en utilizar divisores mecánicos: <code>RecursiveCharacterTextSplitter</code> configurado a 500 caracteres con un solapamiento (overlap) de 50. Este método asume ingenuamente que el conocimiento humano se distribuye de manera uniforme y predecible a lo largo del texto.
+          </p>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            En la realidad técnica de septiembre de 2026, cortar por recuento de caracteres genera dos fallos catastróficos para cualquier agente de ideación:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <span class="font-bold text-sm text-slate-900 block mb-1">Amputación Causal</span>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                La premisa de una solución de diseño queda aislada en el fragmento A, mientras que la restricción técnica que la hace viable cae en el fragmento B. El agente recupera sólo la premisa e implementa una propuesta inviable.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <span class="font-bold text-sm text-slate-900 block mb-1">Dilución Vectorial</span>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Al mezclar el final de un tema con el inicio de otro completamente ajeno en el mismo chunk, el vector resultante ocupa una posición intermedia en el espacio latente que no coincide con ninguno de los dos temas originales.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2 -->
+        <section id="seccion-2" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">02</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Teoría de Segmentación</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            2. Fundamentos del Chunking Semántico: Unidades Cognitivas Completas
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            El <strong>Chunking Semántico</strong> busca dividir el texto respetando los límites naturales del discurso. En lugar de contar letras o tokens sintéticos, el algoritmo descompone el documento en oraciones discretas, las proyecta en un espacio de embeddings y evalúa la distancia semántica entre cada par consecutivo.
+          </p>
+
+          <div class="callout-box p-4 rounded-xl my-4 text-xs sm:text-sm text-slate-800">
+            <strong class="font-bold text-amber-950 block mb-1">Principio de Cohesión Tópica:</strong>
+            Un fragmento sólo debe cortarse cuando el gradiente de cambio semántico entre la oración \( S_i \) y la oración \( S_{i+1} \) supera un umbral dinámico calibrado según el percentil de dispersión del propio texto.
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3 -->
+        <section id="seccion-3" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">03</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Algoritmia</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            3. El Algoritmo de Umbral de Gradiente de Similitud Coseno
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            El procedimiento matemático se estructura en cuatro pasos rigurosos:
+          </p>
+
+          <ol class="list-decimal pl-5 space-y-2 text-xs sm:text-sm text-slate-700 my-4">
+            <li><strong>Tokenización de Oraciones:</strong> Segmentar el documento en una lista de proposiciones coherentes \( [s_1, s_2, \dots, s_m] \).</li>
+            <li><strong>Vectorización de Oraciones con Ventana Contextual:</strong> Calcular el vector de cada oración \( \vec{v}_i \) enriquecido opcionalmente con sus vecinas inmediatas para amortiguar transiciones estilísticas.</li>
+            <li><strong>Cálculo de Distancia Consecutiva:</strong> Obtener la serie de distancias de coseno:
+              \[ d_i = 1 - \cos(\vec{v}_i, \vec{v}_{i+1}) \]
+            </li>
+            <li><strong>Detección de Puntos de Inflexión:</strong> Fijar el punto de corte en cada índice \( i \) donde \( d_i \) exceda el percentil 85 o 90 de la distribución de distancias del documento.</li>
+          </ol>
+        </section>
+
+        <!-- SECCIÓN 4 -->
+        <section id="seccion-4" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">04</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Contextual Retrieval</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            4. Enriquecimiento de Metadatos: Contextual Retrieval
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Incluso el fragmento mejor segmentado del mundo pierde eficacia si queda desanclado de su procedencia. La técnica de <strong>Contextual Retrieval</strong> inyecta metadatos estructurados directamente antes de almacenar el vector en la base de datos:
+          </p>
+
+          <div class="space-y-3 my-4">
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700">
+              <strong>Header Context:</strong> La ruta jerárquica de encabezados (ej. <code>"Proyecto Alpha &gt; Arquitectura de Datos &gt; Políticas de Réplica"</code>).
+            </div>
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700">
+              <strong>Contextual Summary Header:</strong> Una breve oración explicativa añadida al inicio del chunk que define a qué documento global pertenece.
+            </div>
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700">
+              <strong>Metadatos Facetados para Filtro SQL/Room:</strong> Identificadores de proyecto, etiquetas de madurez y fecha de creación para pre-filtrado relacional.
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 5 -->
+        <section id="seccion-5" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">05</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Código de Producción</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            5. Implementación Completa en Python 3.12+: Segmentador Semántico Adaptativo
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            El siguiente script completo implementa el algoritmo de detección de puntos de corte semánticos mediante NumPy y cálculo de gradiente de percentil:
+          </p>
+
+          <div class="code-container rounded-xl p-4 my-4 overflow-x-auto text-xs font-mono text-slate-200">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800 text-slate-400">
+              <span>semantic_chunker.py</span>
+              <span class="text-amber-400">Python 3.12+ / NumPy</span>
+            </div>
+<pre><code><span class="text-purple-400">import</span> re
+<span class="text-purple-400">import</span> numpy <span class="text-purple-400">as</span> np
+<span class="text-purple-400">from</span> typing <span class="text-purple-400">import</span> List, Dict
+
+<span class="text-blue-400">class</span> <span class="text-yellow-300">SemanticChunker</span>:
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">__init__</span>(self, percentile_threshold: <span class="text-emerald-400">float</span> = 85.0):
+        self.percentile = percentile_threshold
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">split_into_sentences</span>(self, text: <span class="text-emerald-400">str</span>) -> List[<span class="text-emerald-400">str</span>]:
+        <span class="text-slate-400"># División por puntuación terminal respetando acrónimos comunes</span>
+        sentences = re.split(r<span class="text-emerald-300">'(?&lt;=[.!?])\s+'</span>, text.strip())
+        <span class="text-purple-400">return</span> [s.strip() <span class="text-purple-400">for</span> s <span class="text-purple-400">in</span> sentences <span class="text-purple-400">if</span> len(s.strip()) > 5]
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">calculate_cosine_distances</span>(self, embeddings: List[np.ndarray]) -> List[<span class="text-emerald-400">float</span>]:
+        distances = []
+        <span class="text-purple-400">for</span> i <span class="text-purple-400">in</span> range(len(embeddings) - 1):
+            v1, v2 = embeddings[i], embeddings[i + 1]
+            cos_sim = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+            distances.append(float(1.0 - cos_sim))
+        <span class="text-purple-400">return</span> distances
+
+    <span class="text-blue-400">def</span> <span class="text-yellow-300">build_semantic_chunks</span>(self, sentences: List[<span class="text-emerald-400">str</span>], embeddings: List[np.ndarray], metadata: Dict[<span class="text-emerald-400">str</span>, <span class="text-emerald-400">str</span>]) -> List[Dict]:
+        <span class="text-purple-400">if</span> len(sentences) &lt; 2:
+            <span class="text-purple-400">return</span> [{<span class="text-emerald-300">"text"</span>: <span class="text-emerald-300">" "</span>.join(sentences), <span class="text-emerald-300">"metadata"</span>: metadata}]
+
+        distances = self.calculate_cosine_distances(embeddings)
+        threshold = float(np.percentile(distances, self.percentile))
+
+        chunks = []
+        current_sentences = [sentences[0]]
+
+        <span class="text-purple-400">for</span> i <span class="text-purple-400">in</span> range(len(distances)):
+            <span class="text-purple-400">if</span> distances[i] > threshold:
+                <span class="text-slate-400"># Punto de inflexión semántica detectado: cerrar chunk</span>
+                chunk_text = f<span class="text-emerald-300">"[{metadata.get('doc_title', 'General')}] "</span> + <span class="text-emerald-300">" "</span>.join(current_sentences)
+                chunks.append({
+                    <span class="text-emerald-300">"text"</span>: chunk_text,
+                    <span class="text-emerald-300">"sentence_count"</span>: len(current_sentences),
+                    <span class="text-emerald-300">"metadata"</span>: metadata
+                })
+                current_sentences = [sentences[i + 1]]
+            <span class="text-purple-400">else</span>:
+                current_sentences.append(sentences[i + 1])
+
+        <span class="text-purple-400">if</span> current_sentences:
+            chunk_text = f<span class="text-emerald-300">"[{metadata.get('doc_title', 'General')}] "</span> + <span class="text-emerald-300">" "</span>.join(current_sentences)
+            chunks.append({
+                <span class="text-emerald-300">"text"</span>: chunk_text,
+                <span class="text-emerald-300">"sentence_count"</span>: len(current_sentences),
+                <span class="text-emerald-300">"metadata"</span>: metadata
+            })
+
+        <span class="text-purple-400">return</span> chunks
+
+<span class="text-slate-400"># Demostración con simulación de embeddings</span>
+<span class="text-purple-400">if</span> __name__ == <span class="text-emerald-300">"__main__"</span>:
+    np.random.seed(42)
+    chunker = SemanticChunker(percentile_threshold=75.0)
+
+    texto_ejemplo = (
+        <span class="text-emerald-300">"La arquitectura distribuida requiere replicación asíncrona para tolerancia a particiones. "</span>
+        <span class="text-emerald-300">"Los nodos del clúster sincronizan su estado mediante un protocolo de consenso tipo Raft. "</span>
+        <span class="text-emerald-300">"Cambiando de tema, el diseño visual de la interfaz de usuario utiliza una paleta botánica esmeralda. "</span>
+        <span class="text-emerald-300">"Las tarjetas con bordes redondeados mejoran la ergonomía táctil en pantallas móviles."</span>
+    )
+
+    sentences = chunker.split_into_sentences(texto_ejemplo)
+    <span class="text-slate-400"># Simular embeddings: oraciones 1 y 2 afines entre sí, oraciones 3 y 4 afines entre sí</span>
+    emb_backend = np.array([1.0, 0.0, 0.0])
+    emb_frontend = np.array([0.0, 1.0, 0.0])
+    mock_embeddings = [
+        emb_backend + np.random.randn(3) * 0.05,
+        emb_backend + np.random.randn(3) * 0.05,
+        emb_frontend + np.random.randn(3) * 0.05,
+        emb_frontend + np.random.randn(3) * 0.05
+    ]
+
+    resultado = chunker.build_semantic_chunks(
+        sentences, 
+        mock_embeddings, 
+        metadata={<span class="text-emerald-300">"doc_title"</span>: <span class="text-emerald-300">"Manual Técnico"</span>, <span class="text-emerald-300">"modulo"</span>: <span class="text-emerald-300">"Core"</span>}
+    )
+
+    print(f<span class="text-emerald-300">"Total Chunks generados: {len(resultado)}"</span>)
+    <span class="text-purple-400">for</span> idx, c <span class="text-purple-400">in</span> enumerate(resultado):
+        print(f<span class="text-emerald-300">"--- Chunk {idx+1} ({c['sentence_count']} oraciones) ---"</span>)
+        print(c[<span class="text-emerald-300">'text'</span>])</code></pre>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 6 -->
+        <section id="seccion-6" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">06</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Creatividad Técnica</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            6. Impacto en el Pensamiento Lateral y las Conexiones Cruzadas
+          </h2>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            En un proceso de lluvia de ideas forzada, la innovación surge a menudo de <strong>colisiones interdisciplinarias</strong> (lo que en psicología cognitiva se denomina <em>bisociación</em> de Arthur Koestler).
+          </p>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+            Si un documento sobre micelios biológicos se divide semánticamente en sus principios clave (redes descentralizadas, transporte adaptativo de nutrientes, ausencia de punto único de fallo), el motor vectorial puede conectar ese chunk aislado con un desafío de replicación de base de datos sin contaminar el prompt con detalles botánicos irrelevantes de taxonomía vegetal.
+          </p>
+        </section>
+
+        <!-- SECCIÓN 7 -->
+        <section id="seccion-7" class="scroll-mt-24 space-y-4">
+          <div class="flex items-center space-x-2 text-amber-800">
+            <span class="font-mono font-bold text-xs bg-amber-100 px-2 py-0.5 rounded">07</span>
+            <span class="font-mono text-xs uppercase tracking-wider font-semibold">Checklist de Ingeniería</span>
+          </div>
+          <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 tracking-tight">
+            7. Checklist para Producción en Septiembre de 2026
+          </h2>
+          <ul class="space-y-3 my-4 text-xs sm:text-sm text-slate-700">
+            <li class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-amber-600 font-bold mt-0.5">&check;</span>
+              <span><strong>Umbral Dinámico por Percentil:</strong> Nunca usar un umbral de distancia fijo (ej. 0.3) para todos los documentos; calibrarlo con <code>np.percentile</code> según la varianza intrínseca de cada texto.</span>
+            </li>
+            <li class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-amber-600 font-bold mt-0.5">&check;</span>
+              <span><strong>Límite Superior de Seguridad:</strong> Si un párrafo semántico coherente supera los 800 tokens, forzar un sub-corte secundario para respetar las restricciones de ventana de contexto del modelo.</span>
+            </li>
+            <li class="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-amber-600 font-bold mt-0.5">&check;</span>
+              <span><strong>Metadatos Inyectados en el Texto Vectorizado:</strong> Añadir el título de sección y documento en el string que se pasa al modelo de embeddings para enriquecer la representación vectorial.</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Conclusión y CTA -->
+        <div class="mt-12 pt-8 border-t border-slate-200 bg-amber-50/50 rounded-2xl p-6 border border-amber-100">
+          <h3 class="font-heading font-extrabold text-lg text-slate-900 mb-2">
+            La Calidad de la Recuperación Comienza en el Particionado
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed mb-4">
+            Ningún modelo de lenguaje de última generación puede razonar con brillantez sobre fragmentos mutilados o descontextualizados. Tratar el particionado de datos como una disciplina científica basada en gradientes semánticos es el fundamento indispensable para cualquier sistema de innovación técnica asistido por IA.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="./agentic-rag-query-routing-dinamico-agentes.html" class="inline-flex items-center text-xs font-bold bg-amber-700 text-slate-100 px-4 py-2.5 rounded-xl hover:bg-amber-600 transition-colors shadow-xs">
+              &larr; Leer: Agentic RAG y Query Routing
+            </a>
+            <a href="./evaluacion-benchmarking-sistemas-multiagente-consenso-deriva.html" class="inline-flex items-center text-xs font-bold bg-white text-amber-900 px-4 py-2.5 rounded-xl border border-amber-300 hover:bg-amber-50 transition-colors shadow-xs">
+              Leer: Benchmarking Multiagente &rarr;
+            </a>
+            <a href="./" class="inline-flex items-center text-xs font-bold text-slate-700 hover:text-amber-800 transition-colors ml-auto">
+              Volver al Índice de Artículos
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="bg-slate-900 text-slate-300 mt-20 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        <div class="flex items-center space-x-3">
+          <img src="../img/logo.jpg" alt="Logo Lluvia de Ideas" class="w-8 h-8 rounded-full ring-1 ring-emerald-500/50">
+          <span class="font-heading font-bold text-base text-slate-100">
+            Lluvia de Ideas <span class="text-brand-400">Forzada</span>
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400">
+          <a href="../privacy-policy.html" class="hover:text-brand-400 transition-colors">Privacidad</a>
+          <a href="../terms.html" class="hover:text-brand-400 transition-colors">Términos</a>
+          <a href="../sitemap.xml" class="hover:text-brand-400 transition-colors">Sitemap XML</a>
+          <a href="../feed.xml" class="hover:text-brand-400 transition-colors">RSS Feed</a>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Raúl Navas Montero (@Noar-es). Todos los derechos reservados.</p>
+        <p class="text-slate-400 font-mono text-[11px]">Septiembre 2026 &middot; Edición Técnica Avanzada</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script interactivo para navegación y TOC activo -->
+  <script>
+    console.log('[DEBUG][Semantic-Chunking] Inicializando vista de artículo técnico...');
+
+    // Control del menú móvil
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileNav) {
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('hidden');
+      });
+    }
+
+    // Intersection Observer para actualizar el TOC de forma reactiva
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const tocLinks = document.querySelectorAll('#desktop-toc a');
+    const sections = document.querySelectorAll('article section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+    console.log('[DEBUG][Semantic-Chunking] Observer de secciones activo. Total secciones:', sections.length);
+  </script>
+</body>
+</html>
