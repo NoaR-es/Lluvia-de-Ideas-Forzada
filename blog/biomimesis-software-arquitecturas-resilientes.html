@@ -357,15 +357,15 @@
             Las conexiones neuronales frecuentemente activadas se refuerzan físicamente (potenciación a largo plazo), mientras que las conexiones inactivas sufren poda sináptica (depresión a largo plazo).
         </p>
 
-        <h4>Aplicación en el RAG On-Device de Lluvia de Ideas Forzada</h4>
+        <h4>Diseño Eficiente de Caché y Persistencia On-Device</h4>
         <p>
-            En un smartphone con recursos térmicos y de batería limitados, no puedes mantener miles de vectores de 384 dimensiones permanentemente cargados en la memoria RAM principal. Nuestro motor RAG implementa un esquema de <strong>evicción sináptica en SQLite</strong>:
+            En un smartphone con recursos térmicos y de batería limitados, no es viable mantener permanentemente en RAM activa todas las estructuras vectoriales. En arquitecturas móviles como la de <strong>Lluvia de Ideas Forzada</strong>, la persistencia estructurada se apoya en <strong>Room (SQLite)</strong> y consultas bajo demanda:
         </p>
 
         <ul>
-            <li>Los fragmentos documentales (chunks) que producen similitudes coseno elevadas en sesiones frecuentes se mantienen cacheados en un buffer en memoria ultrarrápido (L1).</li>
-            <li>Los vectores de documentos archivados o con baja frecuencia de consulta se comprimen como BLOBs en el almacenamiento flash interno (L2).</li>
-            <li>Este enfoque bio-inspirado reduce el consumo de batería un <strong>65%</strong> en comparación con sistemas RAG móviles ingenuos que recalculan embeddings en cada interacción.</li>
+            <li>Los fragmentos documentales (chunks) relevantes se recuperan e indexan de forma eficiente únicamente cuando el contexto de la consulta lo requiere.</li>
+            <li>La persistencia relacional en SQLite garantiza que los datos de proyectos y vectores residan de forma segura y duradera en el almacenamiento del dispositivo.</li>
+            <li>Este principio de sobriedad de recursos asegura que la aplicación opere de manera fluida y privada sin degradar el rendimiento del teléfono.</li>
         </ul>
 
         <!-- SECCIÓN 6 -->
@@ -422,12 +422,12 @@
         <h2 id="biomimesis-con-ia">Biomímesis Acelerada con Lluvia de Ideas Forzada y Agentes Especializados</h2>
 
         <p>
-            Encontrar analogías biológicas precisas requiere conocimientos interdisciplinares profundos. <strong>Lluvia de Ideas Forzada</strong> incluye el operador de disrupción <em>"Adaptar (Biomímesis)"</em> dentro de su motor de pensamiento forzado:
+            Encontrar analogías biológicas precisas requiere conocimientos interdisciplinares profundos. En <strong>Lluvia de Ideas Forzada</strong>, puedes crear y personalizar tus propios <strong>Ideadores</strong> y prompts de sistema con enfoques biomiméticos, o solicitar a agentes de fábrica como <em>Dr. Tech</em> que exploren soluciones analógicas bio-inspiradas frente a tu desafío técnico:
         </p>
 
         <ul>
-            <li>Alimentas tu desafío técnico (ej: "gestión de concurrencia en SQLite Android").</li>
-            <li>La IA consulta su base de conocimientos bio-computacionales y propone 3 modelos naturales aplicables con su mapeo a código Kotlin.</li>
+            <li>Alimentas tu desafío técnico o arquitectura en el proyecto adjuntando documentación técnica vía RAG local.</li>
+            <li>Interactúas con el asistente para que analice modelos naturales adaptables al problema y los mapee a primitivas y código ejecutable.</li>
         </ul>
 
         <!-- App CTA inline 3 -->

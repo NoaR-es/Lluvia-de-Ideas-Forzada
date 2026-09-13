@@ -236,7 +236,7 @@
         <div class="tldr-box">
             <div class="tldr-label">⚡ Resumen Ejecutivo • Lectura en 2 minutos</div>
             <p>
-                Cada vez que subes un documento confidencial a un endpoint de RAG en la nube, lo expones a vulnerabilidades de red, cambios en políticas de retención y jurisdicciones legales fuera de tu control. La alternativa es un pipeline RAG que se ejecuta íntegramente en la memoria del dispositivo Android: chunking semántico por fronteras naturales de oración (no por caracteres fijos), embeddings vectoriales de 384 dimensiones generados en el chip mediante aceleración Vulkan/MediaPipe, almacenamiento como BLOBs comprimidos en SQLite/Room, y recuperación jerárquica por similitud coseno. Cero bytes enviados a la red. Latencia sub-120ms para 2.000 fragmentos indexados. RGPD cumplido por diseño arquitectónico, no por promesa contractual. Este artículo cubre la arquitectura completa, los riesgos específicos del RAG cloud que justifican la alternativa local, benchmarks de rendimiento en dispositivos reales, y una guía paso a paso de implementación.
+                Cada vez que subes un documento confidencial a un endpoint de RAG en la nube, lo expones a vulnerabilidades de red, cambios en políticas de retención y jurisdicciones legales fuera de tu control. La alternativa es un pipeline RAG que se ejecuta íntegramente en la memoria del dispositivo Android: chunking semántico por fronteras naturales de oración (no por caracteres fijos), embeddings vectoriales de 384 dimensiones generados en el chip mediante aceleración Vulkan/MediaPipe, almacenamiento como BLOBs comprimidos en SQLite/Room, y recuperación jerárquica por similitud coseno. Cero bytes enviados a la red. Latencia sub-120ms para 2.000 fragmentos indexados. RGPD cumplido por diseño arquitectónico, no por promesa contractual. Este artículo cubre la arquitectura completa, los riesgos específicos del RAG cloud que justifican la alternativa local, rendimiento de referencia en silicio móvil, y una guía paso a paso de implementación.
             </p>
         </div>
 
@@ -252,7 +252,7 @@
                 <li><a href="#capa-chunking">Capa 1: Chunking Semántico Local — cómo se segmentan los documentos</a></li>
                 <li><a href="#capa-embeddings">Capa 2: Embeddings Vectoriales On-Chip — cómo se representan los conceptos</a></li>
                 <li><a href="#capa-recuperacion">Capa 3: Recuperación Jerárquica — cómo se encuentran los fragmentos relevantes</a></li>
-                <li><a href="#benchmarks">Benchmarks de rendimiento en dispositivos reales</a></li>
+                <li><a href="#benchmarks">Rendimiento y latencias de referencia en silicio móvil</a></li>
                 <li><a href="#ventajas-estrategicas">7 ventajas estratégicas del RAG local</a></li>
                 <li><a href="#limitaciones">Limitaciones honestas: cuándo el RAG cloud tiene sentido</a></li>
                 <li><a href="#comparativa">Comparativa detallada: RAG Cloud vs. RAG On-Device</a></li>
@@ -517,10 +517,10 @@
         </div>
 
         <!-- SECCIÓN 9 -->
-        <h2 id="benchmarks">Benchmarks de rendimiento en dispositivos reales</h2>
+        <h2 id="benchmarks">Rendimiento y latencias de referencia en silicio móvil</h2>
 
         <p>
-            Los siguientes son benchmarks medidos en dispositivos reales con la versión de producción de Lluvia de Ideas Forzada. Todas las mediciones incluyen el pipeline completo: deserialización del vector de consulta, cómputo de similitud coseno contra todos los chunks indexados, y ordenación por relevancia.
+            Para dimensionar el comportamiento esperado de un pipeline RAG on-device en dispositivos Android modernos, los siguientes datos técnicos resumen rangos de referencia y pruebas estimadas en la industria según la arquitectura del procesador (NPU dedicada, GPU y CPU multinúcleo). El cálculo abarca la deserialización del vector de consulta, cómputo de similitud coseno sobre los fragmentos indexados y ordenación por relevancia:
         </p>
 
         <h4>Latencia de recuperación (Top-5 chunks más relevantes)</h4>
